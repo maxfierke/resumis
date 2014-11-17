@@ -63,29 +63,9 @@
     </nav>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-        <div class="col-md-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "#"  %></li>
-              <li><%= link_to "Link2", "#"  %></li>
-              <li><%= link_to "Link3", "#"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-      </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-
-    </div> <!-- /container -->
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
 
   </body>
 </html>
