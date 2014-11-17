@@ -139,6 +139,35 @@
     </table>
   </div>
 
+  <h4>Relevant Skills</h4>
+
+  <div class="panel panel-default">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.collection_check_boxes(:skill_ids,  Skill.order("name ASC"), :id, :name,
+          { :selected => @resume.skill_ids }, { :multiple => true } ) do |b| %>
+          <tr>
+            <td>
+              <%= b.check_box %>
+            </td>
+            <td>
+              <%= b.text %>
+            </td>
+            <td>
+              <%= b.object.skill_category.name %>
+            </td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+
   <div class="form-group">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
