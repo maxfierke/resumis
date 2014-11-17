@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:slug) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -15,10 +14,9 @@
   <tbody>
     <% @project_categories.each do |project_category| %>
       <tr>
-        <td><%= project_category.id %></td>
-          <td><%= project_category.slug %></td>
-          <td><%= project_category.name %></td>
-        <td><%=l project_category.created_at, format: :long %></td>
+        <td><%= project_category.slug %></td>
+        <td><%= project_category.name %></td>
+        <td><%= time_ago_in_words(project_category.created_at) %> ago</td>
         <td>
           <%= link_to project_category_path(project_category), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

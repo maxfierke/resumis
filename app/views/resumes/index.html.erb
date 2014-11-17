@@ -5,8 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:published) %></th>
@@ -17,12 +15,10 @@
   <tbody>
     <% @resumes.each do |resume| %>
       <tr>
-        <td><%= resume.id %></td>
-          <td><%= resume.user_id %></td>
-          <td><%= resume.name %></td>
-          <td><%= resume.description %></td>
-          <td><%= resume.published %></td>
-        <td><%=l resume.created_at, format: :long %></td>
+        <td><%= resume.name %></td>
+        <td><%= resume.description %></td>
+        <td><%= resume.published %></td>
+        <td><%= time_ago_in_words(resume.created_at) %></td>
         <td>
           <%= link_to resume_path(resume), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
