@@ -8,13 +8,7 @@
   <div class="form-group">
     <%= f.label :skill_category_id, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :skill_category_id, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :user_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :user_id, :class => 'text_field form-control' %>
+      <%= f.collection_select :skill_category_id, SkillCategory.all, :id, :name, {}, :class => 'text_field form-control' %>
     </div>
   </div>
 
