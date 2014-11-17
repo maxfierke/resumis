@@ -2,7 +2,7 @@ class ProjectCategoriesController < ApplicationController
   before_action :set_project_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @project_categories = ProjectCategory.all

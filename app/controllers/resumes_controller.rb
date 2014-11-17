@@ -2,7 +2,7 @@ class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @resumes = Resume.all

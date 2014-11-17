@@ -2,7 +2,7 @@ class SkillCategoriesController < ApplicationController
   before_action :set_skill_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @skill_categories = SkillCategory.all
