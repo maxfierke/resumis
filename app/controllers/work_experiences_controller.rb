@@ -44,6 +44,6 @@ class WorkExperiencesController < ApplicationController
     end
 
     def work_experience_params
-      params.require(:work_experience).permit(:organization, :description, :start_date, :end_date)
+      params.require(:work_experience).permit(:organization, :position, :description, :start_date, :end_date)
     end
 end
