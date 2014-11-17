@@ -48,15 +48,47 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Resumis</a>
+          <a class="navbar-brand" href="<%= root_path %>">Resumis</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><%= link_to "Link1", '#' %></li>
-            <li><%= link_to "Link2", '#' %></li>
-            <li><%= link_to "Link3", '#' %></li>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "About", root_path %></li>
+            <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="<%= projects_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Project List", projects_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Categories", project_categories_path %></li>
+                <li><%= link_to "Statuses", project_statuses_path %></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="<%= resumes_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resumes <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Resume List", resumes_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Skills", skills_path %></li>
+                <li><%= link_to "Skill Categories", skill_categories_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Education Experiences", education_experiences_path %></li>
+                <li><%= link_to "Work Experiences", work_experiences_path %></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "My Profile", edit_user_registration_path(current_user) %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, :method => 'DELETE' %></li>
+              </ul>
+            </li>
+            <% else %>
+            <li><%= link_to "Projects", projects_path %></li>
+            <li><%= link_to "Resume", "#" %></li>
+            <li><%= link_to "Contact", '#' %></li>
+            <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
