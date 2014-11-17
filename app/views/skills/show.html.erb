@@ -8,9 +8,7 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
       <dd><pre class="prettyprint"><%= @skill.name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:skill_category_id) %></dt>
-      <dd><pre class="prettyprint"><%= @skill.skill_category_id %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:user_id) %></dt>
-      <dd><pre class="prettyprint"><%= @skill.user_id %></pre></dd>
+      <dd><pre class="prettyprint"><%= @skill.skill_category.name %></pre></dd>
   </dl>
 </div>
 

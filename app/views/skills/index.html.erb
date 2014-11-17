@@ -5,10 +5,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:skill_category_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -16,15 +14,10 @@
   <tbody>
     <% @skills.each do |skill| %>
       <tr>
-        <td><%= skill.id %></td>
-          <td><%= skill.name %></td>
-          <td><%= skill.skill_category_id %></td>
-          <td><%= skill.user_id %></td>
-        <td><%=l skill.created_at, format: :long %></td>
+        <td><%= skill.name %></td>
+        <td><%= skill.skill_category.name if skill.skill_category %></td>
+        <td><%= time_ago_in_words(skill.created_at) %> ago</td>
         <td>
-          <%= link_to skill_path(skill), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
           <%= link_to edit_skill_path(skill), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>

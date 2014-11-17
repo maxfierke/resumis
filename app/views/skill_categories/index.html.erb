@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -14,13 +13,9 @@
   <tbody>
     <% @skill_categories.each do |skill_category| %>
       <tr>
-        <td><%= skill_category.id %></td>
-          <td><%= skill_category.name %></td>
-        <td><%=l skill_category.created_at, format: :long %></td>
+        <td><%= skill_category.name %></td>
+        <td><%= time_ago_in_words(skill_category.created_at) %> ago</td>
         <td>
-          <%= link_to skill_category_path(skill_category), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
           <%= link_to edit_skill_category_path(skill_category), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>

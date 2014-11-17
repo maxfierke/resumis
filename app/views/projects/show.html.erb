@@ -16,7 +16,7 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:end_date) %></dt>
       <dd><pre class="prettyprint"><%= @project.end_date %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:project_status_id) %></dt>
-      <dd><pre class="prettyprint"><%= @project.project_status_id %></pre></dd>
+      <dd><pre class="prettyprint"><%= @project.project_status.name %></pre></dd>
   </dl>
 </div>
 

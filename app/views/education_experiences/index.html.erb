@@ -20,7 +20,7 @@
         <td><%= education_experience.description %></td>
         <td><%= education_experience.start_date %></td>
         <td><%= education_experience.end_date %></td>
-        <td><%= time_ago_in_words(education_experience.created_at) %></td>
+        <td><%= time_ago_in_words(education_experience.created_at) %> ago</td>
         <td>
           <%= link_to education_experience_path(education_experience), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>

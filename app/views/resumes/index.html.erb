@@ -18,7 +18,7 @@
         <td><%= resume.name %></td>
         <td><%= resume.description %></td>
         <td><%= resume.published %></td>
-        <td><%= time_ago_in_words(resume.created_at) %></td>
+        <td><%= time_ago_in_words(resume.created_at) %> ago</td>
         <td>
           <%= link_to resume_path(resume), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
