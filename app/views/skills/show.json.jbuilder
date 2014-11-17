@@ -1,1 +1,1 @@
-json.extract! @skill, :id, :name, :SkillCategory_id, :User_id, :created_at, :updated_at
+json.extract! @skill, :id, :name, :skill_category_id, :user_id, :created_at, :updated_at
