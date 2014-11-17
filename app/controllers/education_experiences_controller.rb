@@ -2,7 +2,7 @@ class EducationExperiencesController < ApplicationController
   before_action :set_education_experience, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @education_experiences = EducationExperience.all
@@ -44,6 +44,6 @@ class EducationExperiencesController < ApplicationController
     end
 
     def education_experience_params
-      params.require(:education_experience).permit(:school_name, :description, :start_date, :end_date)
+      params.require(:education_experience).permit(:school_name, :diploma, :description, :start_date, :end_date)
     end
 end

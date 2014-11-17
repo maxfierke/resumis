@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116193603) do
+ActiveRecord::Schema.define(version: 20141117000748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141116193603) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "diploma"
   end
 
   add_index "education_experiences", ["user_id"], name: "index_education_experiences_on_user_id", using: :btree
@@ -67,10 +68,13 @@ ActiveRecord::Schema.define(version: 20141116193603) do
     t.integer  "project_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "github_url"
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
   add_index "projects", ["project_status_id"], name: "index_projects_on_project_status_id", using: :btree
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "resume_education_experiences", force: true do |t|
     t.integer  "resume_id"
@@ -172,6 +176,7 @@ ActiveRecord::Schema.define(version: 20141116193603) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "position"
   end
 
   add_index "work_experiences", ["user_id"], name: "index_work_experiences_on_user_id", using: :btree

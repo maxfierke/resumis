@@ -6,9 +6,15 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :diploma, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :diploma, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :description, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :description, :class => 'text_field form-control' %>
+      <%= f.text_area :description, :class => 'text_area form-control', :row => '8' %>
     </div>
   </div>
   <div class="form-group">
@@ -20,13 +26,7 @@
   <div class="form-group">
     <%= f.label :end_date, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.date_select :end_date, {}, :class => 'form-control', :style => 'max-width: 100px; display:inline-block;' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :user_id, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :user_id, :class => 'text_field form-control' %>
+      <%= f.date_select :end_date, { :include_blank => true }, { :class => 'form-control', :style => 'max-width: 100px; display:inline-block;' } %>
     </div>
   </div>
 

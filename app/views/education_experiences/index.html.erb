@@ -5,12 +5,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:school_name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%= model_class.human_attribute_name(:end_date) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,13 +16,11 @@
   <tbody>
     <% @education_experiences.each do |education_experience| %>
       <tr>
-        <td><%= education_experience.id %></td>
-          <td><%= education_experience.school_name %></td>
-          <td><%= education_experience.description %></td>
-          <td><%= education_experience.start_date %></td>
-          <td><%= education_experience.end_date %></td>
-          <td><%= education_experience.user_id %></td>
-        <td><%=l education_experience.created_at, format: :long %></td>
+        <td><%= education_experience.school_name %></td>
+        <td><%= education_experience.description %></td>
+        <td><%= education_experience.start_date %></td>
+        <td><%= education_experience.end_date %></td>
+        <td><%= time_ago_in_words(education_experience.created_at) %></td>
         <td>
           <%= link_to education_experience_path(education_experience), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
