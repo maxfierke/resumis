@@ -44,6 +44,6 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.require(:resume).permit(:name, :description, :published, education_experience_ids: [], project_ids: [], skills_ids: [], work_experience_ids: [])
+      params.require(:resume).permit(:name, :description, :published, education_experience_ids: [], project_ids: [], skill_ids: [], work_experience_ids: [])
     end
 end
