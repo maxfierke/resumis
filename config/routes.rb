@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   resources :project_statuses
 
-  devise_for :users
+  devise_for :users, path: 'auth/user'
+
+  get 'profile/edit' => 'profile#edit', as: :edit_profile
+  get 'profile' => 'profile#show'
+  put 'profile' => 'profile#update'
+  patch 'profile' => 'profile#update'
 
   root 'page#about'
 
