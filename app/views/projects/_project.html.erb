@@ -1,0 +1,28 @@
+<section id="<%= project.id %>" class="panel panel-default panel-project <% if project.end_date %>current-projects<% else %>past-projects<% end %>">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <%= project.name %>
+      <span class="label label-<%= project.project_status.slug if project.project_status %>">
+        <%= project.project_status.name if project.project_status %>
+      </span>
+      <p class="pull-right">
+        <%= project.start_date.strftime('%B %Y') %> &mdash; <% if not project.end_date %>present<% else %><%= project.end_date.strftime('%B %Y') %><% end %>
+        <% if user_signed_in? %>
+          <%= link_to edit_project_path(project), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to project_path(project), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        <% end %>
+      </p>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><%= project.description %></p>
+      </div>
+    </div>
+  </div>
+</section>
