@@ -18,11 +18,13 @@
       </p>
     </h4>
   </div>
+  <% if project.description.length > 0 %>
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <p><%= project.description %></p>
+        <p><%= markdown(project.description) %></p>
       </div>
     </div>
   </div>
+  <% end %>
 </section>
