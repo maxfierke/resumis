@@ -1,0 +1,46 @@
+<section id="workexp_<%= work_experience.id %>"
+         class="panel panel-default panel-work-experience
+                <% if work_experience.end_date %>
+                  current-work-experience
+                <% else %>
+                  past-work-experience
+                <% end %>"
+  >
+  <div class="panel-heading">
+    <h4 class="panel-title clearfix">
+      <span class="pull-left">
+        <%= work_experience.position %><br />
+        <small><%= work_experience.organization %></small>
+      </span>
+      <span class="pull-right">
+        <%= work_experience.start_date.strftime('%B %Y') %> &mdash;
+        <% if not work_experience.end_date %>
+          present
+        <% else %>
+          <%= work_experience.end_date.strftime('%B %Y') %>
+        <% end %>
+
+        <% if user_signed_in? and
+              work_experience.user_id == current_user.id and
+              not (params[:controller] == 'resumes' and params[:action] == 'show')
+        %>
+          <%= link_to edit_work_experience_path(work_experience), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to work_experience_path(work_experience), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        <% end %>
+      </span>
+    </h4>
+  </div>
+  <% if work_experience.description.length > 0 %>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><%= markdown(work_experience.description) %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</section>
