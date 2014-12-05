@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :education_experiences
   has_many :skills
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def gravatar_url
 		hash = Digest::MD5.hexdigest(email)
 
