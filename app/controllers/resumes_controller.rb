@@ -11,7 +11,7 @@ class ResumesController < ApplicationController
 
   def show
     # Only allow viewing of published resumes, or resumes a user owns
-    if not @resume.published and (!current_user or current_user.id != @resume.user.id)
+    if not @resume.published and (!user_signed_in? or current_user.id != @resume.user.id)
       return head :forbidden
     end
 
