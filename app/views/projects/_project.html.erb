@@ -8,6 +8,10 @@
       </span>
       <p class="pull-right">
         <%= project.date_range %>
+        <% if user_signed_in? and
+              project.user.id == current_user.id and
+              not (params[:controller] == 'resumes' and params[:action] == 'show')
+        %>
           <%= link_to edit_project_path(project), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>
