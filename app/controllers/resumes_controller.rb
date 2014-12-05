@@ -2,6 +2,7 @@ class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  layout "resume", only: [:show]
   respond_to :html, :json
 
   def index
