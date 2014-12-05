@@ -27,12 +27,15 @@ gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
+gem 'rails-bootstrap-markdown'
+gem 'redcarpet'
 
 gem 'devise', '~> 3.4.1'
 
 group :development do
 	gem 'capistrano-rails'
 	gem 'better_errors'
+	gem 'binding_of_caller'
 end
 
 # Use unicorn as the app server
