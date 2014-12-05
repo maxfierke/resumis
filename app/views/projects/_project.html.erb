@@ -3,9 +3,12 @@
   <div class="panel-heading">
     <h4 class="panel-title">
       <%= project.name %>
-      <span class="label label-<%= project.project_status.slug if project.project_status %>">
-        <%= project.project_status.name if project.project_status %>
-      </span>
+      <% if project.project_status and
+            not (params[:controller] == 'resumes' and params[:action] == 'show') %>
+        <span class="label label-default label-<%= project.project_status.slug %>">
+          <%= project.project_status.name %>
+        </span>
+      <% end %>
       <p class="pull-right">
         <%= project.date_range %>
         <% if user_signed_in? and
