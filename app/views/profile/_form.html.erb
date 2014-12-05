@@ -18,9 +18,21 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :tagline, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :tagline, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :header_image_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :header_image_url, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :about_me, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_area :about_me, :class => 'text_field form-control', rows: '6' %>
+      <%= f.text_area :about_me, :class => 'text_field form-control', rows: '6', :"data-provide" => "markdown" %>
     </div>
   </div>
 

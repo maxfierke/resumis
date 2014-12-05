@@ -33,6 +33,6 @@ class ProfileController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user].permit(:first_name, :last_name, :about_me)
+      params[:user].permit(:first_name, :last_name, :tagline, :header_image_url, :about_me)
     end
 end
