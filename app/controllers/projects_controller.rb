@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(start_date: :desc, end_date: :desc)
     respond_with(@projects)
   end
 
