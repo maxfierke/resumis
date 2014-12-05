@@ -25,12 +25,16 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user = current_user
     @project.save
-    respond_with(@project)
+    respond_with(@project) do |format|
+      format.html { redirect_to projects_path }
+    end
   end
 
   def update
     @project.update(project_params)
-    respond_with(@project)
+    respond_with(@project) do |format|
+      format.html { redirect_to projects_path }
+    end
   end
 
   def destroy
