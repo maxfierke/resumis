@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
   resources :resumes
 
-  resources :education_experiences
+  resources :education_experiences, path: 'experiences/education'
 
-  resources :work_experiences
+  resources :work_experiences, path: 'experiences/work'
 
   resources :skills
 
-  resources :skill_categories
+  resources :skill_categories, path: 'skill/categories'
 
-  resources :project_categories
+  resources :project_categories, path: 'project/categories'
 
   resources :projects
 
-  resources :project_statuses
+  resources :project_statuses, path: 'project/statuses'
 
   devise_for :users, path: 'auth/user'
 
