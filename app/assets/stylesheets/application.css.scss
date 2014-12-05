@@ -5,3 +5,284 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 //*= require bootstrap-markdown
+
+body {
+    padding-top: 50px;
+    background-color: #000;
+    font-family: 'Open Sans','Droid Sans','Helvetica Neue', Helvetica,Arial,sans-serif;
+}
+
+code {
+    color: #f80;
+    background-color: #232323;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+/* BOOTSTRAP OVERRIDES */
+.label {
+    font-weight: normal;
+
+    a {
+        color: #fff;
+    }
+}
+
+.close:hover, .close:focus {
+    color: #c3c3c3;
+}
+
+.form-control {
+    color: #c3c3c3;
+    background-color: #232323;
+    border-color: #353535;
+}
+
+.img-thumbnail,
+.thumbnail,
+.panel {
+    background-color: #151515;
+    border-color: #272727;
+}
+
+/* SITE SPECIFIC CLASSES */
+.primary-container {
+    background-color: #0c0c0c;
+}
+
+.container .jumbotron {
+    border-radius: 0;
+}
+
+.dropdown-contact {
+    min-width: 540px;
+}
+
+.ebleu {
+    color: #0390c4;
+}
+
+.footer-page {
+    margin-top: 10px;
+    background-color: #0F0F0F;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    a {
+        color: #fff;
+    }
+
+    .list-inline {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.img-about {
+    margin-top: 20px;
+    text-align: right;
+
+    small {
+        font-size: 10px;
+    }
+}
+
+.navbar {
+    border-bottom: 1px solid #151515;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    background-color: transparent;
+    font-size: 24px;
+    font-weight: 300;
+    transition: color 0.2s ease;
+
+    &:hover, &:focus {
+        color: #0390b3;
+    }
+}
+
+.navbar .navbar-nav {
+    & > li {
+        & > a {
+            border: 1px solid transparent;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin: 10px 0;
+            transition: all 0.2s ease;
+        }
+
+        &.active > a, &.active > a:hover {
+            font-weight: bold;
+        }
+    }
+
+    .hidden-xs {
+        display: inline-block !important;
+    }
+}
+
+.js-tooltip {
+    text-decoration: none;
+}
+
+.jumbotron-about {
+    background-image: url('/static/images/minnehaha_waterfall.jpg');
+    background-position: left center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+
+    h1, h2, h3 {
+        background-color: rgba(39,39,39, 0.9);
+        border-color: #272727;
+        border-radius: 3px;
+        display: inline-block;
+        padding: 7px;
+    }
+
+    .project-title {
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    .project-shortdesc {
+        font-size: 14px;
+    }
+}
+
+.panel-latest-project {
+    margin-bottom: 0;
+}
+
+.panel-project {
+    & > .panel-body {
+        transition: background-color 0.5s linear;
+    }
+
+    & > .panel-heading {
+        background-color: #121212;
+        color: #c3c3c3;
+    }
+
+    .label {
+        display: inline-block;
+        margin-left: 5px;
+    }
+}
+
+.project-img {
+    margin-bottom: 1.2em;
+}
+
+.project-tags {
+    margin-bottom: 0;
+}
+
+.row-profile {
+    .thumbnail {
+        margin: 40px 0 20px;
+    }
+}
+
+.socialnetworks {
+    img {
+        margin-right: 10px;
+    }
+
+    li {
+        margin-bottom: 5px;
+
+        & > a {
+            color: #efefef;
+            text-decoration: none;
+
+            &:hover {
+                color: #0390c5;
+            }
+        }
+    }
+}
+
+textarea[data-provide="markdown"] {
+    padding: 15px;
+    line-spacing: 1.5;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+
+@media screen and (max-width: 767px) {
+    .navbar .navbar-nav .hidden-xs {
+        display: none !important;
+    }
+    .navbar .navbar-nav .visible-xs {
+        display: inline-block !important;
+    }
+
+    .navbar-collapse {
+        background-color: #0f0f0f;
+        border-color: #151515;
+    }
+
+    .navbar .navbar-toggle {
+        border-color: transparent;
+    }
+
+    .navbar .navbar-toggle:focus,
+    .navbar .navbar-toggle:hover {
+        background-color: transparent;
+    }
+
+    .navbar-toggle .icon-bar {
+        height: 3px;
+    }
+
+    .jumbotron-about {
+        background-image: url('/static/images/minnehaha_waterfall.jpg');
+        background-position: left center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .dl-tools dd {
+        padding-left: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron-about {
+        padding: 20px !important;
+    }
+    .dl-tools {
+        margin-bottom: 0;
+
+        dt {
+            width: auto;
+        }
+        dd {
+            margin-left: 20px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .jumbotron-about h1 {
+        font-size: 36px;
+    }
+    .jumbotron-about h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .jumbotron-about h1 {
+        font-size: 42px;
+    }
+    .jumbotron-about h2 {
+        font-size: 22px;
+    }
+}
