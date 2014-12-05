@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render :partial => 'shared/head' %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <%= render :partial => 'shared/navbar' %>
+    <%= render :partial => 'shared/user_header', :locals => { user: root_user } %>
+
+    <div class="container">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+
+    <footer class="footer-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <p>
+              Copyright &copy; <%= Date.today.year %> <%= root_user.full_name %>
+              <% unless user_signed_in? %>
+                &middot; <%= link_to "Login", new_user_session_path %>
+              <% end %>
+            </p>
+          </div>
+          <div class="col-xs-6">
+            <ul class="list-inline text-right">
+              <li>
+                <a href="#contact" data-toggle="modal" data-target="#contact">
+                  <span class="fa fa-fw fa-2x fa-envelope-square"></span>
+                  <span class="sr-only">Email</span>
+                </a>
+              </li>
+              <% if root_user.github_handle %>
+              <li>
+                <a href="https://github.com/<%= root_user.github_handle %>" target="_blank">
+                  <span class="fa fa-fw fa-2x fa-github-square"></span>
+                  <span class="sr-only">GitHub</span>
+                </a>
+              </li>
+              <% end %>
+              <% if root_user.googleplus_handle %>
+              <li>
+                <a href="https://plus.google.com/<%= root_user.googleplus_handle %>" target="_blank">
+                  <span class="fa fa-fw fa-2x fa-google-plus-square"></span>
+                  <span class="sr-only">Google+</span>
+                </a>
+              </li>
+              <% end %>
+              <% if root_user.linkedin_handle %>
+              <li>
+                <a href="http://www.linkedin.com/in/<%= root_user.linkedin_handle %>/" target="_blank">
+                  <span class="fa fa-fw fa-2x fa-linkedin-square"></span>
+                  <span class="sr-only">LinkedIn</span>
+                </a>
+              </li>
+              <% end %>
+              <% if root_user.twitter_handle %>
+              <li>
+                <a href="https://twitter.com/<%= root_user.twitter_handle %>" target="_blank">
+                  <span class="fa fa-fw fa-2x fa-twitter-square"></span>
+                  <span class="sr-only">Twitter</span>
+                </a>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

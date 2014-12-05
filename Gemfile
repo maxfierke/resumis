@@ -29,7 +29,7 @@ gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 gem 'rails-bootstrap-markdown'
 gem 'redcarpet'
-
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'devise', '~> 3.4.1'
 
 group :development do

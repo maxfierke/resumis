@@ -1,0 +1,27 @@
+<div class="jumbotron jumbotron-about visible-sm visible-md visible-lg"
+     style="background-image: url(<%= user.header_image_url %>);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                <h1>
+                    <%= user.first_name %>
+                    <strong class="ebleu"><%= user.last_name %></strong>
+                </h1>
+                <h3>
+                    <%= user.tagline %>
+                </h3>
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <div class="panel panel-default panel-latest-project">
+                    <div id="latest-project" class="panel-body">
+                        <p class="project-title"><a href=""></a></p>
+                        <hr />
+                        <img class="project-img img-responsive hidden" src="" />
+                        <p class="project-shortdesc"></p>
+                        <ul class="project-tags list-inline"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
