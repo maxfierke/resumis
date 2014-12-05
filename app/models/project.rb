@@ -11,4 +11,21 @@ class Project < ActiveRecord::Base
 
     "#{start_month_year} — #{end_month_year}"
   end
+
+  def css_classes
+    classes = []
+    if end_date
+      classes << "past-projects"
+    else
+      classes << "current-projects"
+    end
+
+    if project_categories
+      project_categories.each do |c|
+        classes << c.slug
+      end
+    end
+
+    classes.join(" ")
+  end
 end
