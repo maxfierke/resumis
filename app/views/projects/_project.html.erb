@@ -1,4 +1,5 @@
-<section id="<%= project.id %>" class="panel panel-default panel-project <% if project.end_date %>current-projects<% else %>past-projects<% end %>">
+<section id="project_<%= project.id %>"
+         class="panel panel-default panel-project <%= project.css_classes %>">
   <div class="panel-heading">
     <h4 class="panel-title">
       <%= project.name %>
