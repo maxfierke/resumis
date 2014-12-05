@@ -3,8 +3,6 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<% @work_experiences.each do |work_experience| %>
-  <%= render work_experience %>
-<% end %>
+<%= render @work_experiences %>
 
 <%= link_to "New Work Experience", new_work_experience_path, :class => 'btn btn-primary' if user_signed_in? %>
