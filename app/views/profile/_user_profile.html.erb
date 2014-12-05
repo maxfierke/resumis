@@ -1,0 +1,38 @@
+<div class="row row-profile">
+  <div class="col-sm-9">
+    <div class="page-header">
+      <h3>About <strong class="ebleu">Me</strong></h3>
+    </div>
+    <div class="about-me">
+      <%= markdown(user.about_me) %>
+    </div>
+    <div class="page-header">
+      <h3>My <span class="ebleu">Skills</span></h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <ul>
+        <% user.skills.each_with_index do |skill, index| %>
+          <% if index <= (user.skills.length / 2) %>
+            <li><%= skill.name %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <ul>
+        <% user.skills.each_with_index do |skill, index| %>
+          <% if index > (user.skills.length / 2) %>
+            <li><%= skill.name %></li>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <span class="thumbnail">
+      <%= image_tag user.gravatar_url %>
+    </span>
+  </div>
+</div>
