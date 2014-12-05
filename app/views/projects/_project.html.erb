@@ -6,8 +6,7 @@
         <%= project.project_status.name if project.project_status %>
       </span>
       <p class="pull-right">
-        <%= project.start_date.strftime('%B %Y') %> &mdash; <% if not project.end_date %>present<% else %><%= project.end_date.strftime('%B %Y') %><% end %>
-        <% if user_signed_in? %>
+        <%= project.date_range %>
           <%= link_to edit_project_path(project), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>
