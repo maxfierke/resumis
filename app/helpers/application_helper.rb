@@ -1,4 +1,11 @@
+require 'redcarpet'
+
 module ApplicationHelper
+  def markdown(content)
+    renderer = Redcarpet::Render::HTML.new(filter_html: true)
+    parser = Redcarpet::Markdown.new(renderer, strikethrough: true, underline: true)
+    parser.render(content).html_safe
+  end
 
   def exists_published_resume?
     Resume.exists?(published: true)
