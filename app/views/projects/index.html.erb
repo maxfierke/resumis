@@ -3,9 +3,6 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 
-<% @projects.each do |project| %>
-  <%= render project %>
-<% end %>
-
+<%= render @projects %>
 
 <%= link_to "New Project", new_project_path, :class => 'btn btn-primary' if user_signed_in? %>
