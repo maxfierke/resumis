@@ -1,5 +1,4 @@
-<%- model_class = WorkExperience -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <%= page_title "New Work Experience" %>
 </div>
 <%= render :partial => 'form' %>

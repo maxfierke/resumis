@@ -1,12 +1,10 @@
 <%- model_class = WorkExperience -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <%= page_title @work_experience.organization %>
 </div>
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:organization) %></dt>
-      <dd><pre class="prettyprint"><%= @work_experience.organization %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
       <dd><pre class="prettyprint"><%= @work_experience.description %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:start_date) %></dt>

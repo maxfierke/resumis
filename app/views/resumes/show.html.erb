@@ -1,3 +1,4 @@
+<% page_title "#{@resume.user.full_name} Resume" %>
 <%= render @resume %>
 
 <% if user_signed_in? and @resume.user.id == current_user.id %>

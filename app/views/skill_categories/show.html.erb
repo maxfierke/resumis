@@ -1,13 +1,5 @@
-<%- model_class = SkillCategory -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
-
-<div class="fieldset">
-  <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @skill_category.name %></pre></dd>
-  </dl>
+  <%= page_title @skill_category.name %>
 </div>
 
 <div class="form-group">
