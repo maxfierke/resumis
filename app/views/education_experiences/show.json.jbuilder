@@ -1,1 +1,1 @@
-json.extract! @education_experience, :id, :school_name, :diploma, :description, :start_date, :end_date, :created_at, :updated_at
+json.partial! @education_experience, partial: 'education_experiences/education_experience', as: :education_experience
