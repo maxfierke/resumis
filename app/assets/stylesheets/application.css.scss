@@ -167,7 +167,9 @@ code {
     margin-bottom: 0;
 }
 
-.panel-project {
+.panel-project,
+.panel-education-experience,
+.panel-work-experience {
     & > .panel-body {
         transition: background-color 0.5s linear;
     }
