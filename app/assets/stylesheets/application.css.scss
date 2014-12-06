@@ -144,9 +144,14 @@ code {
         padding: 7px;
     }
 
+    h2 {
+        font-size: 30px;
+    }
+
     .project-title {
         font-size: 20px;
         margin-top: 0;
+        word-wrap: break-word;
     }
 
     .project-shortdesc {
