@@ -4,7 +4,7 @@
 @import "bootswatch/cyborg/bootswatch";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-//*= require bootstrap-markdown
+@import "bootstrap-markdown";
 
 body {
     padding-top: 50px;
@@ -212,11 +212,16 @@ code {
     }
 }
 
-textarea[data-provide="markdown"] {
+.md-editor > textarea {
     padding: 15px;
-    line-spacing: 1.5;
+    line-height: 1.5;
     font-family: monospace;
     font-size: 1.1em;
+    background: #111;
+
+    &:focus {
+        background: #111;
+    }
 }
 
 
