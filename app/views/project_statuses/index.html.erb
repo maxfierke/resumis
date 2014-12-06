@@ -1,4 +1,3 @@
-<%- model_class = ProjectStatus -%>
 <div class="page-header">
   <%= page_title "Project Statuses" %>
 </div>
@@ -6,17 +5,17 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:slug) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Created</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @project_statuses.each do |project_status| %>
       <tr>
-        <td><%= project_status.slug %></td>
         <td><%= project_status.name %></td>
+        <td><%= project_status.slug %></td>
         <td><%= time_ago_in_words(project_status.created_at) %> ago</td>
         <td>
           <%= link_to project_status_path(project_status), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
@@ -34,6 +33,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to "New Status",
             new_project_status_path,
             :class => 'btn btn-primary' %>

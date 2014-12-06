@@ -1,21 +1,20 @@
-<%- model_class = ProjectCategory -%>
 <div class="page-header">
   <%= page_title "Project Categories" %>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:slug) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Created</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @project_categories.each do |project_category| %>
       <tr>
-        <td><%= project_category.slug %></td>
         <td><%= project_category.name %></td>
+        <td><%= project_category.slug %></td>
         <td><%= time_ago_in_words(project_category.created_at) %> ago</td>
         <td>
           <%= link_to project_category_path(project_category), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
@@ -33,6 +32,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to "New Category",
             new_project_category_path,
             :class => 'btn btn-primary' %>

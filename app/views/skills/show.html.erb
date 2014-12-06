@@ -1,13 +1,10 @@
-<%- model_class = Skill -%>
 <div class="page-header">
   <%= page_title @skill.name %>
 </div>
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @skill.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:skill_category_id) %></dt>
+      <dt class="label label-default">Category</dt>
       <dd><pre class="prettyprint"><%= @skill.skill_category.name if @skill.skill_category %></pre></dd>
   </dl>
 </div>

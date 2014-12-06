@@ -1,12 +1,11 @@
-<%- model_class = SkillCategory -%>
 <div class="page-header">
   <%= page_title "Skill Categories" %>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Name</th>
+      <th>Created</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -28,6 +27,4 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_skill_category_path,
-            :class => 'btn btn-primary' %>
+<%= link_to "New Category", new_skill_category_path, :class => 'btn btn-primary' %>

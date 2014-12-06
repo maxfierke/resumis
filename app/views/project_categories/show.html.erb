@@ -1,14 +1,11 @@
-<%- model_class = ProjectCategory -%>
 <div class="page-header">
   <%= page_title @project_category.name %>
 </div>
 
 <div class="fieldset">
   <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:slug) %></dt>
+      <dt class="label label-default">Slug</dt>
       <dd><pre class="prettyprint"><%= @project_category.slug %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @project_category.name %></pre></dd>
   </dl>
 </div>
 
