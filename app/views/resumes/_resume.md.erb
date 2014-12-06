@@ -1,0 +1,15 @@
+# <%= resume.user.full_name %>
+## <%= resume.user.email %>
+### <%= request.host %>
+
+# Background
+<%= resume.background %>
+
+# Education Experiences
+<%= render :partial => 'education_experiences/education_experience.md', collection: resume.education_experiences %>
+
+# Work Experiences
+<%= render :partial => 'work_experiences/work_experience.md', collection: resume.work_experiences %>
+
+# Relevant Projects
+<%= render :partial => 'projects/project.md', collection: resume.projects %>

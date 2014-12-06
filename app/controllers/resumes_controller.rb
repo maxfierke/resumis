@@ -18,6 +18,7 @@ class ResumesController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+      format.md
       format.pdf do
         render :pdf           => @resume.name,
                :layout        => 'resume',
