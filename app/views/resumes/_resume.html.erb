@@ -1,0 +1,21 @@
+<div class="page-header center-block text-center">
+  <h1><%= resume.user.first_name %> <strong><%= resume.user.last_name %></strong></h1>
+  <h2>
+    <%= mail_to resume.user.email, nil, :encode => :javascript %>
+  </h2>
+  <h3><%= request.host %></h3>
+</div>
+
+<h3 class="section-header">Background</h3>
+<div>
+  <%= markdown(resume.background) %>
+</div>
+
+<h3 class="section-header">Education Experiences</h3>
+<%= render :partial => 'education_experiences/education_experience.html', collection: resume.education_experiences %>
+
+<h3 class="section-header">Work Experiences</h3>
+<%= render :partial => 'work_experiences/work_experience.html', collection: resume.work_experiences %>
+
+<h3 class="section-header">Relevant Projects</h3>
+<%= render :partial => 'projects/project.html', collection: resume.projects %>

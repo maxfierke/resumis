@@ -23,27 +23,40 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Utilize the bootstrap frontend framework
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
+
+# Markdown editor and rendering
 gem 'rails-bootstrap-markdown'
 gem 'redcarpet'
+
+# Utilize font-awesome iconogrphy set
 gem 'font-awesome-sass', '~> 4.2.0'
+
+# Devise for user authentication
 gem 'devise', '~> 3.4.1'
 
+# Exporting resumes to PDF
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+
+# for encoding emails to prevent harvesting
+gem 'actionview-encoded_mail_to'
+
+
 group :development do
-	gem 'capistrano-rails'
-	gem 'better_errors'
-	gem 'binding_of_caller'
+  # use capistrano for deployment
+  gem 'capistrano-rails'
+
+  # improve error pages
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+group :production do
+  # use unicorn to run the app on production
+  gem 'unicorn'
+end

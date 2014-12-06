@@ -1,22 +1,4 @@
-<div class="page-header center-block text-center">
-  <h1><%= @resume.user.full_name %></h1>
-  <h2><%= @resume.user.email %></h2>
-  <h3><%= request.host %></h3>
-</div>
-
-<h3 class="section-header">Background</h3>
-<p>
- <%= markdown(@resume.background) %>
-</p>
-
-<h3 class="section-header">Education Experiences</h3>
-<%= render @resume.education_experiences %>
-
-<h3 class="section-header">Work Experiences</h3>
-<%= render @resume.work_experiences %>
-
-<h3 class="section-header">Projects</h3>
-<%= render @resume.projects %>
+<%= render @resume %>
 
 <% if user_signed_in? and @resume.user.id == current_user.id %>
 <div class="form-group">

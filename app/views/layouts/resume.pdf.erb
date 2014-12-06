@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <%= wicked_pdf_stylesheet_link_tag "resume_layout", :media => "all" %>
+    <%= wicked_pdf_javascript_include_tag "application" %>
+    <style type="text/css">
+      .panel {
+        border: none;
+        box-shadow: none;
+      }
+      .panel-heading {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

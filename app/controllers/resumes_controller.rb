@@ -15,7 +15,16 @@ class ResumesController < ApplicationController
       return head :forbidden
     end
 
-    respond_with(@resume)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render :pdf           => @resume.name,
+               :layout        => 'resume',
+               :disable_smart_shrinking => true,
+               :page_size     => 'Letter'
+      end
+    end
   end
 
   def new
@@ -49,6 +58,6 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.require(:resume).permit(:name, :description, :background, :published, education_experience_ids: [], project_ids: [], skill_ids: [], work_experience_ids: [])
+      params.require(:resume).permit(:debug, :name, :description, :background, :published, education_experience_ids: [], project_ids: [], skill_ids: [], work_experience_ids: [])
     end
 end
