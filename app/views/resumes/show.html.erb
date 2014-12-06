@@ -1,8 +1,8 @@
 <% page_title "#{@resume.user.full_name} Resume" %>
 <%= render @resume %>
 
-<% if user_signed_in? and @resume.user.id == current_user.id %>
 <div class="form-group">
+<% if user_signed_in? and @resume.user.id == current_user.id %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               resumes_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -12,5 +12,21 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-</div>
+<% elsif request.referrer %>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              request.referrer, :class => 'btn btn-default'  %>
+<% else %>
+  <%= link_to "Back to #{request.host}", root_path, :class => 'btn btn-default' %>
 <% end %>
+  <div class="pull-right">
+    <%= link_to resume_path(@resume, :format => :pdf), :class => 'btn btn-lg' do %>
+      <%= icon "file-pdf-o", "PDF" %>
+    <% end %>
+    <%= link_to resume_path(@resume, :format => :json), :class => 'btn btn-lg' do %>
+      <%= icon "code", "JSON" %>
+    <% end %>
+    <%= link_to resume_path(@resume, :format => :md), :class => 'btn btn-lg' do %>
+      <%= icon "file-text-o", "Markdown" %>
+    <% end %>
+  </div>
+</div>
