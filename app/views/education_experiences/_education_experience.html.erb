@@ -13,12 +13,7 @@
         <small><%= education_experience.school_name %></small>
       </span>
       <span class="pull-right">
-        <%= education_experience.start_date.strftime('%B %Y') %> &mdash;
-        <% if not education_experience.end_date %>
-          present
-        <% else %>
-          <%= education_experience.end_date.strftime('%B %Y') %>
-        <% end %>
+        <%= education_experience.date_range %>
 
         <% if user_signed_in? and
               education_experience.user_id == current_user.id and

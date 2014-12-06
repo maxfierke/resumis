@@ -13,12 +13,7 @@
         <small><%= work_experience.organization %></small>
       </span>
       <span class="pull-right">
-        <%= work_experience.start_date.strftime('%B %Y') %> &mdash;
-        <% if not work_experience.end_date %>
-          present
-        <% else %>
-          <%= work_experience.end_date.strftime('%B %Y') %>
-        <% end %>
+        <%= work_experience.date_range %>
 
         <% if user_signed_in? and
               work_experience.user_id == current_user.id and
