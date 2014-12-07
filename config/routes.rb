@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :project_statuses, path: 'project/statuses'
 
-  devise_for :users, path: 'auth/user'
+  devise_for :users, path: 'auth/user', controllers: { registrations: 'users/registrations'}
 
   get 'profile/edit' => 'profile#edit', as: :edit_profile
   get 'profile' => 'profile#show'
