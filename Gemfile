@@ -46,6 +46,8 @@ gem 'wicked_pdf'
 # for encoding emails to prevent harvesting
 gem 'actionview-encoded_mail_to'
 
+# Multi-tenancy
+gem 'acts_as_tenant'
 
 group :development do
   # use capistrano for deployment
