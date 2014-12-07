@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
 
   def current_tenant
-    ActsAsTenant.current_tenant
+    return ActsAsTenant.current_tenant if ActsAsTenant.current_tenant
+    raise ActsAsTenant::Errors::NoTenantSet
   end
 
   def handle_no_tenant_set
