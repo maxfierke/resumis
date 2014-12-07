@@ -8,4 +8,6 @@ class Resume < ActiveRecord::Base
   has_many :projects, through: :resume_projects
   has_many :skills, through: :resume_skills
   has_many :work_experiences, through: :resume_work_experiences
+
+  acts_as_tenant(:user)
 end
