@@ -9,8 +9,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<%= root_path %>">
-        <% if root_user %>
-          <%= root_user.first_name %> <strong><%= root_user.last_name %></strong>
+        <% if current_tenant %>
+          <%= current_tenant.first_name %> <strong><%= current_tenant.last_name %></strong>
         <% else %>
           Resumis
         <% end %>
