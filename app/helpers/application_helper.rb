@@ -3,7 +3,12 @@ require 'redcarpet'
 module ApplicationHelper
   def page_title(text)
     # sets :title content_for in <head>, and outputs an h1 with the title
-    content_for :title, text
+    if current_tenant
+      content_for :title, "#{current_tenant.full_name} - #{text}"
+    else
+      content_for :title, text
+    end
+
     return content_tag :h1, text
   end
 
