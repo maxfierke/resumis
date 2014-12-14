@@ -237,6 +237,28 @@ code {
 }
 
 
+.userbar {
+    background-color: #cc0000;
+    font-size: 0.8em;
+    padding: 5px 0;
+    width: 100%;
+
+    p {
+        margin: 0;
+        color: #fefefe;
+    }
+
+    a {
+        color: #fefefe;
+    }
+}
+
+.userbar-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 @media screen and (max-width: 767px) {
     .navbar .navbar-nav .hidden-xs {
         display: none !important;
