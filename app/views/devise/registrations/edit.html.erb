@@ -45,3 +45,10 @@
 
   <%= f.submit "Update", class: 'btn btn-primary btn-lg' %>
 <% end %>
+
+<% if request.referrer %>
+  <hr />
+  <%= link_to request.referrer, class: 'btn btn-default' do %>
+    Back
+  <% end %>
+<% end %>
