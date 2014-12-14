@@ -31,9 +31,9 @@
     </div>
   </div>
   <div class="col-sm-3">
-    <span class="thumbnail">
+    <span class="thumbnail img-about">
       <%= image_tag user.gravatar_url %>
-      <%= user.avatar_label if user.avatar_label and user.avatar_label.length > 0 %>
+      <small><%= user.avatar_label if user.avatar_label and user.avatar_label.length > 0 %></small>
     </span>
     <hr />
     <ul class="list-group">
