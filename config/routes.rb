@@ -1,31 +1,39 @@
 Rails.application.routes.draw do
-  resources :resumes
-
-  resources :education_experiences, path: 'experiences/education'
-
-  resources :work_experiences, path: 'experiences/work'
-
-  resources :skills
-
-  resources :skill_categories, path: 'skill/categories'
-
-  resources :project_categories, path: 'project/categories'
-
-  resources :projects
-
-  resources :project_statuses, path: 'project/statuses'
-
-  get 'profile/edit' => 'profile#edit', as: :edit_profile
-  get 'profile' => 'profile#show'
-  put 'profile' => 'profile#update'
-  patch 'profile' => 'profile#update'
-
   constraints subdomain: '' do
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
+    get '/' => 'page#bare_domain'
+
+    # Redirect other requests to the site at www.
+    match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
   end
 
-  root 'page#about'
+  constraints subdomain: /.+/ do
+    resources :resumes
+
+    resources :education_experiences, path: 'experiences/education'
+
+    resources :work_experiences, path: 'experiences/work'
+
+    resources :skills
+
+    resources :skill_categories, path: 'skill/categories'
+
+    resources :project_categories, path: 'project/categories'
+
+    resources :projects
+
+    resources :project_statuses, path: 'project/statuses'
+
+    get 'profile/edit' => 'profile#edit', as: :edit_profile
+    get 'profile' => 'profile#show'
+    put 'profile' => 'profile#update'
+    patch 'profile' => 'profile#update'
+
+    get 'about', to: redirect('/')
+
+    root 'profile#show'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
