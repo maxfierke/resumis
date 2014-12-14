@@ -5,6 +5,10 @@
 jQuery ($) ->
   "use strict"
   resumis =
+    selectors:
+      nav:
+        active: "active"
+        current: ".nav li:has(a[href=\"" + window.location.pathname + "\"])"
     populateLatestProject: ->
       $lp = $("#latest-project")
       if $lp.length > 0
@@ -13,6 +17,8 @@ jQuery ($) ->
           $lp.find(".project-title a").text(proj.name).prop "href", "/projects/#project_" + proj.id
           $lp.find(".project-shortdesc").text proj.short_description
     init: ->
+      # Highlight current nav item
+      $(resumis.selectors.nav.current).addClass "active"
       resumis.populateLatestProject()
 
   resumis.init()
