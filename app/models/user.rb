@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :subdomain, presence: true, uniqueness: true,
                         case_sensitive: false,
-                        exclusion: { in: %w(mail auth),
+                        exclusion: { in: %w(mail auth api service users ftp ldap),
                                      message: "%{value} is reserved." }
 
   nilify_blanks :only => [:domain]
@@ -29,5 +29,15 @@ class User < ActiveRecord::Base
 		hash = Digest::MD5.hexdigest(email)
 
 		"https://www.gravatar.com/avatar/#{hash}?s=256"
+  end
+
+  def copyright_range
+    current_year = DateTime.now.year
+
+    if created_at.year != current_year
+      "#{created_at.year}-#{current_year} #{full_name}"
+    else
+      "#{current_year} #{full_name}"
+    end
   end
 end
