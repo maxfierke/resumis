@@ -29,5 +29,9 @@
         </div>
       </div>
     </footer>
+
+    <% if user_signed_in? and current_tenant != current_user %>
+      <%= render :partial => 'shared/userbar' %>
+    <% end %>
   </body>
 </html>

@@ -1,0 +1,14 @@
+<div class="userbar userbar-fixed">
+  <div class="container">
+    <p class="pull-left">
+      You are currently logged in as <strong><%= current_user.full_name %></strong> and are viewing <%= current_tenant.full_name %>'s site.
+    </p>
+    <p class="pull-right">
+      <strong>
+        <%= link_to "//#{tenant_instance_hostname(current_user)}" do %>
+          Back to my site
+        <% end %>
+      </strong>
+    </p>
+  </div>
+</div>
