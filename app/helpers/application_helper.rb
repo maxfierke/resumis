@@ -23,4 +23,9 @@ module ApplicationHelper
 
     return resume_path(latest_resume)
   end
+
+  def tenant_instance_hostname(tenant)
+    return tenant.domain if tenant.domain
+    "#{tenant.subdomain}.#{request.domain}"
+  end
 end
