@@ -17,16 +17,12 @@
 
     <footer class="footer-page">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <p>
-              Copyright &copy; <%= Date.today.year %> <%= root_user.full_name %>
-              <% unless user_signed_in? %>
-                &middot; <%= link_to "Login", new_user_session_path %>
-              <% end %>
-            </p>
-          </div>
-        </div>
+        <p>
+          Copyright &copy; <%= current_tenant.copyright_range -%>
+          <% unless user_signed_in? %>
+            &middot; <%= link_to "Login", new_user_session_url(host: request.domain) %>
+          <% end %>
+        </p>
       </div>
     </footer>
 
