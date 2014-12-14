@@ -1,4 +1,5 @@
-<%= form_for @user, url: profile_path, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user, url: profile_path, :html => { :class => 'row' } do |f| %>
+<div class="col-md-9 form-horizontal">
   <div class="form-group">
     <%= f.label :email, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -36,25 +37,33 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :github_handle, :class => 'control-label col-md-2' %>
+    <%= f.label :github_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
     <div class="col-md-10">
       <%= f.text_field :github_handle, :class => 'text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :googleplus_handle, :class => 'control-label col-md-2' %>
+    <%= f.label :googleplus_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
     <div class="col-md-10">
       <%= f.text_field :googleplus_handle, :class => 'text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :linkedin_handle, :class => 'control-label col-md-2' %>
+    <%= f.label :linkedin_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
     <div class="col-md-10">
       <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :twitter_handle, :class => 'control-label col-md-2' %>
+    <%= f.label :twitter_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
     <div class="col-md-10">
       <%= f.text_field :twitter_handle, :class => 'text_field form-control' %>
     </div>
@@ -67,4 +76,14 @@
                   profile_path, :class => 'btn btn-default' %>
     </div>
   </div>
+</div>
+<div class="col-md-3">
+  <div class="thumbnail">
+    <%= image_tag @user.gravatar_url, alt: "Gravatar", title: "Change this on gravatar.com" %>
+    <div class="form-group">
+      <%= f.label :avatar_label, :class => 'control-label' %>
+      <%= f.text_field :avatar_label, :class => 'text_field form-control' %>
+    </div>
+  </div>
+</div>
 <% end %>

@@ -33,6 +33,7 @@
   <div class="col-sm-3">
     <span class="thumbnail">
       <%= image_tag user.gravatar_url %>
+      <%= user.avatar_label if user.avatar_label and user.avatar_label.length > 0 %>
     </span>
     <hr />
     <ul class="list-group">
