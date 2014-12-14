@@ -100,6 +100,9 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    nilify_blanks (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
     rack (1.5.2)
@@ -188,6 +191,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.2.0)
   jbuilder (~> 2.0)
   jquery-rails
+  nilify_blanks
   pg
   rails (= 4.1.8)
   rails-bootstrap-markdown

@@ -46,6 +46,9 @@ gem 'wicked_pdf'
 # for encoding emails to prevent harvesting
 gem 'actionview-encoded_mail_to'
 
+# because sometimes you need a NULL
+gem 'nilify_blanks'
+
 # Multi-tenancy
 gem 'acts_as_tenant'
 

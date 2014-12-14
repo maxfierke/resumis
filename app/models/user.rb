@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   validates :subdomain, presence: true, uniqueness: true
 
+  nilify_blanks :only => [:domain]
+
   def full_name
     "#{first_name} #{last_name}"
   end
