@@ -1,6 +1,6 @@
 # <%= resume.user.full_name %>
 ## <%= resume.user.email %>
-### <%= request.host %>
+### <%= tenant_instance_hostname(current_tenant) %>
 
 # Background
 <%= resume.background %>

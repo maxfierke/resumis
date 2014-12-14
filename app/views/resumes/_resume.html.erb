@@ -3,7 +3,7 @@
   <h2>
     <%= mail_to resume.user.email, nil, :encode => :javascript %>
   </h2>
-  <h3><%= request.host %></h3>
+  <h3><%= tenant_instance_hostname(current_tenant) %></h3>
 </div>
 
 <h3 class="section-header">Background</h3>
