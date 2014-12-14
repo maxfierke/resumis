@@ -46,6 +46,7 @@
       <% if current_tenant.github_handle and current_tenant.github_handle.length > 0 %>
       <li class="list-group-item list-group-item-social">
         <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">GitHub:</span>
         <a href="https://github.com/<%= current_tenant.github_handle %>" target="_blank">
           @<%= current_tenant.github_handle %>
         </a>
@@ -54,6 +55,7 @@
       <% if current_tenant.googleplus_handle and current_tenant.googleplus_handle.length > 0 %>
       <li class="list-group-item list-group-item-social">
         <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">Google+:</span>
         <a href="https://plus.google.com/<%= current_tenant.googleplus_handle %>" target="_blank">
           <%= current_tenant.googleplus_handle %>
         </a>
@@ -62,6 +64,7 @@
       <% if current_tenant.linkedin_handle and current_tenant.linkedin_handle.length > 0 %>
       <li class="list-group-item list-group-item-social">
         <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">LinkedIn:</span>
         <a href="http://www.linkedin.com/in/<%= current_tenant.linkedin_handle %>/" target="_blank">
           <%= current_tenant.linkedin_handle %>
         </a>
@@ -70,6 +73,7 @@
       <% if current_tenant.twitter_handle and current_tenant.twitter_handle.length > 0 %>
       <li class="list-group-item list-group-item-social">
         <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">Twitter:</span>
         <a href="https://twitter.com/<%= current_tenant.twitter_handle %>" target="_blank">
           @<%= current_tenant.twitter_handle %>
         </a>
