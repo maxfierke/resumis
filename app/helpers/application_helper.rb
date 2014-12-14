@@ -8,6 +8,7 @@ module ApplicationHelper
   end
 
   def markdown(content)
+    return nil unless content
     renderer = Redcarpet::Render::HTML.new(filter_html: true)
     parser = Redcarpet::Markdown.new(renderer, strikethrough: true, underline: true)
     parser.render(content).html_safe
