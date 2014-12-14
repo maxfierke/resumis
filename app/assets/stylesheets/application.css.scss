@@ -11,7 +11,7 @@
 @import "project_statuses";
 
 body {
-    padding-top: 50px;
+    padding-top: $navbar-height;
     background-color: #000;
     font-family: 'Open Sans','Droid Sans','Helvetica Neue', Helvetica,Arial,sans-serif;
 }
@@ -65,7 +65,7 @@ code {
 }
 
 .ebleu {
-    color: #0390c4;
+    color: $link-color;
 }
 
 .footer-page {
@@ -94,6 +94,9 @@ code {
 }
 
 .list-group-item-social {
+    a {
+        color: $text-color;
+    }
     .fa-fw {
         vertical-align: sub;
     }
@@ -152,6 +155,7 @@ code {
         border-radius: 3px;
         display: inline-block;
         padding: 7px;
+        color: #fff;
     }
 
     h2 {
@@ -166,6 +170,7 @@ code {
 
     .project-shortdesc {
         font-size: 14px;
+        color: $text-color;
     }
 }
 
@@ -202,25 +207,6 @@ code {
 .row-profile {
     .thumbnail {
         margin: 40px 0 20px;
-    }
-}
-
-.socialnetworks {
-    img {
-        margin-right: 10px;
-    }
-
-    li {
-        margin-bottom: 5px;
-
-        & > a {
-            color: #efefef;
-            text-decoration: none;
-
-            &:hover {
-                color: #0390c5;
-            }
-        }
     }
 }
 
