@@ -26,50 +26,6 @@
               <% end %>
             </p>
           </div>
-          <div class="col-xs-6">
-            <% if current_tenant %>
-            <ul class="list-inline text-right">
-              <li>
-                <a href="#contact" data-toggle="modal" data-target="#contact">
-                  <span class="fa fa-fw fa-2x fa-envelope-square"></span>
-                  <span class="sr-only">Email</span>
-                </a>
-              </li>
-              <% if current_tenant.github_handle.length > 0 %>
-              <li>
-                <a href="https://github.com/<%= current_tenant.github_handle %>" target="_blank">
-                  <span class="fa fa-fw fa-2x fa-github-square"></span>
-                  <span class="sr-only">GitHub</span>
-                </a>
-              </li>
-              <% end %>
-              <% if current_tenant.googleplus_handle.length > 0 %>
-              <li>
-                <a href="https://plus.google.com/<%= current_tenant.googleplus_handle %>" target="_blank">
-                  <span class="fa fa-fw fa-2x fa-google-plus-square"></span>
-                  <span class="sr-only">Google+</span>
-                </a>
-              </li>
-              <% end %>
-              <% if current_tenant.linkedin_handle.length > 0 %>
-              <li>
-                <a href="http://www.linkedin.com/in/<%= current_tenant.linkedin_handle %>/" target="_blank">
-                  <span class="fa fa-fw fa-2x fa-linkedin-square"></span>
-                  <span class="sr-only">LinkedIn</span>
-                </a>
-              </li>
-              <% end %>
-              <% if current_tenant.twitter_handle.length > 0 %>
-              <li>
-                <a href="https://twitter.com/<%= current_tenant.twitter_handle %>" target="_blank">
-                  <span class="fa fa-fw fa-2x fa-twitter-square"></span>
-                  <span class="sr-only">Twitter</span>
-                </a>
-              </li>
-              <% end %>
-            </ul>
-            <% end %>
-          </div>
         </div>
       </div>
     </footer>
