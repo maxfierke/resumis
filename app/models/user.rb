@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
   has_many :education_experiences
   has_many :skills
 
-  validates :subdomain, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :subdomain, presence: true, uniqueness: true,
+                        case_sensitive: false,
+                        exclusion: { in: %w(mail auth),
+                                     message: "%{value} is reserved." }
 
   nilify_blanks :only => [:domain]
 
