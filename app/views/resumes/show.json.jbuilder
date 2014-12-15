@@ -7,6 +7,8 @@ json.user do
   json.full_name @resume.user.full_name
 end
 
+json.skills @resume.skills
+
 json.education_experiences @resume.education_experiences,
                            partial: 'education_experiences/education_experience',
                            as: :education_experience

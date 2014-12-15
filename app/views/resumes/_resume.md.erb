@@ -5,6 +5,11 @@
 # Background
 <%= resume.background %>
 
+# Relevant Skills
+<% resume.skills.each do |s| %>
+* <%= s.name %>
+<% end %>
+
 # Education Experiences
 <%= render :partial => 'education_experiences/education_experience.md', collection: resume.education_experiences %>
 

@@ -11,6 +11,9 @@
   <%= markdown(resume.background) %>
 </div>
 
+<h3 class="section-header">Relevant Skills</h3>
+<%= render :partial => "skills/skills.html", :locals => { skills: resume.skills } %>
+
 <h3 class="section-header">Education Experiences</h3>
 <%= render :partial => 'education_experiences/education_experience.html', collection: resume.education_experiences %>
 
