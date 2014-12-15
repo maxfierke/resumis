@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: resumis_production
-  username: resumis
+  username: <%= ENV['RESUMIS_DATABASE_USER'] %>
   password: <%= ENV['RESUMIS_DATABASE_PASSWORD'] %>
