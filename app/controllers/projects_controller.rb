@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_current_tenant_session!, only: [:new, :create, :edit, :update, :destroy]
+
   layout "application_public", only: [:index, :show]
   respond_to :html, :json
 

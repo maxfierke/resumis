@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  before_action :require_current_tenant_session!, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
 
   layout "application_public", only: [:show]

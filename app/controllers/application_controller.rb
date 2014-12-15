@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
 
+  def require_current_tenant_session!
+    if user_signed_in? and current_tenant == current_user
+      return true
+    end
+
+    head :forbidden
+  end
+
   def current_tenant
     return ActsAsTenant.current_tenant if ActsAsTenant.current_tenant
     raise ActsAsTenant::Errors::NoTenantSet

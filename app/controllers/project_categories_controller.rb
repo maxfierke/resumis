@@ -1,6 +1,8 @@
 class ProjectCategoriesController < ApplicationController
   before_action :set_project_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_current_tenant_session!, only: [:new, :create, :edit, :update, :destroy]
+
 
   respond_to :html, :json
 
