@@ -1,13 +1,13 @@
 <div class="row row-profile">
   <div class="col-sm-9">
     <div class="page-header">
-      <h3>About <strong class="ebleu">Me</strong></h3>
+      <h3>About <strong class="highlight">Me</strong></h3>
     </div>
     <div class="about-me">
       <%= markdown(user.about_me) %>
     </div>
     <div class="page-header">
-      <h3>My <strong class="ebleu">Skills</strong></h3>
+      <h3>My <strong class="highlight">Skills</strong></h3>
     </div>
     <%= render :partial => "skills/skills", :locals => { skills: user.skills } %>
   </div>
