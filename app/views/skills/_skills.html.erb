@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-6">
+    <ul>
+    <% skills.each_with_index do |skill, index| %>
+      <% if index <= (skills.length / 2) %>
+        <li><%= skill.name %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <ul>
+    <% skills.each_with_index do |skill, index| %>
+      <% if index > (skills.length / 2) %>
+        <li><%= skill.name %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+</div>
