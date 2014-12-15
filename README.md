@@ -35,6 +35,16 @@ Resumis is a personal homepage & resume management application aimed at develope
 
 * Go to [lvh.me](http://lvm.me) and setup your first tenant (you!). Note that lvh.me is necessary on development, since this is a multi-tenant application dependent on subdomains. lvh.me is a domain setup to point to localhost (127.0.0.1).
 
+## Deployment
+
+Deployment can be done via Capistrano. Capistrano has been setup with some sensible defaults, but you'll need to create a capistrano stage to configure things further (hosts, etc):
+
+```
+$ bundle exec cap install STAGES=staging,production
+```
+
+This will create `config/deploy/staging.rb` and `config/deploy/production.rb`. Modify them as needed.
+
 ## LICENSE
 
 Apache License 2.0. See LICENSE
