@@ -55,6 +55,7 @@ gem 'acts_as_tenant'
 group :development do
   # use capistrano for deployment
   gem 'capistrano-rails'
+  gem 'capistrano-rbenv', git: 'https://github.com/capistrano/rbenv.git', branch: :master
 
   # improve error pages
   gem 'better_errors'
