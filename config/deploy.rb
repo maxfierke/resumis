@@ -50,6 +50,17 @@ namespace :deploy do
     end
   end
 
+  desc 'Seed the database'
+  task :seed do
+    on primary :db do
+      within current_path do
+        with rails_env: fetch(:production) do
+          execute :rake, 'db:seed'
+        end
+      end
+    end
+  end
+
   after :publishing, :restart
 
   after :restart, :clear_cache do
