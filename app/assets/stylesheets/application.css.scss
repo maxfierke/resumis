@@ -12,13 +12,6 @@
 
 body {
     padding-top: $navbar-height;
-    background-color: #000;
-    font-family: 'Open Sans','Droid Sans','Helvetica Neue', Helvetica,Arial,sans-serif;
-}
-
-code {
-    color: #f80;
-    background-color: #232323;
 }
 
 .inline-block {
@@ -34,28 +27,7 @@ code {
     }
 }
 
-.close:hover, .close:focus {
-    color: #c3c3c3;
-}
-
-.form-control {
-    color: #c3c3c3;
-    background-color: #232323;
-    border-color: #353535;
-}
-
-.img-thumbnail,
-.thumbnail,
-.panel {
-    background-color: #151515;
-    border-color: #272727;
-}
-
 /* SITE SPECIFIC CLASSES */
-.primary-container {
-    background-color: #0c0c0c;
-}
-
 .container .jumbotron {
     border-radius: 0;
 }
@@ -70,12 +42,12 @@ code {
 
 .footer-page {
     margin-top: 10px;
-    background-color: #0F0F0F;
+    background-color: lighten($body-bg, 13.5%);
     padding-top: 20px;
     padding-bottom: 10px;
 
     a {
-        color: #fff;
+        color: $link-color;
     }
 
     .list-inline {
@@ -102,29 +74,19 @@ code {
     }
 }
 
-.navbar {
-    border-bottom: 1px solid #151515;
-}
-
 .navbar-default .navbar-brand {
-    color: #fff;
-    background-color: transparent;
     font-size: 24px;
     font-weight: 300;
     transition: color 0.2s ease;
 
     &:hover, &:focus {
-        color: #0390b3;
+        color: $link-color;
     }
 }
 
 .navbar .navbar-nav {
     & > li {
         & > a {
-            border: 1px solid transparent;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin: 10px 0;
             transition: all 0.2s ease;
         }
 
@@ -139,7 +101,6 @@ code {
 }
 
 .jumbotron-about {
-    background-image: url('/static/images/minnehaha_waterfall.jpg');
     background-position: left center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -182,8 +143,8 @@ code {
     }
 
     & > .panel-heading {
-        background-color: #121212;
-        color: #c3c3c3;
+        background-color: $panel-default-heading-bg;
+        color: $panel-default-text;
     }
 
     .label {
@@ -211,11 +172,6 @@ code {
     line-height: 1.5;
     font-family: monospace;
     font-size: 1.1em;
-    background: #111;
-
-    &:focus {
-        background: #111;
-    }
 }
 
 
@@ -249,11 +205,6 @@ code {
         display: inline-block !important;
     }
 
-    .navbar-collapse {
-        background-color: #0f0f0f;
-        border-color: #151515;
-    }
-
     .navbar .navbar-toggle {
         border-color: transparent;
     }
@@ -268,7 +219,6 @@ code {
     }
 
     .jumbotron-about {
-        background-image: url('/static/images/minnehaha_waterfall.jpg');
         background-position: left center;
         background-size: cover;
         background-repeat: no-repeat;
