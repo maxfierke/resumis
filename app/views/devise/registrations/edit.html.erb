@@ -34,6 +34,9 @@
   <div class="form-group">
     <%= f.label :domain %>
     <%= f.text_field :domain, class: 'form-control' %>
+    <p class="help-block">
+      To get this to work, assign the domain's CNAME record to <code><%= canonical_host %></code>
+    </p>
   </div>
 
   <hr />
