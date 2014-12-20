@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   set_current_tenant_through_filter
-
   before_filter :find_tenant
 
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
+
+  helper_method :canonical_host
 
   def find_tenant
     tenant = User.where(:subdomain => request.subdomains.last).first || User.where(:domain => request.domain).first || User.where(:domain => request.host).first
@@ -38,5 +39,9 @@ class ApplicationController < ActionController::Base
   def handle_no_tenant_set
     render :layout => 'bare',
            :template => 'errors/no_tenant_set'
+  end
+
+  def canonical_host
+    ENV['RESUMIS_CANONICAL_HOST'] || request.host
   end
 end

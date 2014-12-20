@@ -20,7 +20,7 @@
         <p>
           Copyright &copy; <%= current_tenant.copyright_range -%>
           <% unless user_signed_in? %>
-            &middot; <%= link_to "Login", new_user_session_url(host: request.domain) %>
+            &middot; <%= link_to "Login", new_user_session_url(host: canonical_host) %>
           <% end %>
         </p>
       </div>
