@@ -153,6 +153,29 @@ body {
     }
 }
 
+.pi {
+    color: #c3c3c3;
+    font-size: 11px;
+    text-decoration: none;
+
+    & {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    &:hover {
+        .pi-hidden {
+            padding-left: 7px;
+            display: inline-block;
+        }
+    }
+
+    .pi-hidden {
+        display: none;
+    }
+}
+
 .project-img {
     margin-bottom: 1.2em;
 }

@@ -28,6 +28,13 @@
 
     <% if user_signed_in? and current_tenant != current_user %>
       <%= render :partial => 'shared/userbar' %>
+    <% else %>
+    <div class="pi">
+      &pi;
+      <span class="pi-hidden">
+        Powered by Resumis. A cool thing by <a href="https://github.com/maxfierke">Max Fierke</a>.
+      </span>
+    </div>
     <% end %>
   </body>
 </html>
