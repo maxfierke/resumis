@@ -5,6 +5,7 @@ Resumis is a personal homepage & resume management application aimed at develope
 ## Requirements
 * Ruby 2.1.x
 * Rails 4.1
+* PostgreSQL 9.x
 * Bare domain name. In dev, you'll want to use lvh.me. I personally setup all my rails apps through [Anvil](http://anvilformac.com/) and [Pow](http://pow.cx/), which handles setting them up under local *.dev domains.
 
 ## Installation & Setup
