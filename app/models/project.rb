@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :project_category_joinings, :allow_destroy => true
 
+  validates :name, presence: true, uniqueness: { scope: :user_id }
 
   default_scope { order(start_date: :desc, end_date: :desc) }
 

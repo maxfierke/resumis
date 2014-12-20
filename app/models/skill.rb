@@ -4,5 +4,5 @@ class Skill < ActiveRecord::Base
 
   acts_as_tenant(:user)
 
-  validates_uniqueness_of :name
+  validates :name, presence: true, uniqueness: { scope: :user_id }
 end
