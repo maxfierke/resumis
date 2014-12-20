@@ -7,6 +7,9 @@ class Project < ActiveRecord::Base
 
   acts_as_tenant(:user)
 
+  accepts_nested_attributes_for :project_category_joinings, :allow_destroy => true
+
+
   default_scope { order(start_date: :desc, end_date: :desc) }
 
   def date_range

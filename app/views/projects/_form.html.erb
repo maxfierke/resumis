@@ -35,6 +35,18 @@
       <%= f.collection_select :project_status_id, ProjectStatus.all, :id, :name, {}, :class => 'text_field form-control' %>
     </div>
   </div>
+  <div class="form-group">
+    <%= f.label :project_categories, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.collection_check_boxes(:project_category_ids,  ProjectCategory.order("name ASC"), :id, :name,
+        { :selected => @project.project_category_ids }, { :multiple => true } ) do |b| %>
+        <%= b.label(class: "checkbox-inline") do %>
+          <%= b.check_box %>
+          <%= b.text %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
