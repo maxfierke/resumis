@@ -16,15 +16,17 @@ class ResumesController < ApplicationController
       return head :forbidden
     end
 
-    respond_to do |format|
-      format.html
-      format.json
-      format.md
-      format.pdf do
-        render :pdf           => @resume.name,
-               :layout        => 'resume',
-               :disable_smart_shrinking => true,
-               :page_size     => 'Letter'
+    if stale?(@resume, public: true)
+      respond_to do |format|
+        format.html
+        format.json
+        format.md
+        format.pdf do
+          render :pdf           => @resume.name,
+                 :layout        => 'resume',
+                 :disable_smart_shrinking => true,
+                 :page_size     => 'Letter'
+        end
       end
     end
   end
