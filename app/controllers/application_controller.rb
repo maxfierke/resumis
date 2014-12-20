@@ -3,9 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  set_current_tenant_by_subdomain_or_domain(:user, :subdomain, :domain)
+  set_current_tenant_through_filter
+
+  before_filter :find_tenant
 
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
+
+  def find_tenant
+    tenant = User.where(:subdomain => request.subdomains.last).first || User.where(:domain => request.domain).first || User.where(:domain => request.host).first
+    set_current_tenant(tenant)
+  end
 
   def require_current_tenant_session!
     if user_signed_in? and current_tenant == current_user
