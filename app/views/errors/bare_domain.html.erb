@@ -15,6 +15,11 @@
     <%= link_to new_user_session_path, class: "btn btn-lg btn-success" do %>
       Login to Resumis
     <% end %>
+    <% if Devise.mappings[:user].registerable? %>
+      <%= link_to new_user_registration_path, class: "btn btn-lg btn-primary" do %>
+        Sign Up
+      <% end %>
+    <% end %>
     <hr />
     <div class="alert alert-warning">
       <strong>Wasn't expecting to see this?</strong>
