@@ -34,4 +34,10 @@
     </div>
   </div>
   <% end %>
+  <% if project.github_url and project.github_url.length > 0 %>
+  <footer class="panel-footer">
+    <%= icon('github', '') %>
+    <%= link_to "#{project.name} on GitHub", "https://github.com/#{project.github_url}" %>
+  </footer>
+  <% end %>
 </section>
