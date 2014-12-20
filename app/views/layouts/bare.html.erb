@@ -17,7 +17,7 @@
           Powered by Resumis
           <% if user_signed_in? %>
             &middot;
-            <%= link_to "Logout", destroy_user_session_url(host: request.domain), :method => :delete %>
+            <%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => :delete %>
           <% end %>
         </p>
       </div>
