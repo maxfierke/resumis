@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   constraints subdomain: '' do
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
-    get '/' => 'page#bare_domain'
+    get '/' => 'page#bare_domain' if Rails.application.config.x.resumis.tenancy_mode == :multi
 
     # Redirect other requests to the site at www.
     match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
@@ -31,9 +31,9 @@ Rails.application.routes.draw do
     patch 'profile' => 'profile#update'
 
     get 'about', to: redirect('/')
-
-    root 'profile#show'
   end
+
+  root 'profile#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -11,7 +11,12 @@ class ApplicationController < ActionController::Base
   helper_method :canonical_host
 
   def find_tenant
-    tenant = User.where(:subdomain => request.subdomains.last).first || User.where(:domain => request.domain).first || User.where(:domain => request.host).first
+    if Rails.application.config.x.resumis.tenancy_mode == :single
+      tenant = User.find(1)
+    else
+      tenant = User.where(:subdomain => request.subdomains.last).first || User.where(:domain => request.domain).first || User.where(:domain => request.host).first
+    end
+
     set_current_tenant(tenant)
   end
 
@@ -42,6 +47,6 @@ class ApplicationController < ActionController::Base
   end
 
   def canonical_host
-    ENV['RESUMIS_CANONICAL_HOST'] || request.host
+    Rails.application.config.x.resumis.canonical_host || request.host
   end
 end
