@@ -30,7 +30,11 @@ module ApplicationHelper
   end
 
   def tenant_instance_hostname(tenant)
-    return tenant.domain if tenant.domain
-    "#{tenant.subdomain}.#{request.domain}"
+    if multi_tenancy?
+      return tenant.domain if tenant.domain
+      "#{tenant.subdomain}.#{request.domain}"
+    else
+      canonical_host
+    end
   end
 end
