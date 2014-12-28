@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
 
   helper_method :canonical_host
+  helper_method :multi_tenancy?
 
   def find_tenant
     if Rails.application.config.x.resumis.tenancy_mode == :single
@@ -48,5 +49,9 @@ class ApplicationController < ActionController::Base
 
   def canonical_host
     Rails.application.config.x.resumis.canonical_host || request.host
+  end
+
+  def multi_tenancy?
+    Rails.application.config.x.resumis.tenancy_mode == :multi
   end
 end

@@ -24,6 +24,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
+  <% if multi_tenancy? %>
+
   <h4>Domain Settings</h4>
 
   <div class="form-group">
@@ -38,6 +40,8 @@
       To get this to work, assign the domain's CNAME record to <code><%= canonical_host %></code>
     </p>
   </div>
+
+  <% end %>
 
   <hr />
 
