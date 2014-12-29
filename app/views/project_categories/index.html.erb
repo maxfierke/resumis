@@ -17,9 +17,6 @@
         <td><%= project_category.slug %></td>
         <td><%= time_ago_in_words(project_category.created_at) %> ago</td>
         <td>
-          <%= link_to project_category_path(project_category), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
           <%= link_to edit_project_category_path(project_category), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>

@@ -18,9 +18,6 @@
         <td><%= project_status.slug %></td>
         <td><%= time_ago_in_words(project_status.created_at) %> ago</td>
         <td>
-          <%= link_to project_status_path(project_status), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-          <%- end -%>
           <%= link_to edit_project_status_path(project_status), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>
