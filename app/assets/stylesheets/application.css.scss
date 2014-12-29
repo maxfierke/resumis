@@ -190,13 +190,17 @@ body {
     }
 }
 
-.md-editor > textarea {
-    padding: 15px;
-    line-height: 1.5;
-    font-family: monospace;
-    font-size: 1.1em;
+.md-editor {
+    .md-input {
+        padding: 15px;
+        line-height: 1.5;
+        font-family: monospace;
+        font-size: 1.1em;
+    }
+    .md-preview {
+        padding: 10px;
+    }
 }
-
 
 .userbar {
     background-color: #cc0000;
