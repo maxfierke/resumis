@@ -49,9 +49,12 @@ jQuery ($) ->
       $lp = $("#latest-project")
       if $lp.length > 0
         $.get "/projects.json", (data) ->
-          proj = data[0]
-          $lp.find(".project-title a").text(proj.name).prop "href", "/projects/" + proj.id
-          $lp.find(".project-shortdesc").text proj.short_description
+          if data.length > 0
+            proj = data[0]
+            $lp.find(".project-title a").text(proj.name).prop "href", "/projects/" + proj.id
+            $lp.find(".project-shortdesc").text proj.short_description
+            $lp.parent().removeClass('hidden')
+
     init: ->
       # Highlight current nav item
       $(resumis.selectors.nav.current).addClass "active"
