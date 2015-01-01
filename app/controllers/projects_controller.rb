@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
                                       :start_date, :end_date, :project_status_id,
                                       :github_url,
                                       :vimeo_url, :youtube_url,
-                                      :soundcloud_url, :basecamp_url,
+                                      :soundcloud_url, :bandcamp_url,
                                       :penflip_url,
                                       project_category_ids: [])
     end
