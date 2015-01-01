@@ -52,11 +52,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    profile_url(subdomain: resource.subdomain)
+    if multi_tenancy?
+      profile_url(subdomain: resource.subdomain)
+    else
+      profile_url(host: canonical_host)
+    end
   end
 
   def after_update_path_for(resource)
-    profile_url(subdomain: resource.subdomain)
+    if multi_tenancy?
+      profile_url(subdomain: resource.subdomain)
+    else
+      profile_url(host: canonical_host)
+    end
   end
 
   # The path used after sign up for inactive accounts.

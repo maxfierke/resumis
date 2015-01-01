@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   constraints subdomain: '' do
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
-    get '/' => 'page#bare_domain' if Rails.application.config.x.resumis.tenancy_mode == :multi
+    if Rails.application.config.x.resumis.tenancy_mode == :multi
+      get '/' => 'page#bare_domain'
 
-    # Redirect other requests to the site at www.
-    match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
+      # Redirect other requests to the site at www.
+      match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
+    end
   end
 
-  constraints subdomain: /.+/ do
+  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : '') do
     resources :resumes
 
     resources :education_experiences, path: 'experiences/education'
