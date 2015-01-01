@@ -30,11 +30,11 @@ class User < ActiveRecord::Base
   end
 
   def filmmaker?
-    types.exist?(slug: 'filmmaker')
+    types.exists?(slug: 'filmmaker')
   end
 
   def musician?
-    types.exist?(slug: 'musician')
+    types.exists?(slug: 'musician')
   end
 
   def writer?
