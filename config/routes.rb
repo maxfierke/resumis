@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : '') do
+  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : /.*/) do
     resources :resumes
 
     resources :education_experiences, path: 'experiences/education'
