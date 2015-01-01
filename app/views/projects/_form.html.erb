@@ -58,6 +58,54 @@
     </div>
   </div>
   <% end %>
+  <% if current_tenant.filmmaker? %>
+  <div class="form-group">
+    <%= f.label :vimeo_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">vimeo.com/</span>
+        <%= f.text_field :vimeo_url, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :youtube_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">youtube.com/watch?v=</span>
+        <%= f.text_field :youtube_url, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% if current_tenant.musician? %>
+  <div class="form-group">
+    <%= f.label :soundcloud_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">soundcloud.com/</span>
+        <%= f.text_field :soundcloud_url, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :bandcamp_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :bandcamp_url, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <% end %>
+  <% if current_tenant.writer? %>
+  <div class="form-group">
+    <%= f.label :penflip_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">penflip.com/</span>
+        <%= f.text_field :penflip_url, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>

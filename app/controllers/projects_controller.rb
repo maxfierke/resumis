@@ -51,6 +51,12 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :short_description, :description, :start_date, :end_date, :project_status_id, :github_url, project_category_ids: [])
+      params.require(:project).permit(:name, :short_description, :description,
+                                      :start_date, :end_date, :project_status_id,
+                                      :github_url,
+                                      :vimeo_url, :youtube_url,
+                                      :soundcloud_url, :basecamp_url,
+                                      :penflip_url,
+                                      project_category_ids: [])
     end
 end
