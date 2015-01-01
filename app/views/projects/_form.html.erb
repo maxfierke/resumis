@@ -47,6 +47,7 @@
       <% end %>
     </div>
   </div>
+  <% if current_tenant.developer? %>
   <div class="form-group">
     <%= f.label :github_url, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -56,6 +57,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
