@@ -44,6 +44,19 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :types %>
+    <div>
+      <%= f.collection_check_boxes(:type_ids, Type.order("name ASC"), :id, :name,
+        { :selected => resource.type_ids }, { :multiple => true } ) do |b| %>
+        <%= b.label(class: "checkbox-inline") do %>
+          <%= b.check_box %>
+          I'm a <%= b.text %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   <h5>Domain Settings</h5>
 
   <div class="form-group">

@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    label:
+      user:
+        types: 'What best describes you? (Check all that apply)'
