@@ -57,17 +57,26 @@
     </div>
   </div>
 
+  <% if multi_tenancy? %>
+  <hr />
   <h5>Domain Settings</h5>
 
   <div class="form-group">
     <%= f.label :subdomain %>
     <%= f.text_field :subdomain, class: 'form-control' %>
+    <p class="help-block">
+      Your site will be accessible at <code>[subdomain].<%= canonical_host %></code>
+    </p>
   </div>
 
   <div class="form-group">
-    <%= f.label :domain %> <i>Optional</i>
+    <%= f.label :domain %> <small><em>Optional</em></small>
     <%= f.text_field :domain, class: 'form-control' %>
+    <p class="help-block">
+      To get this to work, assign the domain's CNAME record to <code><%= canonical_host %></code>
+    </p>
   </div>
+  <% end %>
 
   <%= f.submit "Sign up", class: 'btn btn-primary btn-lg' %>
   <%= render "devise/shared/links" %>
