@@ -7,11 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 SkillCategory.create([
-	{ name: 'Languages' }, { name: 'Web Development Frameworks' }, { name: 'Database Servers' },
-	{ name: 'Development Utilities' }, { name: 'Cloud Platforms' }
+  { name: 'Languages' }, { name: 'Web Development Frameworks' }, { name: 'Database Servers' },
+  { name: 'Development Utilities' }, { name: 'Cloud Platforms' }
 ])
 
 ProjectStatus.create([
-	{ slug: 'active', name: 'Active' }, { slug: 'inactive', name: 'Inactive' },
-	{ slug: 'canceled', name: 'Canceled' }, { slug: 'on-hold', name: 'On Hold' }
+  { slug: 'active', name: 'Active' }, { slug: 'inactive', name: 'Inactive' },
+  { slug: 'canceled', name: 'Canceled' }, { slug: 'on-hold', name: 'On Hold' }
+])
+
+Type.create([
+  { slug: 'developer', name: 'Developer' },
+  { slug: 'filmmaker', name: 'Filmmaker' },
+  { slug: 'musician', name: 'Musician' },
+  { slug: 'writer', name: 'Writer' }
 ])

@@ -25,19 +25,48 @@
       </p>
     </h4>
   </div>
+  <div class="list-group">
   <% if project.description.length > 0 %>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-xs-12">
-        <p><%= markdown(project.description) %></p>
+    <div class="list-group-item">
+      <p><%= markdown(project.description) %></p>
+    </div>
+  <% end %>
+  <% if project.vimeo_url and project.vimeo_url.length > 0 %>
+    <div class="list-group-item">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%=u project.vimeo_url %>" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
-  </div>
   <% end %>
+  <% if project.youtube_url and project.youtube_url.length > 0 %>
+    <div class="list-group-item">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%=u project.youtube_url %>" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+    </div>
+  <% end %>
+  <% if project.soundcloud_url and project.soundcloud_url.length > 0 %>
+    <div class="list-group-item">
+      <iframe width="100%" height="166" frameborder="0"w src="//w.soundcloud.com/player/?url=<%=u "https://soundcloud.com/#{project.soundcloud_url}" %>"></iframe>
+    </div>
+  <% end %>
+  </div>
   <% if project.github_url and project.github_url.length > 0 %>
   <footer class="panel-footer">
     <%= icon('github', '') %>
     <%= link_to "#{project.name} on GitHub", "https://github.com/#{project.github_url}" %>
+  </footer>
+  <% end %>
+  <% if project.bandcamp_url and project.bandcamp_url.length > 0 %>
+  <footer class="panel-footer">
+    <%= icon('music', '') %>
+    <%= link_to "#{project.name} on Bandcamp", project.bandcamp_url %>
+  </footer>
+  <% end %>
+  <% if project.penflip_url and project.penflip_url.length > 0 %>
+  <footer class="panel-footer">
+    <%= icon('pencil', '') %>
+    <%= link_to "#{project.name} on Penflip", project.penflip_url %>
   </footer>
   <% end %>
 </section>

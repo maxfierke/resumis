@@ -6,8 +6,8 @@
   <div class="col-sm-6">
     <h4>List of Sites</h4>
     <ul>
-    <% @users.each do |u| %>
-      <li><%= link_to (u.full_name ? u.full_name : u.subdomain), "#{request.protocol}#{tenant_instance_hostname(u)}/" %> - <%= tenant_instance_hostname(u) %></li>
+    <% @users.each do |user| %>
+      <li><%= link_to (user.full_name ? user.full_name : user.subdomain), "#{request.protocol}#{u tenant_instance_hostname(user)}/" %> - <%= tenant_instance_hostname(user) %></li>
     <% end %>
     </ul>
   </div>
@@ -24,7 +24,7 @@
     <div class="alert alert-warning">
       <strong>Wasn't expecting to see this?</strong>
       <p>
-        Resumis is a multi-tenancy application, seperating different user's sites by subdomain, or if they prefer, domain name.
+        Resumis is operating in <strong>multi-tenancy mode</strong>, seperating different user's sites by subdomain, or if they prefer, domain name.
       </p>
       <p>
         As such, there is no site to be accessed here on the bare domain. If you prefer that the bare domain goes to a specific user's site, conduct such a redirect within your web server configuration.

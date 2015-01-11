@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :work_experiences
   has_many :education_experiences
   has_many :skills
+  has_many :user_types
+  has_many :types, through: :user_types
+
+  accepts_nested_attributes_for :user_types, :allow_destroy => true
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -20,6 +24,22 @@ class User < ActiveRecord::Base
                                      message: "%{value} is reserved." }
 
   nilify_blanks :only => [:domain]
+
+  def developer?
+    types.exists?(slug: 'developer')
+  end
+
+  def filmmaker?
+    types.exists?(slug: 'filmmaker')
+  end
+
+  def musician?
+    types.exists?(slug: 'musician')
+  end
+
+  def writer?
+    types.exists?(slug: 'writer')
+  end
 
   def full_name
     "#{first_name} #{last_name}"

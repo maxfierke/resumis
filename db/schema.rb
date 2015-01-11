@@ -11,27 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214202908) do
+ActiveRecord::Schema.define(version: 20150101042654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "education_experiences", force: true do |t|
-    t.string   "school_name"
+  create_table "education_experiences", force: :cascade do |t|
+    t.string   "school_name", limit: 255
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "diploma"
+    t.string   "diploma",     limit: 255
   end
 
   add_index "education_experiences", ["user_id"], name: "index_education_experiences_on_user_id", using: :btree
 
-  create_table "project_categories", force: true do |t|
-    t.string   "slug"
-    t.string   "name"
+  create_table "project_categories", force: :cascade do |t|
+    t.string   "slug",       limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "project_categories", ["name"], name: "index_project_categories_on_name", unique: true, using: :btree
   add_index "project_categories", ["slug"], name: "index_project_categories_on_slug", unique: true, using: :btree
 
-  create_table "project_category_joinings", force: true do |t|
+  create_table "project_category_joinings", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "project_category_id"
     t.datetime "created_at"
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "project_category_joinings", ["project_category_id"], name: "index_project_category_joinings_on_project_category_id", using: :btree
   add_index "project_category_joinings", ["project_id"], name: "index_project_category_joinings_on_project_id", using: :btree
 
-  create_table "project_statuses", force: true do |t|
-    t.string   "slug"
-    t.string   "name"
+  create_table "project_statuses", force: :cascade do |t|
+    t.string   "slug",       limit: 255
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "project_statuses", ["name"], name: "index_project_statuses_on_name", unique: true, using: :btree
   add_index "project_statuses", ["slug"], name: "index_project_statuses_on_slug", unique: true, using: :btree
 
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.string   "short_description"
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",              limit: 255
+    t.string   "short_description", limit: 255
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
@@ -69,14 +69,19 @@ ActiveRecord::Schema.define(version: 20141214202908) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "github_url"
+    t.string   "github_url",        limit: 255
+    t.string   "vimeo_url"
+    t.string   "soundcloud_url"
+    t.string   "bandcamp_url"
+    t.string   "penflip_url"
+    t.string   "youtube_url"
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
   add_index "projects", ["project_status_id"], name: "index_projects_on_project_status_id", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
-  create_table "resume_education_experiences", force: true do |t|
+  create_table "resume_education_experiences", force: :cascade do |t|
     t.integer  "resume_id"
     t.integer  "education_experience_id"
     t.datetime "created_at"
@@ -86,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "resume_education_experiences", ["education_experience_id"], name: "index_resume_education_experiences_on_education_experience_id", using: :btree
   add_index "resume_education_experiences", ["resume_id"], name: "index_resume_education_experiences_on_resume_id", using: :btree
 
-  create_table "resume_projects", force: true do |t|
+  create_table "resume_projects", force: :cascade do |t|
     t.integer  "resume_id"
     t.integer  "project_id"
     t.datetime "created_at"
@@ -96,7 +101,7 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "resume_projects", ["project_id"], name: "index_resume_projects_on_project_id", using: :btree
   add_index "resume_projects", ["resume_id"], name: "index_resume_projects_on_resume_id", using: :btree
 
-  create_table "resume_skills", force: true do |t|
+  create_table "resume_skills", force: :cascade do |t|
     t.integer  "resume_id"
     t.integer  "skill_id"
     t.datetime "created_at"
@@ -106,7 +111,7 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "resume_skills", ["resume_id"], name: "index_resume_skills_on_resume_id", using: :btree
   add_index "resume_skills", ["skill_id"], name: "index_resume_skills_on_skill_id", using: :btree
 
-  create_table "resume_work_experiences", force: true do |t|
+  create_table "resume_work_experiences", force: :cascade do |t|
     t.integer  "resume_id"
     t.integer  "work_experience_id"
     t.datetime "created_at"
@@ -116,28 +121,28 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "resume_work_experiences", ["resume_id"], name: "index_resume_work_experiences_on_resume_id", using: :btree
   add_index "resume_work_experiences", ["work_experience_id"], name: "index_resume_work_experiences_on_work_experience_id", using: :btree
 
-  create_table "resumes", force: true do |t|
+  create_table "resumes", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "background"
     t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+    t.string   "description", limit: 255
   end
 
   add_index "resumes", ["user_id"], name: "index_resumes_on_user_id", using: :btree
 
-  create_table "skill_categories", force: true do |t|
-    t.string   "name"
+  create_table "skill_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "skill_categories", ["name"], name: "index_skill_categories_on_name", unique: true, using: :btree
 
-  create_table "skills", force: true do |t|
-    t.string   "name"
+  create_table "skills", force: :cascade do |t|
+    t.string   "name",              limit: 255
     t.integer  "skill_category_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -148,31 +153,45 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "skills", ["skill_category_id"], name: "index_skills_on_skill_category_id", using: :btree
   add_index "skills", ["user_id"], name: "index_skills_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "types", ["slug"], name: "index_types_on_slug", unique: true, using: :btree
+
+  create_table "user_types", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "type_id", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
     t.text     "about_me"
-    t.string   "tagline"
-    t.string   "header_image_url"
-    t.string   "github_handle"
-    t.string   "googleplus_handle"
-    t.string   "linkedin_handle"
-    t.string   "twitter_handle"
-    t.string   "subdomain"
-    t.string   "domain"
-    t.string   "avatar_label"
+    t.string   "tagline",                limit: 255
+    t.string   "header_image_url",       limit: 255
+    t.string   "github_handle",          limit: 255
+    t.string   "googleplus_handle",      limit: 255
+    t.string   "linkedin_handle",        limit: 255
+    t.string   "twitter_handle",         limit: 255
+    t.string   "subdomain",              limit: 255
+    t.string   "domain",                 limit: 255
+    t.string   "avatar_label",           limit: 255
   end
 
   add_index "users", ["domain"], name: "index_users_on_domain", unique: true, using: :btree
@@ -180,15 +199,15 @@ ActiveRecord::Schema.define(version: 20141214202908) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["subdomain"], name: "index_users_on_subdomain", unique: true, using: :btree
 
-  create_table "work_experiences", force: true do |t|
-    t.string   "organization"
+  create_table "work_experiences", force: :cascade do |t|
+    t.string   "organization", limit: 255
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "position"
+    t.string   "position",     limit: 255
   end
 
   add_index "work_experiences", ["user_id"], name: "index_work_experiences_on_user_id", using: :btree

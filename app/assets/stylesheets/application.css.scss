@@ -147,6 +147,11 @@ body {
         color: $panel-default-text;
     }
 
+    & > .list-group {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
     .label {
         display: inline-block;
         margin-left: 5px;
