@@ -21,6 +21,20 @@
     }
 }
 
+.panel-project,
+.panel-education-experience,
+.panel-work-experience {
+    & > .panel-heading {
+        background-color: $panel-default-heading-bg;
+        color: $panel-default-text;
+    }
+
+    & > .list-group {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}
+
 .section-header {
     padding: 15px 0;
     border-bottom: 1px solid #efefef;
