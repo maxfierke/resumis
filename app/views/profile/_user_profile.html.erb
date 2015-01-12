@@ -14,7 +14,7 @@
   <div class="col-sm-3">
     <span class="thumbnail img-about">
       <%= image_tag user.gravatar_url %>
-      <small><%= user.avatar_label if user.avatar_label and user.avatar_label.length > 0 %></small>
+      <small><%= user.avatar_label if user.avatar_label.present? %></small>
     </span>
     <hr />
     <ul class="list-group">
@@ -24,7 +24,7 @@
           <span class="sr-only">Email</span>
         </a>
       </li>-->
-      <% if current_tenant.github_handle and current_tenant.github_handle.length > 0 %>
+      <% if current_tenant.github_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">GitHub:</span>
@@ -33,7 +33,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.googleplus_handle and current_tenant.googleplus_handle.length > 0 %>
+      <% if current_tenant.googleplus_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Google+:</span>
@@ -42,7 +42,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.linkedin_handle and current_tenant.linkedin_handle.length > 0 %>
+      <% if current_tenant.linkedin_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">LinkedIn:</span>
@@ -51,7 +51,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.soundcloud_handle and current_tenant.soundcloud_handle.length > 0 %>
+      <% if current_tenant.soundcloud_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">SoundCloud:</span>
@@ -60,7 +60,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.tumblr_url and current_tenant.tumblr_url.length > 0 %>
+      <% if current_tenant.tumblr_url.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('tumblr-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Tumblr:</span>
@@ -69,7 +69,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.twitter_handle and current_tenant.twitter_handle.length > 0 %>
+      <% if current_tenant.twitter_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Twitter:</span>
@@ -78,7 +78,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.vimeo_handle and current_tenant.vimeo_handle.length > 0 %>
+      <% if current_tenant.vimeo_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Vimeo:</span>
@@ -87,7 +87,7 @@
         </a>
       </li>
       <% end %>
-      <% if current_tenant.youtube_handle and current_tenant.youtube_handle.length > 0 %>
+      <% if current_tenant.youtube_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">YouTube:</span>
