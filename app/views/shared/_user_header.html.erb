@@ -7,7 +7,7 @@
                     <%= user.first_name %>
                     <strong class="highlight"><%= user.last_name %></strong>
                 </h1>
-                <% if user.tagline and user.tagline.length > 0 %>
+                <% if user.tagline.present? %>
                 <h2>
                     <%= user.tagline %>
                 </h2>
