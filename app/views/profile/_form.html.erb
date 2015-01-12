@@ -74,10 +74,7 @@
       <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
     <% end %>
     <div class="col-md-10">
-      <div class="input-group">
-        <span class="input-group-addon">+</span>
-        <%= f.text_field :googleplus_handle, :class => 'text_field form-control' %>
-      </div>
+      <%= f.text_field :googleplus_handle, class: 'text_field form-control', placeholder: 'e.g. +AGoogleUser' %>
     </div>
   </div>
   <div class="form-group">
