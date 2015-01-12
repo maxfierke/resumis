@@ -11,5 +11,7 @@ json.status do
   json.updated_at project.project_status.updated_at
 end
 
+json.categories project.project_categories
+
 # TODO: This looks awful. Find a better way to do this.
 json.links (project.links << { rel: 'self', href: project_url(project, host: tenant_instance_hostname(project.user)) })
