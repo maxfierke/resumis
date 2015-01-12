@@ -14,6 +14,10 @@ body {
     padding-top: $navbar-height;
 }
 
+body.bare {
+    padding-top: 0;
+}
+
 .inline-block {
     display: inline-block;
 }

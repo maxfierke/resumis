@@ -5,7 +5,9 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
+  <body class="bare">
+    <%= content_for(:jumbotron) %>
+
     <div class="container">
       <%= bootstrap_flash %>
       <%= yield %>

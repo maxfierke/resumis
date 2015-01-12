@@ -1,9 +1,14 @@
-<div class="page-header">
-  <h1>Boom! <strong>Resumis.</strong></h1>
+<% content_for(:jumbotron) do %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Boom! <strong>Resumis.</strong></h1>
+    <h2>Advertise Yourself</h2>
+  </div>
 </div>
+<% end %>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-md-4">
     <h4>List of Sites</h4>
     <ul>
     <% @users.each do |user| %>
@@ -11,16 +16,22 @@
     <% end %>
     </ul>
   </div>
-  <div class="col-sm-6">
-    <%= link_to new_user_session_path, class: "btn btn-lg btn-success" do %>
-      Login to Resumis
-    <% end %>
-    <% if Devise.mappings[:user].registerable? %>
-      <%= link_to new_user_registration_path, class: "btn btn-lg btn-primary" do %>
-        Sign Up
+  <div class="col-md-4">
+    <% if user_signed_in? %>
+      <%= link_to "Go to My Site", "#{request.protocol}#{u tenant_instance_hostname(current_user)}/", class: "btn btn-lg btn-block btn-success" %>
+      <%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => :delete, class: "btn btn-lg btn-block btn-primary" %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "btn btn-lg btn-block btn-success" do %>
+        Login to Resumis
+      <% end %>
+      <% if Devise.mappings[:user].registerable? %>
+        <%= link_to new_user_registration_path, class: "btn btn-lg btn-block btn-primary" do %>
+          Sign Up
+        <% end %>
       <% end %>
     <% end %>
-    <hr />
+  </div>
+  <div class="col-md-4">
     <div class="alert alert-warning">
       <strong>Wasn't expecting to see this?</strong>
       <p>
