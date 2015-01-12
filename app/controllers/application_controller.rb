@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :canonical_host
   helper_method :multi_tenancy?
+  helper_method :latest_resume
 
   def find_tenant
     if Rails.application.config.x.resumis.tenancy_mode == :single
@@ -57,5 +58,9 @@ class ApplicationController < ActionController::Base
 
   def multi_tenancy?
     Rails.application.config.x.resumis.tenancy_mode == :multi
+  end
+
+  def latest_resume
+    @latest_resume ||= Resume.where(published: true).order(updated_at: :desc).first
   end
 end

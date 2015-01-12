@@ -23,12 +23,6 @@ module ApplicationHelper
     Resume.exists?(published: true)
   end
 
-  def path_to_latest_resume
-    latest_resume = Resume.where(published: true).order(updated_at: :desc).first
-
-    return resume_path(latest_resume)
-  end
-
   def tenant_instance_hostname(tenant)
     if multi_tenancy?
       return tenant.domain if tenant.domain

@@ -56,7 +56,7 @@
         <% else %>
         <li><%= link_to "Projects", projects_path %></li>
         <% if exists_published_resume? %>
-        <li><%= link_to "Resume", path_to_latest_resume %></li>
+        <li><%= link_to "Resume", resumes_path(latest_resume) %></li>
         <% end %>
         <% end %>
       </ul>
