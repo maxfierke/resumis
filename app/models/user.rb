@@ -61,4 +61,19 @@ class User < ActiveRecord::Base
       "#{current_year} #{full_name}"
     end
   end
+
+  def social_networks
+    networks = []
+
+    networks << { network: 'github', username: github_handle, url: "https://github.com/#{github_handle}" } if github_handle.present?
+    networks << { network: 'googleplus', username: googleplus_handle, url: "https://plus.google.com/#{googleplus_handle}"} if googleplus_handle.present?
+    networks << { network: 'linkedin', username: linkedin_handle, url: "http://www.linkedin.com/in/#{linkedin_handle}/" } if linkedin_handle.present?
+    networks << { network: 'soundcloud', username: soundcloud_handle, url: "https://soundcloud.com/#{soundcloud_handle}" } if soundcloud_handle.present?
+    networks << { network: 'tumblr', username: nil, url: tumblr_url } if tumblr_url.present?
+    networks << { network: 'twitter', username: twitter_handle, url: "https://twitter.com/#{twitter_handle}" } if twitter_handle.present?
+    networks << { network: 'vimeo', username: vimeo_handle, url: "http://vimeo.com/#{vimeo_handle}" } if vimeo_handle.present?
+    networks << { network: 'youtube', username: youtube_handle, url: "https://youtube.com/user/#{youtube_handle}"} if youtube_handle.present?
+
+    networks
+  end
 end

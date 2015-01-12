@@ -1,2 +1,15 @@
-json.extract! education_experience, :id, :school_name, :diploma, :description, :start_date, :end_date, :created_at, :updated_at
-json.url education_experience_path(education_experience, format: :json)
+json.id education_experience.id
+json.institution education_experience.school_name
+json.study_type education_experience.diploma
+json.description education_experience.description
+json.start_date education_experience.start_date
+json.end_date education_experience.end_date
+# TODO: GPA and courses support
+json.gpa nil
+json.courses []
+json.created_at education_experience.created_at
+json.updated_at education_experience.updated_at
+
+json.links [
+  { rel: 'self', href: education_experience_url(education_experience, host: tenant_instance_hostname(education_experience.user)) }
+]

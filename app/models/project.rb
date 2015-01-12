@@ -36,4 +36,17 @@ class Project < ActiveRecord::Base
 
     classes.join(" ")
   end
+
+  def links
+    links = []
+
+    links << { rel: 'bandcamp', href: bandcamp_url } if bandcamp_url.present?
+    links << { rel: 'github', href: "https://github.com/#{github_url}" } if github_url.present?
+    links << { rel: 'penflip', href: "https://penflip.com/#{penflip_url}" } if penflip_url.present?
+    links << { rel: 'soundcloud', href: "https://soundcloud.com/#{soundcloud_url}"} if soundcloud_url.present?
+    links << { rel: 'vimeo', href: "https://vimeo.com/#{vimeo_url}" } if vimeo_url.present?
+    links << { rel: 'youtube', href: "https://youtube.com/watch?v=#{youtube_url}"} if youtube_url.present?
+
+    links
+  end
 end
