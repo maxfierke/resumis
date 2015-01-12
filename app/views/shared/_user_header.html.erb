@@ -7,9 +7,11 @@
                     <%= user.first_name %>
                     <strong class="highlight"><%= user.last_name %></strong>
                 </h1>
+                <% if user.tagline and user.tagline.length > 0 %>
                 <h2>
                     <%= user.tagline %>
                 </h2>
+                <% end %>
             </div>
             <div class="col-md-4 col-sm-5">
                 <div class="panel panel-default panel-latest-project hidden">
