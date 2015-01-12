@@ -55,8 +55,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv', git: 'https://github.com/capistrano/rbenv.git', branch: :master
 
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'binding_of_caller'
+  gem 'better_errors'
   gem 'spring'
 end
 
