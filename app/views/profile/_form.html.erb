@@ -1,5 +1,7 @@
 <%= form_for @user, url: profile_path, :html => { :class => 'row' } do |f| %>
 <div class="col-md-9 form-horizontal">
+  <h4>The Basics</h4>
+
   <div class="form-group">
     <%= f.label :first_name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -30,38 +32,7 @@
       <%= f.text_area :about_me, :class => 'text_field form-control', rows: '12', :"data-provide" => "markdown" %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :github_handle, :class => 'control-label col-md-2' do %>
-      <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
-    <% end %>
-    <div class="col-md-10">
-      <%= f.text_field :github_handle, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :googleplus_handle, :class => 'control-label col-md-2' do %>
-      <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
-    <% end %>
-    <div class="col-md-10">
-      <%= f.text_field :googleplus_handle, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :linkedin_handle, :class => 'control-label col-md-2' do %>
-      <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
-    <% end %>
-    <div class="col-md-10">
-      <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :twitter_handle, :class => 'control-label col-md-2' do %>
-      <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
-    <% end %>
-    <div class="col-md-10">
-      <%= f.text_field :twitter_handle, :class => 'text_field form-control' %>
-    </div>
-  </div>
+
   <div class="form-group">
     <%= f.label :types, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -74,6 +45,102 @@
       <% end %>
     </div>
   </div>
+
+  <hr />
+
+  <h4>Social Networking</h4>
+
+  <% if @user.developer? %>
+  <div class="form-group">
+    <%= f.label :github_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <%= f.text_field :github_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :googleplus_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">+</span>
+        <%= f.text_field :googleplus_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :linkedin_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
+    </div>
+  </div>
+
+  <% if @user.musician? %>
+  <div class="form-group">
+    <%= f.label :soundcloud_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">soundcloud.com/</span>
+        <%= f.text_field :soundcloud_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :tumblr_url, :class => 'control-label col-md-2' do %>
+      <%= icon('tumblr-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <%= f.text_field :tumblr_url, :class => 'text_field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :twitter_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <%= f.text_field :twitter_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <% if @user.musician? or @user.filmmaker? %>
+  <div class="form-group">
+    <%= f.label :vimeo_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">vimeo.com/</span>
+        <%= f.text_field :vimeo_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :youtube_handle, :class => 'control-label col-md-2' do %>
+      <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
+    <% end %>
+    <div class="col-md-10">
+      <div class="input-group">
+        <span class="input-group-addon">youtube.com/user/</span>
+        <%= f.text_field :youtube_handle, :class => 'text_field form-control' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>

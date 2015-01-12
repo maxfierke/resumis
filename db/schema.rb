@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101042654) do
+ActiveRecord::Schema.define(version: 20150112030010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,10 @@ ActiveRecord::Schema.define(version: 20150101042654) do
     t.string   "subdomain",              limit: 255
     t.string   "domain",                 limit: 255
     t.string   "avatar_label",           limit: 255
+    t.string   "soundcloud_handle"
+    t.string   "tumblr_url"
+    t.string   "vimeo_handle"
+    t.string   "youtube_handle"
   end
 
   add_index "users", ["domain"], name: "index_users_on_domain", unique: true, using: :btree

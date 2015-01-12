@@ -51,12 +51,48 @@
         </a>
       </li>
       <% end %>
+      <% if current_tenant.soundcloud_handle and current_tenant.soundcloud_handle.length > 0 %>
+      <li class="list-group-item list-group-item-social">
+        <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">SoundCloud:</span>
+        <a href="https://soundcloud.com/<%= current_tenant.soundcloud_handle %>" target="_blank">
+          <%= current_tenant.soundcloud_handle %>
+        </a>
+      </li>
+      <% end %>
+      <% if current_tenant.tumblr_url and current_tenant.tumblr_url.length > 0 %>
+      <li class="list-group-item list-group-item-social">
+        <%= icon('tumblr-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">Tumblr:</span>
+        <a href="<%= current_tenant.tumblr_url %>" target="_blank">
+          <%= current_tenant.tumblr_url %>
+        </a>
+      </li>
+      <% end %>
       <% if current_tenant.twitter_handle and current_tenant.twitter_handle.length > 0 %>
       <li class="list-group-item list-group-item-social">
         <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Twitter:</span>
         <a href="https://twitter.com/<%= current_tenant.twitter_handle %>" target="_blank">
           @<%= current_tenant.twitter_handle %>
+        </a>
+      </li>
+      <% end %>
+      <% if current_tenant.vimeo_handle and current_tenant.vimeo_handle.length > 0 %>
+      <li class="list-group-item list-group-item-social">
+        <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">Vimeo:</span>
+        <a href="http://vimeo.com/<%= current_tenant.vimeo_handle %>" target="_blank">
+          <%= current_tenant.vimeo_handle %>
+        </a>
+      </li>
+      <% end %>
+      <% if current_tenant.youtube_handle and current_tenant.youtube_handle.length > 0 %>
+      <li class="list-group-item list-group-item-social">
+        <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">YouTube:</span>
+        <a href="https://youtube.com/user/<%= current_tenant.youtube_handle %>" target="_blank">
+          <%= current_tenant.youtube_handle %>
         </a>
       </li>
       <% end %>
