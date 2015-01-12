@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :subdomain, presence: Rails.application.config.x.resumis.tenancy_mode == :multi,
                         uniqueness: true,
                         case_sensitive: false,
-                        exclusion: { in: %w(mail auth api service users ftp ldap),
+                        exclusion: { in: %w(mail auth api service login signup accounts account users ftp ldap webmail),
                                      message: "%{value} is reserved." }
 
   nilify_blanks :only => [:domain]
