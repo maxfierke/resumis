@@ -11,16 +11,16 @@ json.basics do
   json.label @resume.user.tagline
   json.picture @resume.user.gravatar_url
   json.email @resume.user.email
-  json.phone ''
+  json.phone nil
   json.website "#{request.protocol}#{tenant_instance_hostname(current_tenant)}"
   json.summary @resume.background
   # TODO: Add location support
   json.location do
-    json.address ''
-    json.postal_code ''
-    json.city ''
-    json.country_code ''
-    json.region ''
+    json.address nil
+    json.postal_code nil
+    json.city nil
+    json.country_code nil
+    json.region nil
   end
   json.profiles @resume.user.social_networks do |sn|
     json.network sn[:network]
@@ -47,3 +47,11 @@ json.work @resume.work_experiences,
 json.projects @resume.projects,
               partial: 'projects/project',
               as: :project
+
+# TODO: Implement these
+json.volunteer []
+json.awards []
+json.publications []
+json.languages []
+json.interests []
+json.references []
