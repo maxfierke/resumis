@@ -40,7 +40,7 @@ and others. See [Gemfile](Gemfile).
 
 * Go to [lvh.me](http://lvm.me) and setup your first tenant (you!). Note that lvh.me is necessary on development, since this is a multi-tenant application dependent on subdomains. lvh.me is a domain setup to point to localhost (127.0.0.1).
 
-## Configuration
+### Configuration
 
 Resumis-specific configuration can be done either through the `config/initializers/resumis.rb` initializer file, or through a some environmental variables.
 
@@ -71,19 +71,16 @@ Resumis deploys somewhat easily on Amazon OpsWorks (with some caveats in the ini
 Some general hints:
 
 * Create a standard Ruby on Rails OpsWorks stack with at least Ruby 2.1+, and nginx with Unicorn.
-* Create an OpsWorks app called "resumis". Set your data source. I'm using an PostgreSQL RDS instance.
+* Create an OpsWorks app called "resumis". Set your data source. I'm using a PostgreSQL RDS instance.
 * Setup to deploy from either this repository, or your personal fork, etc.
 * Setup environmental variables as required. (see Configuration section above)
 * Add this to the Custom JSON in your stack settings
 
   ```
   {
-    "deploy":
-    {
-      "resumis":
-      {
-        "database":
-        {
+    "deploy": {
+      "resumis": {
+        "database": {
           "adapter": "postgresql"
         }
       }
