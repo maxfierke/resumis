@@ -16,5 +16,8 @@
 !/log/.keep
 /tmp
 
+/vendor/cache
+/public/uploads
+
 .rbenv-vars
 .capistrano/metrics

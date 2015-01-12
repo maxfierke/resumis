@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   nilify_blanks :only => [:domain]
 
+  mount_uploader :header_image, HeaderImageUploader
+
   def developer?
     types.exists?(slug: 'developer')
   end

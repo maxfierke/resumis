@@ -50,6 +50,10 @@ gem 'nilify_blanks'
 # Multi-tenancy
 gem 'acts_as_tenant'
 
+# Carrierwave for handling uploads to S3
+gem 'carrierwave'
+gem 'mini_magick'
+
 group :development do
   # use capistrano for deployment
   gem 'capistrano-rails'
@@ -62,5 +66,6 @@ end
 
 group :production do
   # use unicorn to run the app on production
+  gem 'rails_12factor'
   gem 'unicorn'
 end
