@@ -6,7 +6,11 @@ class SkillCategoriesController < ApplicationController
 
   def index
     @skill_categories = SkillCategory.all
-    respond_with(@skill_categories)
+
+    respond_to do |format|
+      format.html { redirect_to skills_path }
+      format.json
+    end
   end
 
   def show
