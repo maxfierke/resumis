@@ -13,6 +13,10 @@ Resumis is a personal homepage & resume management application aimed at develope
 
 and others. See [Gemfile](Gemfile).
 
+### User Requirements
+
+* Email address registered with [Gravatar](https://gravatar.com) and assigned an avatar.
+
 ## Installation & Setup
 
 * Clone the repo
