@@ -23,18 +23,39 @@ class SkillCategoriesController < ApplicationController
 
   def create
     @skill_category = SkillCategory.new(skill_category_params)
-    @skill_category.save
-    respond_with(@skill_category)
+    respond_to do |format|
+      if @skill_category.save
+        format.html { redirect_to skills_path, notice: "#{@skill_category.name} was successfully created." }
+        format.json { render :show, status: :ok, location: skills_path }
+      else
+        format.html { render :edit }
+        format.json { render json: @skill_category.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
-    @skill_category.update(skill_category_params)
-    respond_with(@skill_category)
+    respond_to do |format|
+      if @skill_category.update(skill_category_params)
+        format.html { redirect_to skills_path, notice: "#{@skill_category.name} was successfully updated." }
+        format.json { render :show, status: :ok, location: skills_path }
+      else
+        format.html { render :edit }
+        format.json { render json: @skill_category.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    @skill_category.destroy
-    respond_with(@skill_category)
+    respond_to do |format|
+      if @skill_category.destroy
+        format.html { redirect_to skills_path, notice: "#{@skill_category.name} was successfully destroyed." }
+        format.json { render :show, status: :ok, location: skills_path }
+      else
+        format.html { redirect_to skills_path, notice: "Category could not be destroyed." }
+        format.json { render json: nil, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

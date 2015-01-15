@@ -17,9 +17,11 @@ Rails.application.routes.draw do
 
     resources :work_experiences, path: 'experiences/work'
 
-    resources :skills
+    resources :skill_categories, path: 'skill/categories' do
+      resources :skills
+    end
 
-    resources :skill_categories, path: 'skill/categories'
+    get 'skills' => 'skills#index', as: :skills
 
     resources :project_categories, path: 'project/categories'
 

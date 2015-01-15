@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+  before_action :set_skill_category, only: [:show, :edit, :update, :destroy]
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :require_current_tenant_session!, only: [:new, :create, :edit, :update, :destroy]
@@ -16,6 +17,7 @@ class SkillsController < ApplicationController
 
   def new
     @skill = Skill.new
+    @skill.skill_category_id = params[:skill_category_id]
     respond_with(@skill)
   end
 
@@ -40,6 +42,10 @@ class SkillsController < ApplicationController
   end
 
   private
+    def set_skill_category
+      @skill_category = SkillCategory.find(params[:skill_category_id])
+    end
+
     def set_skill
       @skill = Skill.find(params[:id])
     end

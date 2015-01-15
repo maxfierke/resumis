@@ -1,32 +1,38 @@
-<div class="page-header">
-  <%= page_title "Skills" %>
+<div class="page-header clearfix">
+  <%= page_title "Skills", :span, class: 'h1' %>
+  <%= link_to new_skill_category_path, class: 'btn btn-primary pull-right' do %>
+    <%= icon 'plus', 'Add New Skill Category' %>
+  <% end %>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Created</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @skills.each do |skill| %>
-      <tr>
-        <td><%= skill.name %></td>
-        <td><%= skill.skill_category.name if skill.skill_category %></td>
-        <td><%= time_ago_in_words(skill.created_at) %> ago</td>
-        <td>
-          <%= link_to edit_skill_path(skill), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to skill_path(skill), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to "New Skill", new_skill_path, :class => 'btn btn-primary' %>
+<% @skills_with_cat.each do |skill_cat| %>
+<h4>
+  <%= skill_cat.name %>
+  <%= link_to edit_skill_category_path(skill_cat), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+    <%= icon 'pencil' %>
+  <%- end -%>
+  <%= link_to skill_category_path(skill_cat), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+    <%= icon 'remove' %>
+  <%- end -%>
+</h4>
+<ul class="list-group">
+  <% skill_cat.skills.each do |skill| %>
+  <li class="list-group-item clearfix">
+    <%= skill.name %>
+    <span class="pull-right">
+      <%= link_to edit_skill_category_skill_path(skill_cat, skill), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+        <%= icon 'pencil' %>
+      <%- end -%>
+      <%= link_to skill_category_skill_path(skill_cat, skill), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+        <%= icon 'remove' %>
+      <%- end -%>
+    </span>
+  </li>
+  <% end %>
+  <li class="list-group-item">
+    <%= link_to new_skill_category_skill_path(skill_cat), class: 'btn btn-primary btn-sm' do %>
+      <%= icon 'plus', "Add #{skill_cat.name.singularize}" %>
+    <% end %>
+  </li>
+</ul>
+<% end %>
