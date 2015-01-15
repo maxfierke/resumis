@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    @project_categories = ProjectCategory.all
+    @project_categories = ProjectCategory.with_projects
     respond_with(@projects)
   end
 
