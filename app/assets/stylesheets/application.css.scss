@@ -122,6 +122,19 @@ body.bare {
     h2 {
         font-size: 30px;
     }
+}
+
+.panel-latest-project {
+    margin-bottom: 0;
+
+    & > .panel-heading {
+        padding: 5px 15px;
+
+        .panel-title {
+            color: lighten($panel-default-text, 20%);
+            font-size: 1.1em;
+        }
+    }
 
     .project-title {
         font-size: 20px;
@@ -129,14 +142,15 @@ body.bare {
         word-wrap: break-word;
     }
 
+    hr {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
     .project-shortdesc {
         font-size: 14px;
         color: $text-color;
     }
-}
-
-.panel-latest-project {
-    margin-bottom: 0;
 }
 
 .panel-project,
