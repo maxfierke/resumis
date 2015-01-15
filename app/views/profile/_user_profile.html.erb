@@ -9,7 +9,7 @@
     <div class="page-header">
       <h3>My <strong class="highlight">Skills</strong></h3>
     </div>
-    <%= render :partial => "skills/skills", :locals => { skills: user.skills } %>
+    <%= render :partial => "skills/skills", :locals => { skills_by_cat: @skills_by_cat } %>
   </div>
   <div class="col-sm-3">
     <span class="thumbnail img-about">

@@ -29,7 +29,7 @@ json.basics do
   end
 end
 
-json.skills SkillCategory.all do |sc|
+json.skills @skills_by_cat do |sc|
   json.name sc.name
   # TODO: Support skill levels
   json.level nil

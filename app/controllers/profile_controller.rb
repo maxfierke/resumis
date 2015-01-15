@@ -8,6 +8,7 @@ class ProfileController < ApplicationController
   # GET /profile
   # GET /profile.json
   def show
+    @skills_by_cat = SkillCategory.with_skills
   end
 
   # GET /profile/edit

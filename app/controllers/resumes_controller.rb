@@ -16,6 +16,8 @@ class ResumesController < ApplicationController
       return head :forbidden
     end
 
+    @skills_by_cat = SkillCategory.with_skills
+
     if stale?(@resume, public: true)
       respond_to do |format|
         format.html

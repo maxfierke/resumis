@@ -4,5 +4,7 @@ class Skill < ActiveRecord::Base
 
   acts_as_tenant(:user)
 
+  default_scope { order(name: :asc) }
+
   validates :name, presence: true, uniqueness: { scope: :user_id }
 end

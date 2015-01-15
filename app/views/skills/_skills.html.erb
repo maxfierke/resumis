@@ -1,20 +1,26 @@
 <div class="row">
   <div class="col-sm-6">
-    <ul>
-    <% skills.each_with_index do |skill, index| %>
-      <% if index <= (skills.length / 2) %>
+    <% skills_by_cat.each_with_index do |skill_cat, index| %>
+      <% if index <= (skill_cat.skills.length / 2) %>
+      <h4><%= skill_cat.name %></h4>
+      <ul>
+        <% skill_cat.skills.each do |skill| %>
         <li><%= skill.name %></li>
+        <% end %>
+      </ul>
       <% end %>
     <% end %>
-    </ul>
   </div>
   <div class="col-sm-6">
-    <ul>
-    <% skills.each_with_index do |skill, index| %>
-      <% if index > (skills.length / 2) %>
+    <% skills_by_cat.each_with_index do |skill_cat, index| %>
+      <% if index > (skill_cat.skills.length / 2) %>
+      <h4><%= skill_cat.name %></h4>
+      <ul>
+        <% skill_cat.skills.each do |skill| %>
         <li><%= skill.name %></li>
+        <% end %>
+      </ul>
       <% end %>
     <% end %>
-    </ul>
   </div>
 </div>

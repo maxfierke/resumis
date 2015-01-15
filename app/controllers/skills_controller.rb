@@ -6,7 +6,7 @@ class SkillsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @skills = Skill.all
+    @skills_with_cat = SkillCategory.with_skills
     respond_with(@skills)
   end
 
