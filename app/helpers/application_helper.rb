@@ -1,7 +1,7 @@
 require 'redcarpet'
 
 module ApplicationHelper
-  def page_title(text)
+  def page_title(text, tag_type = :h1, tag_attributes = {})
     # sets :title content_for in <head>, and outputs an h1 with the title
     if current_tenant
       content_for :title, "#{current_tenant.full_name} - #{text}"
@@ -9,7 +9,7 @@ module ApplicationHelper
       content_for :title, text
     end
 
-    return content_tag :h1, text
+    return content_tag tag_type, text, tag_attributes
   end
 
   def markdown(content)
