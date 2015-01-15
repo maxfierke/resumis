@@ -16,14 +16,7 @@
       <%= image_tag user.gravatar_url %>
       <small><%= user.avatar_label if user.avatar_label.present? %></small>
     </span>
-    <hr />
     <ul class="list-group">
-      <!--<li class="list-group-item">
-        <a href="#contact" data-toggle="modal" data-target="#contact">
-          <span class="fa-fw fa fa-2x fa-envelope-square"></span>
-          <span class="sr-only">Email</span>
-        </a>
-      </li>-->
       <% if current_tenant.github_handle.present? %>
       <li class="list-group-item list-group-item-social">
         <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
@@ -97,5 +90,12 @@
       </li>
       <% end %>
     </ul>
+    <% if user_signed_in? and @user.id == current_user.id %>
+    <div class="form-group">
+      <%= link_to edit_profile_path, :class => 'btn btn-default btn-block' do %>
+        <%= icon 'pencil', 'Edit Profile' %>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>
