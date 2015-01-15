@@ -27,8 +27,15 @@ class SkillsController < ApplicationController
   def create
     @skill = Skill.new(skill_params)
     @skill.user = current_user
-    @skill.save
-    respond_with(@skill)
+    respond_to do |format|
+      if @skill.save
+        format.html { redirect_to skills_path, notice: "#{@skill.name} was successfully created." }
+        format.json
+      else
+        format.html { render :new }
+        format.json
+      end
+    end
   end
 
   def update

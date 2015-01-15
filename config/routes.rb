@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
 
     get 'skills' => 'skills#index', as: :skills
+    post 'skills' => 'skills#create'
 
     resources :project_categories, path: 'project/categories'
 
