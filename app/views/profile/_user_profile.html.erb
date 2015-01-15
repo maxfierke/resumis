@@ -7,7 +7,14 @@
       <%= markdown(user.about_me) %>
     </div>
     <div class="page-header">
-      <h3>My <strong class="highlight">Skills</strong></h3>
+      <h3>
+        My <strong class="highlight">Skills</strong>
+        <% if user_signed_in? and current_tenant == current_user %>
+          <%= link_to skills_path, class: 'btn btn-primary btn-sm pull-right' do %>
+            <%= icon 'plus', 'Add Skills' %>
+          <% end %>
+        <% end %>
+      </h3>
     </div>
     <%= render :partial => "skills/skills", :locals => { skills_by_cat: @skills_by_cat } %>
   </div>
