@@ -1,6 +1,32 @@
 <% page_title "Resume" %>
-<%= render :partial => "resumes/resume", :locals => { resume: @resume, skills_by_cat: @skills_by_cat } %>
 
+<div class="page-header center-block text-center">
+  <h1><%= @resume.user.first_name %> <strong><%= @resume.user.last_name %></strong></h1>
+  <h2>
+    <%= mail_to @resume.user.email, nil, :encode => :javascript %>
+  </h2>
+  <h3><%= tenant_instance_hostname(current_tenant) %></h3>
+</div>
+
+<h3 class="section-header">Background</h3>
+<div>
+  <%= markdown(@resume.background) %>
+</div>
+
+<h3 class="section-header">Relevant Skills</h3>
+<%= render :partial => "skills/skills.html", locals: { skills_by_cat: @skills_by_cat } %>
+
+<h3 class="section-header">Education Experiences</h3>
+<%= render :partial => 'education_experiences/education_experience.html', collection: @resume.education_experiences %>
+
+<h3 class="section-header">Work Experiences</h3>
+<%= render :partial => 'work_experiences/work_experience.html', collection: @resume.work_experiences %>
+
+<h3 class="section-header">Relevant Projects</h3>
+<%= render :partial => 'projects/project.html', collection: @resume.projects %>
+
+
+<% if params[:format] != 'pdf' %>
 <div class="form-group">
 <% if user_signed_in? and @resume.user.id == current_user.id %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -30,3 +56,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
