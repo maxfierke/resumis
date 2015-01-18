@@ -39,8 +39,15 @@ class SkillsController < ApplicationController
   end
 
   def update
-    @skill.update(skill_params)
-    respond_with(@skill)
+    respond_to do |format|
+      if @skill.update(skill_params)
+        format.html { redirect_to skills_path, notice: "#{@skill.name} was successfully updated." }
+        format.json
+      else
+        format.html { render :edit }
+        format.json
+      end
+    end
   end
 
   def destroy
