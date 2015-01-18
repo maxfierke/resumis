@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :types, through: :user_types
 
   accepts_nested_attributes_for :user_types, :allow_destroy => true
+  accepts_nested_attributes_for :types
 
   validates :first_name, presence: true
   validates :last_name, presence: true
