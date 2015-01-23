@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   nilify_blanks :only => [:domain]
 
   mount_uploader :header_image, HeaderImageUploader
+  mount_uploader :avatar_image, AvatarImageUploader
 
   def developer?
     types.exists?(slug: 'developer')
@@ -53,6 +54,10 @@ class User < ActiveRecord::Base
 		hash = Digest::MD5.hexdigest(email)
 
 		"https://www.gravatar.com/avatar/#{hash}?s=256"
+  end
+
+  def avatar_url
+    avatar_image_url || gravatar_url
   end
 
   def copyright_range
