@@ -16,7 +16,7 @@ class HeaderVideoUploader < CarrierWave::Uploader::Base
   end
 
   version :webm do
-    process :encode_video => [:webm]
+    process :encode_video => [:webm, resolution: '1920x1080', preserve_aspect_ratio: :width]
 
     def full_filename(for_file)
       "#{File.basename(for_file, File.extname(for_file))}.webm"
