@@ -40,6 +40,36 @@
       <%= f.text_field :tagline, :class => 'text_field form-control' %>
     </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :header_media_type, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.select :header_media_type, User.header_media_types.keys.to_a.map { |w| [w.humanize, w] } %>
+    </div>
+  </div>
+
+  <% if @user.using_video_header? %>
+  <div class="form-group">
+    <%= f.label :header_video, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <% if @user.header_video? and !@user.header_video_processing? %>
+      <video loop controls>
+        <source src="<%= @user.header_video.webm.url %>" type="video/webm" />
+        <source src="<%= @user.header_video.mp4.url %>" type="video/mp4" />
+      </video>
+      <br>
+      <% end %>
+      <% if @user.header_video_processing? %>
+      <div class="alert alert-info">
+        <strong>Your video is processing!</strong> The video you uploaded is still being processed. This shouldn't take too long, but it's not ready just yet.
+      </div>
+      <br>
+      <% end %>
+      <%= f.file_field :header_video %>
+      <%= f.hidden_field :header_video_cache %>
+    </div>
+  </div>
+  <% elsif @user.using_image_header? %>
   <div class="form-group">
     <%= f.label :header_image, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -47,11 +77,14 @@
       <div class="thumbnail img-responsive">
         <%= image_tag @user.header_image_url %>
       </div>
+      <br>
       <% end %>
       <%= f.file_field :header_image %>
       <%= f.hidden_field :header_image_cache %>
     </div>
   </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :about_me, :class => 'control-label col-md-2' %>
     <div class="col-md-10">

@@ -38,6 +38,7 @@ class ProfileController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :tagline, :header_image, :avatar_image,
+                           :header_video, :header_media_type,
                            :about_me, :github_handle, :googleplus_handle, :linkedin_handle,
                            :soundcloud_handle, :tumblr_url, :twitter_handle, :vimeo_handle,
                            :youtube_handle, :avatar_label, type_ids: [])

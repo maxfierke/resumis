@@ -25,9 +25,12 @@ class User < ActiveRecord::Base
                         exclusion: { in: %w(mail auth api service login signup accounts account users ftp ldap webmail),
                                      message: "%{value} is reserved." }
 
+  enum header_media_type: %w(image video)
+
   nilify_blanks :only => [:domain]
 
   mount_uploader :header_image, HeaderImageUploader
+  mount_uploader :header_video, HeaderVideoUploader
   mount_uploader :avatar_image, AvatarImageUploader
 
   def developer?
@@ -44,6 +47,14 @@ class User < ActiveRecord::Base
 
   def writer?
     types.exists?(slug: 'writer')
+  end
+
+  def using_video_header?
+    header_media_type == 'video'
+  end
+
+  def using_image_header?
+    header_media_type == 'image'
   end
 
   def full_name

@@ -52,6 +52,7 @@ gem 'acts_as_tenant'
 
 # Carrierwave for handling uploads to S3
 gem 'carrierwave'
+gem 'carrierwave-video'
 gem 'mini_magick'
 
 group :development do

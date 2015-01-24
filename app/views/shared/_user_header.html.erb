@@ -1,5 +1,16 @@
-<div class="jumbotron jumbotron-about visible-sm visible-md visible-lg"
-     style="background-image: url(<%= user.header_image_url %>);">
+<div class="jumbotron jumbotron-about visible-sm visible-md visible-lg <%= 'video' if user.using_video_header? and !user.header_video_processing? %>"
+    <% if user.using_image_header? or user.header_video_processing? %>
+     style="background-image: url(<%= user.header_image_url %>);"
+    <%- end -%>
+    >
+    <% if user.using_video_header? and !user.header_video_processing? %>
+    <div class="video-container">
+        <video autoplay loop>
+            <source src="<%= user.header_video.webm.url %>" type="video/webm" />
+            <source src="<%= user.header_video.mp4.url %>" type="video/mp4" />
+        </video>
+    </div>
+    <% end %>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7">
