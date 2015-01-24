@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   mount_uploader :header_image, HeaderImageUploader
   mount_uploader :header_video, HeaderVideoUploader
   mount_uploader :avatar_image, AvatarImageUploader
+  process_in_background :avatar_image
+  process_in_background :header_video
 
   def developer?
     types.exists?(slug: 'developer')

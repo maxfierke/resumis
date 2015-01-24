@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112201210) do
+ActiveRecord::Schema.define(version: 20150124014721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,34 +168,39 @@ ActiveRecord::Schema.define(version: 20150112201210) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                   limit: 255, default: "",    null: false
+    t.string   "encrypted_password",      limit: 255, default: "",    null: false
+    t.string   "reset_password_token",    limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                       default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
+    t.string   "first_name",              limit: 255
+    t.string   "last_name",               limit: 255
     t.text     "about_me"
-    t.string   "tagline",                limit: 255
-    t.string   "github_handle",          limit: 255
-    t.string   "googleplus_handle",      limit: 255
-    t.string   "linkedin_handle",        limit: 255
-    t.string   "twitter_handle",         limit: 255
-    t.string   "subdomain",              limit: 255
-    t.string   "domain",                 limit: 255
-    t.string   "avatar_label",           limit: 255
+    t.string   "tagline",                 limit: 255
+    t.string   "github_handle",           limit: 255
+    t.string   "googleplus_handle",       limit: 255
+    t.string   "linkedin_handle",         limit: 255
+    t.string   "twitter_handle",          limit: 255
+    t.string   "subdomain",               limit: 255
+    t.string   "domain",                  limit: 255
+    t.string   "avatar_label",            limit: 255
     t.string   "soundcloud_handle"
     t.string   "tumblr_url"
     t.string   "vimeo_handle"
     t.string   "youtube_handle"
     t.string   "header_image"
+    t.integer  "header_media_type",                   default: 0
+    t.string   "header_video"
+    t.string   "avatar_image"
+    t.boolean  "avatar_image_processing",             default: false, null: false
+    t.boolean  "header_video_processing",             default: false, null: false
   end
 
   add_index "users", ["domain"], name: "index_users_on_domain", unique: true, using: :btree
