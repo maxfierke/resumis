@@ -31,6 +31,9 @@ namespace :resumis do |t|
       opts.on('-s', '--subdomain {subdomain}', 'Subdomain', String) do |subdomain|
         options[:subdomain] = subdomain
       end
+      opts.on('-a', '--[no-]admin', 'Admin') do |admin|
+        options[:admin] = admin
+      end
     end.parse!
 
     if Rails.env.test?
@@ -46,6 +49,7 @@ namespace :resumis do |t|
       u.password = options[:password]
       u.domain = options[:domain]
       u.subdomain = options[:subdomain]
+      u.admin = options[:admin]
     end
 
     exit 0
