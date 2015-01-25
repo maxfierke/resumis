@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  constraints subdomain: '' do
+  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? '' : /.*/) do
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
     if Rails.application.config.x.resumis.tenancy_mode == :multi
