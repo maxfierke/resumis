@@ -53,10 +53,12 @@
     <%= f.label :header_video, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <% if @user.header_video? and !@user.header_video_processing? %>
-      <video loop controls>
-        <source src="<%= @user.header_video.webm.url %>" type="video/webm" />
-        <source src="<%= @user.header_video.mp4.url %>" type="video/mp4" />
-      </video>
+      <div class="embed-responsive embed-responsive-16by9">
+        <video class="embed-responsive-item" loop controls>
+          <source src="<%= @user.header_video.webm.url %>" type="video/webm" />
+          <source src="<%= @user.header_video.mp4.url %>" type="video/mp4" />
+        </video>
+      </div>
       <br>
       <% end %>
       <% if @user.header_video_processing? %>
