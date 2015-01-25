@@ -4,4 +4,6 @@ Rails.application.configure do
 
   # Used for ensuring authentication routes and such point to the right place
   config.x.resumis.canonical_host = ENV['RESUMIS_CANONICAL_HOST'] || 'lvh.me'
+
+  config.x.resumis.excluded_subdomains = ENV['RESUMIS_EXCLUDED_SUBDOMAINS'] ? ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].split(',') : %w(mail auth api service login signup accounts account users ftp ldap webmail manage admin)
 end

@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :subdomain, presence: Rails.application.config.x.resumis.tenancy_mode == :multi,
                         uniqueness: true,
                         case_sensitive: false,
-                        exclusion: { in: %w(mail auth api service login signup accounts account users ftp ldap webmail),
+                        exclusion: { in: Rails.application.config.x.resumis.excluded_subdomains,
                                      message: "%{value} is reserved." }
 
   enum header_media_type: %w(image video)
