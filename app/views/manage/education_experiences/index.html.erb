@@ -1,0 +1,7 @@
+<div class="page-header">
+  <%= page_title "Education Experiences" %>
+</div>
+
+<%= render partial: 'education_experiences/education_experience', collection: @education_experiences %>
+
+<%= link_to "New Education Experience", new_manage_education_experience_path, :class => 'btn btn-primary' %>

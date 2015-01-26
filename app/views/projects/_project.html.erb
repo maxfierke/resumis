@@ -4,7 +4,7 @@
     <h4 class="panel-title">
       <%= project.name %>
       <% if project.project_status and
-            not (params[:controller] == 'resumes' and params[:action] == 'show') %>
+            !(controller_name == 'resumes' and action_name == 'show') %>
         <span class="label label-default label-<%= project.project_status.slug %>">
           <%= project.project_status.name %>
         </span>
@@ -13,12 +13,12 @@
         <%= project.date_range %>
         <% if user_signed_in? and
               project.user.id == current_user.id and
-              not (params[:controller] == 'resumes' and params[:action] == 'show')
+              !(controller_name == 'resumes' and action_name == 'show')
         %>
-          <%= link_to edit_project_path(project), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+          <%= link_to edit_manage_project_path(project), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>
-          <%= link_to project_path(project), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+          <%= link_to manage_project_path(project), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
         <% end %>
@@ -47,7 +47,7 @@
   <% end %>
   <% if project.soundcloud_url.present? %>
     <div class="list-group-item">
-      <iframe width="100%" height="166" frameborder="0"w src="//w.soundcloud.com/player/?url=<%=u "https://soundcloud.com/#{project.soundcloud_url}" %>"></iframe>
+      <iframe width="100%" height="166" frameborder="0" src="//w.soundcloud.com/player/?url=<%=u "https://soundcloud.com/#{project.soundcloud_url}" %>"></iframe>
     </div>
   <% end %>
   </div>

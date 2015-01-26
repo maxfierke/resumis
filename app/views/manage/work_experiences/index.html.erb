@@ -1,0 +1,7 @@
+<div class="page-header">
+  <%= page_title "Work Experiences" %>
+</div>
+
+<%= render partial: 'work_experiences/work_experience', collection: @work_experiences %>
+
+<%= link_to "New Work Experience", new_manage_work_experience_path, :class => 'btn btn-primary' if user_signed_in? %>

@@ -11,30 +11,32 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : /.*/) do
-    resources :resumes
+    resources :resumes, only: [:show]
+    resources :projects, only: [:index, :show]
 
-    resources :education_experiences, path: 'experiences/education'
+    namespace :manage do
+      resources :resumes
+      resources :education_experiences, path: 'experiences/education'
+      resources :work_experiences, path: 'experiences/work'
 
-    resources :work_experiences, path: 'experiences/work'
+      resources :projects
+      resources :project_statuses, path: 'project/statuses'
+      resources :project_categories, path: 'project/categories'
+      resources :skill_categories, path: 'skill/categories' do
+        resources :skills, except: [:index]
+      end
 
-    resources :skill_categories, path: 'skill/categories' do
-      resources :skills
+      get 'skills' => 'skills#index', as: :skills
+      post 'skills' => 'skills#create'
+
+      get 'profile/edit' => 'profile#edit', as: :edit_profile
+      put 'profile' => 'profile#update'
+      patch 'profile' => 'profile#update'
+
+      get '/' => 'dashboard#index', as: :dashboard_path
     end
 
-    get 'skills' => 'skills#index', as: :skills
-    post 'skills' => 'skills#create'
-
-    resources :project_categories, path: 'project/categories'
-
-    resources :projects
-
-    resources :project_statuses, path: 'project/statuses'
-
-    get 'profile/edit' => 'profile#edit', as: :edit_profile
     get 'profile' => 'profile#show'
-    put 'profile' => 'profile#update'
-    patch 'profile' => 'profile#update'
-
     get 'about', to: redirect('/')
   end
 

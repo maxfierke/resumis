@@ -27,19 +27,19 @@
           <ul class="dropdown-menu" role="menu">
             <li><%= link_to "Project List", projects_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "Categories", project_categories_path %></li>
-            <li><%= link_to "Statuses", project_statuses_path %></li>
+            <li><%= link_to "Categories", manage_project_categories_path %></li>
+            <li><%= link_to "Statuses", manage_project_statuses_path %></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="<%= resumes_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resumes <span class="caret"></span></a>
+          <a href="<%= manage_resumes_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resumes <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Resume List", resumes_path %></li>
+            <li><%= link_to "Resume List", manage_resumes_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "Skills", skills_path %></li>
+            <li><%= link_to "Skills", manage_skills_path %></li>
             <li class="divider"></li>
-            <li><%= link_to "Education Experiences", education_experiences_path %></li>
-            <li><%= link_to "Work Experiences", work_experiences_path %></li>
+            <li><%= link_to "Education Experiences", manage_education_experiences_path %></li>
+            <li><%= link_to "Work Experiences", manage_work_experiences_path %></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -47,7 +47,7 @@
             <%= image_tag current_user.avatar_url, height: 18, class: "inline-block img-rounded" %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Edit Profile", edit_profile_path %></li>
+            <li><%= link_to "Edit Profile", manage_edit_profile_path %></li>
             <li><%= link_to "Settings", edit_user_registration_url(host: canonical_host) %></li>
             <li><%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => 'DELETE' %></li>
           </ul>
@@ -55,7 +55,7 @@
         <% else %>
         <li><%= link_to "Projects", projects_path %></li>
         <% if exists_published_resume? %>
-        <li><%= link_to "Resume", resumes_path(latest_resume) %></li>
+        <li><%= link_to "Resume", resume_path(latest_resume) %></li>
         <% end %>
         <% end %>
       </ul>

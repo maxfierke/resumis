@@ -1,0 +1,82 @@
+@import "bootstrap-sprockets";
+@import "bootswatch/yeti/variables";
+@import "bootstrap";
+@import "bootswatch/yeti/bootswatch";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap-markdown";
+
+.container-fluid {
+    padding-bottom: 15px;
+}
+
+.sidebar {
+    border-right: 1px solid #efefef;
+    text-align: center;
+    padding: 15px 0;
+
+    .avatar img {
+        margin: 0 auto;
+        box-shadow: rgba(0,0,0,0.1) 0 1px 3px;
+    }
+
+    .user-details {
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+    footer {
+        padding-top: 15px;
+        font-size: 11px;
+    }
+}
+
+.md-editor {
+    .md-input {
+        padding: 15px;
+        line-height: 1.5;
+        font-family: monospace;
+        font-size: 1.1em;
+    }
+    .md-preview {
+        padding: 10px;
+    }
+}
+
+.nav-tiles {
+    li > a {
+        border-bottom: 1px solid #efefef;
+        display: block;
+
+        &:hover {
+            background-color: #ededed;
+        }
+    }
+
+    li + li {
+        margin-top: 0;
+    }
+
+    .dropdown-menu {
+        border-right: none;
+        box-shadow: none;
+        position: static;
+        font-size: 14px;
+        float: none;
+        width: 100%;
+        text-align: right;
+
+        li > a {
+            color: $link-color;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        min-height: 100%;
+        overflow-y: scroll;
+    }
+}
