@@ -1,7 +1,14 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? '' : /.*/) do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
+
     if Rails.application.config.x.resumis.tenancy_mode == :multi
       get '/' => 'page#bare_domain'
 
