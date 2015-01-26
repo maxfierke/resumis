@@ -19,6 +19,9 @@
           <%= link_to manage_edit_profile_path, class: 'btn btn-default' do %>
             <%= icon 'pencil', 'Edit Profile' %>
           <% end %>
+          <%= link_to destroy_user_session_url(host: canonical_host), :method => 'DELETE', class: 'btn btn-danger' do %>
+            <%= icon 'sign-out', '' %>
+          <% end %>
         </div>
         <nav>
           <ul class="nav nav-tiles nav-stacked">
