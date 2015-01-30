@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       put 'profile' => 'profile#update'
       patch 'profile' => 'profile#update'
 
-      get '/' => 'dashboard#index', as: :dashboard_path
+      get '/' => 'dashboard#index', as: :dashboard
     end
 
     get 'profile' => 'profile#show'
