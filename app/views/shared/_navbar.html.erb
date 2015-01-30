@@ -21,42 +21,21 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About", root_path %></li>
+        <li><%= link_to "Projects", projects_path %></li>
+        <% if exists_published_resume? %>
+        <li><%= link_to "Resume", resume_path(latest_resume) %></li>
+        <% end %>
         <% if user_signed_in? and current_tenant == current_user %>
-        <li class="dropdown">
-          <a href="<%= projects_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Project List", projects_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Categories", manage_project_categories_path %></li>
-            <li><%= link_to "Statuses", manage_project_statuses_path %></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="<%= manage_resumes_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resumes <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Resume List", manage_resumes_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Skills", manage_skills_path %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Education Experiences", manage_education_experiences_path %></li>
-            <li><%= link_to "Work Experiences", manage_work_experiences_path %></li>
-          </ul>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             <%= image_tag current_user.avatar_url, height: 18, class: "inline-block img-rounded" %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Edit Profile", manage_edit_profile_path %></li>
+            <li><%= link_to "Manage Site", manage_dashboard_path %></li>
             <li><%= link_to "Settings", edit_user_registration_url(host: canonical_host) %></li>
             <li><%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => 'DELETE' %></li>
           </ul>
         </li>
-        <% else %>
-        <li><%= link_to "Projects", projects_path %></li>
-        <% if exists_published_resume? %>
-        <li><%= link_to "Resume", resume_path(latest_resume) %></li>
-        <% end %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
