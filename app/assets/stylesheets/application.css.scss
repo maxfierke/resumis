@@ -245,18 +245,6 @@ body.bare {
     }
 }
 
-.md-editor {
-    .md-input {
-        padding: 15px;
-        line-height: 1.5;
-        font-family: monospace;
-        font-size: 1.1em;
-    }
-    .md-preview {
-        padding: 10px;
-    }
-}
-
 .userbar {
     background-color: #cc0000;
     font-size: 0.8em;
@@ -305,25 +293,11 @@ body.bare {
         background-size: cover;
         background-repeat: no-repeat;
     }
-
-    .dl-tools dd {
-        padding-left: 20px;
-    }
 }
 
 @media screen and (min-width: 768px) {
     .jumbotron-about {
         padding: 20px !important;
-    }
-    .dl-tools {
-        margin-bottom: 0;
-
-        dt {
-            width: auto;
-        }
-        dd {
-            margin-left: 20px;
-        }
     }
 }
 
