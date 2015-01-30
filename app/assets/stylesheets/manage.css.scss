@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
-@import "bootswatch/yeti/variables";
+@import "manage/variables";
 @import "bootstrap";
-@import "bootswatch/yeti/bootswatch";
+@import "manage/bootswatch";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap-markdown";
@@ -12,6 +12,7 @@
 
 .sidebar {
     border-right: 1px solid #efefef;
+    box-shadow: rgba(128,128,128,0.1) 1px 0 10px;
     text-align: center;
     padding: 15px 0;
 
@@ -51,9 +52,10 @@
     li > a {
         border-bottom: 1px solid #efefef;
         display: block;
+        padding: 15px;
 
         &:hover {
-            background-color: #ededed;
+            background-color: #f7f7f7;
         }
     }
 
@@ -62,6 +64,7 @@
     }
 
     .dropdown-menu {
+        background-color: #fcfcfc;
         border-right: none;
         box-shadow: none;
         position: static;
