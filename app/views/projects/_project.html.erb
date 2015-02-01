@@ -9,7 +9,7 @@
           <%= project.project_status.name %>
         </span>
       <% end %>
-      <p class="pull-right">
+      <span class="pull-right">
         <%= project.date_range %>
         <% if user_signed_in? and
               project.user.id == current_user.id and
@@ -22,7 +22,7 @@
             <%= icon 'remove' %>
           <%- end -%>
         <% end %>
-      </p>
+      </span>
     </h4>
   </div>
   <div class="list-group">
