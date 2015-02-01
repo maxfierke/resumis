@@ -43,4 +43,6 @@
   </tbody>
 </table>
 
-<%= link_to "New Resume", new_manage_resume_path, :class => 'btn btn-primary' %>
+<%= link_to new_manage_resume_path, :class => 'btn btn-primary' do %>
+  <%= icon 'plus', 'New Resume' %>
+<% end %>
