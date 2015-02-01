@@ -30,9 +30,9 @@
 <div class="form-group">
 <% if user_signed_in? and @resume.user.id == current_user.id %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              resumes_path, :class => 'btn btn-default'  %>
+              manage_resumes_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_resume_path(@resume), :class => 'btn btn-default' %>
+              edit_manage_resume_path(@resume), :class => 'btn btn-default' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               resume_path(@resume),
               :method => 'delete',
