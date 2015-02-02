@@ -71,9 +71,15 @@
         font-size: 14px;
         float: none;
         width: 100%;
-        text-align: right;
+        padding-left: 30px;
 
         li > a {
+            &:before {
+                @include fa-icon();
+                content: $fa-var-angle-right;
+                padding-right: 10px;
+            }
+
             color: $link-color;
         }
     }
