@@ -25,9 +25,14 @@
         </div>
         <nav>
           <ul class="nav nav-tiles nav-stacked">
+            <li>
+              <%= link_to manage_dashboard_path do %>
+                <%= icon 'dashboard', 'Dashboard', class: 'fa-fw' %>
+              <% end %>
+            </li>
             <li class="dropdown" role="presentation">
               <%= link_to manage_projects_path, class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                Projects <span class="caret"></span>
+                <%= icon 'diamond', 'Projects', class: 'fa-fw' %> <span class="caret"></span>
               <% end %>
               <ul class="dropdown-menu">
                 <li><%= link_to "Projects", manage_projects_path %></li>
@@ -35,20 +40,32 @@
                 <li><%= link_to "Project Statuses", manage_project_statuses_path %></li>
               </ul>
             </li>
-            <li><%= link_to "Resumes", manage_resumes_path %></li>
+            <li>
+              <%= link_to manage_resumes_path do %>
+                <%= icon 'file-text-o', 'Resumes', class: 'fa-fw' %>
+              <% end %>
+            </li>
             <li class="dropdown" role="presentation">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                Experiences <span class="caret"></span>
+                <%= icon 'road', 'Experiences', class: 'fa-fw' %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Education Experiences", manage_education_experiences_path %></li>
-                <li><%= link_to "Work Experiences", manage_work_experiences_path %></li>
+                <li>
+                  <%= link_to manage_education_experiences_path do %>
+                    <%= icon 'mortar-board', 'Education Experiences', class: 'fa-fw' %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to manage_work_experiences_path do %>
+                    <%= icon 'suitcase', 'Work Experiences', class: 'fa-fw' %>
+                  <% end %>
+                </li>
               </ul>
             </li>
             <% if current_user.admin? %>
             <li class="dropdown" role="presentation">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                Administration <span class="caret"></span>
+                <%= icon 'shield', 'Administration', class: 'fa-fw' %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li>
