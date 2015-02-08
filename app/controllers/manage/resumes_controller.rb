@@ -31,7 +31,7 @@ module Manage
 
     def destroy
       @resume.destroy
-      respond_with(@resume)
+      respond_with(@resume, :location => manage_resumes_path)
     end
 
     private

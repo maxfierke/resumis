@@ -31,7 +31,7 @@ module Manage
 
     def destroy
       @work_experience.destroy
-      respond_with(@work_experience)
+      respond_with(@work_experience, :location => manage_work_experiences_path)
     end
 
     private

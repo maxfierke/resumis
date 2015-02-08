@@ -24,7 +24,7 @@ module Manage
       @skill.user = current_user
       respond_to do |format|
         if @skill.save
-          format.html { redirect_to skills_path, notice: "#{@skill.name} was successfully created." }
+          format.html { redirect_to manage_skills_path, notice: "#{@skill.name} was successfully created." }
           format.json
         else
           format.html { render :new }
@@ -36,7 +36,7 @@ module Manage
     def update
       respond_to do |format|
         if @skill.update(skill_params)
-          format.html { redirect_to skills_path, notice: "#{@skill.name} was successfully updated." }
+          format.html { redirect_to manage_skills_path, notice: "#{@skill.name} was successfully updated." }
           format.json
         else
           format.html { render :edit }
@@ -47,7 +47,7 @@ module Manage
 
     def destroy
       @skill.destroy
-      respond_with(@skill)
+      respond_with(@skill, :location => manage_skills_path)
     end
 
     private

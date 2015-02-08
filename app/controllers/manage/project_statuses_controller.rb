@@ -30,7 +30,7 @@ module Manage
 
     def destroy
       @project_status.destroy
-      respond_with(@project_status)
+      respond_with(@project_status, :location => manage_project_statuses_path)
     end
 
     private

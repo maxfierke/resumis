@@ -30,7 +30,7 @@ module Manage
 
     def destroy
       @project_category.destroy
-      respond_with(@project_category)
+      respond_with(@project_category, :location => manage_project_categories_path)
     end
 
     private

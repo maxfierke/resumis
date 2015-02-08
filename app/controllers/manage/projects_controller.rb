@@ -36,7 +36,7 @@ module Manage
 
     def destroy
       @project.destroy
-      respond_with(@project)
+      respond_with(@project, :location => manage_projects_path)
     end
 
     private
