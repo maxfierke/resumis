@@ -1,5 +1,4 @@
-// Yeti 3.3.2
-// Bootswatch
+// Resumis - based on Yeti 3.3.2 from Bootswatch
 // -----------------------------------------------------
 
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
@@ -363,9 +362,11 @@ input[type="checkbox"] {
 }
 
 .label {
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  margin-left: 0.3em;
   font-weight: 300;
 
   &-default {

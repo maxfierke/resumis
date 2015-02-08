@@ -1,0 +1,60 @@
+// Resumis - based on Yeti 3.3.2 from Bootswatch
+// -----------------------------------------------------
+
+.panel-latest-project {
+    margin-bottom: 0;
+
+    & > .panel-heading {
+        padding: 5px 15px;
+
+        .panel-title {
+            color: lighten($panel-default-text, 20%);
+            font-size: 1.1em;
+        }
+    }
+
+    .project-title {
+        font-size: 20px;
+        margin-top: 0;
+        word-wrap: break-word;
+    }
+
+    hr {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .project-shortdesc {
+        font-size: 14px;
+        color: $text-color;
+    }
+}
+
+.panel-project,
+.panel-education-experience,
+.panel-work-experience {
+
+
+
+    & > .panel-body {
+        transition: background-color 0.5s linear;
+    }
+
+    & > .panel-heading {
+        background-color: $panel-default-heading-bg;
+        color: $panel-default-text;
+
+        .panel-title > .pull-right {
+            margin-top: -5px;
+        }
+    }
+
+    & > .list-group {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .label {
+        display: inline-block;
+    }
+}

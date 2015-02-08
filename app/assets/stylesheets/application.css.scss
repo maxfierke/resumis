@@ -1,14 +1,14 @@
 @import "bootstrap-sprockets";
-@import "bootswatch/yeti/variables";
+@import "resumis/variables";
 @import "bootstrap";
-@import "bootswatch/yeti/bootswatch";
+@import "resumis/bootstrap_overrides";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap-markdown";
 
-
-// application imports
-@import "project_statuses";
+@import "resumis/labels";
+@import "resumis/misc";
+@import "resumis/panels";
 
 body {
     padding-top: $navbar-height;
@@ -16,10 +16,6 @@ body {
 
 body.bare {
     padding-top: 0;
-}
-
-.inline-block {
-    display: inline-block;
 }
 
 /* BOOTSTRAP OVERRIDES */
@@ -153,58 +149,6 @@ body.bare {
             z-index: 0;
             width: 100%;
         }
-    }
-}
-
-.panel-latest-project {
-    margin-bottom: 0;
-
-    & > .panel-heading {
-        padding: 5px 15px;
-
-        .panel-title {
-            color: lighten($panel-default-text, 20%);
-            font-size: 1.1em;
-        }
-    }
-
-    .project-title {
-        font-size: 20px;
-        margin-top: 0;
-        word-wrap: break-word;
-    }
-
-    hr {
-        margin-top: 16px;
-        margin-bottom: 16px;
-    }
-
-    .project-shortdesc {
-        font-size: 14px;
-        color: $text-color;
-    }
-}
-
-.panel-project,
-.panel-education-experience,
-.panel-work-experience {
-    & > .panel-body {
-        transition: background-color 0.5s linear;
-    }
-
-    & > .panel-heading {
-        background-color: $panel-default-heading-bg;
-        color: $panel-default-text;
-    }
-
-    & > .list-group {
-        font-size: 16px;
-        line-height: 1.8;
-    }
-
-    .label {
-        display: inline-block;
-        margin-left: 5px;
     }
 }
 
