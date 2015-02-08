@@ -15,6 +15,11 @@
           </div>
           <h1 class="user-name">
             <%= current_user.full_name %>
+            <small>
+              <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}" do %>
+                <%= icon 'external-link', '' %>
+              <% end %>
+            </small>
           </h1>
           <%= link_to manage_edit_profile_path, class: 'btn btn-default' do %>
             <%= icon 'pencil', 'Edit Profile' %>
