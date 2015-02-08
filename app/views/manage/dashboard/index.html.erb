@@ -1,1 +1,34 @@
 <%= page_title "Dashboard" %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= link_to new_manage_project_path, class: 'btn btn-lg btn-primary btn-block' do %>
+      <%= icon 'diamond', '', class: 'fa-4x' %><br />
+      Add a New Project
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <%= link_to "#", class: 'btn btn-lg btn-success btn-block' do %>
+      <%= icon 'paragraph', '', class: 'fa-4x' %><br />
+      Add a New Blog Post
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <%= link_to manage_skills_path, class: 'btn btn-lg btn-danger btn-block' do %>
+      <%= icon 'check-circle', '', class: 'fa-4x' %><br />
+      Add a New Skill
+    <% end %>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3 class="text-center text-muted">Google Analytics charts will go here</h3>
+      </div>
+    </div>
+  </div>
+</div>
