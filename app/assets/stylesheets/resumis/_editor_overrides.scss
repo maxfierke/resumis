@@ -2,12 +2,19 @@
 // -----------------------------------------------------
 
 .md-editor {
+    & > .md-header, .md-footer {
+        background-color: $panel-default-heading-bg;
+    }
+
     .md-input {
+        background-color: $input-bg;
+        color: $input-color;
         padding: 15px;
         line-height: 1.5;
         font-family: monospace;
         font-size: 1.1em;
     }
+
     .md-preview {
         padding: 10px;
     }

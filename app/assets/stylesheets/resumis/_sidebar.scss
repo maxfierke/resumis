@@ -3,13 +3,20 @@
 
 .nav-tiles {
     li > a {
-        border-bottom: 1px solid #efefef;
+        border-bottom: 1px solid $gray-dark;
         display: block;
         padding: 15px;
         text-align: left;
+        transition: all 0.2s linear;
 
-        &:hover {
-            background-color: #f7f7f7;
+        &:hover, &:active, &.active, &:focus {
+            background-color: $gray-dark;
+        }
+    }
+
+    .open > a {
+        &, &:hover, &:active, &.active, &:focus {
+            background-color: $gray-dark;
         }
     }
 
@@ -18,7 +25,7 @@
     }
 
     .dropdown-menu {
-        background-color: #fcfcfc;
+        background-color: #171717;
         border-right: none;
         box-shadow: none;
         position: static;
@@ -26,22 +33,24 @@
         float: none;
         width: 100%;
         padding-left: 30px;
+        transition: all 0.2s linear;
 
         li > a {
+            transition: all 0.2s linear;
+
             &:before {
                 @include fa-icon();
                 content: $fa-var-angle-right;
                 padding-right: 10px;
             }
-
-            color: $link-color;
         }
     }
 }
 
 .sidebar {
-    border-right: 1px solid #efefef;
-    box-shadow: rgba(128,128,128,0.1) 1px 0 10px;
+    background-color: $gray-darker;
+    border-right: 1px solid $gray-dark;
+    box-shadow: inset rgba(0,0,0,0.1) 1px 0 10px;
     text-align: center;
     padding: 15px 0;
 

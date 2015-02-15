@@ -102,7 +102,7 @@ body.bare {
 
 .navbar-fixed-top {
     border-bottom: 1px solid $navbar-default-border;
-    box-shadow: #666 0 1px 10px;
+    box-shadow: $gray-darker 0 1px 10px;
 }
 
 .jumbotron-about {
