@@ -2,7 +2,7 @@ SIDEKIQ_PID = File.expand_path("../../../tmp/pids/sidekiq.pid", __FILE__)
 
 namespace :sidekiq do
   def sidekiq_is_running?
-    File.exists?(SIDEKIQ_PID) &;&; system("ps x | grep `cat #{SIDEKIQ_PID}` 2>&1 > /dev/null")
+    File.exists?(SIDEKIQ_PID) && system("ps x | grep `cat #{SIDEKIQ_PID}` 2>&1 > /dev/null")
   end
 
   desc "Start sidekiq daemon."
