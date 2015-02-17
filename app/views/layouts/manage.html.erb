@@ -37,7 +37,7 @@
                   <h1 class="user-name">
                     <%= current_user.full_name %>
                     <small>
-                      <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}" do %>
+                      <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank' do %>
                         <%= icon 'external-link', '' %>
                       <% end %>
                     </small>
