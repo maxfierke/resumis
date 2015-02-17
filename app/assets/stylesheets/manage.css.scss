@@ -9,9 +9,14 @@
 @import "resumis/editor_overrides";
 @import "resumis/labels";
 @import "resumis/misc";
+@import "resumis/navbar";
 @import "resumis/panels";
 @import "resumis/sidebar";
 
-.container-fluid {
+body {
+    padding-top: $navbar-height;
+}
+
+body > .container-fluid {
     padding-bottom: 15px;
 }

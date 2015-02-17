@@ -7,27 +7,60 @@
     <%= javascript_include_tag "manage" %>
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= manage_dashboard_path %>">
+            Resumis
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <%= image_tag current_user.avatar_url, height: 18, class: "inline-block img-circle" %><span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="user-details">
+                  <div class="avatar text-center">
+                    <%= image_tag current_user.avatar_url, height: 128, class: 'img-circle' %>
+                  </div>
+                  <h1 class="user-name">
+                    <%= current_user.full_name %>
+                    <small>
+                      <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}" do %>
+                        <%= icon 'external-link', '' %>
+                      <% end %>
+                    </small>
+                  </h1>
+                </li>
+                <li>
+                  <%= link_to manage_edit_profile_path do %>
+                    <%= icon 'pencil', 'Edit Profile' %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_url(host: canonical_host), :method => 'DELETE' do %>
+                    <%= icon 'sign-out', 'Logout' %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
     <div class="container-fluid">
       <aside class="col-sm-3 sidebar">
-        <div class="user-details">
-          <div class="avatar text-center">
-            <%= image_tag current_user.avatar_url, height: 128, class: 'img-circle' %>
-          </div>
-          <h1 class="user-name">
-            <%= current_user.full_name %>
-            <small>
-              <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}" do %>
-                <%= icon 'external-link', '' %>
-              <% end %>
-            </small>
-          </h1>
-          <%= link_to manage_edit_profile_path, class: 'btn btn-default' do %>
-            <%= icon 'pencil', 'Edit Profile' %>
-          <% end %>
-          <%= link_to destroy_user_session_url(host: canonical_host), :method => 'DELETE', class: 'btn btn-danger' do %>
-            <%= icon 'sign-out', '' %>
-          <% end %>
-        </div>
         <nav>
           <ul class="nav nav-tiles nav-stacked">
             <li>

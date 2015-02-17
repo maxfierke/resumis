@@ -8,6 +8,7 @@
 
 @import "resumis/labels";
 @import "resumis/misc";
+@import "resumis/navbar";
 @import "resumis/panels";
 
 body {
@@ -72,37 +73,6 @@ body.bare {
     .fa-fw {
         vertical-align: sub;
     }
-}
-
-.navbar-default .navbar-brand {
-    font-size: 24px;
-    font-weight: 300;
-    transition: color 0.2s ease;
-
-    &:hover, &:focus {
-        color: $link-color;
-    }
-}
-
-.navbar .navbar-nav {
-    & > li {
-        & > a {
-            transition: all 0.2s ease;
-        }
-
-        &.active > a, &.active > a:hover {
-            font-weight: bold;
-        }
-    }
-
-    .hidden-xs {
-        display: inline-block !important;
-    }
-}
-
-.navbar-fixed-top {
-    border-bottom: 1px solid $navbar-default-border;
-    box-shadow: $gray-darker 0 1px 10px;
 }
 
 .jumbotron-about {
@@ -212,26 +182,6 @@ body.bare {
 }
 
 @media screen and (max-width: 767px) {
-    .navbar .navbar-nav .hidden-xs {
-        display: none !important;
-    }
-    .navbar .navbar-nav .visible-xs {
-        display: inline-block !important;
-    }
-
-    .navbar .navbar-toggle {
-        border-color: transparent;
-    }
-
-    .navbar .navbar-toggle:focus,
-    .navbar .navbar-toggle:hover {
-        background-color: transparent;
-    }
-
-    .navbar-toggle .icon-bar {
-        height: 3px;
-    }
-
     .jumbotron-about {
         background-position: left center;
         background-size: cover;
