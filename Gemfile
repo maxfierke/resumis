@@ -47,6 +47,9 @@ gem 'actionview-encoded_mail_to'
 # because sometimes you need a NULL
 gem 'nilify_blanks'
 
+# nice slugged URLs
+gem 'friendly_id', '~> 5.1.0'
+
 # Multi-tenancy
 gem 'acts_as_tenant'
 

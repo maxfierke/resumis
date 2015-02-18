@@ -200,6 +200,8 @@ GEM
     font-awesome-sass (4.3.1)
       sass (~> 3.2)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -359,6 +361,7 @@ DEPENDENCIES
   devise!
   fog
   font-awesome-sass (~> 4.3.0)
+  friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :resumes
   has_many :work_experiences
   has_many :education_experiences
+  has_many :posts
   has_many :skills
   has_many :user_types
   has_many :types, through: :user_types
