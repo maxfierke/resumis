@@ -21,6 +21,9 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About", root_path %></li>
+        <% if exists_published_blog_posts? or (user_signed_in? and current_user == current_tenant) %>
+        <li><%= link_to "Blog", blog_path %></li>
+        <% end %>
         <li><%= link_to "Projects", projects_path %></li>
         <% if exists_published_resume? %>
         <li><%= link_to "Resume", resume_path(latest_resume) %></li>
