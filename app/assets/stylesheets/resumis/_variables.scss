@@ -665,13 +665,13 @@ $list-group-border:             $table-border-color;
 $list-group-border-radius:      $border-radius-base;
 
 //** Background color of single list items on hover
-$list-group-hover-bg:           lighten($gray-dark, 15%);
+$list-group-hover-bg:           lighten($gray-darker, 15%);
 //** Text color of active list items
 $list-group-active-color:       $component-active-color;
 //** Background color of active list items
-$list-group-active-bg:          $component-active-bg;
+$list-group-active-bg:          $gray-darker;
 //** Border color of active list elements
-$list-group-active-border:      $list-group-active-bg;
+$list-group-active-border:      $brand-primary;
 //** Text color for content within active list items
 $list-group-active-text-color:  lighten($list-group-active-bg, 40%);
 
@@ -682,7 +682,7 @@ $list-group-disabled-bg:         $gray-lighter;
 //** Text color for content within disabled list items
 $list-group-disabled-text-color: $list-group-disabled-color;
 
-$list-group-link-color:         #555;
+$list-group-link-color:         #d3d3d3;
 $list-group-link-hover-color:   $list-group-link-color;
 $list-group-link-heading-color: #333;
 
@@ -749,7 +749,7 @@ $thumbnail-caption-padding:   9px;
 //
 //##
 
-$well-bg:                     $jumbotron-bg;
+$well-bg:                     $panel-bg;
 $well-border:                 darken($well-bg, 7%);
 
 
