@@ -144,8 +144,8 @@ $table-border-color:            $gray-dark;
 $btn-font-weight:                normal;
 
 $btn-default-color:              $gray-lighter;
-$btn-default-bg:                 lighten($gray-dark, 10%);
-$btn-default-border:             $gray-dark;
+$btn-default-bg:                 lighten($gray-dark, 15%);
+$btn-default-border:             lighten($gray-dark, 10%);
 
 $btn-primary-color:              $gray-lighter;
 $btn-primary-bg:                 $brand-primary;
