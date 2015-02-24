@@ -30,9 +30,9 @@ $body-bg:               lighten($gray-base, 25%);
 $text-color:            $gray-lighter;
 
 //** Global textual link color.
-$link-color:            $brand-primary;
+$link-color:            lighten($brand-primary, 15%);
 //** Link hover color set via `darken()` function.
-$link-hover-color:      lighten($link-color, 15%);
+$link-hover-color:      lighten($link-color, 5%);
 //** Link hover decoration.
 $link-hover-decoration: underline;
 
@@ -665,7 +665,7 @@ $list-group-border:             $table-border-color;
 $list-group-border-radius:      $border-radius-base;
 
 //** Background color of single list items on hover
-$list-group-hover-bg:           lighten($gray-darker, 15%);
+$list-group-hover-bg:           lighten($gray-darker, 5%);
 //** Text color of active list items
 $list-group-active-color:       $component-active-color;
 //** Background color of active list items
@@ -819,7 +819,7 @@ $close-text-shadow:           0 1px 0 #fff;
 //##
 
 $code-color:                  #c7254e;
-$code-bg:                     #f9f2f4;
+$code-bg:                     lighten($gray-base, 5%);
 
 $kbd-color:                   #fff;
 $kbd-bg:                      #333;
