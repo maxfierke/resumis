@@ -2,6 +2,10 @@
 // -----------------------------------------------------
 
 .md-editor {
+    &.active {
+        border-color: transparent;
+    }
+
     & > .md-header, .md-footer {
         background-color: $panel-default-heading-bg;
     }
@@ -13,6 +17,7 @@
         line-height: 1.5;
         font-family: monospace;
         font-size: 1.1em;
+        min-height: 600px;
     }
 
     .md-preview {
