@@ -6,6 +6,7 @@
         border-bottom: 1px solid $gray-dark;
         display: block;
         padding: 15px;
+        font-size: ceil(($font-size-base * 1.1));
         text-align: left;
         transition: all 0.2s linear;
 
@@ -32,10 +33,9 @@
         font-size: 14px;
         float: none;
         width: 100%;
-        padding-left: 30px;
-        transition: all 0.2s linear;
 
         li > a {
+            padding-left: 30px;
             transition: all 0.2s linear;
 
             &:before {
@@ -43,6 +43,10 @@
                 content: $fa-var-angle-right;
                 padding-right: 10px;
             }
+        }
+
+        li:last-child {
+            border-bottom: none;
         }
     }
 }
@@ -66,5 +70,15 @@
         left: 0;
         min-height: 100%;
         overflow-y: scroll;
+    }
+}
+
+@media screen and (min-width: 1199px) {
+    .nav-tiles {
+        .dropdown-menu {
+            li > a {
+                padding-left: 15px;
+            }
+        }
     }
 }
