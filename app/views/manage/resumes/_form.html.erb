@@ -126,7 +126,11 @@
               <%= b.text %>
             </td>
             <td>
-              <%= b.object.project_status.name if b.object.project_status %>
+              <% if b.object.project_status %>
+                <span class="label label-<%= b.object.project_status.slug %>">
+                  <%= b.object.project_status.name %>
+                </span>
+              <% end %>
             </td>
             <td>
               <%= b.object.start_date %>
