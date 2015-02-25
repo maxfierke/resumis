@@ -15,7 +15,22 @@
         }
     }
 
+    .dropdown > a {
+        &:after {
+            @include fa-icon();
+            content: $fa-var-plus;
+            padding-left: 10px;
+            position: relative;
+            top: 5px;
+            float: right;
+        }
+    }
+
     .open > a {
+        &:after {
+            content: $fa-var-minus;
+        }
+
         &, &:hover, &:active, &.active, &:focus {
             background-color: $gray-dark;
         }

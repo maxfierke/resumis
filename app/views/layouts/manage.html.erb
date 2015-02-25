@@ -70,7 +70,7 @@
             </li>
             <li class="dropdown" role="presentation">
               <%= link_to manage_projects_path, class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                <%= icon 'diamond', 'Projects', class: 'fa-fw' %> <span class="caret"></span>
+                <%= icon 'diamond', 'Projects', class: 'fa-fw' %>
               <% end %>
               <ul class="dropdown-menu">
                 <li><%= link_to "Projects", manage_projects_path %></li>
@@ -85,7 +85,7 @@
             </li>
             <li class="dropdown" role="presentation">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'road', 'Experiences', class: 'fa-fw' %> <span class="caret"></span>
+                <%= icon 'road', 'Experiences', class: 'fa-fw' %>
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -103,7 +103,7 @@
             <% if current_user.admin? %>
             <li class="dropdown" role="presentation">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'shield', 'Administration', class: 'fa-fw' %> <span class="caret"></span>
+                <%= icon 'shield', 'Administration', class: 'fa-fw' %>
               </a>
               <ul class="dropdown-menu">
                 <li>
