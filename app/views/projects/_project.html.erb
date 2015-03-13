@@ -9,7 +9,7 @@
           <%= project.project_status.name %>
         </span>
       <% end %>
-      <span class="pull-right">
+      <span class="pull-right date-range">
         <%= project.date_range %>
         <% if user_signed_in? and
               project.user.id == current_user.id and
