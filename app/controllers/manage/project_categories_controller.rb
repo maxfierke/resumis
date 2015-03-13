@@ -11,7 +11,7 @@ module Manage
 
     def new
       @project_category = ProjectCategory.new
-      respond_with(@project_category)
+      respond_with(@project_category, :location => manage_project_categories_path)
     end
 
     def edit
@@ -20,12 +20,12 @@ module Manage
     def create
       @project_category = ProjectCategory.new(project_category_params)
       @project_category.save
-      respond_with(@project_category)
+      respond_with(@project_category, :location => manage_project_categories_path)
     end
 
     def update
       @project_category.update(project_category_params)
-      respond_with(@project_category)
+      respond_with(@project_category, :location => manage_project_categories_path)
     end
 
     def destroy
@@ -39,7 +39,7 @@ module Manage
       end
 
       def project_category_params
-        params.require(:project_category).permit(:slug, :name)
+        params.require(:project_category).permit(:name)
       end
   end
 end
