@@ -26,7 +26,7 @@ module Manage
 
     def update
       @resume.update(resume_params)
-      respond_with(@resume)
+      respond_with(@resume, :location => edit_manage_resume_path(@resume))
     end
 
     def destroy
@@ -40,7 +40,7 @@ module Manage
       end
 
       def resume_params
-        params.require(:resume).permit(:debug, :name, :description, :background, :published, education_experience_ids: [], project_ids: [], skill_ids: [], work_experience_ids: [])
+        params.require(:resume).permit(:name, :description, :background, :published, education_experience_ids: [], project_ids: [], skill_ids: [], work_experience_ids: [])
       end
   end
 end
