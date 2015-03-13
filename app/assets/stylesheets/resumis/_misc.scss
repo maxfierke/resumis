@@ -4,3 +4,11 @@
 .inline-block {
     display: inline-block;
 }
+
+a.link-danger {
+    color: $brand-danger;
+
+    &:hover, &:focus, &:active, &.active {
+        color: darken($brand-danger, 10%);
+    }
+}
