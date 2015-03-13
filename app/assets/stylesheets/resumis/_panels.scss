@@ -40,6 +40,16 @@
     & > .panel-heading {
         background-color: $panel-default-heading-bg;
         color: $panel-default-text;
+
+        .date-range {
+            .btn {
+                border: none;
+                font-size: 14px;
+                line-height: 1.1;
+                padding: 4px;
+                vertical-align: baseline;
+            }
+        }
     }
 
     & > .list-group {
