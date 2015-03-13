@@ -343,7 +343,8 @@ input[type="checkbox"] {
   }
 
   > .list-group-item.active,
-  > .list-group-item:active {
+  > .list-group-item:active,
+  > .list-group-item:hover {
     border-color: transparent;
     border-left-color: $list-group-active-border;
   }
