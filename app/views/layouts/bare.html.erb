@@ -6,6 +6,42 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body class="bare">
+    <nav class="navbar navbar-bare navbar-static-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= root_path %>">
+            <strong>Resumis</strong>
+          </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <div class="navbar-right">
+          <% if user_signed_in? %>
+            <p class="navbar-text h5">
+             Hey, <strong><%= current_user.first_name %></strong>!
+            </p>
+            <%= link_to "Go to My Site", "#{request.protocol}#{u tenant_instance_hostname(current_user)}/", class: 'navbar-btn btn btn-link' %>
+            <%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => :delete, class: "navbar-btn btn btn-danger" %>
+          <% else %>
+            <%= link_to new_user_session_path, class: "navbar-btn btn btn-link" do %>
+              Login to Resumis
+            <% end %>
+            <% if Devise.mappings[:user].registerable? %>
+              <%= link_to new_user_registration_path, class: "navbar-btn btn btn-primary" do %>
+                Sign Up
+              <% end %>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <%= content_for(:jumbotron) %>
 
     <div class="container">
@@ -16,11 +52,7 @@
     <footer class="footer-page">
       <div class="container">
         <p>
-          Powered by Resumis
-          <% if user_signed_in? %>
-            &middot;
-            <%= link_to "Logout", destroy_user_session_url(host: canonical_host), :method => :delete %>
-          <% end %>
+          Powered by Resumis &middot; Built with <span class="fa fa-heart" title="<3"></span> by <a href="https://www.maxfierke.com">Max Fierke</a>
         </p>
       </div>
     </footer>

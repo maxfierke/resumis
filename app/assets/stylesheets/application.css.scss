@@ -28,7 +28,19 @@ body.bare {
     }
 }
 
-/* SITE SPECIFIC CLASSES */
+.navbar + .container {
+  margin-top: 30px;
+}
+
+.navbar-bare {
+    margin-bottom: 0;
+    background-color: $jumbotron-bg;
+
+    .navbar-brand {
+        color: #efefef;
+    }
+}
+
 .container .jumbotron {
     border-radius: 0;
 }
