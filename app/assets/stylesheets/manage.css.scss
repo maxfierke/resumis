@@ -20,3 +20,13 @@ body {
 body > .container-fluid {
     padding-bottom: 15px;
 }
+
+.panel-project,
+.panel-education-experience,
+.panel-work-experience {
+    & > .panel-heading {
+        .panel-title > .pull-right {
+            margin-top: -5px;
+        }
+    }
+}

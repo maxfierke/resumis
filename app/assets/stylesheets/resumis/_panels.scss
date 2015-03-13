@@ -40,10 +40,6 @@
     & > .panel-heading {
         background-color: $panel-default-heading-bg;
         color: $panel-default-text;
-
-        .panel-title > .pull-right {
-            margin-top: -5px;
-        }
     }
 
     & > .list-group {
