@@ -1,5 +1,5 @@
 .navbar-default .navbar-brand {
-    font-size: 24px;
+    font-size: ceil($font-size-base * 1.8);
     font-weight: 300;
     transition: color 0.2s ease;
 
@@ -12,6 +12,7 @@
     & > li {
         & > a {
             transition: all 0.2s ease;
+            font-size: ceil($font-size-base * 0.9);
         }
 
         &.active > a, &.active > a:hover {
