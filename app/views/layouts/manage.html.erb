@@ -90,12 +90,17 @@
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to manage_education_experiences_path do %>
-                    <%= icon 'mortar-board', 'Education Experiences', class: 'fa-fw' %>
+                    <%= icon 'mortar-board', 'Education', class: 'fa-fw' %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to manage_skills_path do %>
+                    <%= icon 'wrench', 'Skills', class: 'fa-fw' %>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to manage_work_experiences_path do %>
-                    <%= icon 'suitcase', 'Work Experiences', class: 'fa-fw' %>
+                    <%= icon 'suitcase', 'Work', class: 'fa-fw' %>
                   <% end %>
                 </li>
               </ul>
