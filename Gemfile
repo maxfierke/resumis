@@ -60,6 +60,7 @@ gem 'carrierwave_backgrounder'
 gem 'mini_magick'
 
 # queues are cool
+gem 'hiredis'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sinatra', :require => nil # for sidekiq web UI
