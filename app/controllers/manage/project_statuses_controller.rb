@@ -39,7 +39,7 @@ module Manage
       end
 
       def project_status_params
-        params.require(:project_status).permit(:slug, :name)
+        params.require(:project_status).permit(:name)
       end
   end
 end
