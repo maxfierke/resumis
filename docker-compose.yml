@@ -1,0 +1,36 @@
+db:
+  image: postgres:9.4.1
+  ports:
+    - "5432:5432"
+redis:
+  image: redis
+worker:
+  build: .
+  command: bundle exec sidekiq
+  environment:
+    RAILS_ENV: development
+    RESUMIS_CANONICAL_HOST: resumis-docker.dev
+    RESUMIS_TENANCY_MODE: single
+    DATABASE_URL: postgres://postgres@db/resumis_development
+    REDIS_URL: redis://redis:6379/1
+  links:
+    - db
+    - redis
+  volumes:
+    - .:/resumis
+web:
+  build: .
+  command: bin/rails server --port 3000 --binding 0.0.0.0
+  environment:
+    RAILS_ENV: development
+    RESUMIS_CANONICAL_HOST: resumis-docker.dev
+    RESUMIS_TENANCY_MODE: single
+    DATABASE_URL: postgres://postgres@db/resumis_development
+    REDIS_URL: redis://redis:6379/1
+  ports:
+    - "3000:3000"
+  links:
+    - db
+    - redis
+  volumes:
+    - .:/resumis
