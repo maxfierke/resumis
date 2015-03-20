@@ -32,7 +32,7 @@ module Manage
                              :header_video, :header_media_type,
                              :about_me, :github_handle, :googleplus_handle, :linkedin_handle,
                              :soundcloud_handle, :tumblr_url, :twitter_handle, :vimeo_handle,
-                             :youtube_handle, :avatar_label, type_ids: [])
+                             :youtube_handle, :avatar_label, :ga_property_id, :ga_view_id, type_ids: [])
       end
   end
 end

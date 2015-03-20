@@ -31,4 +31,8 @@ module ApplicationHelper
       canonical_host
     end
   end
+
+  def google_client_id
+    Rails.application.config.x.resumis.google_client_id
+  end
 end

@@ -21,6 +21,9 @@
     <li role="presentation"<% if params[:tab] == 'social' %> class="active"<% end %>>
       <a href="?tab=social" aria-controls="social" role="tab" data-toggle="tab" data-target="#social">Social Networks</a>
     </li>
+    <li role="presentation"<% if params[:tab] == 'analytics' %> class="active"<% end %>>
+      <a href="?tab=analytics" aria-controls="analytics" role="tab" data-toggle="tab" data-target="#analytics">Analytics</a>
+    </li>
   </ul>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane<% if params[:tab] == 'basics' or params[:tab].nil? %> active<% end %>" id="basics">
@@ -206,6 +209,16 @@
           </div>
         </div>
         <% end %>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane<% if params[:tab] == 'analytics' %> active<% end %>" id="analytics">
+      <div class="form-group">
+        <%= f.label :ga_property_id, :class => 'control-label' %>
+        <%= f.text_field :ga_property_id, :class => 'text_field form-control', placeholder: 'e.g. UA-XXXXXXXX-X' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ga_view_id, :class => 'control-label' %>
+        <%= f.text_field :ga_view_id, :class => 'text_field form-control', placeholder: 'e.g. 01234567' %>
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@
   </div>
   <div class="col-sm-4">
     <%= link_to manage_skills_path, class: 'btn btn-lg btn-danger btn-block' do %>
-      <%= icon 'check-circle', '', class: 'fa-4x' %><br />
+      <%= icon 'wrench', '', class: 'fa-4x' %><br />
       Add a New Skill
     <% end %>
   </div>
@@ -27,8 +27,74 @@
   <div class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3 class="text-center text-muted">Google Analytics charts will go here</h3>
+        <section id="auth-button"></section>
+        <section id="timeline"></section>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+(function(w,d,s,g,js,fjs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+}(window,document,'script'));
+</script>
+
+<script>
+gapi.analytics.ready(function() {
+  gapi.analytics.auth.authorize({
+    container: 'auth-button',
+    clientid: '<%= google_client_id %>',
+    userInfoLabel: 'Google Analytics Account: '
+  });
+
+  var timeline = new gapi.analytics.googleCharts.DataChart({
+    reportType: 'ga',
+    query: {
+      'ids': 'ga:' + '<%= current_user.ga_view_id %>',
+      'dimensions': 'ga:date',
+      'metrics': 'ga:sessions',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+    },
+    chart: {
+      type: 'LINE',
+      container: 'timeline',
+      options: {
+        backgroundColor: {
+          fill: 'transparent'
+        },
+        hAxis: {
+          gridlines: {
+            color: '#222'
+          },
+          textStyle: {
+            color: '#efefef'
+          }
+        },
+        legend: {
+          textStyle: {
+            color: '#efefef'
+          }
+        },
+        vAxis: {
+          gridlines: {
+            color: '#222'
+          },
+          textStyle: {
+            color: '#efefef'
+          }
+        },
+        width: '100%'
+      }
+    }
+  });
+
+  gapi.analytics.auth.on('success', function(response) {
+    timeline.execute();
+  });
+});
+</script>

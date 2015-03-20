@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218222429) do
+ActiveRecord::Schema.define(version: 20150320033646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,15 +42,34 @@ ActiveRecord::Schema.define(version: 20150218222429) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "post_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_categories", ["slug"], name: "index_post_categories_on_slug", unique: true, using: :btree
+
+  create_table "post_category_joinings", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "post_category_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "post_category_joinings", ["post_category_id"], name: "index_post_category_joinings_on_post_category_id", using: :btree
+  add_index "post_category_joinings", ["post_id"], name: "index_post_category_joinings_on_post_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "tagline"
     t.text     "body"
     t.boolean  "published"
     t.integer  "user_id"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "published_on"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
@@ -229,6 +248,8 @@ ActiveRecord::Schema.define(version: 20150218222429) do
     t.boolean  "avatar_image_processing",             default: false, null: false
     t.boolean  "header_video_processing",             default: false, null: false
     t.boolean  "admin",                               default: false
+    t.string   "ga_property_id"
+    t.string   "ga_view_id"
   end
 
   add_index "users", ["domain"], name: "index_users_on_domain", unique: true, using: :btree
@@ -249,5 +270,7 @@ ActiveRecord::Schema.define(version: 20150218222429) do
 
   add_index "work_experiences", ["user_id"], name: "index_work_experiences_on_user_id", using: :btree
 
+  add_foreign_key "post_category_joinings", "post_categories"
+  add_foreign_key "post_category_joinings", "posts"
   add_foreign_key "posts", "users"
 end
