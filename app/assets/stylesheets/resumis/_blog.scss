@@ -1,0 +1,45 @@
+.blog-banner {
+    .blog-title {
+        font-size: ceil(($font-size-base * 1.5));
+    }
+
+    .back-home {
+        margin-left: -15px;
+        color: $gray-light;
+        font-size: $font-size-base;
+        vertical-align: middle;
+    }
+
+    a {
+        color: $gray-lighter;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.blog-post {
+    margin-bottom: 3em;
+
+    .post-title {
+        font-weight: bold;
+    }
+}
+
+.post-details {
+    h1 {
+        font-size: 24px;
+    }
+    small {
+        color: $text-muted;
+        font-size: 18px;
+    }
+}
+
+.post-body {
+    font-family: $font-family-serif;
+    font-size: $font-size-large;
+    line-height: floor(($font-size-base * 2.0));
+}

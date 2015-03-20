@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : /.*/) do
+    resources :posts, path: 'blog/posts', only: [:index, :show]
+    resources :post_categories, path: 'blog/categories', only: [:index, :show]
     resources :resumes, only: [:show]
     resources :projects, only: [:index, :show]
 
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
       resources :education_experiences, path: 'experiences/education'
       resources :work_experiences, path: 'experiences/work'
 
+      resources :posts, path: 'blog/posts', except: [:show]
+      resources :post_categories, path: 'blog/categories', except: [:show]
       resources :projects
       resources :project_statuses, path: 'project/statuses'
       resources :project_categories, path: 'project/categories'
@@ -43,6 +47,7 @@ Rails.application.routes.draw do
       get '/' => 'dashboard#index', as: :dashboard
     end
 
+    get 'blog' => 'posts#index'
     get 'profile' => 'profile#show'
     get 'about', to: redirect('/')
   end

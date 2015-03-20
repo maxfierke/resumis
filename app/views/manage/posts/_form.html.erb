@@ -1,0 +1,94 @@
+<%= form_for([:manage, @post]) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <header class="panel-heading">
+          <%= f.text_field :title, :class => 'text_field form-control', placeholder: 'e.g. My favorite hip-hop albums of 2014' %>
+        </header>
+        <%= f.text_area :body, :class => 'text_field form-control', :rows => '6', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <header class="panel-heading">
+          <h3 class="panel-title">Post Options</h3>
+        </header>
+        <div class="list-group">
+          <div class="list-group-item">
+            <div class="form-horizontal">
+              <% unless @post.new_record? %>
+              <div class="form-group">
+                <%= f.label :created_at, 'Created', :class => 'control-label col-sm-4' %>
+                <div class="col-sm-8">
+                  <p class="form-control-static"><%= time_ago_in_words(@post.created_at) %> ago</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :updated_at, 'Updated', :class => 'control-label col-sm-4' %>
+                <div class="col-sm-8">
+                  <p class="form-control-static"><%= time_ago_in_words(@post.updated_at) %> ago</p>
+                </div>
+              </div>
+              <% end %>
+              <div class="form-group">
+                <%= f.label :published_on, :class => 'control-label col-sm-4' %>
+                <div class="col-sm-8">
+                  <%= f.date_select :published_on, { start_year: 2005, end_year: Date.today.year }, :class => 'form-control inline-block', :style => 'max-width: 100px;' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :published, :class => 'control-label col-sm-4' %>
+                <div class="col-sm-8">
+                  <div class="checkbox">
+                    <label>
+                      <%= f.check_box :published %>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <%= f.submit nil, :class => 'btn btn-primary btn-block' %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                          manage_posts_path, :class => 'btn btn-default btn-block' %>
+            <% unless @post.new_record? %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          manage_post_path(@post), :method => 'DELETE', data: { confirm: 'Are you sure?' }, :class => 'btn btn-link btn-block link-danger' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <header class="panel-heading">
+          <h3 class="panel-title">Post Categories</h3>
+        </header>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <%= f.collection_check_boxes(:post_category_ids,  PostCategory.order("name ASC"), :id, :name,
+              { :selected => @post.post_category_ids }, { :multiple => true } ) do |b| %>
+              <li>
+                <%= b.label class: 'checkbox-inline' do %>
+                  <%= b.check_box %>
+                  <%= b.text %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

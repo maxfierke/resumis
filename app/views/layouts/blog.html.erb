@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render :partial => 'shared/head' %>
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <%= render :partial => 'shared/navbar' %>
+
+    <div class="container">
+      <div class="row blog-banner">
+        <div class="col-sm-9">
+          <h4 class="blog-title">
+            <% unless current_page?(blog_path) %>
+              <%= link_to blog_path do icon 'home', '', class: 'back-home' end %>
+            <% end %>
+            <%= link_to @post_category || @post || blog_path do %>
+              <%= content_for?(:title) ? yield(:title) : "#{current_tenant.full_name}'s Blog" -%>
+            <% end %>
+            <% if @post and user_signed_in? and current_user == current_tenant %>
+              <%= link_to edit_manage_post_path(@post), class: 'btn' do %>
+                <%= icon 'pencil', '' %>
+              <% end %>
+            <% end %>
+          </h4>
+        </div>
+        <div class="col-sm-3">
+          <form>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <%= icon 'search', '' %>
+                </span>
+                <input type="search" class="form-control" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+        <aside class="col-sm-3">
+          <nav class="list-group">
+          <% post_categories.each do |category| %>
+            <% if (@post_category and @post_category.id == category.id) or
+                  (@post and @post.post_categories.where(name: category.name).length > 0)
+            %>
+              <% category_class = 'list-group-item active' %>
+            <% else %>
+              <% category_class = 'list-group-item' %>
+            <% end %>
+            <%= link_to category, class: category_class do %>
+              <%= category.name %>
+            <% end %>
+          <% end %>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <%= render :partial => 'shared/footer' %>
+  </body>
+</html>

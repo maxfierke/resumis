@@ -1,0 +1,34 @@
+<h1>Blog Post Categories</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Post Count</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post_categories.each do |post_category| %>
+      <tr>
+        <td>
+          <%= link_to post_category.name, post_category_path(post_category) %>
+        </td>
+        <td><%= post_category.posts.count %></td>
+        <td>
+          <%= link_to edit_manage_post_category_path(post_category), class: 'btn btn-xs' do %>
+            <%= icon 'pencil', '' %>
+          <% end %>
+          <%= link_to manage_post_category_path(post_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
+            <%= icon 'remove', '' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to new_manage_post_category_path, class: 'btn btn-primary' do %>
+  <%= icon 'plus', 'New Post Category' %>
+<% end %>

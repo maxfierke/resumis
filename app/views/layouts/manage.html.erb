@@ -69,6 +69,23 @@
               <% end %>
             </li>
             <li class="dropdown" role="presentation">
+              <%= link_to "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
+                <%= icon 'paragraph', 'Blog', class: 'fa-fw' %>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to manage_posts_path do %>
+                    <%= icon 'pencil', 'Posts', class: 'fa-fw' %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to manage_post_categories_path do %>
+                    <%= icon 'folder', 'Post Categories', class: 'fa-fw' %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown" role="presentation">
               <%= link_to manage_projects_path, class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
                 <%= icon 'diamond', 'Projects', class: 'fa-fw' %>
               <% end %>

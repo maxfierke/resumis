@@ -1,0 +1,24 @@
+<%= form_for([:manage, @post_category]) do |f| %>
+  <% if @post_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post_category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @post_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <%= f.text_field :name, :class => 'text_field form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                manage_post_categories_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>
