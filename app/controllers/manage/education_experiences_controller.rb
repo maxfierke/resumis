@@ -21,12 +21,12 @@ module Manage
       @education_experience = EducationExperience.new(education_experience_params)
       @education_experience.user = current_user
       @education_experience.save
-      respond_with(@education_experience)
+      respond_with(@education_experience, :location => manage_education_experiences_path)
     end
 
     def update
       @education_experience.update(education_experience_params)
-      respond_with(@education_experience)
+      respond_with(@education_experience, :location => manage_education_experiences_path)
     end
 
     def destroy
