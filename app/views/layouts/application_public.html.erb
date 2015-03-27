@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%= render :partial => 'shared/head' %>
+    <title><%= current_tenant.full_name %> <%= "-" + yield(:title) if content_for?(:title) %></title>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
