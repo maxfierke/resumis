@@ -11,7 +11,7 @@ module Manage
 
     def new
       @work_experience = WorkExperience.new
-      respond_with(@work_experience)
+      respond_with(@work_experience, :location => manage_work_experiences_path)
     end
 
     def edit
@@ -21,12 +21,12 @@ module Manage
       @work_experience = WorkExperience.new(work_experience_params)
       @work_experience.user = current_user
       @work_experience.save
-      respond_with(@work_experience)
+      respond_with(@work_experience, :location => manage_work_experiences_path)
     end
 
     def update
       @work_experience.update(work_experience_params)
-      respond_with(@work_experience)
+      respond_with(@work_experience, :location => manage_work_experiences_path)
     end
 
     def destroy
