@@ -1,9 +1,13 @@
-<div class="page-header clearfix">
-  <%= page_title "Skills", :span, class: 'h1' %>
-  <%= link_to new_manage_skill_category_path, class: 'btn btn-primary pull-right' do %>
-    <%= icon 'plus', 'Add New Skill Category' %>
-  <% end %>
+<% page_title "Skills" %>
+<div class="btn-toolbar">
+  <div class="btn-group pull-right">
+    <%= link_to new_manage_skill_category_path, class: 'btn btn-primary pull-right' do %>
+      <%= icon 'plus', 'Add New Skill Category' %>
+    <% end %>
+  </div>
 </div>
+
+<hr />
 
 <% @skills_with_cat.each do |skill_cat| %>
 <h4>

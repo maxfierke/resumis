@@ -1,5 +1,5 @@
+<% page_title "Editing #{@resume.name}" %>
 <div class="page-header clearfix">
-  <%= page_title "Editing #{@resume.name}", :span, class: 'h1' %>
   <span class="pull-right text-right">
     <% if @resume.published %>
       <%= button_to "Unpublish", [:manage, @resume], { method: :patch, params: { :"resume[published]" => false }, class: 'btn btn-danger' } %>

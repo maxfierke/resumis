@@ -3,11 +3,11 @@ require 'redcarpet'
 module ApplicationHelper
   def page_title(text, tag_type = :h1, tag_attributes = {}, prepend_name = true)
     # sets :title content_for in <head>, and outputs an h1 with the title
-    if current_tenant && prepend_name
-      content_for :title, "#{current_tenant.full_name} - #{text}"
-    else
-      content_for :title, text
+    unless prepend_name
+      logger.warn "Using prepend_name with page_title is deprecated and has no effect."
     end
+
+    content_for :title, text
 
     content_tag tag_type, text, tag_attributes
   end

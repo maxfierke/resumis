@@ -20,9 +20,13 @@
           <a class="navbar-brand" href="<%= manage_dashboard_path %>">
             <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
           </a>
+          <% if content_for?(:title) %>
+          <p class="navbar-text navbar-title">
+            <%= yield(:title) %>
+          </p>
+          <% end %>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

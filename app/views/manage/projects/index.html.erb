@@ -1,5 +1,5 @@
-<div class="page-header clearfix">
-  <%= page_title "Projects", :span, class: 'h1' %>
+<% page_title "Projects" %>
+<div class="btn-toolbar">
   <div class="btn-group btn-group-sm pull-right">
     <%= link_to new_manage_project_path, class: 'btn btn-primary btn-sm' do %>
       <%= icon 'plus', 'Add' %>
@@ -14,5 +14,7 @@
     </ul>
   </div>
 </div>
+
+<hr />
 
 <%= render partial: "projects/project" , collection: @projects %>
