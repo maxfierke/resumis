@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<%= manage_dashboard_path %>">
-            <strong>Resumis</strong>
+            <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
           </a>
         </div>
 
