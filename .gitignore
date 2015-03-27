@@ -21,3 +21,4 @@
 
 .rbenv-vars
 .capistrano/metrics
+.idea
