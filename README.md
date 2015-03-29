@@ -60,17 +60,6 @@ Resumis-specific configuration can be done either through the `config/initialize
 * `RESUMIS_TENANCY_MODE` - Can be `single` or `multi`. **This is not easily changed later**
 
 ### Deployment
-
-#### Capistrano
-
-Deployment can be done via Capistrano. Capistrano has been setup with some sensible defaults, but you'll need to create a capistrano stage to configure things further (hosts, etc):
-
-```
-$ bundle exec cap install STAGES=staging,production
-```
-
-This will create `config/deploy/staging.rb` and `config/deploy/production.rb`. Modify them as needed.
-
 #### Amazon OpsWorks
 
 Resumis deploys somewhat easily on Amazon OpsWorks (with some caveats in the initial setup with PostgreSQL) and has hooks built in for asset compiliation on deploy.

@@ -66,10 +66,6 @@ gem 'sidekiq-failures'
 gem 'sinatra', :require => nil # for sidekiq web UI
 
 group :development do
-  # use capistrano for deployment
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv', git: 'https://github.com/capistrano/rbenv.git', branch: :master
-
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'spring'
