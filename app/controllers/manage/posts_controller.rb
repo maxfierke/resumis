@@ -22,7 +22,7 @@ module Manage
       respond_to do |format|
         if @post.save
           format.html { redirect_to post_url(@post), notice: "'#{@post.title}' was successfully created." }
-          format.json { render :show, status: :created, location: manage_post_url(@post) }
+          format.json { render :show, status: :created, location: post_url(@post) }
         else
           format.html { render :new }
           format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -34,7 +34,7 @@ module Manage
       respond_to do |format|
         if @post.update(post_params)
           format.html { redirect_to post_url(@post), notice: "'#{@post.title}' was successfully updated." }
-          format.json { render :show, status: :ok, location: manage_post_url(@post) }
+          format.json { render :show, status: :ok, location: post_url(@post) }
         else
           format.html { render :edit }
           format.json { render json: @post.errors, status: :unprocessable_entity }
