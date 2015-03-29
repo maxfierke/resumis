@@ -58,7 +58,7 @@ module Manage
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params[:post].permit(:title, :body, :published, post_category_ids: [])
+        params[:post].permit(:title, :body, :published, :published_on, post_category_ids: [])
       end
   end
 end
