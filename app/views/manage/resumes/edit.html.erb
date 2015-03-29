@@ -1,12 +1,12 @@
 <% page_title "Editing #{@resume.name}" %>
-<div class="page-header clearfix">
-  <span class="pull-right text-right">
-    <% if @resume.published %>
-      <%= button_to "Unpublish", [:manage, @resume], { method: :patch, params: { :"resume[published]" => false }, class: 'btn btn-danger' } %>
-    <% else %>
-      <%= button_to "Publish", [:manage, @resume], { method: :patch, params: { :"resume[published]" => true }, class: 'btn btn-success' } %>
-    <% end %>
+<div class="btn-toolbar">
+  <div class="btn-group pull-right text-right">
     <small class="text-muted">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
-  </span>
+    <% if @resume.published %>
+      <%= button_to "Unpublish", [:manage, @resume], { method: :patch, form_class: 'inline-block', params: { :"resume[published]" => false }, class: 'btn btn-danger' } %>
+    <% else %>
+      <%= button_to "Publish", [:manage, @resume], { method: :patch, form_class: 'inline-block', params: { :"resume[published]" => true }, class: 'btn btn-success' } %>
+    <% end %>
+  </div>
 </div>
 <%= render :partial => 'form' %>
