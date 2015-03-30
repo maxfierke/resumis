@@ -110,6 +110,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.27.0)
@@ -364,6 +366,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise!
   factory_girl_rails (~> 4.0)
+  faker (~> 1.4.3)
   fog
   font-awesome-sass (~> 4.3.0)
   friendly_id (~> 5.1.0)
