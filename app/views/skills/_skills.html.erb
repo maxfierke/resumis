@@ -1,7 +1,7 @@
 <% skills_by_cat.each_slice(3) do |slice| %>
   <div class="row">
     <% slice.each_with_index do |skill_cat, index| %>
-    <div class="col-sm-4">
+    <div class="col-xs-4">
       <h4><%= skill_cat.name %></h4>
       <ul>
         <% skill_cat.skills.each do |skill| %>
