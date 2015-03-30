@@ -53,7 +53,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_user_session_url(host: canonical_host), :method => 'DELETE' do %>
+                  <%= link_to destroy_user_session_url, :method => 'DELETE' do %>
                     <%= icon 'sign-out', 'Logout' %>
                   <% end %>
                 </li>
@@ -133,7 +133,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to sidekiq_web_url(subdomain: ''), target: '_blank' do %>
+                  <%= link_to sidekiq_web_url, target: '_blank' do %>
                     <%= icon 'external-link' %> Sidekiq UI
                   <% end %>
                 </li>
