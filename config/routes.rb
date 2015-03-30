@@ -10,7 +10,9 @@ Rails.application.routes.draw do
                        controllers: { registrations: 'users/registrations'}
 
     if Rails.application.config.x.resumis.tenancy_mode == :multi
-      get '/' => 'page#bare_domain'
+      if Rails.application.config.x.resumis.listing_enabled
+        get '/' => 'page#bare_domain'
+      end
 
       # Redirect other requests to the site at www.
       match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
