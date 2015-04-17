@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @resumes = Resume.all
+      @resumes = Resume.page params[:page]
       respond_with(@resumes)
     end
 

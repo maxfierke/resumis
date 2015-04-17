@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @work_experiences = WorkExperience.all
+      @work_experiences = WorkExperience.page params[:page]
       respond_with(@work_experiences)
     end
 

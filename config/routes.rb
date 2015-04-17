@@ -1,6 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
   # TODO: Clean this up
   constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? 'accounts' : /.*/) do
     devise_for :users, path: 'auth/user',
@@ -23,22 +27,22 @@ Rails.application.routes.draw do
   end
 
   constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : /.*/) do
-    resources :posts, path: 'blog/posts', only: [:index, :show]
-    resources :post_categories, path: 'blog/categories', only: [:index, :show]
+    resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
+    resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable
     resources :resumes, only: [:show]
-    resources :projects, only: [:index, :show]
+    resources :projects, only: [:index, :show], concerns: :paginatable
 
     namespace :manage do
-      resources :resumes
-      resources :education_experiences, path: 'experiences/education'
-      resources :work_experiences, path: 'experiences/work'
+      resources :resumes, concerns: :paginatable
+      resources :education_experiences, path: 'experiences/education', concerns: :paginatable
+      resources :work_experiences, path: 'experiences/work', concerns: :paginatable
 
-      resources :posts, path: 'blog/posts', except: [:show]
+      resources :posts, path: 'blog/posts', except: [:show], concerns: :paginatable
       resources :post_categories, path: 'blog/categories', except: [:show]
-      resources :projects
-      resources :project_statuses, path: 'project/statuses'
-      resources :project_categories, path: 'project/categories'
-      resources :skill_categories, path: 'skill/categories' do
+      resources :projects, concerns: :paginatable
+      resources :project_statuses, path: 'project/statuses', concerns: :paginatable
+      resources :project_categories, path: 'project/categories', concerns: :paginatable
+      resources :skill_categories, path: 'skill/categories', concerns: :paginatable do
         resources :skills, except: [:index]
       end
 

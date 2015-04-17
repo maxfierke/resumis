@@ -5,3 +5,5 @@
 <%= link_to new_manage_work_experience_path, :class => 'btn btn-primary' do %>
   <%= icon 'plus', 'New Work Experience' %>
 <% end %>
+
+<%= paginate @work_experiences %>

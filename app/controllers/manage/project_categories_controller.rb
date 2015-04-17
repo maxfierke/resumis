@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @project_categories = ProjectCategory.all
+      @project_categories = ProjectCategory.page params[:page]
       respond_with(@project_categories)
     end
 

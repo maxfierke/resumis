@@ -45,3 +45,5 @@
 <%= link_to new_manage_resume_path, :class => 'btn btn-primary' do %>
   <%= icon 'plus', 'New Resume' %>
 <% end %>
+
+<%= paginate @resumes %>

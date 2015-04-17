@@ -65,6 +65,9 @@ gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sinatra', :require => nil # for sidekiq web UI
 
+# pagination
+gem 'kaminari'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'

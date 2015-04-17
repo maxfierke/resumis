@@ -3,7 +3,7 @@ module Manage
     before_action :set_post_category, only: [:edit, :update, :destroy]
 
     def index
-      @post_categories = PostCategory.all
+      @post_categories = PostCategory.page params[:page]
     end
 
     def new

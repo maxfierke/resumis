@@ -31,3 +31,5 @@
 <%= link_to new_manage_project_status_path, :class => 'btn btn-primary' do %>
   <%= icon 'plus', 'New Status' %>
 <% end %>
+
+<%= paginate @project_statuses %>

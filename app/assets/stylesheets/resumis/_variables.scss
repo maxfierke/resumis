@@ -441,8 +441,8 @@ $pagination-color:                     $link-color;
 $pagination-bg:                        transparent;
 $pagination-border:                    transparent;
 
-$pagination-hover-color:               $link-hover-color;
-$pagination-hover-bg:                  $gray-lighter;
+$pagination-hover-color:               #efefef;
+$pagination-hover-bg:                  darken($brand-primary, 5%);
 $pagination-hover-border:              transparent;
 
 $pagination-active-color:              #fff;
@@ -450,7 +450,7 @@ $pagination-active-bg:                 $brand-primary;
 $pagination-active-border:             transparent;
 
 $pagination-disabled-color:            $gray-light;
-$pagination-disabled-bg:               #fff;
+$pagination-disabled-bg:               $gray-dark;
 $pagination-disabled-border:           transparent;
 
 

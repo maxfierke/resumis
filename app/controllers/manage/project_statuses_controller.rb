@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @project_statuses = ProjectStatus.all
+      @project_statuses = ProjectStatus.page params[:page]
       respond_with(@project_statuses)
     end
 

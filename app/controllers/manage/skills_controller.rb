@@ -6,7 +6,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @skills_with_cat = SkillCategory.all
+      @skills_with_cat = SkillCategory.page params[:page]
       respond_with(@skills)
     end
 

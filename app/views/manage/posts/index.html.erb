@@ -42,3 +42,5 @@
 <%= link_to new_manage_post_path, class: 'btn btn-primary' do %>
   <%= icon 'plus', 'New Post' %>
 <% end %>
+
+<%= paginate @posts %>

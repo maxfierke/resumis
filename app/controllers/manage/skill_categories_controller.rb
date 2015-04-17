@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @skill_categories = SkillCategory.all
+      @skill_categories = SkillCategory.page params[:page]
 
       respond_to do |format|
         format.html { redirect_to manage_skills_path }

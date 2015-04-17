@@ -32,3 +32,5 @@
 <%= link_to new_manage_post_category_path, class: 'btn btn-primary' do %>
   <%= icon 'plus', 'New Post Category' %>
 <% end %>
+
+<%= paginate @post_categories %>
