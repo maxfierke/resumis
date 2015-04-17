@@ -33,6 +33,7 @@ and others. See [Gemfile](Gemfile).
   ```
   $ bundle install
   ```
+* See [Configuration](#Configuration) below and set any needed environment variables. In development, put them in `.env`.
 
 * Create the database, run the migrations
 
@@ -40,14 +41,13 @@ and others. See [Gemfile](Gemfile).
   $ rake db:create db:migrate
   ```
 
-* Run the app in WEBrick
+* Run the app using [foreman](https://github.com/ddollar/foreman)
 
   ```
-  $ bundle exec sidekiq &
-  $ rails s
+  $ foreman start
   ```
 
-* Go to [lvh.me](http://lvm.me) and setup your first tenant (you!). Note that lvh.me (or another locally resolving domain with wildcard subdomains) is necessary on development in multi-tenancy mode.
+* Go to [lvh.me](http://lvm.me) (or whatever locally-resolving domain you're using) and setup your first tenant (you!). Note that lvh.me (or another locally resolving domain with wildcard subdomains) is necessary on development in multi-tenancy mode.
 
 #### Configuration
 
