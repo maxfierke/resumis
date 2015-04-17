@@ -60,6 +60,11 @@
             <% end %>
           <% end %>
           </nav>
+          <p class="text-right">
+            <%= link_to blog_url(format: 'rss') do %>
+              <small><%= icon 'rss', ' Subscribe for updates', class: 'fa-fw' %></small>
+            <% end %>
+          </p>
         </aside>
       </div>
     </div>

@@ -9,6 +9,12 @@ class PostsController < ApplicationController
     if (!user_signed_in? or current_user != current_tenant)
       @posts = @posts.where(published: true)
     end
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.rss { render :layout => false }
+    end
   end
 
   def show
