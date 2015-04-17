@@ -28,7 +28,7 @@ gem 'bootswatch-rails'
 
 # Markdown editor and rendering
 gem 'rails-bootstrap-markdown'
-gem 'redcarpet'
+gem 'redcarpet', '>= 3.2.3'
 
 # Utilize font-awesome iconogrphy set
 gem 'font-awesome-sass', '~> 4.3.0'

@@ -283,7 +283,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    redcarpet (3.2.2)
+    redcarpet (3.2.3)
     redis (3.2.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -401,7 +401,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails-bootstrap-markdown
   rails_12factor
-  redcarpet
+  redcarpet (>= 3.2.3)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
