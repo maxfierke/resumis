@@ -23,6 +23,7 @@
 
 <hr />
 
+<% if current_user.ga_view_id %>
 <div class="row">
   <div class="col-xs-12">
     <div class="panel panel-default">
@@ -98,3 +99,4 @@ gapi.analytics.ready(function() {
   });
 });
 </script>
+<% end %>
