@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
 
-  layout "application_public", only: [:index, :show]
+  layout "public", only: [:index, :show]
   respond_to :html, :json
 
   def index

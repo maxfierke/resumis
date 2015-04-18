@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
   before_action :set_user, only: [:show]
 
-  layout "application_public", only: [:show]
+  layout "public", only: [:show]
 
   # GET /profile
   # GET /profile.json

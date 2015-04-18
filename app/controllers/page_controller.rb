@@ -1,5 +1,5 @@
 class PageController < ApplicationController
-  layout "application_public"
+  layout "public"
   def about
   end
 
