@@ -9,7 +9,3 @@ json.gpa nil
 json.courses []
 json.created_at education_experience.created_at
 json.updated_at education_experience.updated_at
-
-json.links [
-  { rel: 'self', href: education_experience_url(education_experience, host: tenant_instance_hostname(education_experience.user)) }
-]
