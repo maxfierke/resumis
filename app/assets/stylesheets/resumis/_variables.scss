@@ -177,12 +177,12 @@ $btn-link-disabled-color:        $gray-light;
 //** `<input>` background color
 $input-bg:                       $gray-darker;
 //** `<input disabled>` background color
-$input-bg-disabled:              $gray-lighter;
+$input-bg-disabled:              $gray-dark;
 
 //** Text color for `<input>`s
-$input-color:                    $gray-light;
+$input-color:                    $gray-lighter;
 //** `<input>` border color
-$input-border:                   $gray-dark;
+$input-border:                   $gray-darker;
 
 // TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
 //** Default `.form-control` border radius
