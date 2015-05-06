@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects
+  has_many :project_statuses
   has_many :resumes
   has_many :work_experiences
   has_many :education_experiences

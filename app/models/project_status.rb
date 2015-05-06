@@ -1,5 +1,8 @@
 class ProjectStatus < ActiveRecord::Base
   has_many :projects
+  belongs_to :user
+
+  acts_as_tenant(:user)
 
   default_scope { order(name: :asc) }
 
