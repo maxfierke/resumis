@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects, dependent: :destroy
+  has_many :project_categories, dependent: :destroy
   has_many :project_statuses, dependent: :destroy
   has_many :resumes, dependent: :destroy
   has_many :work_experiences, dependent: :destroy

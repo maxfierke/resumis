@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507015620) do
+ActiveRecord::Schema.define(version: 20150507035543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 20150507015620) do
     t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
-  add_index "project_categories", ["name"], name: "index_project_categories_on_name", unique: true, using: :btree
-  add_index "project_categories", ["slug"], name: "index_project_categories_on_slug", unique: true, using: :btree
+  add_index "project_categories", ["user_id"], name: "index_project_categories_on_user_id", using: :btree
 
   create_table "project_category_joinings", force: :cascade do |t|
     t.integer  "project_id"
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(version: 20150507015620) do
   add_foreign_key "post_category_joinings", "post_categories"
   add_foreign_key "post_category_joinings", "posts"
   add_foreign_key "posts", "users"
+  add_foreign_key "project_categories", "users"
   add_foreign_key "project_statuses", "users"
   add_foreign_key "skill_categories", "users"
 end
