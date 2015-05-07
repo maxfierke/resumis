@@ -420,9 +420,9 @@ $nav-tabs-border-color:                     $table-border-color;
 
 $nav-tabs-link-hover-border-color:          $gray-darker;
 
-$nav-tabs-active-link-hover-bg:             $link-color;
+$nav-tabs-active-link-hover-bg:             $brand-primary;
 $nav-tabs-active-link-hover-color:          $gray-lighter;
-$nav-tabs-active-link-hover-border-color:   $link-color;
+$nav-tabs-active-link-hover-border-color:   darken($brand-primary, 10%);
 
 $nav-tabs-justified-link-border-color:            $table-border-color;
 $nav-tabs-justified-active-link-border-color:     $body-bg;
