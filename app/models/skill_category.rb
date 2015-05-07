@@ -8,5 +8,6 @@ class SkillCategory < ActiveRecord::Base
 
   scope :with_skills, -> { joins(:skills).where('skills.id IS NOT NULL').group('skill_categories.id') }
 
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true
+  validates_uniqueness_to_tenant :name
 end

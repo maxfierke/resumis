@@ -6,5 +6,6 @@ class Skill < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true
+  validates_uniqueness_to_tenant :name
 end

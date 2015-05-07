@@ -10,5 +10,6 @@ class Post < ActiveRecord::Base
   has_many :post_category_joinings
   has_many :post_categories, through: :post_category_joinings
 
-  validates :title, presence: true, uniqueness: { scope: :user_id }, length: { minimum: 3, maximum: 60 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 60 }
+  validates_uniqueness_to_tenant :title
 end

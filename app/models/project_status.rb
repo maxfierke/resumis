@@ -10,6 +10,9 @@ class ProjectStatus < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  validates :name, presence: true, uniqueness: { scope: :user_id }
-  validates :slug, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true
+  validates_uniqueness_to_tenant :name
+
+  validates :slug, presence: true
+  validates_uniqueness_to_tenant :slug
 end
