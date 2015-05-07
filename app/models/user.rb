@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :projects
-  has_many :project_statuses
-  has_many :resumes
-  has_many :work_experiences
-  has_many :education_experiences
-  has_many :posts
-  has_many :skills
-  has_many :user_types
+  has_many :projects, dependent: :destroy
+  has_many :project_statuses, dependent: :destroy
+  has_many :resumes, dependent: :destroy
+  has_many :work_experiences, dependent: :destroy
+  has_many :education_experiences, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :skills, dependent: :destroy
+  has_many :user_types, dependent: :destroy
   has_many :types, through: :user_types
 
   accepts_nested_attributes_for :user_types, :allow_destroy => true
