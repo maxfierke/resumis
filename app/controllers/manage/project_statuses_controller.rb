@@ -11,7 +11,7 @@ module Manage
 
     def new
       @project_status = ProjectStatus.new
-      respond_with(@project_status)
+      respond_with(@project_status, :location => manage_project_statuses_path)
     end
 
     def edit
@@ -20,12 +20,12 @@ module Manage
     def create
       @project_status = ProjectStatus.new(project_status_params)
       @project_status.save
-      respond_with(@project_status)
+      respond_with(@project_status, :location => manage_project_statuses_path)
     end
 
     def update
       @project_status.update(project_status_params)
-      respond_with(@project_status)
+      respond_with(@project_status, :location => manage_project_statuses_path)
     end
 
     def destroy
