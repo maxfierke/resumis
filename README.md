@@ -12,7 +12,7 @@ No worries, you cool internet person, you. For the low price of not much money, 
 * Rails 4.2
 * PostgreSQL 9.3+ with development dependencies
 * Node.js or another supported execjs runtime. I assume node.js. If you prefer `therubyracer`, uncomment it in the Gemfile.
-* `wkhtmltopdf`. 0.12.x+ recommended. 0.9.9.x has issues with the resume layout.
+* `wkhtmltopdf`. 0.12.x+ recommended. 0.9.9.x has issues with the resume layout. Will use either a binary specified by `WKHTMLTOPDF_PATH` (defaults to `/usr/local/bin/wkhtmltopdf`)
 * `imagemagick`
 * `ffmpeg` with h264 and libvpx (webm) support
 * Redis for Sidekiq, but you can sub this out for Resque, `delayed_job`, and other queues supported by ActiveJob and `carrierwave_backgrounder`.

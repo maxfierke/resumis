@@ -38,7 +38,6 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'devise', github: 'plataformatec/devise'
 
 # Exporting resumes to PDF
-gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
 # for encoding emails to prevent harvesting
