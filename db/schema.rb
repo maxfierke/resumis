@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507035543) do
+ActiveRecord::Schema.define(version: 20150507042242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,10 @@ ActiveRecord::Schema.define(version: 20150507035543) do
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  add_index "post_categories", ["slug"], name: "index_post_categories_on_slug", unique: true, using: :btree
+  add_index "post_categories", ["user_id"], name: "index_post_categories_on_user_id", using: :btree
 
   create_table "post_category_joinings", force: :cascade do |t|
     t.integer  "post_id"
@@ -271,6 +272,7 @@ ActiveRecord::Schema.define(version: 20150507035543) do
 
   add_index "work_experiences", ["user_id"], name: "index_work_experiences_on_user_id", using: :btree
 
+  add_foreign_key "post_categories", "users"
   add_foreign_key "post_category_joinings", "post_categories"
   add_foreign_key "post_category_joinings", "posts"
   add_foreign_key "posts", "users"

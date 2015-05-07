@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   has_many :work_experiences, dependent: :destroy
   has_many :education_experiences, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
+  has_many :skill_categories, dependent: :destroy
   has_many :user_types, dependent: :destroy
   has_many :types, through: :user_types
 
