@@ -9,6 +9,16 @@ class CreateUserDefaultsJob < ActiveJob::Base
         { slug: 'canceled', name: 'Canceled' },
         { slug: 'on-hold', name: 'On Hold' }
       ])
+
+      if user.developer?
+        SkillCategory.create([
+          { name: 'Languages' },
+          { name: 'Web Development Frameworks' },
+          { name: 'Database Servers' },
+          { name: 'Development Utilities' },
+          { name: 'Cloud Platforms' }
+        ])
+      end
     end
   end
 end
