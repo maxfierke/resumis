@@ -7,24 +7,25 @@
 </div>
 <% end %>
 
+<% @users.each_slice(3) do |slice| %>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="list-group">
-    <% @users.each do |user| %>
-      <%= link_to "#{request.protocol}#{u tenant_instance_hostname(user)}/", class: 'list-group-item', target: '_blank' do %>
-        <div class="media">
-          <div class="media-left">
+  <% slice.each do |user| %>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-body text-center">
+          <%= link_to "#{request.protocol}#{u tenant_instance_hostname(user)}/", class: 'thumbnail', target: '_blank' do %>
             <%= image_tag user.avatar_url, class: 'media-object', height: '64', alt: user.full_name %>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">
-              <%= user.full_name ? user.full_name : user.subdomain %> - <%= tenant_instance_hostname(user) %>
-            </h4>
-            <p class="lead"><%= user.tagline %></p>
-          </div>
+          <% end %>
+          <h4>
+            <%= user.full_name ? user.full_name : user.subdomain %>
+          </h4>
+          <a href="//<%= tenant_instance_hostname(user) %>"><%= tenant_instance_hostname(user) %></a>
+          <p class="lead">
+            <%= user.tagline %>
+          </p>
         </div>
-      <% end %>
-    <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
+<% end %>
