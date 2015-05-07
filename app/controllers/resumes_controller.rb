@@ -18,11 +18,10 @@ class ResumesController < ApplicationController
         format.json
         format.md
         format.pdf do
-          render :pdf           => @resume.name,
-                 :layout        => 'resume.pdf.erb',
-                 :template      => 'resumes/show.html.erb',
-                 :disable_smart_shrinking => true,
-                 :page_size     => 'Letter'
+          render pdf:           @resume.name,
+                 layout:        'resume.pdf.erb',
+                 template:      'resumes/show.html.erb',
+                 page_size:     'Letter'
         end
       end
     end
