@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
+  before_filter :disable_registration, only: [:new, :create, :destroy]
 
   layout "bare"
 
@@ -68,6 +69,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       profile_url(subdomain: resource.subdomain)
     else
       profile_url(host: canonical_host)
+    end
+  end
+
+  def disable_registration
+    if Rails.application.config.x.resumis.tenancy_mode == :single
+      head :forbidden
     end
   end
 
