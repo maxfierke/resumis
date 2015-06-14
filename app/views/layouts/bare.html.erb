@@ -33,7 +33,7 @@
             <%= link_to new_user_session_url, class: "navbar-btn btn btn-link" do %>
               Login to Resumis
             <% end %>
-            <% if Devise.mappings[:user].registerable? %>
+            <% if Devise.mappings[:user].registerable? && multi_tenancy? %>
               <%= link_to new_user_registration_url, class: "navbar-btn btn btn-primary" do %>
                 Sign Up
               <% end %>

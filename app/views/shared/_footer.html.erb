@@ -2,7 +2,7 @@
   <div class="container">
     <p>
       Copyright &copy; <%= current_tenant.copyright_range -%>
-      <% unless user_signed_in? %>
+      <% unless user_signed_in? || !multi_tenancy? %>
         &middot; <%= link_to "Login", new_user_session_url %>
       <% end %>
     </p>
