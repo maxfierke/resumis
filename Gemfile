@@ -6,6 +6,9 @@ gem 'rails', '4.2.2'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
+
+# use sprockets 2, until dependencies support 3
+gem 'sprockets', '~> 2.12.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
