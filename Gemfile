@@ -77,7 +77,7 @@ group :production do
   # use unicorn to run the app on production
   gem 'rails_12factor'
   gem 'unicorn'
-  gem 'fog'
+  gem 'fog', '~> 1.31.0'
 end
 
 group :development, :test do
