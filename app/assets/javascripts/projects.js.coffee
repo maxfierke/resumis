@@ -48,7 +48,7 @@ jQuery ($) ->
     populateLatestProject: ->
       $lp = $("#latest-project")
       if $lp.length > 0
-        $.getJSON "/projects", (data) ->
+        $.getJSON "/projects.json", (data) ->
           if data.projects.length > 0
             proj = data.projects[0]
             $lp.find(".project-title a").text(proj.name).prop "href", "/projects/" + proj.id
