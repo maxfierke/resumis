@@ -22,3 +22,5 @@
 .rbenv-vars
 .capistrano/metrics
 .idea
+
+/docker/custom-*.yml

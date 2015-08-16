@@ -1,0 +1,16 @@
+# used for web and worker roles
+app:
+  build: ..
+  environment:
+    RAILS_ENV: development
+    RESUMIS_CANONICAL_HOST: ~
+    RESUMIS_GOOGLE_CLIENT_ID: ~
+    RESUMIS_TENANCY_MODE: single
+    DATABASE_URL: postgres://postgres@db/resumis_development
+    REDIS_URL: redis://redis:6379/1
+db:
+  image: postgres:9.4.1
+  ports:
+    - "5432:5432"
+redis:
+  image: redis

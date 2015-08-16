@@ -9,3 +9,4 @@
 .env
 .rbenv-vars
 .capistrano/metrics
+/docker
