@@ -5,13 +5,12 @@ Rails.application.routes.draw do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
 
-  # TODO: Clean this up
-  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? 'accounts' : /.*/) do
+  constraints(AuthHostConstraint.new) do
     devise_for :users, path: 'auth/user',
                        controllers: { registrations: 'users/registrations'}
   end
 
-  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? '' : /.*/) do
+  constraints(BareHostConstraint.new) do
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints subdomain: (Rails.application.config.x.resumis.tenancy_mode == :multi ? /.+/ : /.*/) do
+  constraints(TenantHostConstraint.new) do
     resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
     resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable
     resources :resumes, only: [:show]
