@@ -5,10 +5,7 @@ class PostsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @posts = Post.order(id: :desc)
-    if (!user_signed_in? or current_user != current_tenant)
-      @posts = @posts.where(published: true)
-    end
+    @posts = Post.order(id: :desc).where(published: true)
 
     respond_to do |format|
       format.html
