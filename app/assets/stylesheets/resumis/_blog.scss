@@ -42,4 +42,9 @@
     font-family: $font-family-serif;
     font-size: $font-size-large;
     line-height: floor(($font-size-base * 2.0));
+
+    blockquote {
+      color: #A9A9A9;
+      border-left-width: 5px;
+    }
 }
