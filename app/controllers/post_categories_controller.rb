@@ -9,10 +9,8 @@ class PostCategoriesController < ApplicationController
   end
 
   def show
-    @posts = @post_category.posts
-    if (!user_signed_in? or current_user != current_tenant)
-      @posts = @posts.where(published: true)
-    end
+    @posts = @post_category.posts.where(published: true)
+
     render template: 'posts/index'
   end
 
