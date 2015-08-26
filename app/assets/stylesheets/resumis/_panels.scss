@@ -1,6 +1,29 @@
 // Resumis - based on Yeti 3.3.2 from Bootswatch
 // -----------------------------------------------------
 
+.panel {
+    .panel-left {
+        float: left;
+    }
+
+    .panel-right {
+        float: right;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .panel {
+        .panel-left {
+            float: none;
+            padding-bottom: 7px;
+        }
+
+        .panel-right {
+            float: none;
+        }
+    }
+}
+
 .panel-latest-project {
     margin-bottom: 0;
 

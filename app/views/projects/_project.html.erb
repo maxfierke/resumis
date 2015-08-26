@@ -1,7 +1,8 @@
 <section id="project_<%= project.id %>"
          class="panel panel-default panel-project <%= project.css_classes %>">
   <div class="panel-heading">
-    <h4 class="panel-title">
+    <h4 class="panel-title clearfix">
+      <div class="panel-left">
       <%= project.name %>
       <% if project.project_status and
             !(controller_name == 'resumes' and action_name == 'show') %>
@@ -9,7 +10,8 @@
           <%= project.project_status.name %>
         </span>
       <% end %>
-      <span class="pull-right date-range">
+      </div>
+      <div class="panel-right date-range">
         <%= project.date_range %>
         <% if user_signed_in? and
               project.user.id == current_user.id and
@@ -22,7 +24,7 @@
             <%= icon 'remove' %>
           <%- end -%>
         <% end %>
-      </span>
+      </div>
     </h4>
   </div>
   <div class="list-group">
@@ -53,19 +55,19 @@
   </div>
   <% if project.github_url.present? %>
   <footer class="panel-footer">
-    <%= icon('github', '') %>
+    <%= icon('github', '', class: 'fa-fw') %>
     <%= link_to "#{project.name} on GitHub", "https://github.com/#{project.github_url}" %>
   </footer>
   <% end %>
   <% if project.bandcamp_url.present? %>
   <footer class="panel-footer">
-    <%= icon('music', '') %>
+    <%= icon('music', '', class: 'fa-fw') %>
     <%= link_to "#{project.name} on Bandcamp", project.bandcamp_url %>
   </footer>
   <% end %>
   <% if project.penflip_url.present? %>
   <footer class="panel-footer">
-    <%= icon('pencil', '') %>
+    <%= icon('pencil', '', class: 'fa-fw') %>
     <%= link_to "#{project.name} on Penflip", project.penflip_url %>
   </footer>
   <% end %>
