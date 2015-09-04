@@ -2,6 +2,11 @@ json.extract! project, :id, :name, :short_description, :start_date, :end_date, :
 
 json.description project.description
 json.description_html markdown(project.description)
+json.date_range project.date_range
+
+json.vimeo_url project.vimeo_url if project.vimeo_url
+json.youtube_url project.youtube_url if project.youtube_url
+json.soundcloud_url project.soundcloud_url if project.soundcloud_url
 
 json.status do
   json.id project.project_status.id
