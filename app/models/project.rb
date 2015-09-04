@@ -21,6 +21,7 @@ class Project < ActiveRecord::Base
     "#{start_month_year} — #{end_month_year}"
   end
 
+  # TODO: remove. deprecated
   def css_classes
     classes = []
     if end_date
@@ -41,12 +42,12 @@ class Project < ActiveRecord::Base
   def links
     links = []
 
-    links << { rel: 'bandcamp', href: bandcamp_url } if bandcamp_url.present?
-    links << { rel: 'github', href: "https://github.com/#{github_url}" } if github_url.present?
-    links << { rel: 'penflip', href: "https://penflip.com/#{penflip_url}" } if penflip_url.present?
-    links << { rel: 'soundcloud', href: "https://soundcloud.com/#{soundcloud_url}"} if soundcloud_url.present?
-    links << { rel: 'vimeo', href: "https://vimeo.com/#{vimeo_url}" } if vimeo_url.present?
-    links << { rel: 'youtube', href: "https://youtube.com/watch?v=#{youtube_url}"} if youtube_url.present?
+    links << { rel: 'bandcamp', href: bandcamp_url, label: "#{name} on Bandcamp" } if bandcamp_url.present?
+    links << { rel: 'github', href: "https://github.com/#{github_url}", label: "#{name} on GitHub" } if github_url.present?
+    links << { rel: 'penflip', href: "https://penflip.com/#{penflip_url}", label: "#{name} on Penflip" } if penflip_url.present?
+    links << { rel: 'soundcloud', href: "https://soundcloud.com/#{soundcloud_url}", label: "#{name} on Soundcloud"} if soundcloud_url.present?
+    links << { rel: 'vimeo', href: "https://vimeo.com/#{vimeo_url}", label: "#{name} on Vimeo" } if vimeo_url.present?
+    links << { rel: 'youtube', href: "https://youtube.com/watch?v=#{youtube_url}", label: "#{name} on YouTube"} if youtube_url.present?
 
     links
   end
