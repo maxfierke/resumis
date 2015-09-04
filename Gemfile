@@ -70,6 +70,9 @@ gem 'sinatra', :require => nil # for sidekiq web UI
 # pagination
 gem 'kaminari'
 
+# react
+gem 'react-rails', '~> 1.2'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
