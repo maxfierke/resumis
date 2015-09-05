@@ -254,6 +254,15 @@ input[type="checkbox"] {
   margin-top: 1px;
 }
 
+select.form-control:not([multiple]) {
+  background-color: $gray-darker;
+}
+
+select.form-control:not([multiple]):disabled {
+  background-color: $gray-dark;
+  color: $gray;
+}
+
 // Navs =======================================================================
 
 .nav {
