@@ -201,6 +201,12 @@ body.bare {
         background-size: cover;
         background-repeat: no-repeat;
     }
+
+    .btn-group-responsive,
+    .btn-group-justified > .btn-group-responsive {
+        width: 100%;
+        display: block;
+    }
 }
 
 @media screen and (min-width: 768px) {
