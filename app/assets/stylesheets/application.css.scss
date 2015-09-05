@@ -7,10 +7,10 @@
 @import "bootstrap-markdown";
 
 @import "resumis/blog";
-@import "resumis/labels";
+@import "resumis/components/labels";
+@import "resumis/components/navbar";
+@import "resumis/components/panels";
 @import "resumis/misc";
-@import "resumis/navbar";
-@import "resumis/panels";
 @import "resumis/structure";
 
 body {

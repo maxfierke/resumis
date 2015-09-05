@@ -83,7 +83,7 @@
     .sidebar {
         position: fixed;
         left: 0;
-        min-height: 100%;
+        height: calc(100% - 130px);;
         overflow-y: scroll;
     }
 }

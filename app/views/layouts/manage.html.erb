@@ -158,6 +158,18 @@
       <div class="manage-col-right col-sm-9 col-sm-push-3 col-lg-10 col-lg-push-2">
         <%= bootstrap_flash %>
         <%= yield %>
+        <div class="actionbar actionbar-fixed-bottom">
+          <% if content_for?(:actionbar_left) %>
+          <div class="actionbar-left">
+            <%= yield(:actionbar_left) %>
+          </div>
+          <% end %>
+          <% if content_for?(:actionbar_right) %>
+          <div class="actionbar-right">
+            <%= yield(:actionbar_right) %>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </body>
