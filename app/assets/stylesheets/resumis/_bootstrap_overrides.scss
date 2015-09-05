@@ -424,6 +424,11 @@ select.form-control:not([multiple]):disabled {
     > li > a {
       padding: 12px 15px;
     }
+
+    &.right {
+      left: auto;
+      right: 0;
+    }
   }
 
   &-header {
