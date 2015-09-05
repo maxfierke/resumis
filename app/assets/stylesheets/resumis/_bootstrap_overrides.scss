@@ -354,6 +354,7 @@ select.form-control:not([multiple]):disabled {
   > .list-group-item.active,
   > .list-group-item:active,
   > .list-group-item:hover {
+    background-color: darken($gray-dark, 3%);
     border-color: transparent;
     border-left-color: $list-group-active-border;
   }
