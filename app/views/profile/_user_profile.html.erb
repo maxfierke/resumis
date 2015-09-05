@@ -23,80 +23,72 @@
       <%= image_tag user.avatar_url %>
       <small><%= user.avatar_label if user.avatar_label.present? %></small>
     </span>
-    <ul class="list-group">
+    <div class="list-group">
       <% if current_tenant.github_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="https://github.com/<%= current_tenant.github_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">GitHub:</span>
-        <a href="https://github.com/<%= current_tenant.github_handle %>" target="_blank">
-          @<%= current_tenant.github_handle %>
-        </a>
-      </li>
+        @<%= current_tenant.github_handle %>
+      </a>
       <% end %>
       <% if current_tenant.googleplus_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="https://plus.google.com/<%= current_tenant.googleplus_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Google+:</span>
-        <a href="https://plus.google.com/<%= current_tenant.googleplus_handle %>" target="_blank">
-          <%= current_tenant.googleplus_handle %>
-        </a>
-      </li>
+        <%= current_tenant.googleplus_handle %>
+      </a>
       <% end %>
       <% if current_tenant.linkedin_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="http://www.linkedin.com/in/<%= current_tenant.linkedin_handle %>/"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">LinkedIn:</span>
-        <a href="http://www.linkedin.com/in/<%= current_tenant.linkedin_handle %>/" target="_blank">
-          <%= current_tenant.linkedin_handle %>
-        </a>
-      </li>
+        <%= current_tenant.linkedin_handle %>
+      </a>
       <% end %>
       <% if current_tenant.soundcloud_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="https://soundcloud.com/<%= current_tenant.soundcloud_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">SoundCloud:</span>
-        <a href="https://soundcloud.com/<%= current_tenant.soundcloud_handle %>" target="_blank">
-          <%= current_tenant.soundcloud_handle %>
-        </a>
-      </li>
+        <%= current_tenant.soundcloud_handle %>
+      </a>
       <% end %>
       <% if current_tenant.tumblr_url.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="<%= current_tenant.tumblr_url %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('tumblr-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Tumblr:</span>
-        <a href="<%= current_tenant.tumblr_url %>" target="_blank">
-          <%= current_tenant.tumblr_url %>
-        </a>
-      </li>
+        <%= current_tenant.tumblr_url %>
+      </a>
       <% end %>
       <% if current_tenant.twitter_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="https://twitter.com/<%= current_tenant.twitter_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Twitter:</span>
-        <a href="https://twitter.com/<%= current_tenant.twitter_handle %>" target="_blank">
-          @<%= current_tenant.twitter_handle %>
-        </a>
-      </li>
+        @<%= current_tenant.twitter_handle %>
+      </a>
       <% end %>
       <% if current_tenant.vimeo_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="http://vimeo.com/<%= current_tenant.vimeo_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Vimeo:</span>
-        <a href="http://vimeo.com/<%= current_tenant.vimeo_handle %>" target="_blank">
-          <%= current_tenant.vimeo_handle %>
-        </a>
-      </li>
+        <%= current_tenant.vimeo_handle %>
+      </a>
       <% end %>
       <% if current_tenant.youtube_handle.present? %>
-      <li class="list-group-item list-group-item-social">
+      <a href="https://youtube.com/user/<%= current_tenant.youtube_handle %>"
+        target="_blank" class="list-group-item list-group-item-social">
         <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">YouTube:</span>
-        <a href="https://youtube.com/user/<%= current_tenant.youtube_handle %>" target="_blank">
-          <%= current_tenant.youtube_handle %>
-        </a>
-      </li>
+        <%= current_tenant.youtube_handle %>
+      </a>
       <% end %>
-    </ul>
+    </div>
     <% if user_signed_in? and @user.id == current_user.id %>
     <div class="form-group">
       <%= link_to manage_edit_profile_path, :class => 'btn btn-default btn-block' do %>
