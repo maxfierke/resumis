@@ -1,6 +1,13 @@
 // Resumis - based on Yeti 3.3.2 from Bootswatch
 // -----------------------------------------------------
 
+@mixin reset-sidebar-layout() {
+    // Override grid framework mixin position and padding
+    position: fixed;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .nav-tiles {
     li > a {
         border-bottom: 1px solid $gray-dark;
@@ -69,9 +76,16 @@
 .sidebar {
     background-color: $gray-darker;
     border-right: 1px solid $gray-dark;
-    box-shadow: inset rgba(0,0,0,0.1) 1px 0 10px;
+    box-shadow: inset rgba(0,0,0,0.1) 1px 0 10px, rgba(0,0,0,0.2) 3px 0 7px;
     text-align: center;
-    padding: 15px 0;
+    padding: 0;
+    z-index: 1029;
+
+    transition: width 100ms linear, font-size 100ms linear;
+
+    .expanded-only {
+        transition: width 100ms linear, font-size 100ms linear;
+    }
 
     footer {
         padding-top: 15px;
@@ -79,16 +93,100 @@
     }
 }
 
-@media screen and (min-width: 768px) {
-    .sidebar {
-        position: fixed;
-        left: 0;
-        height: calc(100% - 130px);;
-        overflow-y: scroll;
+.sidebar-toggle {
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    padding: 9px 10px;
+    margin-top: 15.5px;
+    margin-bottom: 15.5px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    .icon-bar {
+        background-color: #fff;
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+    }
+
+    .icon-bar + .icon-bar {
+        margin-top: 4px;
     }
 }
 
-@media screen and (min-width: 1199px) {
+@media screen and (max-width: $screen-xs-max) {
+    .sidebar {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+}
+
+@media screen and (min-width: $screen-sm-min) {
+    .sidebar {
+        left: 0;
+        height: calc(100% - #{$navbar-height}) !important;
+        padding-bottom: 70px;
+        overflow-y: scroll;
+
+        &.collapse,
+        &.collapsing {
+            &:not(.in) {
+                @include make-sm-column(1);
+                @include reset-sidebar-layout();
+                display: block;
+                width: auto !important;
+            }
+
+            &.in {
+                @include make-sm-column(3);
+                @include reset-sidebar-layout();
+            }
+
+            .expanded-only {
+                font-size: 0;
+                width: 0;
+                display: none;
+            }
+
+            .open .expanded-only,
+            &.in .expanded-only {
+                width: auto;
+                font-size: 1em;
+                display: inline-block;
+            }
+
+            .collapsed-only {
+                font-size: 1em;
+                width: auto;
+            }
+
+            &.in .collapsed-only {
+                width: 0;
+                font-size: 0;
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $screen-md-min) {
+}
+
+@media screen and (min-width: $screen-lg-min) {
+    .sidebar {
+        &.collapse,
+        &.collapsing {
+            &.in {
+                @include make-lg-column(2);
+                @include reset-sidebar-layout();
+            }
+        }
+    }
+
     .nav-tiles {
         .dropdown-menu {
             li > a {
