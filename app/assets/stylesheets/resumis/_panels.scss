@@ -73,6 +73,10 @@
                 vertical-align: baseline;
             }
         }
+
+        .label:not(:first-child) {
+            margin-left: 10px;
+        }
     }
 
     & > .list-group {
