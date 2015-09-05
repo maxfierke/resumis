@@ -351,6 +351,15 @@ select.form-control:not([multiple]):disabled {
     border-left-width: 3px;
   }
 
+  > .list-group-item-inline-block {
+    display: inline-block;
+    margin-bottom: 7px;
+
+    .btn {
+        line-height: 1;
+    }
+  }
+
   > .list-group-item.active,
   > .list-group-item:active,
   > .list-group-item:hover {
