@@ -1,0 +1,23 @@
+// Page headers
+.page-header {
+    @include clearfix();
+
+    .page-header-left {
+        float: left;
+    }
+    .page-header-right {
+        float: right;
+        margin-top: 33px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .page-header {
+        .page-header-left {
+            float: none;
+        }
+        .page-header-right {
+            float: none;
+        }
+    }
+}
