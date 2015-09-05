@@ -62,7 +62,7 @@
           <div class="form-group">
             <%= f.label :header_media_type, :class => 'control-label' %>
             <div>
-              <%= f.select :header_media_type, User.header_media_types.keys.to_a.map { |w| [w.humanize, w] } %>
+              <%= f.select :header_media_type, User.header_media_types.keys.to_a.map { |w| [w.humanize, w] }, {}, { class: 'form-control' } %>
             </div>
           </div>
 
