@@ -58,6 +58,10 @@ Rails.application.routes.draw do
     get 'blog' => 'posts#index'
     get 'profile' => 'profile#show'
     get 'about', to: redirect('/')
+
+    if Rails.application.config.x.resumis.tenancy_mode == :multi
+      get 'auth/user/*path', to: redirect { |path_params, req| "#{req.protocol}accounts.#{req.domain}#{req.fullpath}" }
+    end
   end
 
   root 'profile#show'
