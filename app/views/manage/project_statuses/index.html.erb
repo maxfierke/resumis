@@ -28,8 +28,12 @@
   </tbody>
 </table>
 
-<%= link_to new_manage_project_status_path, :class => 'btn btn-primary' do %>
-  <%= icon 'plus', 'New Status' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @project_statuses %>
 <% end %>
 
-<%= paginate @project_statuses %>
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_project_status_path, :class => 'btn btn-primary' do %>
+    <%= icon 'plus', 'New Status' %>
+  <% end %>
+<% end %>

@@ -2,8 +2,12 @@
 
 <%= render partial: 'education_experiences/education_experience', collection: @education_experiences %>
 
-<%= link_to new_manage_education_experience_path, :class => 'btn btn-primary' do %>
-  <%= icon 'plus', 'New Education Experience' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @education_experiences %>
 <% end %>
 
-<%= paginate @education_experiences %>
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_education_experience_path, :class => 'btn btn-primary' do %>
+    <%= icon 'plus', 'New Education Experience' %>
+  <% end %>
+<% end %>

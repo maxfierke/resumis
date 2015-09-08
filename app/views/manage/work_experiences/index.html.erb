@@ -2,8 +2,12 @@
 
 <%= render partial: 'work_experiences/work_experience', collection: @work_experiences %>
 
-<%= link_to new_manage_work_experience_path, :class => 'btn btn-primary' do %>
-  <%= icon 'plus', 'New Work Experience' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @work_experiences %>
 <% end %>
 
-<%= paginate @work_experiences %>
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_work_experience_path, :class => 'btn btn-primary' do %>
+    <%= icon 'plus', 'New Work Experience' %>
+  <% end %>
+<% end %>

@@ -39,8 +39,12 @@
   </tbody>
 </table>
 
-<%= link_to new_manage_post_path, class: 'btn btn-primary' do %>
-  <%= icon 'plus', 'New Post' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @posts %>
 <% end %>
 
-<%= paginate @posts %>
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_post_path, class: 'btn btn-primary' do %>
+    <%= icon 'plus', 'New Post' %>
+  <% end %>
+<% end %>

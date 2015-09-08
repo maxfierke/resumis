@@ -26,6 +26,10 @@
   </tbody>
 </table>
 
-<%= link_to "New Category", new_manage_skill_category_path, :class => 'btn btn-primary' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @skill_categories %>
+<% end %>
 
-<%= paginate @skill_categories %>
+<% content_for :actionbar_right do %>
+  <%= link_to "New Category", new_manage_skill_category_path, :class => 'btn btn-primary' %>
+<% end %>

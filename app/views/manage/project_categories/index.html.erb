@@ -28,8 +28,12 @@
   </tbody>
 </table>
 
-<%= link_to new_manage_project_category_path, :class => 'btn btn-primary' do %>
-  <%= icon 'plus', 'New Project Category' %>
+<% content_for :actionbar_left do %>
+  <%= paginate @project_categories %>
 <% end %>
 
-<%= paginate @project_categories %>
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_project_category_path, :class => 'btn btn-primary' do %>
+    <%= icon 'plus', 'New Project Category' %>
+  <% end %>
+<% end %>
