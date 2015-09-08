@@ -46,15 +46,10 @@
                 </span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li class="user-details">
-                  <div class="thumbnail avatar">
-                    <%= image_tag current_user.avatar_url, width: 80, class: 'img-circle img-responsive' %>
-                  </div>
-                  <p class="text-center">
-                    <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank' do %>
-                      View <%= icon 'external-link', '' %>
-                    <% end %>
-                  </p>
+                <li>
+                  <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank' do %>
+                    <%= icon 'external-link', 'View Site' %>
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to manage_edit_profile_path do %>
