@@ -15,14 +15,22 @@ body {
     padding-top: $navbar-height;
 }
 
-body > .container-fluid {
+.manage-container {
+    margin-right: auto;
+    margin-left: auto;
     padding-bottom: 15px;
+    @include clearfix();
 }
 
 .manage-col-right {
     margin-top: 30px;
     margin-bottom: 70px;
-    padding-left: 80px;
+}
+
+@media screen and (min-width: $screen-sm-min) {
+    .manage-col-right {
+        padding-left: 95px
+    }
 }
 
 .navbar-default .navbar-brand {
