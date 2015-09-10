@@ -67,6 +67,10 @@
         display: inline-block !important;
     }
 
+    .navbar-title:before {
+        display: none;
+    }
+
     .navbar .navbar-toggle {
         border-color: transparent;
     }
