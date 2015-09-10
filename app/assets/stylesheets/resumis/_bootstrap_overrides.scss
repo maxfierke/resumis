@@ -360,9 +360,9 @@ select.form-control:not([multiple]):disabled {
     }
   }
 
-  > .list-group-item.active,
-  > .list-group-item:active,
-  > .list-group-item:hover {
+  > a.list-group-item.active,
+  > a.list-group-item:active,
+  > a.list-group-item:hover {
     background-color: darken($gray-dark, 3%);
     border-left-color: $list-group-active-border;
     border-left-width: 3px;
