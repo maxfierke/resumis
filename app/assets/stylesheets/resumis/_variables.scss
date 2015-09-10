@@ -826,7 +826,7 @@ $kbd-bg:                      #333;
 
 $pre-bg:                      #333;
 $pre-color:                   #f5f5f5;
-$pre-border-color:            $table-border-color;
+$pre-border-color:            darken($gray-dark, 3%);;
 $pre-scrollable-max-height:   340px;
 
 

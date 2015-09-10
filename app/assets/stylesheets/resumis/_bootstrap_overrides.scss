@@ -347,8 +347,8 @@ select.form-control:not([multiple]):disabled {
   font-weight: 300;
 
   > .list-group-item {
-    border-color: transparent;
-    border-left-width: 3px;
+    border-color: darken($gray-dark, 3%);
+    transition: border-left-width 100ms linear, border-left-color 100ms linear;
   }
 
   > .list-group-item-inline-block {
@@ -364,8 +364,8 @@ select.form-control:not([multiple]):disabled {
   > .list-group-item:active,
   > .list-group-item:hover {
     background-color: darken($gray-dark, 3%);
-    border-color: transparent;
     border-left-color: $list-group-active-border;
+    border-left-width: 3px;
   }
 }
 
