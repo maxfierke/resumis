@@ -36,10 +36,12 @@ module ApplicationHelper
     end
   end
 
+  # TODO: Awful. Do this better.
   def post_categories
     PostCategory.all
   end
 
+  # TODO: Awful. Gross. Weird.
   def google_client_id
     Rails.application.config.x.resumis.google_client_id
   end
