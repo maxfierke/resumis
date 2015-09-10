@@ -1,43 +1,38 @@
 <% page_title "Blog Posts" %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Published</th>
-      <th>Title</th>
-      <th>Last Updated</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <% if post.published && post.published_on %>
-            <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
-          <% else %>
-            <span class="label label-default">Draft</span>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to post_url(post) do %>
-            <%= post.title %>
-          <% end %>
-        </td>
-        <td><%= time_ago_in_words(post.updated_at) %> ago</td>
-        <td>
+<div class="list-group">
+  <% @posts.each do |post| %>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col-xs-10 col-sm-11">
+          <h4>
+            <%= link_to post_url(post) do %>
+              <%= post.title %>
+            <% end %>
+          </h4>
+          <h5>
+            <% if post.published && post.published_on %>
+              <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
+            <% else %>
+              <span class="label label-default">Draft</span>
+            <% end %>
+          </h5>
+          <h6 class="text-muted">
+            Updated <%= time_ago_in_words(post.updated_at) %> ago
+          </h6>
+        </div>
+        <div class="col-xs-2 col-sm-1">
           <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
             <%= icon 'pencil', '' %>
           <% end %>
           <%= link_to manage_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
             <%= icon 'remove', '' %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <% content_for :actionbar_left do %>
   <%= paginate @posts %>
