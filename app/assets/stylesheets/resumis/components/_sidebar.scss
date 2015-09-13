@@ -15,7 +15,8 @@
         padding: 15px;
         font-size: ceil(($font-size-base * 1.1));
         text-align: left;
-        transition: all 0.2s linear;
+        transition: width 100ms linear, background-color 150ms linear;
+        z-index: 1029;
 
         &:hover, &:active, &.active, &:focus {
             background-color: $gray-dark;
