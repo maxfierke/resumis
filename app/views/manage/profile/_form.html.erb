@@ -223,10 +223,14 @@
     </div>
   </div>
 </div>
-<hr />
-<div class="form-group">
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-              request.referrer || manage_dashboard_path, :class => 'btn btn-default' %>
+
+<div class="actionbar actionbar-fixed-bottom">
+  <div class="actionbar-left">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                request.referrer || manage_dashboard_path, :class => 'btn btn-default' %>
+  </div>
+  <div class="actionbar-right">
+    <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
+  </div>
 </div>
 <% end %>

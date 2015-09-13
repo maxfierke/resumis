@@ -4,9 +4,13 @@
     <%= f.text_field :name, :class => 'text_field form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  request.referrer || manage_project_categories_path, :class => 'btn btn-default' %>
+  <div class="actionbar actionbar-fixed-bottom">
+    <div class="actionbar-left">
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    request.referrer || manage_project_categories_path, :class => 'btn btn-default' %>
+    </div>
+    <div class="actionbar-right">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

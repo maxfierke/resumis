@@ -60,15 +60,6 @@
               </div>
             </div>
           </div>
-          <div class="list-group-item">
-            <%= f.submit nil, :class => 'btn btn-primary btn-block' %>
-            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                          manage_posts_path, :class => 'btn btn-default btn-block' %>
-            <% unless @post.new_record? %>
-              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          manage_post_path(@post), :method => 'DELETE', data: { confirm: 'Are you sure?' }, :class => 'btn btn-link btn-block link-danger' %>
-            <% end %>
-          </div>
         </div>
       </div>
       <div class="panel panel-default">
@@ -89,6 +80,20 @@
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="actionbar actionbar-fixed-bottom">
+    <div class="actionbar-left">
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    manage_posts_path, :class => 'btn btn-default' %>
+    </div>
+    <div class="actionbar-right">
+      <% unless @post.new_record? %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    manage_post_path(@post), :method => 'DELETE', data: { confirm: 'Are you sure?' }, :class => 'btn btn-link link-danger' %>
+      <% end %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

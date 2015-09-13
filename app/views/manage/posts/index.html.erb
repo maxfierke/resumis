@@ -9,14 +9,12 @@
             <%= link_to post_url(post) do %>
               <%= post.title %>
             <% end %>
-          </h4>
-          <h5>
             <% if post.published && post.published_on %>
               <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
             <% else %>
               <span class="label label-default">Draft</span>
             <% end %>
-          </h5>
+          </h4>
           <h6 class="text-muted">
             Updated <%= time_ago_in_words(post.updated_at) %> ago
           </h6>

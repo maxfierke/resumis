@@ -95,6 +95,9 @@
                   manage_resumes_path, :class => 'btn btn-default' %>
     </div>
     <div class="actionbar-right">
+      <% unless @resume.new_record? %>
+        <small class="text-muted">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
+      <% end %>
       <%= f.submit nil, :class => 'btn btn-primary' %>
     </div>
   </div>
