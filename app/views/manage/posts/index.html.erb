@@ -7,7 +7,7 @@
         <div class="col-xs-10 col-sm-11">
           <h4>
             <%= link_to post_url(post) do %>
-              <%= post.title %>
+              <%= post.title -%>
             <% end %>
             <% if post.published && post.published_on %>
               <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
