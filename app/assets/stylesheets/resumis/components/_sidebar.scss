@@ -60,6 +60,7 @@
         li > a {
             padding-left: 30px;
             transition: all 0.2s linear;
+            z-index: 1029;
 
             &:before {
                 @include fa-icon();
