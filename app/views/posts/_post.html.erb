@@ -10,7 +10,11 @@
     </li>
     <li>
       <%= icon 'folder', '', class: 'fa-fw' %>
-      <%= post.post_categories.pluck(:name).join(', ') %>
+      <% if post.post_categories.count > 0 %>
+        <%= post.post_categories.pluck(:name).join(', ') %>
+      <% else %>
+        Uncategorized
+      <% end %>
     </li>
   </ul>
 </div>
