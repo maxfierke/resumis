@@ -446,6 +446,10 @@ select.form-control:not([multiple]):disabled {
     font-size: 9px;
     text-transform: uppercase;
   }
+
+  &-backdrop {
+    position: static;
+  }
 }
 
 .popover {
