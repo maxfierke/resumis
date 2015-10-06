@@ -14,16 +14,20 @@ RSpec.describe User, type: :model do
     expect(FactoryGirl.build(:user, last_name: nil)).not_to be_valid
   end
 
-  it 'is invalid without a subdomain in multi-tenancy mode' do
-    expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
-    expect(FactoryGirl.build(:user, subdomain: nil)).not_to be_valid
-  end
+  describe 'in multi-tenancy mode' do
+    before { Rails.application.config.x.resumis.tenancy_mode = :multi }
 
-  it 'needs a unique subdomain in multi-tenancy mode' do
-    expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
-    first_user = FactoryGirl.create(:user)
+    it 'is invalid without a subdomain in multi-tenancy mode' do
+      expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
+      expect(FactoryGirl.build(:user, subdomain: nil)).not_to be_valid
+    end
 
-    expect(FactoryGirl.build(:user, subdomain: first_user.subdomain)).not_to be_valid
+    it 'needs a unique subdomain in multi-tenancy mode' do
+      expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
+      first_user = FactoryGirl.create(:user)
+
+      expect(FactoryGirl.build(:user, subdomain: first_user.subdomain)).not_to be_valid
+    end
   end
 
   it 'can not use a reserved subdomain as its subdomain' do
