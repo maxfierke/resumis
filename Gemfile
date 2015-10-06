@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 5.0.3'
 # use sprockets 2, until dependencies support 3
 gem 'sprockets', '~> 2.12.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 2.7.2'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -63,7 +63,7 @@ gem 'mini_magick'
 
 # queues are cool
 gem 'hiredis'
-gem 'sidekiq'
+gem 'sidekiq', '>= 3.4.0'
 gem 'sidekiq-failures'
 gem 'sinatra', :require => nil # for sidekiq web UI
 
