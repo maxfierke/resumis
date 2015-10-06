@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'in multi-tenancy mode' do
-    before { Rails.application.config.x.resumis.tenancy_mode = :multi }
+    before(:each) { Rails.application.config.x.resumis.tenancy_mode = :multi }
 
     it 'is invalid without a subdomain in multi-tenancy mode' do
       expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
