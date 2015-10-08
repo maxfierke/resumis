@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :subdomain, presence: Rails.application.config.x.resumis.tenancy_mode == :multi,
+  validates :subdomain, presence: :multi_tenancy?,
                         uniqueness: true,
                         case_sensitive: false,
                         exclusion: { in: Rails.application.config.x.resumis.excluded_subdomains,
@@ -105,5 +105,9 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def multi_tenancy?
+    Rails.application.config.x.resumis.tenancy_mode == :multi
   end
 end
