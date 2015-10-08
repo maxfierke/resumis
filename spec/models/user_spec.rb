@@ -15,18 +15,22 @@ RSpec.describe User, type: :model do
   end
 
   describe 'in multi-tenancy mode' do
-    before(:each) { Rails.application.config.x.resumis.tenancy_mode = :multi }
+    before { stub_tenancy_mode }
 
-    it 'is invalid without a subdomain in multi-tenancy mode' do
+    it 'is invalid without a subdomain' do
       expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
       expect(FactoryGirl.build(:user, subdomain: nil)).not_to be_valid
     end
 
-    it 'needs a unique subdomain in multi-tenancy mode' do
+    it 'needs a unique subdomain' do
       expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
       first_user = FactoryGirl.create(:user)
 
       expect(FactoryGirl.build(:user, subdomain: first_user.subdomain)).not_to be_valid
+    end
+
+    def stub_tenancy_mode
+      allow(Rails.application.config.x.resumis).to receive(:tenancy_mode).and_return(:multi)
     end
   end
 
