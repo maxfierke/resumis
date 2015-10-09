@@ -12,7 +12,19 @@ RSpec.describe Post, type: :model do
     expect(FactoryGirl.build(:post, title: nil)).not_to be_valid
   end
 
-  it 'is invalid with a duplicate title (by user)'
-  it 'is invalid with a title less than 3 characters'
-  it 'is invalid with a title greater than 60 characters'
+  it 'is invalid with a duplicate title (by user)' do
+    FactoryGirl.create(:post, title: 'I am a post')
+
+    expect(FactoryGirl.build(:post, title: 'I am a post')).not_to be_valid
+  end
+
+  it 'is invalid with a title less than 3 characters' do
+    expect(FactoryGirl.build(:post, title: 'ab')).not_to be_valid
+  end
+
+  it 'is invalid with a title greater than 60 characters' do
+    long_title = Faker::Lorem.characters(61)
+
+    expect(FactoryGirl.build(:post, title: long_title)).not_to be_valid
+  end
 end
