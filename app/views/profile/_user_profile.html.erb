@@ -48,6 +48,14 @@
         <%= current_tenant.linkedin_handle %>
       </a>
       <% end %>
+      <% if current_tenant.medium_handle.present? %>
+      <a href="https://medium.com/@<%= current_tenant.medium_handle %>/"
+        target="_blank" class="list-group-item list-group-item-social">
+        <%= icon('medium', '', class: 'fa-fw fa-2x') %>
+        <span class="sr-only">Medium:</span>
+        <%= current_tenant.medium_handle %>
+      </a>
+      <% end %>
       <% if current_tenant.soundcloud_handle.present? %>
       <a href="https://soundcloud.com/<%= current_tenant.soundcloud_handle %>"
         target="_blank" class="list-group-item list-group-item-social">

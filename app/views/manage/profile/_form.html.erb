@@ -150,6 +150,17 @@
             <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
           </div>
         </div>
+        <div class="form-group">
+          <%= f.label :medium_handle, :class => 'control-label col-xs-2 col-md-1' do %>
+            <%= icon('medium', '', class: 'fa-fw fa-2x') %>
+          <% end %>
+          <div class="col-xs-10 col-md-9">
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <%= f.text_field :medium_handle, :class => 'text_field form-control' %>
+            </div>
+          </div>
+        </div>
 
         <% if @user.musician? %>
         <div class="form-group">

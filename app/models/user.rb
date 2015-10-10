@@ -99,6 +99,7 @@ class User < ActiveRecord::Base
     networks << { network: 'twitter', username: twitter_handle, url: "https://twitter.com/#{twitter_handle}" } if twitter_handle.present?
     networks << { network: 'vimeo', username: vimeo_handle, url: "http://vimeo.com/#{vimeo_handle}" } if vimeo_handle.present?
     networks << { network: 'youtube', username: youtube_handle, url: "https://youtube.com/user/#{youtube_handle}"} if youtube_handle.present?
+    networks << { network: 'medium', username: medium_handle, url: "https://medium.com/@#{medium_handle}"} if medium_handle.present?
 
     networks
   end
