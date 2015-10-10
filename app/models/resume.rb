@@ -10,4 +10,7 @@ class Resume < ActiveRecord::Base
   has_many :work_experiences, through: :resume_work_experiences
 
   acts_as_tenant(:user)
+
+  validates :name, presence: true
+  validates_uniqueness_to_tenant :name
 end
