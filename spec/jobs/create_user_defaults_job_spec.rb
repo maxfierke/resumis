@@ -12,11 +12,13 @@ RSpec.describe CreateUserDefaultsJob, :type => :job do
   end
 
   context 'developers' do
-    let(:developer_type) { FactoryGirl.create(:type, slug: 'developer') }
+    let (:user) do
+      FactoryGirl.create(:user, types: [
+        Type.first_or_create(slug: 'developer', name: 'Developer')
+      ])
+    end
 
     it 'should create default developer skill categories' do
-      user = FactoryGirl.create(:user, types: [developer_type])
-
       CreateUserDefaultsJob.new().perform(user)
 
       ActsAsTenant.with_tenant(user) do
