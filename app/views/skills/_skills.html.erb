@@ -1,7 +1,12 @@
 <% skills_by_cat.each_slice(3) do |slice| %>
   <div class="row">
     <% slice.each_with_index do |skill_cat, index| %>
+    <%# Nasty bit o' hack to get columns working under PDF %>
+    <% if request.format == :pdf %>
+    <div class="col-xs-4">
+    <% else %>
     <div class="col-sm-4">
+    <% end %>
       <h4><%= skill_cat.name %></h4>
       <ul>
         <% skill_cat.skills.each do |skill| %>
