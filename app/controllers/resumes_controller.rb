@@ -21,7 +21,8 @@ class ResumesController < ApplicationController
           render pdf:           @resume.name,
                  layout:        'resume.pdf.erb',
                  template:      'resumes/show.html.erb',
-                 page_size:     'Letter'
+                 page_size:     'Letter',
+                 print_media_type: false
         end
       end
     end
