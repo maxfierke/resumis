@@ -1,7 +1,7 @@
 class ProjectStatus extends React.Component {
   render() {
     return (
-      <span className={"label label-default label-" + this.props.status.slug}>
+      <span className={"project-status label label-default label-" + this.props.status.slug}>
         {this.props.status.name}
       </span>
     );
