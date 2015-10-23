@@ -10,6 +10,7 @@ $panel-default-heading-bg:    transparent;
 $panel-body-padding:          5px;
 $panel-heading-padding:       2px 5px;
 @import "bootstrap";
+@import "resumis/components/panels";
 
 h1, .h1, h2, .h2, h3, .h3 {
   margin-top: 10px;
@@ -40,8 +41,10 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-bottom: 5px;
 
     .panel-heading {
-        border: none;
+        border-top: 1px solid #efefef;
         border-bottom: 1px solid #efefef;
+        background-color: #fefefe;
+        border-radius: 0;
         padding: 2px 0;
 
         .panel-title {
@@ -54,13 +57,32 @@ h1, .h1, h2, .h2, h3, .h3 {
     }
 }
 
-.project-status {
+.panel-project > .list-group,
+.panel-education-experience > .list-group,
+.panel-work-experience > .list-group {
+    font-size: $font-size-base;
+    line-height: $line-height-computed;
+}
+
+.project-status.label {
     display: none;
 }
 
 .section-header {
     border-bottom: 1px solid #efefef;
     padding: 7px 0;
+}
+
+@media screen and (max-width: 767px) {
+    .panel {
+        .panel-left {
+            float: left;
+        }
+
+        .panel-right {
+            float: right;
+        }
+    }
 }
 
 @media print {
