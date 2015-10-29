@@ -16,10 +16,10 @@
 <h3 class="section-header">Relevant Skills</h3>
 <%= render :partial => "skills/skills.html", locals: { skills_by_cat: @skills_by_cat } %>
 
-<h3 class="section-header">Education Experiences</h3>
+<h3 class="section-header">Education</h3>
 <%= render :partial => 'education_experiences/education_experience.html', collection: @resume.education_experiences %>
 
-<h3 class="section-header">Work Experiences</h3>
+<h3 class="section-header">Work History</h3>
 <%= render :partial => 'work_experiences/work_experience.html', collection: @resume.work_experiences %>
 
 <h3 class="section-header">Relevant Projects</h3>
