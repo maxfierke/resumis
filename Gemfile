@@ -38,10 +38,10 @@ gem 'font-awesome-sass', '~> 4.3.0'
 
 # Devise for user authentication
 #gem 'devise', '~> 3.4.1'
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', '~> 3.5.2'
 
 # Exporting resumes to PDF
-gem 'wicked_pdf'
+gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
 
 # for encoding emails to prevent harvesting
 gem 'actionview-encoded_mail_to'
