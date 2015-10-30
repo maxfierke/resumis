@@ -23,6 +23,7 @@ class ResumesController < ApplicationController
                  template:      'resumes/show.html.erb',
                  page_size:     'Letter',
                  show_as_html:   params.key?('debug'),
+                 disable_external_links: false,
                  print_media_type: false
         end
       end
