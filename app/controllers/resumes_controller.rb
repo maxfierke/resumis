@@ -22,6 +22,7 @@ class ResumesController < ApplicationController
                  layout:        'resume.pdf.erb',
                  template:      'resumes/show.html.erb',
                  page_size:     'Letter',
+                 show_as_html:   params.key?('debug'),
                  print_media_type: false
         end
       end
