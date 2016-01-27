@@ -27,9 +27,9 @@ module ApplicationHelper
     Resume.exists?(published: true)
   end
 
-  def tenant_instance_hostname(tenant)
+  def tenant_instance_hostname(tenant, domains_allowed = true)
     if multi_tenancy?
-      return tenant.domain if tenant.domain
+      return tenant.domain if tenant.domain && domains_allowed
       "#{tenant.subdomain}.#{request.domain}"
     else
       canonical_host
