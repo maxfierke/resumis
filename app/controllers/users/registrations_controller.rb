@@ -73,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def disable_registration
-    if Rails.application.config.x.resumis.tenancy_mode == :single
+    unless multi_tenancy?
       head :forbidden
     end
   end
