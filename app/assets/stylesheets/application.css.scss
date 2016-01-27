@@ -15,7 +15,6 @@
 
 body {
     padding-top: $navbar-height;
-    padding-bottom: $footer-height;
 }
 
 body.bare {
@@ -61,11 +60,6 @@ body.bare {
     background-color: darken($body-bg, 5%);
     padding-top: 20px;
     padding-bottom: 10px;
-    height: $footer-height;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
 
     a {
         color: $link-color;
