@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -41,7 +41,7 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'devise', '~> 3.5.2'
 
 # Exporting resumes to PDF
-gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
+gem 'wicked_pdf', '~> 1.0'
 
 # for encoding emails to prevent harvesting
 gem 'actionview-encoded_mail_to'
@@ -63,7 +63,7 @@ gem 'mini_magick'
 
 # queues are cool
 gem 'hiredis'
-gem 'sidekiq', '>= 3.4.0'
+gem 'sidekiq', '< 4'
 gem 'sidekiq-failures'
 gem 'sinatra', :require => nil # for sidekiq web UI
 
