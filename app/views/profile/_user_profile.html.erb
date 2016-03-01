@@ -53,7 +53,7 @@
         target="_blank" class="list-group-item list-group-item-social">
         <%= icon('medium', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Medium:</span>
-        <%= current_tenant.medium_handle %>
+        @<%= current_tenant.medium_handle %>
       </a>
       <% end %>
       <% if current_tenant.soundcloud_handle.present? %>
