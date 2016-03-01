@@ -1,4 +1,4 @@
-json.extract! project, :id, :name, :short_description, :start_date, :end_date, :created_at, :updated_at
+json.extract! project, :id, :slug, :name, :short_description, :start_date, :end_date, :created_at, :updated_at
 
 json.description project.description
 json.description_html markdown(project.description)

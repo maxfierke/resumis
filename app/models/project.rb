@@ -1,4 +1,8 @@
 class Project < ActiveRecord::Base
+  # nice slugs from project name
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   belongs_to :project_status
   belongs_to :user
   has_many :project_category_joinings
@@ -11,6 +15,8 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true
   validates_uniqueness_to_tenant :name
+
+  validates_uniqueness_to_tenant :slug
 
   default_scope { order(start_date: :desc, end_date: :desc) }
 
