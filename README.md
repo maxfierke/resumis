@@ -2,10 +2,6 @@
 
 Resumis is _Esperanto_ for "summarized". It's also a platform for managing your personal internet homepage presence and advertising yourself to the world.
 
-## Non-technical? Busy? Just lazy?
-
-No worries, you cool internet person, you. For the low price of not much money, I'll host you on [resumis.com](http://resumis.com). Stop on by!
-
 ## Other People
 ### Requirements
 * Ruby 2.1+
