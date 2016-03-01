@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010033629) do
+ActiveRecord::Schema.define(version: 20160301023133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,10 +122,12 @@ ActiveRecord::Schema.define(version: 20151010033629) do
     t.string   "bandcamp_url"
     t.string   "penflip_url"
     t.string   "youtube_url"
+    t.string   "slug"
   end
 
   add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
   add_index "projects", ["project_status_id"], name: "index_projects_on_project_status_id", using: :btree
+  add_index "projects", ["slug", "user_id"], name: "index_projects_on_slug_and_user_id", unique: true, using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "resume_education_experiences", force: :cascade do |t|
@@ -176,8 +178,10 @@ ActiveRecord::Schema.define(version: 20151010033629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description", limit: 255
+    t.string   "slug"
   end
 
+  add_index "resumes", ["slug", "user_id"], name: "index_resumes_on_slug_and_user_id", unique: true, using: :btree
   add_index "resumes", ["user_id"], name: "index_resumes_on_user_id", using: :btree
 
   create_table "skill_categories", force: :cascade do |t|
