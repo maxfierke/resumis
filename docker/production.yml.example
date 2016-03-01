@@ -1,35 +1,37 @@
-db:
-  extends:
-    file: common.yml
-    service: db
-redis:
-  extends:
-    file: common.yml
-    service: redis
-web:
-  command: bundle exec unicorn
-  extends:
-    file: common.yml
-    service: app
-  ports:
-    - "8080:8080"
-  environment:
-    - RAILS_ENV=production
-    - RAILS_SERVE_STATIC_FILES=true
-    - DATABASE_URL=postgres://postgres@db/resumis_production
-    - SECRET_KEY_BASE=INeedAGoodRandomValue
-  links:
-    - db
-    - redis
-worker:
-  command: bundle exec sidekiq
-  extends:
-    file: common.yml
-    service: app
-  environment:
-    - RAILS_ENV=production
-    - DATABASE_URL=postgres://postgres@db/resumis_production
-    - SECRET_KEY_BASE=INeedAGoodRandomValue
-  links:
-    - db
-    - redis
+version: '2'
+services:
+  db:
+    extends:
+      file: common.yml
+      service: db
+  redis:
+    extends:
+      file: common.yml
+      service: redis
+  web:
+    command: bundle exec unicorn
+    extends:
+      file: common.yml
+      service: app
+    ports:
+      - "8080:8080"
+    environment:
+      - RAILS_ENV=production
+      - RAILS_SERVE_STATIC_FILES=true
+      - DATABASE_URL=postgres://postgres@db/resumis_production
+      - SECRET_KEY_BASE=INeedAGoodRandomValue
+    links:
+      - db
+      - redis
+  worker:
+    command: bundle exec sidekiq
+    extends:
+      file: common.yml
+      service: app
+    environment:
+      - RAILS_ENV=production
+      - DATABASE_URL=postgres://postgres@db/resumis_production
+      - SECRET_KEY_BASE=INeedAGoodRandomValue
+    links:
+      - db
+      - redis

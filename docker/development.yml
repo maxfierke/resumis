@@ -1,34 +1,36 @@
-db:
-  extends:
-    file: common.yml
-    service: db
-redis:
-  extends:
-    file: common.yml
-    service: redis
-web:
-  command: bin/rails server --port 3000 --binding 0.0.0.0
-  extends:
-    file: common.yml
-    service: app
-  ports:
-    - "3000:3000"
-  environment:
-    - RAILS_ENV=development
-  links:
-    - db
-    - redis
-  volumes:
-    - ..:/resumis
-worker:
-  command: bundle exec sidekiq
-  extends:
-    file: common.yml
-    service: app
-  environment:
-    - RAILS_ENV=development
-  links:
-    - db
-    - redis
-  volumes_from:
-    - web
+version: '2'
+services:
+  db:
+    extends:
+      file: common.yml
+      service: db
+  redis:
+    extends:
+      file: common.yml
+      service: redis
+  web:
+    command: bundle exec unicorn --port 3000
+    extends:
+      file: common.yml
+      service: app
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_ENV=development
+    links:
+      - db
+      - redis
+    volumes:
+      - ..:/resumis
+  worker:
+    command: bundle exec sidekiq
+    extends:
+      file: common.yml
+      service: app
+    environment:
+      - RAILS_ENV=development
+    links:
+      - db
+      - redis
+    volumes_from:
+      - web
