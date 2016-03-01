@@ -1,5 +1,6 @@
 json.meta do
   json.id @resume.id
+  json.slug @resume.slug
   json.name @resume.name
   json.published @resume.published
   json.created_at @resume.created_at

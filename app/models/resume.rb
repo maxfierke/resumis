@@ -1,4 +1,8 @@
 class Resume < ActiveRecord::Base
+  # nice slugs from resume name
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   belongs_to :user
   has_many :resume_education_experiences
   has_many :resume_projects
@@ -13,4 +17,6 @@ class Resume < ActiveRecord::Base
 
   validates :name, presence: true
   validates_uniqueness_to_tenant :name
+
+  validates_uniqueness_to_tenant :slug
 end
