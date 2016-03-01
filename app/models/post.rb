@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   acts_as_tenant(:user)
 
-  has_many :post_category_joinings
+  has_many :post_category_joinings, dependent: :destroy
   has_many :post_categories, through: :post_category_joinings
 
   validates :title, presence: true, length: { minimum: 3, maximum: 60 }

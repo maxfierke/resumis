@@ -1,5 +1,5 @@
 class PostCategory < ActiveRecord::Base
-  has_many :post_category_joinings
+  has_many :post_category_joinings, dependent: :destroy
   has_many :posts, through: :post_category_joinings
 
   # we belong to user and are treated as an object of a tenant

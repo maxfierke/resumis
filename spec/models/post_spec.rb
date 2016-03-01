@@ -27,4 +27,14 @@ RSpec.describe Post, type: :model do
 
     expect(FactoryGirl.build(:post, title: long_title)).not_to be_valid
   end
+
+  it 'should be deleteable with attached categories' do
+    categories = 3.times.collect do
+      FactoryGirl.create(:post_category)
+    end
+
+    post = FactoryGirl.create(:post, post_categories: categories)
+
+    expect { post.destroy! }.not_to raise_error
+  end
 end
