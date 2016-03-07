@@ -37,8 +37,7 @@ gem 'redcarpet', '>= 3.2.3'
 gem 'font-awesome-sass', '~> 4.3.0'
 
 # Devise for user authentication
-#gem 'devise', '~> 3.4.1'
-gem 'devise', '~> 3.5.2'
+gem 'devise', '~> 3.5.6'
 
 # Exporting resumes to PDF
 gem 'wicked_pdf', '~> 1.0'
