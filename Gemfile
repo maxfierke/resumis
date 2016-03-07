@@ -93,4 +93,5 @@ group :development, :test do
 
   # for vulnerability scanning
   gem 'brakeman', :require => false
+  gem 'bundler-audit', require: false
 end
