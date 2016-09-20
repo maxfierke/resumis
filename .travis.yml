@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.2
+  - 2.3
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database resumis_test;' -U postgres
+
+script: bundle exec rake spec
+
