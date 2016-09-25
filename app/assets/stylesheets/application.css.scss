@@ -80,6 +80,11 @@ body.bare {
     }
 }
 
+.about-me {
+  font-size: $font-size-large;
+  line-height: floor(($font-size-base * 2.0));
+}
+
 .list-group-item-social {
     a {
         color: $text-color;
