@@ -56,34 +56,6 @@ Resumis-specific configuration can be done either through the `config/initialize
 * `RESUMIS_CANONICAL_HOST` - Bare domain of the resumis installation for multi-tenancy mode. Canonical hostname for single-tenancy mode.
 * `RESUMIS_TENANCY_MODE` - Can be `single` or `multi`. **This is not easily changed later**
 
-### Deployment
-#### Amazon OpsWorks
-
-Resumis deploys somewhat easily on Amazon OpsWorks (with some caveats in the initial setup with PostgreSQL) and has hooks built in for asset compiliation on deploy.
-
-[AWSBlog has an article on deploying Rails apps on OpsWorks](http://ruby.awsblog.com/post/Tx7FQMT084INCR/Deploying-Ruby-on-Rails-Applications-to-AWS-OpsWorks)
-
-Some general hints:
-
-* Create a standard Ruby on Rails OpsWorks stack with at least Ruby 2.1+, and nginx with Unicorn.
-* Create an OpsWorks app called "resumis". Set your data source. I'm using a PostgreSQL RDS instance.
-* Setup to deploy from either this repository, or your personal fork, etc.
-  * If you're using this in any kind of production environment, you should probably have your own fork.
-* Setup environmental variables as required. (see Configuration section above)
-* Add this to the Custom JSON in your stack settings
-
-  ```
-  {
-    "deploy": {
-      "resumis": {
-        "database": {
-          "adapter": "postgresql"
-        }
-      }
-    }
-  }
-  ```
-
 
 ## LICENSE
 
