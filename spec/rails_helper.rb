@@ -33,6 +33,10 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.before(:suite) do
+    ActiveRecord::Migration.check_pending!
+  end
+
   config.after(:each) do
     ActsAsTenant.current_tenant = nil
   end

@@ -5,10 +5,3 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-Type.create([
-  { slug: 'developer', name: 'Developer' },
-  { slug: 'filmmaker', name: 'Filmmaker' },
-  { slug: 'musician', name: 'Musician' },
-  { slug: 'writer', name: 'Writer' }
-])

@@ -16,11 +16,6 @@ class User < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
-  has_many :user_types, dependent: :destroy
-  has_many :types, through: :user_types
-
-  accepts_nested_attributes_for :user_types, :allow_destroy => true
-  accepts_nested_attributes_for :types
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -39,22 +34,6 @@ class User < ActiveRecord::Base
   mount_uploader :avatar_image, AvatarImageUploader
   process_in_background :avatar_image
   process_in_background :header_video
-
-  def developer?
-    types.exists?(slug: 'developer')
-  end
-
-  def filmmaker?
-    types.exists?(slug: 'filmmaker')
-  end
-
-  def musician?
-    types.exists?(slug: 'musician')
-  end
-
-  def writer?
-    types.exists?(slug: 'writer')
-  end
 
   def using_video_header?
     header_media_type == 'video'

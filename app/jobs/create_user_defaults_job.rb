@@ -10,15 +10,13 @@ class CreateUserDefaultsJob < ActiveJob::Base
         { slug: 'on-hold', name: 'On Hold' }
       ])
 
-      if user.developer?
-        SkillCategory.create([
-          { name: 'Languages' },
-          { name: 'Web Development Frameworks' },
-          { name: 'Database Servers' },
-          { name: 'Development Utilities' },
-          { name: 'Cloud Platforms' }
-        ])
-      end
+      SkillCategory.create([
+        { name: 'Languages' },
+        { name: 'Web Development Frameworks' },
+        { name: 'Database Servers' },
+        { name: 'Development Utilities' },
+        { name: 'Cloud Platforms' }
+      ])
     end
   end
 end

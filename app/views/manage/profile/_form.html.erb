@@ -43,18 +43,6 @@
         <%= f.label :about_me, :class => 'control-label' %>
         <%= f.text_area :about_me, :class => 'text_field form-control', rows: '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
       </div>
-      <div class="form-group">
-        <%= f.label :types, :class => 'control-label' %>
-        <div>
-          <%= f.collection_check_boxes(:type_ids, Type.order("name ASC"), :id, :name,
-            { :selected => @user.type_ids }, { :multiple => true } ) do |b| %>
-            <%= b.label(class: "checkbox-inline") do %>
-              <%= b.check_box %>
-              <%= b.text %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
     </div>
     <div role="tabpanel" class="tab-pane<% if params[:tab] == 'header' %> active<% end %>" id="header">
       <div class="row">
@@ -121,7 +109,6 @@
     </div>
     <div role="tabpanel" class="tab-pane<% if params[:tab] == 'social' %> active<% end %>" id="social">
       <div class="form-horizontal">
-        <% if @user.developer? %>
         <div class="form-group">
           <%= f.label :github_handle, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('github-square', '', class: 'fa-fw fa-2x') %>
@@ -133,7 +120,7 @@
             </div>
           </div>
         </div>
-        <% end %>
+
         <div class="form-group">
           <%= f.label :googleplus_handle, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('google-plus-square', '', class: 'fa-fw fa-2x') %>
@@ -142,6 +129,7 @@
             <%= f.text_field :googleplus_handle, class: 'text_field form-control', placeholder: 'e.g. +AGoogleUser' %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :linkedin_handle, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('linkedin-square', '', class: 'fa-fw fa-2x') %>
@@ -150,6 +138,7 @@
             <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :medium_handle, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('medium', '', class: 'fa-fw fa-2x') %>
@@ -162,20 +151,6 @@
           </div>
         </div>
 
-        <% if @user.musician? %>
-        <div class="form-group">
-          <%= f.label :soundcloud_handle, :class => 'control-label col-xs-2 col-md-1' do %>
-            <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
-          <% end %>
-          <div class="col-xs-10 col-md-9">
-            <div class="input-group">
-              <span class="input-group-addon">soundcloud.com/</span>
-              <%= f.text_field :soundcloud_handle, :class => 'text_field form-control' %>
-            </div>
-          </div>
-        </div>
-        <% end %>
-
         <div class="form-group">
           <%= f.label :tumblr_url, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('tumblr-square', '', class: 'fa-fw fa-2x') %>
@@ -184,6 +159,7 @@
             <%= f.text_field :tumblr_url, :class => 'text_field form-control' %>
           </div>
         </div>
+
         <div class="form-group">
           <%= f.label :twitter_handle, :class => 'control-label col-xs-2 col-md-1' do %>
             <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
@@ -195,31 +171,6 @@
             </div>
           </div>
         </div>
-
-        <% if @user.musician? or @user.filmmaker? %>
-        <div class="form-group">
-          <%= f.label :vimeo_handle, :class => 'control-label col-xs-2 col-md-1' do %>
-            <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
-          <% end %>
-          <div class="col-xs-10 col-md-9">
-            <div class="input-group">
-              <span class="input-group-addon">vimeo.com/</span>
-              <%= f.text_field :vimeo_handle, :class => 'text_field form-control' %>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :youtube_handle, :class => 'control-label col-xs-2 col-md-1' do %>
-            <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
-          <% end %>
-          <div class="col-xs-10 col-md-9">
-            <div class="input-group">
-              <span class="input-group-addon">youtube.com/user/</span>
-              <%= f.text_field :youtube_handle, :class => 'text_field form-control' %>
-            </div>
-          </div>
-        </div>
-        <% end %>
       </div>
     </div>
     <div role="tabpanel" class="tab-pane<% if params[:tab] == 'analytics' %> active<% end %>" id="analytics">
