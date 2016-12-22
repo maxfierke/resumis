@@ -56,14 +56,6 @@
         @<%= current_tenant.medium_handle %>
       </a>
       <% end %>
-      <% if current_tenant.soundcloud_handle.present? %>
-      <a href="https://soundcloud.com/<%= current_tenant.soundcloud_handle %>"
-        target="_blank" class="list-group-item list-group-item-social">
-        <%= icon('soundcloud', '', class: 'fa-fw fa-2x') %>
-        <span class="sr-only">SoundCloud:</span>
-        <%= current_tenant.soundcloud_handle %>
-      </a>
-      <% end %>
       <% if current_tenant.tumblr_url.present? %>
       <a href="<%= current_tenant.tumblr_url %>"
         target="_blank" class="list-group-item list-group-item-social">
@@ -78,22 +70,6 @@
         <%= icon('twitter-square', '', class: 'fa-fw fa-2x') %>
         <span class="sr-only">Twitter:</span>
         @<%= current_tenant.twitter_handle %>
-      </a>
-      <% end %>
-      <% if current_tenant.vimeo_handle.present? %>
-      <a href="http://vimeo.com/<%= current_tenant.vimeo_handle %>"
-        target="_blank" class="list-group-item list-group-item-social">
-        <%= icon('vimeo-square', '', class: 'fa-fw fa-2x') %>
-        <span class="sr-only">Vimeo:</span>
-        <%= current_tenant.vimeo_handle %>
-      </a>
-      <% end %>
-      <% if current_tenant.youtube_handle.present? %>
-      <a href="https://youtube.com/user/<%= current_tenant.youtube_handle %>"
-        target="_blank" class="list-group-item list-group-item-social">
-        <%= icon('youtube-play', '', class: 'fa-fw fa-2x') %>
-        <span class="sr-only">YouTube:</span>
-        <%= current_tenant.youtube_handle %>
       </a>
       <% end %>
     </div>

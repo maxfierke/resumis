@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222040334) do
+ActiveRecord::Schema.define(version: 20161222044201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -229,10 +229,7 @@ ActiveRecord::Schema.define(version: 20161222040334) do
     t.string   "subdomain",               limit: 255
     t.string   "domain",                  limit: 255
     t.string   "avatar_label",            limit: 255
-    t.string   "soundcloud_handle"
     t.string   "tumblr_url"
-    t.string   "vimeo_handle"
-    t.string   "youtube_handle"
     t.string   "header_image"
     t.integer  "header_media_type",                   default: 0
     t.string   "header_video"
