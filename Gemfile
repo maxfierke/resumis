@@ -86,7 +86,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker', '~> 1.4.3'
