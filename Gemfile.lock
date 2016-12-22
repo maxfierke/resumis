@@ -242,6 +242,9 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    fuubar (2.2.0)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -357,6 +360,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    ruby-progressbar (1.8.1)
     ruby2ruby (2.2.0)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -446,6 +450,7 @@ DEPENDENCIES
   fog (~> 1.31.0)
   font-awesome-sass (~> 4.3.0)
   friendly_id (~> 5.1.0)
+  fuubar
   hiredis
   jbuilder (~> 2.0)
   jquery-rails (>= 4.0.4)
@@ -471,4 +476,4 @@ DEPENDENCIES
   wicked_pdf (~> 1.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6
