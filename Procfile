@@ -1,2 +1,2 @@
-web: bundle exec unicorn
-worker: bundle exec sidekiq
+resumis_web:    bundle exec unicorn
+resumis_worker: bundle exec sidekiq

@@ -72,6 +72,8 @@ gem 'kaminari'
 # react
 gem 'react-rails', '~> 1.2'
 
+gem 'unicorn'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -79,9 +81,7 @@ group :development do
 end
 
 group :production do
-  # use unicorn to run the app on production
   gem 'rails_12factor'
-  gem 'unicorn'
   gem 'fog', '~> 1.31.0'
 end
 
