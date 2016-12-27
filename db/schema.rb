@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222044201) do
+ActiveRecord::Schema.define(version: 20161227031352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,11 +231,8 @@ ActiveRecord::Schema.define(version: 20161222044201) do
     t.string   "avatar_label",            limit: 255
     t.string   "tumblr_url"
     t.string   "header_image"
-    t.integer  "header_media_type",                   default: 0
-    t.string   "header_video"
     t.string   "avatar_image"
     t.boolean  "avatar_image_processing",             default: false, null: false
-    t.boolean  "header_video_processing",             default: false, null: false
     t.boolean  "admin",                               default: false
     t.string   "ga_property_id"
     t.string   "ga_view_id"

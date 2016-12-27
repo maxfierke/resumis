@@ -25,23 +25,11 @@ class User < ActiveRecord::Base
                         exclusion: { in: Rails.application.config.x.resumis.excluded_subdomains,
                                      message: "%{value} is reserved." }
 
-  enum header_media_type: %w(image video)
-
   nilify_blanks :only => [:domain]
 
   mount_uploader :header_image, HeaderImageUploader
-  mount_uploader :header_video, HeaderVideoUploader
   mount_uploader :avatar_image, AvatarImageUploader
   process_in_background :avatar_image
-  process_in_background :header_video
-
-  def using_video_header?
-    header_media_type == 'video'
-  end
-
-  def using_image_header?
-    header_media_type == 'image'
-  end
 
   def full_name
     "#{first_name} #{last_name}"
