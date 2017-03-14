@@ -8,4 +8,7 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( resume.css pdf.css manage.css manage.js )
+Rails.application.config.assets.precompile += %w(
+  react-server.js components.js
+  resume.css pdf.css manage.css manage.js
+)
