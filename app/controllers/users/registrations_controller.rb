@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_sign_up_params, only: [:create]
-  before_filter :configure_account_update_params, only: [:update]
-  before_filter :disable_registration, only: [:new, :create, :destroy]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
+  before_action :disable_registration, only: [:new, :create, :destroy]
 
   layout "bare"
 

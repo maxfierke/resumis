@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   set_current_tenant_through_filter
-  before_filter :find_tenant
+  before_action :find_tenant
 
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
 
