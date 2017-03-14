@@ -78,7 +78,7 @@ group :development do
 end
 
 group :production do
-  gem 'fog', '~> 1.31.0'
+  gem 'fog', '~> 1.36.0'
 end
 
 group :development, :test do
