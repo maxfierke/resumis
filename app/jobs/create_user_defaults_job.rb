@@ -1,4 +1,4 @@
-class CreateUserDefaultsJob < ActiveJob::Base
+class CreateUserDefaultsJob < ApplicationJob
   queue_as :default
 
   def perform(user)
