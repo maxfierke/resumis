@@ -15,8 +15,8 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
 
-    if Rails.application.config.x.resumis.tenancy_mode == :multi
-      if Rails.application.config.x.resumis.listing_enabled
+    if ResumisConfig.multi_tenant?
+      if ResumisConfig.listing_enabled?
         get '/' => 'page#bare_domain'
       end
 
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     get 'profile' => 'profile#show'
     get 'about', to: redirect('/')
 
-    if Rails.application.config.x.resumis.tenancy_mode == :multi
+    if ResumisConfig.multi_tenant?
       get 'auth/user/*path', to: redirect { |path_params, req| "#{req.protocol}accounts.#{req.domain}#{req.fullpath}" }
     end
   end

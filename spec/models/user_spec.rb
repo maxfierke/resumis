@@ -3,7 +3,7 @@ require 'digest'
 
 RSpec.describe User, type: :model do
   def stub_tenancy_mode(mode)
-    allow(Rails.application.config.x.resumis).to receive(:tenancy_mode).and_return(mode)
+    allow(ResumisConfig).to receive(:tenancy_mode).and_return(mode)
   end
 
   it 'has a valid factory' do
@@ -22,12 +22,12 @@ RSpec.describe User, type: :model do
     before { stub_tenancy_mode(:multi) }
 
     it 'is invalid without a subdomain' do
-      expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
+      expect(ResumisConfig.tenancy_mode).to eq(:multi)
       expect(FactoryGirl.build(:user, subdomain: nil)).not_to be_valid
     end
 
     it 'needs a unique subdomain' do
-      expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:multi)
+      expect(ResumisConfig.tenancy_mode).to eq(:multi)
       first_user = FactoryGirl.create(:user)
 
       expect(FactoryGirl.build(:user, subdomain: first_user.subdomain)).not_to be_valid
@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
     before { stub_tenancy_mode(:single) }
 
     it 'is valid without a subdomain' do
-      expect(Rails.application.config.x.resumis.tenancy_mode).to eq(:single)
+      expect(ResumisConfig.tenancy_mode).to eq(:single)
       expect(FactoryGirl.build(:user, subdomain: nil)).to be_valid
     end
   end
