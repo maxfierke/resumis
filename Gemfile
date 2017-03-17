@@ -17,7 +17,9 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '>= 4.0.4'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.5' # TODO: Get rid of jbuilder
+
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Utilize the bootstrap frontend framework
 gem 'bootstrap-sass'

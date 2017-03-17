@@ -55,6 +55,12 @@ Rails.application.routes.draw do
       get '/' => 'dashboard#index', as: :dashboard
     end
 
+    namespace :api do
+      namespace :v1 do
+        resources :projects
+      end
+    end
+
     get 'blog' => 'posts#index'
     get 'profile' => 'profile#show'
     get 'about', to: redirect('/')
