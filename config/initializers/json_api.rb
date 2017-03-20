@@ -3,4 +3,5 @@ ActiveSupport.on_load(:action_controller) do
 end
 
 ActiveModelSerializers.config.adapter = :json_api
+ActiveModelSerializers.config.jsonapi_resource_type = :singular
 ActiveModelSerializers.config.key_transform = :unaltered
