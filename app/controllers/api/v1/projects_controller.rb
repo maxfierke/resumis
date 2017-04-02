@@ -1,6 +1,11 @@
 module Api
   module V1
     class ProjectsController < ApiController
+      ALLOWED_INCLUDES = [
+        'status',
+        'categories'
+      ]
+
       before_action :validate_payload_type, only: [:create, :update]
 
       def index
@@ -37,14 +42,10 @@ module Api
       private
 
       def include_params
-        @include_params ||= begin
-          assocs = if params[:include].is_a?(String)
-            params[:include].split(',')
-          else
-            params[:include] || []
-          end
-          assocs.select { |a| a =~ /^(status|categories)/ }
-        end
+        @include_params ||= IncludeParamsValidator.include_params!(
+          include_params: params[:include],
+          allowed: ALLOWED_INCLUDES
+        )
       end
 
       def project

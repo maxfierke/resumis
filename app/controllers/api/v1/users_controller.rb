@@ -1,6 +1,10 @@
 module Api
   module V1
     class UsersController < ApiController
+      ALLOWED_INCLUDES = [
+        'projects', 'projects.*'
+      ]
+
       def show
         render jsonapi: user, include: include_params
       end
@@ -8,14 +12,10 @@ module Api
       private
 
       def include_params
-        @include_params ||= begin
-          assocs = if params[:include].is_a?(String)
-            params[:include].split(',')
-          else
-            params[:include] || []
-          end
-          assocs.select { |a| a =~ /^(projects)/ }
-        end
+        @include_params ||= IncludeParamsValidator.include_params!(
+          include_params: params[:include],
+          allowed: ALLOWED_INCLUDES
+        )
       end
 
       def user
