@@ -6,12 +6,6 @@ class ApiVersionConstraint
   end
 
   def matches?(request)
-    version_header == version
-  end
-
-  private
-
-  def version_header
-    request.headers['X-Resumis-Version']
+    request.headers['X-Resumis-Version'] == version
   end
 end
