@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         resources :users, only: [:show]
       end
 
-      scope module: :json_resume, constraints: JSONResumeConstraint.new do
+      scope module: :json_resume, constraints: JsonResumeConstraint.new do
         resources :resumes, only: [:show]
       end
     end

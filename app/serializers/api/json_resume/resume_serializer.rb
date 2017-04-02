@@ -1,5 +1,5 @@
 module Api
-  module JSONResume
+  module JsonResume
     class ResumeSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
