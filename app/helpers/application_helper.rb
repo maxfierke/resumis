@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def tenant_instance_hostname(tenant, domains_allowed = true)
-    if ResumisConfig.multi_tenancy?
+    if ResumisConfig.multi_tenant?
       return tenant.domain if tenant.domain && domains_allowed
       "#{tenant.subdomain}.#{request.domain}"
     else
