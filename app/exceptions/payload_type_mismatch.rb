@@ -1,0 +1,2 @@
+class PayloadTypeMismatch < ResumisError
+end

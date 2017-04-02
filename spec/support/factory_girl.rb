@@ -4,7 +4,10 @@ RSpec.configure do |config|
   config.before(:suite) do
     begin
       DatabaseCleaner.start
-      FactoryGirl.lint
+
+      ActsAsTenant.without_tenant do
+        FactoryGirl.lint
+      end
     ensure
       DatabaseCleaner.clean
     end

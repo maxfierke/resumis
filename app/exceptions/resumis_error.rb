@@ -1,0 +1,2 @@
+class ResumisError < StandardError
+end

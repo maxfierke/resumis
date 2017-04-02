@@ -1,0 +1,2 @@
+class InvalidIncludesError < ResumisError
+end
