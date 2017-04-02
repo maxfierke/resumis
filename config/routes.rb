@@ -26,6 +26,13 @@ Rails.application.routes.draw do
   end
 
   constraints(TenantHostConstraint.new) do
+    namespace :api do
+      scope module: :v1, constraints: ApiVersionConstraint.new(version: 'v1') do
+        resources :projects, only: [:index, :show, :update, :delete]
+        resources :users, only: [:show]
+      end
+    end
+
     resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
     resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable
     resources :resumes, only: [:show]
@@ -53,13 +60,6 @@ Rails.application.routes.draw do
       patch 'profile' => 'profile#update'
 
       get '/' => 'dashboard#index', as: :dashboard
-    end
-
-    namespace :api do
-      namespace :v1 do
-        resources :projects, only: [:index, :show, :update, :delete]
-        resources :users, only: [:show]
-      end
     end
 
     get 'blog' => 'posts#index'

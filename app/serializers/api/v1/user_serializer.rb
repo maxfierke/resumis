@@ -10,7 +10,7 @@ module Api
         markdown(object.about_me)
       end
 
-      link(:self) { api_v1_user_path(object.id) }
+      link(:self) { api_user_path(object.id) }
       link(:github) { "https://github.com/#{object.github_handle}" }
       link(:linkedin) { "https://linkedin.com/in/#{object.linkedin_handle}" }
       link(:medium) { "https://medium.com/@#{object.medium_handle}" }
