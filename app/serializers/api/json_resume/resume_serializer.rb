@@ -72,7 +72,7 @@ module Api
         #     awarder: award.awarder,
         #     summary: award.description
         #   }
-        end
+        # end
       end
 
       def publications
@@ -135,23 +135,23 @@ module Api
       end
 
       def profiles
-        [
-          {
-            network: "Twitter",
-            username: user.twitter_handle,
-            url: "https://twitter.com/#{user.twitter_handle}"
-          } if user.twitter_handle,
-          {
-            network: "LinkedIn",
-            username: user.linkedin_handle,
-            url: "https://linkedin.com/in/#{user.linkedin_handle}"
-          } if user.linkedin_handle,
-          {
-            network: "GitHub",
-            username: user.github_handle,
-            url: "https://github.com/#{user.github_handle}"
-          } if user.github_handle
-        ].compact
+        user_profiles = []
+        user_profiles << {
+          network: "Twitter",
+          username: user.twitter_handle,
+          url: "https://twitter.com/#{user.twitter_handle}"
+        } if user.twitter_handle
+        user_profiles << {
+          network: "LinkedIn",
+          username: user.linkedin_handle,
+          url: "https://linkedin.com/in/#{user.linkedin_handle}"
+        } if user.linkedin_handle
+        user_profiles << {
+          network: "GitHub",
+          username: user.github_handle,
+          url: "https://github.com/#{user.github_handle}"
+        } if user.github_handle
+        user_profiles
       end
 
       def work_experiences
