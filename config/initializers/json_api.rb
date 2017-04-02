@@ -5,3 +5,4 @@ end
 ActiveModelSerializers.config.adapter = :json_api
 ActiveModelSerializers.config.jsonapi_resource_type = :singular
 ActiveModelSerializers.config.key_transform = :unaltered
+ActiveModelSerializers::Model.derive_attributes_from_names_and_fix_accessors

@@ -31,6 +31,10 @@ Rails.application.routes.draw do
         resources :projects, only: [:index, :show, :update, :delete]
         resources :users, only: [:show]
       end
+
+      scope module: :json_resume, constraints: JSONResumeConstraint.new do
+        resources :resumes, only: [:show]
+      end
     end
 
     resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
