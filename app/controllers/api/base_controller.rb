@@ -13,6 +13,10 @@ module Api
 
     protected
 
+    def self.payload_type(payload_type)
+      @@payload_type = payload_type.to_s
+    end
+
     def validate_content_type
       if ['POST','PUT','PATCH'].include?(request.method)
         if request.content_type != "application/vnd.api+json"
@@ -22,7 +26,7 @@ module Api
     end
 
     def validate_payload_type
-      unless params.dig(:data, :type) == params[:controller]
+      unless params[:data].respond_to?(:keys) && params.dig(:data, :type) == @@payload_type
         raise PayloadTypeMismatch
       end
     end

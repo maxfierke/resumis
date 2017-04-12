@@ -7,6 +7,7 @@ module Api
         'work_experiences', 'work_experiences.*'
       ]
 
+      payload_type :resume
       before_action :validate_payload_type, only: [:create, :update]
 
       def index

@@ -6,6 +6,7 @@ module Api
         'categories'
       ]
 
+      payload_type :project
       before_action :validate_payload_type, only: [:create, :update]
 
       def index
