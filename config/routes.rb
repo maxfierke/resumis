@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   constraints(TenantHostConstraint.new) do
     namespace :api do
       scope module: :v1, constraints: ApiVersionConstraint.new(version: 'v1') do
-        resources :projects, only: [:index, :show, :update, :delete]
-        resources :resumes, only: [:index, :show, :update, :delete]
+        resources :projects, only: [:index, :create, :show, :update, :delete]
+        resources :resumes, only: [:index, :create, :show, :update, :delete]
         resources :users, only: [:show]
       end
 
