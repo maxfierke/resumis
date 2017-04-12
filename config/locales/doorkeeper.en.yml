@@ -33,7 +33,7 @@ en:
       edit:
         title: 'Edit application'
       index:
-        title: 'Your applications'
+        title: 'Your Resumis API applications'
         new: 'New Application'
         name: 'Name'
         callback_url: 'Callback URL'
@@ -117,8 +117,8 @@ en:
     layouts:
       admin:
         nav:
-          oauth2_provider: 'OAuth2 Provider'
-          applications: 'Applications'
-          home: 'Home'
+          oauth2_provider: 'Resumis'
+          applications: 'Resumis API Apps'
+          home: 'Back to Resumis'
       application:
         title: 'OAuth authorization required'
