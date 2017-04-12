@@ -1,1 +1,40 @@
-<%= react_component("Project", render(template: "projects/_project.json.jbuilder", locals: { project: project }), { prerender: true }) %>
+<%= react_component("Project", {
+  id: project.id,
+  slug: project.slug,
+  name: project.name,
+  short_description: project.short_description,
+  start_date: project.start_date,
+  end_date: project.end_date,
+  created_at: project.created_at,
+  updated_at: project.updated_at,
+  description: project.description,
+  description_html: markdown(project.description),
+  vimeo_url: (project.vimeo_url if project.vimeo_url),
+  youtube_url: (project.youtube_url if project.youtube_url),
+  soundcloud_url: (project.soundcloud_url if project.soundcloud_url),
+  status: {
+    id: project.project_status.id,
+    slug: project.project_status.slug,
+    name: project.project_status.name,
+    created_at: project.project_status.created_at,
+    updated_at: project.project_status.updated_at
+  },
+  categories: (project.project_categories.map do |cat|
+    {
+      id: cat.id,
+      slug: cat.slug,
+      name: cat.name,
+      created_at: cat.created_at,
+      updated_at: cat.updated_at
+    }
+  end),
+  links: (
+    project.links << ({
+      rel: 'self',
+      href: project_url(project, host: tenant_instance_hostname(project.user))
+    })
+  )
+}, {
+  prerender: true,
+  camelize_props: true
+}) %>

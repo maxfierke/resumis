@@ -45,23 +45,9 @@ jQuery ($) ->
 
       return
 
-    populateLatestProject: ->
-      $lp = $("#latest-project")
-      if $lp.length > 0
-        $.getJSON "/projects.json", (data) ->
-          if data.projects.length > 0
-            proj = data.projects[0]
-            $lp.find(".project-title a").text(proj.name).prop "href", "/projects/" + proj.id
-            $lp.find(".project-shortdesc").text proj.shortDescription
-            $pt = $lp.find(".project-tags")
-            for i of proj.categories
-              $pt.append "<li><a class=\"btn btn-primary btn-xs\" href=\"/projects/#" + proj.categories[i].slug + "\">" + proj.categories[i].name + "</a></li>"
-            $lp.parent().removeClass('hidden')
-
     init: ->
       # Highlight current nav item
       $(resumis.selectors.nav.current).addClass "active"
       resumis.registerProjectFilterEvents()
-      resumis.populateLatestProject()
 
   resumis.init()
