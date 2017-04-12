@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include ResumisConfig
   include TenantHelper
 
   # Prevent CSRF attacks by raising an exception.
@@ -11,10 +10,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
 
   def after_sign_in_path_for(resource)
-    if multi_tenancy?
+    if ResumisConfig.multi_tenant?
       root_url(subdomain: resource.subdomain)
     else
-      root_url(host: canonical_host)
+      root_url(host: ResumisConfig.canonical_host)
     end
   end
 
