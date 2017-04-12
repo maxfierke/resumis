@@ -1,9 +1,9 @@
 module ResumisConfig
-  DEFAULT_EXCLUDED_SUBDOMAINS = %w(
+  DEFAULT_EXCLUDED_SUBDOMAINS ||= %w(
     mail auth api service login
     signup accounts account users
     ftp ldap webmail manage admin
-  )
+  ).freeze
 
   # Sets the tenancy mode of the application. Possible values: :single, :multi
   def self.tenancy_mode
