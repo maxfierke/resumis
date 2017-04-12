@@ -37,6 +37,9 @@ Rails.application.routes.draw do
         resources :resumes, only: [:show]
       end
     end
+    use_doorkeeper scope: 'api/oauth2' do
+      controllers :applications => 'api/applications'
+    end
 
     resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
     resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable

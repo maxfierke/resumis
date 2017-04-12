@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
   validates :first_name, presence: true
   validates :last_name, presence: true

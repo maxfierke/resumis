@@ -8,6 +8,9 @@ module Api
 
       payload_type :project
       before_action :validate_payload_type, only: [:create, :update]
+      before_action only: [:create, :update, :destroy] do
+        doorkeeper_authorize! :projects_write
+      end
 
       def index
         render jsonapi: projects, include: include_params
