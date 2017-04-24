@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    if multi_tenancy?
+    if ResumisConfig.multi_tenant?
       profile_url(subdomain: resource.subdomain)
     else
       profile_url(host: canonical_host)
@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    if multi_tenancy?
+    if ResumisConfig.multi_tenant?
       profile_url(subdomain: resource.subdomain)
     else
       profile_url(host: canonical_host)
@@ -73,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def disable_registration
-    unless multi_tenancy?
+    unless ResumisConfig.multi_tenant?
       head :forbidden
     end
   end
