@@ -2,7 +2,7 @@
   <%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-link' %>
 <% end -%>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' && multi_tenancy? %>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' && ResumisConfig.multi_tenant? %>
   <%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-link' %>
 <% end -%>
 

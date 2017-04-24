@@ -1,6 +1,6 @@
 class BareHostConstraint
   def matches?(request)
-    if Rails.application.config.x.resumis.tenancy_mode == :multi
+    if ResumisConfig.multi_tenant?
       request.subdomain == ''
     else
       request.subdomain =~ /.*/

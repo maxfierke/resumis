@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%= root_url(host: canonical_host) %>">
+          <a class="navbar-brand" href="<%= root_url(host: ResumisConfig.canonical_host) %>">
             <strong>Resumis</strong>
           </a>
         </div>
@@ -33,7 +33,7 @@
             <%= link_to new_user_session_url, class: "navbar-btn btn btn-link" do %>
               Login to Resumis
             <% end %>
-            <% if Devise.mappings[:user].registerable? && multi_tenancy? %>
+            <% if Devise.mappings[:user].registerable? && ResumisConfig.multi_tenant? %>
               <%= link_to new_user_registration_url, class: "navbar-btn btn btn-primary" do %>
                 Sign Up
               <% end %>

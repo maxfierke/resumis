@@ -1,5 +1,3 @@
-require 'redcarpet'
-
 module ApplicationHelper
   def page_title(text, tag_type = :h1, tag_attributes = {}, prepend_name = true)
     content_for :title, text
@@ -13,6 +11,10 @@ module ApplicationHelper
     parser.render(content).html_safe
   end
 
+  def latest_resume
+    Resume.latest
+  end
+
   def exists_published_blog_posts?
     Post.exists?(published: true)
   end
@@ -22,21 +24,16 @@ module ApplicationHelper
   end
 
   def tenant_instance_hostname(tenant, domains_allowed = true)
-    if multi_tenancy?
+    if ResumisConfig.multi_tenant?
       return tenant.domain if tenant.domain && domains_allowed
       "#{tenant.subdomain}.#{request.domain}"
     else
-      canonical_host
+      ResumisConfig.canonical_host
     end
   end
 
   # TODO: Awful. Do this better.
   def post_categories
     PostCategory.all
-  end
-
-  # TODO: Awful. Gross. Weird.
-  def google_client_id
-    Rails.application.config.x.resumis.google_client_id
   end
 end

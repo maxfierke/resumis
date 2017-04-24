@@ -15,8 +15,8 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
 
-    if Rails.application.config.x.resumis.tenancy_mode == :multi
-      if Rails.application.config.x.resumis.listing_enabled
+    if ResumisConfig.multi_tenant?
+      if ResumisConfig.listing_enabled?
         get '/' => 'page#bare_domain'
       end
 
@@ -26,6 +26,21 @@ Rails.application.routes.draw do
   end
 
   constraints(TenantHostConstraint.new) do
+    namespace :api do
+      scope module: :v1, constraints: ApiVersionConstraint.new(version: 'v1') do
+        resources :projects, only: [:index, :create, :show, :update, :delete]
+        resources :resumes, only: [:index, :create, :show, :update, :delete]
+        resources :users, only: [:show]
+      end
+
+      scope module: :json_resume, constraints: JsonResumeConstraint.new do
+        resources :resumes, only: [:show]
+      end
+    end
+    use_doorkeeper scope: 'api/oauth2' do
+      controllers :applications => 'api/applications'
+    end
+
     resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
     resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable
     resources :resumes, only: [:show]
@@ -59,7 +74,7 @@ Rails.application.routes.draw do
     get 'profile' => 'profile#show'
     get 'about', to: redirect('/')
 
-    if Rails.application.config.x.resumis.tenancy_mode == :multi
+    if ResumisConfig.multi_tenant?
       get 'auth/user/*path', to: redirect { |path_params, req| "#{req.protocol}accounts.#{req.domain}#{req.fullpath}" }
     end
   end

@@ -20,10 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   helpers:
     label:
       user:
         types: 'What best describes you? (Check all that apply)'
         ga_property_id: 'Google Analytics Property ID (Tracking ID)'
         ga_view_id: 'Google Analytics View ID'
+
+  doorkeeper:
+    scopes:
+      public: 'Access your public data (social media information, published projects, resumes, and blog posts)'
+      projects_write: 'Update your projects'
+      resumes_write: 'Update your resumes'
+      blogs_write: 'Update your blog'

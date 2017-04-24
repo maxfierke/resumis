@@ -1,4 +1,5 @@
 require_relative 'boot'
+require_relative 'initializers/resumis'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -16,6 +17,10 @@ module Resumis
 
     # activejob queue adapter
     config.active_job.queue_adapter = :sidekiq
+
+    if Rails.env.development?
+      config.action_mailer.default_url_options = { host: ::ResumisConfig.canonical_host }
+    end
 
     config.generators do |g|
       g.test_framework :rspec,

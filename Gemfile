@@ -16,8 +16,8 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '>= 4.0.4'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+
+gem 'active_model_serializers', '~> 0.10.0'
 
 # Utilize the bootstrap frontend framework
 gem 'bootstrap-sass'
@@ -34,6 +34,7 @@ gem 'font-awesome-sass', '~> 4.3.0'
 
 # Devise for user authentication
 gem 'devise', '~> 4.2.0'
+gem 'doorkeeper'
 
 # Exporting resumes to PDF
 gem 'wicked_pdf', '~> 1.1'
@@ -52,7 +53,6 @@ gem 'acts_as_tenant'
 
 # Carrierwave for handling uploads to S3
 gem 'carrierwave'
-gem 'carrierwave-video'
 gem 'carrierwave_backgrounder'
 gem 'mini_magick'
 
@@ -84,6 +84,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker', '~> 1.4.3'
   gem 'fuubar'

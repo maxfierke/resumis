@@ -19,4 +19,8 @@ class Resume < ActiveRecord::Base
   validates_uniqueness_to_tenant :name
 
   validates_uniqueness_to_tenant :slug
+
+  def self.latest
+    Resume.where(published: true).order(updated_at: :desc).first
+  end
 end

@@ -1,13 +1,41 @@
-Rails.application.configure do
-  # Sets the tenancy mode of the application. Possible values: :single, :multi
-  config.x.resumis.tenancy_mode = ENV['RESUMIS_TENANCY_MODE'] ? ENV['RESUMIS_TENANCY_MODE'].to_sym : :single
+module ResumisConfig
+  DEFAULT_EXCLUDED_SUBDOMAINS ||= %w(
+    mail auth api service login
+    signup accounts account users
+    ftp ldap webmail manage admin
+  ).freeze
 
-  config.x.resumis.listing_enabled = ENV['RESUMIS_LISTING_ENABLED'].presence || true
+  # Sets the tenancy mode of the application. Possible values: :single, :multi
+  def self.tenancy_mode
+    ENV['RESUMIS_TENANCY_MODE'] ? ENV['RESUMIS_TENANCY_MODE'].to_sym : :single
+  end
+
+  def self.single_tenant?
+    tenancy_mode == :single
+  end
+
+  def self.multi_tenant?
+    tenancy_mode == :multi
+  end
+
+  def self.listing_enabled?
+    ENV['RESUMIS_LISTING_ENABLED'].presence || true
+  end
 
   # Used for ensuring authentication routes and such point to the right place
-  config.x.resumis.canonical_host = ENV['RESUMIS_CANONICAL_HOST'].presence || 'lvh.me'
+  def self.canonical_host
+    ENV['RESUMIS_CANONICAL_HOST'].presence || '127.0.0.1.xip.io'
+  end
 
-  config.x.resumis.excluded_subdomains = ENV['RESUMIS_EXCLUDED_SUBDOMAINS'] ? ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].split(',') : %w(mail auth api service login signup accounts account users ftp ldap webmail manage admin)
+  def self.excluded_subdomains
+    if ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].present?
+      ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].split(',')
+    else
+      DEFAULT_EXCLUDED_SUBDOMAINS
+    end
+  end
 
-  config.x.resumis.google_client_id = ENV['RESUMIS_GOOGLE_CLIENT_ID']
+  def self.google_client_id
+    ENV['RESUMIS_GOOGLE_CLIENT_ID']
+  end
 end

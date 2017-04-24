@@ -1,5 +1,3 @@
-require 'digest/md5'
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,13 +14,14 @@ class User < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :subdomain, presence: { if: :multi_tenancy? },
+  validates :subdomain, presence: { if: -> { ResumisConfig.multi_tenant? } },
                         uniqueness: true,
                         case_sensitive: false,
-                        exclusion: { in: Rails.application.config.x.resumis.excluded_subdomains,
+                        exclusion: { in: ResumisConfig.excluded_subdomains,
                                      message: "%{value} is reserved." }
 
   nilify_blanks :only => [:domain]
@@ -70,9 +69,5 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
-  end
-
-  def multi_tenancy?
-    Rails.application.config.x.resumis.tenancy_mode == :multi
   end
 end

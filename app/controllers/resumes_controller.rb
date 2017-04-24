@@ -1,10 +1,9 @@
 class ResumesController < ApplicationController
-  before_action :set_resume, only: [:show]
-
   layout "resume", only: [:show]
-  respond_to :html, :json
 
   def show
+    @resume = Resume.find(params[:id])
+
     # Only allow viewing of published resumes, or resumes a user owns
     if not @resume.published and (!user_signed_in? or current_user.id != @resume.user.id)
       return head :forbidden
@@ -15,7 +14,6 @@ class ResumesController < ApplicationController
     if stale?(@resume, public: true)
       respond_to do |format|
         format.html
-        format.json
         format.md
         format.pdf do
           render pdf:           @resume.name,
@@ -29,9 +27,4 @@ class ResumesController < ApplicationController
       end
     end
   end
-
-  private
-    def set_resume
-      @resume = Resume.find(params[:id])
-    end
 end
