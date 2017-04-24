@@ -69,7 +69,6 @@
           <h3 class="panel-title">Project Links</h3>
         </header>
         <div class="panel-body">
-          <% if current_tenant.developer? %>
           <div class="form-group">
             <%= f.label :github_url, :class => 'control-label' %>
             <div class="input-group">
@@ -77,45 +76,6 @@
               <%= f.text_field :github_url, :class => 'text_field form-control' %>
             </div>
           </div>
-          <% end %>
-          <% if current_tenant.filmmaker? %>
-          <div class="form-group">
-            <%= f.label :vimeo_url, :class => 'control-label' %>
-            <div class="input-group">
-              <span class="input-group-addon">vimeo.com/</span>
-              <%= f.text_field :vimeo_url, :class => 'text_field form-control' %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :youtube_url, :class => 'control-label' %>
-            <div class="input-group">
-              <span class="input-group-addon">youtube.com/watch?v=</span>
-              <%= f.text_field :youtube_url, :class => 'text_field form-control' %>
-            </div>
-          </div>
-          <% end %>
-          <% if current_tenant.musician? %>
-          <div class="form-group">
-            <%= f.label :soundcloud_url, :class => 'control-label' %>
-            <div class="input-group">
-              <span class="input-group-addon">soundcloud.com/</span>
-              <%= f.text_field :soundcloud_url, :class => 'text_field form-control' %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :bandcamp_url, :class => 'control-label' %>
-            <%= f.text_field :bandcamp_url, :class => 'text_field form-control' %>
-          </div>
-          <% end %>
-          <% if current_tenant.writer? %>
-          <div class="form-group">
-            <%= f.label :penflip_url, :class => 'control-label' %>
-            <div class="input-group">
-              <span class="input-group-addon">penflip.com/</span>
-              <%= f.text_field :penflip_url, :class => 'text_field form-control' %>
-            </div>
-          </div>
-          <% end %>
         </div>
       </div>
     </aside>
