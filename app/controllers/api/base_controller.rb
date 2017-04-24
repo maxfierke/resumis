@@ -2,6 +2,7 @@ module Api
   class BaseController < ActionController::API
     extend ActsAsTenant::ControllerExtensions
 
+    include ActionController::Helpers
     include ResumisConfig
     include TenantHelper
 
