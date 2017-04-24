@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <% if multi_tenancy? %>
+  <% if ResumisConfig.multi_tenant? %>
   <hr />
   <h5>Domain Settings</h5>
 
@@ -52,7 +52,7 @@
     <%= f.label :subdomain %>
     <%= f.text_field :subdomain, class: 'form-control' %>
     <p class="help-block">
-      Your site will be accessible at <code>[subdomain].<%= canonical_host %></code>
+      Your site will be accessible at <code>[subdomain].<%= ResumisConfig.canonical_host %></code>
     </p>
   </div>
 
@@ -60,7 +60,7 @@
     <%= f.label :domain %> <small><em>Optional</em></small>
     <%= f.text_field :domain, class: 'form-control' %>
     <p class="help-block">
-      To get this to work, assign the domain's CNAME record to <code><%= canonical_host %></code>
+      To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
     </p>
   </div>
   <% end %>

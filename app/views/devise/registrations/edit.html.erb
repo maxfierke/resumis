@@ -24,7 +24,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <% if multi_tenancy? %>
+  <% if ResumisConfig.multi_tenant? %>
 
   <h4>Domain Settings</h4>
 
@@ -37,7 +37,7 @@
     <%= f.label :domain %>
     <%= f.text_field :domain, class: 'form-control' %>
     <p class="help-block">
-      To get this to work, assign the domain's CNAME record to <code><%= canonical_host %></code>
+      To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
     </p>
   </div>
 
