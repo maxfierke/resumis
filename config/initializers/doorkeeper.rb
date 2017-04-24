@@ -11,10 +11,6 @@ Doorkeeper.configure do
     current_user || warden.authenticate!(:scope => :user)
   end
 
-  resource_owner_from_credentials do
-    warden.authenticate!(:scope => :user)
-  end
-
   admin_authenticator do |routes|
     (current_user|| warden.authenticate!(:scope => :user)).admin? || redirect_to(routes.root_url)
   end

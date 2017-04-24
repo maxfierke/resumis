@@ -14,6 +14,14 @@ module Api
 
     protected
 
+    def current_resource_owner
+      @current_resource_owner ||= if doorkeeper_token.resource_owner_id
+        User.find(doorkeeper_token.resource_owner_id)
+      elsif doorkeeper_token.application
+        User.find(doorkeeper_token.application.owner_id)
+      end
+    end
+
     def self.payload_type(payload_type)
       @@payload_type = payload_type.to_s
     end
