@@ -42,7 +42,7 @@ module Api
     def handle_exception(exception)
       raise exception if Rails.env.development?
       error = Errors::Resolver.resolve_for(exception)
-      render status: error.http_status_code.to_i, json: error.to_json_api
+      render status: error.http_status_code.to_i, json: error.to_json_api(request)
     end
   end
 end
