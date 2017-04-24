@@ -48,7 +48,7 @@
 gapi.analytics.ready(function() {
   gapi.analytics.auth.authorize({
     container: 'auth-button',
-    clientid: '<%= google_client_id %>',
+    clientid: '<%= ResumisConfig.google_client_id %>',
     userInfoLabel: 'Google Analytics Account: '
   });
 
