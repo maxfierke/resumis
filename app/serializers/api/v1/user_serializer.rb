@@ -3,8 +3,8 @@ module Api
     class UserSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
-      attributes :id, :first_name, :last_name, :about_me, :tagline, :avatar_url,
-                 :full_name, :copyright_range
+      attributes :id, :first_name, :last_name, :about_me, :tagline, :full_name,
+                 :copyright_range, :avatar_url, :avatar_label, :header_image_url
 
       attribute :about_me_html do
         markdown(object.about_me)
