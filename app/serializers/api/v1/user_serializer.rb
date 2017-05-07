@@ -18,6 +18,7 @@ module Api
       link(:twitter) { "https://twitter.com/#{object.twitter_handle}" }
 
       has_many :projects
+      has_many :skills
      end
   end
 end

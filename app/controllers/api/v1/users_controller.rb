@@ -2,7 +2,8 @@ module Api
   module V1
     class UsersController < ApiController
       ALLOWED_INCLUDES = [
-        'projects', 'projects.*'
+        'projects', 'projects.*',
+        'skills', 'skills.*'
       ]
 
       before_action only: [:show] do
