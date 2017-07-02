@@ -74,10 +74,10 @@ module Api
       def resumes
         # TODO: Replace with real access controls
         @resumes ||= begin
-          query = Resume.all
-
           if current_resource_owner.id != current_tenant.id
-            query = query.where(published: true)
+            query = Resume.where(published: true)
+          else
+            query = Resume.all
           end
 
           query
