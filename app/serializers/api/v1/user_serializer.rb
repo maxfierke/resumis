@@ -11,11 +11,42 @@ module Api
       end
 
       link(:self) { api_user_path(object.id) }
-      link(:github) { "https://github.com/#{object.github_handle}" }
-      link(:linkedin) { "https://linkedin.com/in/#{object.linkedin_handle}" }
-      link(:medium) { "https://medium.com/@#{object.medium_handle}" }
-      link(:tumblr) { object.tumblr_url }
-      link(:twitter) { "https://twitter.com/#{object.twitter_handle}" }
+      link(:github) {
+        {
+          meta: {
+            rel: 'github',
+            title: "@#{object.github_handle}"
+          },
+          href: "https://github.com/#{object.github_handle}"
+        }
+      }
+      link(:linkedin) {
+        {
+          meta: {
+            rel: 'linkedin',
+            title: object.linkedin_handle
+          },
+          href: "https://linkedin.com/in/#{object.linkedin_handle}"
+        }
+      }
+      link(:medium) {
+        {
+          meta: {
+            rel: 'medium',
+            title: "@#{object.medium_handle}"
+          },
+          href: "https://medium.com/@#{object.medium_handle}"
+        }
+      }
+      link(:twitter) {
+        {
+          meta: {
+            rel: 'twitter',
+            title: "@#{object.twitter_handle}",
+          },
+          href: "https://twitter.com/#{object.twitter_handle}"
+        }
+      }
 
       has_many :projects
       has_many :skills
