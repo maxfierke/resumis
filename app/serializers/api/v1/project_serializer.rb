@@ -11,7 +11,15 @@ module Api
       end
 
       link(:self) { api_project_path(object.id) }
-      link(:github) { "https://github.com/#{object.github_url}" }
+      link(:github) {
+        {
+          meta: {
+            rel: 'github',
+            title: "@#{object.github_url}"
+          },
+          href: "https://github.com/#{object.github_url}"
+        }
+      }
       has_one :project_status, key: :status
       has_many :project_categories, key: :categories
     end
