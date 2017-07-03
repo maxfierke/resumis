@@ -30,8 +30,7 @@ module Api
       end
 
       def update
-        project.update_attributes(project_params)
-        if project.save
+        if project.update_attributes(project_params)
           render jsonapi: project
         else
           render_error resource: project

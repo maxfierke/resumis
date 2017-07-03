@@ -38,8 +38,7 @@ module Api
       end
 
       def update
-        resume.update_attributes(resume_params)
-        if resume.save
+        if resume.update_attributes(resume_params)
           render jsonapi: resume
         else
           render_error resource: resume
