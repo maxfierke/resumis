@@ -15,6 +15,7 @@ module Api
     protected
 
     def current_resource_owner
+      return nil unless doorkeeper_token
       @current_resource_owner ||= if doorkeeper_token.resource_owner_id
         User.find(doorkeeper_token.resource_owner_id)
       elsif doorkeeper_token.application

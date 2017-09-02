@@ -16,7 +16,7 @@ module Api
       end
 
       def show
-        if has_access_to_resume?(post)
+        if has_access_to_post?(post)
           render jsonapi: post, include: include_params
         else
           head :forbidden
@@ -61,7 +61,7 @@ module Api
       def posts
         # TODO: Replace with real access controls
         @posts ||= begin
-          if current_resource_owner.id != current_tenant.id
+          if !current_resource_owner || current_resource_owner.id != current_tenant.id
             query = Post.where(published: true)
           else
             query = Post.all
