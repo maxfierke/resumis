@@ -1,6 +1,8 @@
 module Api
   module V1
     class PostsController < ApiController
+      include ActionController::MimeResponds
+
       ALLOWED_INCLUDES = [
         'categories'
       ]
