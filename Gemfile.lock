@@ -244,7 +244,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hiredis (0.6.1)
-    i18n (0.8.1)
+    i18n (0.8.6)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jquery-rails (4.2.2)
@@ -279,17 +279,18 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_magick (4.6.1)
-    mini_portile2 (2.1.0)
-    minitest (5.10.1)
+    mini_portile2 (2.2.0)
+    minitest (5.10.3)
     multi_json (1.12.1)
     mustermann (1.0.0)
     nilify_blanks (1.2.1)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     nio4r (2.0.0)
-    nokogiri (1.7.0.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
+    pager_api (0.2.3)
     pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -316,9 +317,9 @@ GEM
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
     rails-bootstrap-markdown (2.6.0)
-    rails-dom-testing (2.0.2)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.0.2)
@@ -394,7 +395,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
-    tzinfo (1.2.2)
+    tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
@@ -446,6 +447,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   nilify_blanks
+  pager_api
   pg
   pry-rails
   rails (~> 5.0.2)
@@ -463,4 +465,4 @@ DEPENDENCIES
   wicked_pdf (~> 1.1)
 
 BUNDLED WITH
-   1.14.6
+   1.15.4

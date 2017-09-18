@@ -12,7 +12,7 @@ module Api
       end
 
       def index
-        render jsonapi: posts, include: include_params
+        paginate posts, include: include_params
       end
 
       def show

@@ -65,6 +65,7 @@ gem 'sinatra', '~> 2.0.0.rc1', :require => nil # for sidekiq web UI
 
 # pagination
 gem 'kaminari'
+gem 'pager_api'
 
 # react
 gem 'react-rails'
