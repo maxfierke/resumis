@@ -6,10 +6,6 @@ module Api
         'skills', 'skills.*'
       ]
 
-      before_action only: [:show] do
-        doorkeeper_authorize! :public
-      end
-
       def show
         render jsonapi: user, include: include_params
       end
