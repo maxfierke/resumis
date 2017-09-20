@@ -12,6 +12,18 @@ module Resumis
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+
+        if Rails.env.development?
+          origins '*'
+        else
+          origins ENV.fetch('RESUMIS_CORS_ORIGINS', '').split(',')
+        end
+        resource '/api/*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
     # include react addons because awesome
     config.react.addons = true
 

@@ -35,6 +35,7 @@ gem 'font-awesome-sass', '~> 4.3.0'
 # Devise for user authentication
 gem 'devise', '~> 4.2.0'
 gem 'doorkeeper'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Exporting resumes to PDF
 gem 'wicked_pdf', '~> 1.1'
