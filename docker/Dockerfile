@@ -1,5 +1,5 @@
-FROM ruby:2.3.0
-MAINTAINER Max Fierke <max@maxfierke.com>
+FROM ruby:2.4.2
+LABEL maintainer="Max Fierke <max@maxfierke.com>"
 
 RUN apt-get update -qq && apt-get install -y build-essential
 
