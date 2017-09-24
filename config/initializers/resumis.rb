@@ -20,7 +20,7 @@ module ResumisConfig
 
   # Used for ensuring authentication routes and such point to the right place
   def self.canonical_host
-    ENV['RESUMIS_CANONICAL_HOST'].presence || '127.0.0.1.xip.io'
+    ENV['RESUMIS_CANONICAL_HOST'].presence || "localhost:#{ENV['PORT']}"
   end
 
   def self.excluded_subdomains
