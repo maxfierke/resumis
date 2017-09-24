@@ -140,8 +140,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
+                  <%= link_to oauth_applications_url(host: ResumisConfig.canonical_host) do %>
+                    <%= icon 'exchange', '', class: 'fa-fw' %> OAuth2 Applications
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), target: '_blank' do %>
-                    <%= icon 'external-link' %> Sidekiq UI
+                    <%= icon 'external-link', '', class: 'fa-fw' %> Sidekiq UI
                   <% end %>
                 </li>
               </ul>

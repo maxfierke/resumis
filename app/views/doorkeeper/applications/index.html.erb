@@ -1,0 +1,29 @@
+<% page_title t('.title') %>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= t('.name') %></th>
+    <th><%= t('.callback_url') %></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @applications.each do |application| %>
+    <tr id="application_<%= application.id %>">
+      <td><%= link_to application.name, oauth_application_path(application) %></td>
+      <td><%= application.redirect_uri %></td>
+      <td>
+        <%= link_to edit_oauth_application_path(application), class: 'btn btn-link' do %>
+          <%= t('doorkeeper.applications.buttons.edit') %>
+        <% end %>
+        <%= render 'delete_form', application: application %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% content_for :actionbar_right do %>
+  <%= link_to t('.new'), new_oauth_application_path, class: 'btn btn-success' %>
+<% end %>

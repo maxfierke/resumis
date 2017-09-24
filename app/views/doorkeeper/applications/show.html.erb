@@ -1,0 +1,34 @@
+<% page_title t('.title', name: @application.name) %>
+
+<h4><%= t('.application_id') %>:</h4>
+<p><code id="application_id"><%= @application.uid %></code></p>
+
+<h4><%= t('.secret') %>:</h4>
+<p><code id="secret"><%= @application.secret %></code></p>
+
+<h4><%= t('.scopes') %>:</h4>
+<p><code id="scopes"><%= @application.scopes %></code></p>
+
+<h4><%= t('.callback_urls') %>:</h4>
+
+<table>
+  <% @application.redirect_uri.split.each do |uri| %>
+    <tr>
+      <td>
+        <code><%= uri %></code>
+      </td>
+      <td>
+        <%= link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes), class: 'btn btn-success', target: '_blank' %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<% content_for :actionbar_left do %>
+  <%= link_to "Back to applications", oauth_applications_path, class: 'btn btn-default' %>
+<% end %>
+
+<% content_for :actionbar_right do %>
+  <%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-danger link-danger' %>
+  <%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary' %>
+<% end %>

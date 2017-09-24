@@ -1,0 +1,5 @@
+<%= link_to t('doorkeeper.applications.buttons.destroy'),
+      oauth_application_path(application),
+      :method => 'DELETE',
+      data: { confirm: t('doorkeeper.applications.confirmations.destroy') },
+      :class => 'btn btn-link link-danger' %>

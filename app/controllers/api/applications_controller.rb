@@ -1,6 +1,7 @@
 module Api
   class ApplicationsController < Doorkeeper::ApplicationsController
     before_filter :authenticate_user!
+    layout "manage"
 
     def index
       @applications = current_user.oauth_applications
