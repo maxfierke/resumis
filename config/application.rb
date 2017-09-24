@@ -24,9 +24,6 @@ module Resumis
       end
     end
 
-    # include react addons because awesome
-    config.react.addons = true
-
     # activejob queue adapter
     config.active_job.queue_adapter = :sidekiq
 

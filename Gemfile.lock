@@ -25,8 +25,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    actionview-encoded_mail_to (1.0.9)
-      rails
     active_model_serializers (0.10.5)
       actionpack (>= 4.1, < 6)
       activemodel (>= 4.1, < 6)
@@ -54,10 +52,6 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.7)
       execjs
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -279,7 +273,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_magick (4.6.1)
-    mini_portile2 (2.2.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.1)
     mustermann (1.0.0)
@@ -287,8 +281,8 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     nio4r (2.0.0)
-    nokogiri (1.8.0)
-      mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pager_api (0.2.3)
     pg (0.20.0)
@@ -334,13 +328,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    react-rails (1.10.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     redcarpet (3.4.0)
     redis (3.3.3)
     redis-namespace (1.5.3)
@@ -418,7 +405,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionview-encoded_mail_to
   active_model_serializers (~> 0.10.0)
   acts_as_tenant
   autoprefixer-rails
@@ -454,7 +440,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   rails-bootstrap-markdown
-  react-rails
   redcarpet (>= 3.2.3)
   redis-namespace
   rspec-rails (~> 3.5)

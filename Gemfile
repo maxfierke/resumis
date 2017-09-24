@@ -40,9 +40,6 @@ gem 'rack-cors', :require => 'rack/cors'
 # Exporting resumes to PDF
 gem 'wicked_pdf', '~> 1.1'
 
-# for encoding emails to prevent harvesting
-gem 'actionview-encoded_mail_to'
-
 # because sometimes you need a NULL
 gem 'nilify_blanks'
 
@@ -67,9 +64,6 @@ gem 'sinatra', '~> 2.0.0.rc1', :require => nil # for sidekiq web UI
 # pagination
 gem 'kaminari'
 gem 'pager_api'
-
-# react
-gem 'react-rails'
 
 gem 'unicorn'
 
