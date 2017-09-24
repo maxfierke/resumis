@@ -11,8 +11,8 @@ module Manage
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to profile_path, notice: 'Your profile was successfully updated.' }
-          format.json { render :show, status: :ok, location: profile_path }
+          format.html { redirect_to manage_dashboard_path, notice: 'Your profile was successfully updated.' }
+          format.json { render :show, status: :ok, location: manage_dashboard_path }
         else
           format.html { render :edit }
           format.json { render json: @user.errors, status: :unprocessable_entity }

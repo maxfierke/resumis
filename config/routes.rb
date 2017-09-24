@@ -16,10 +16,6 @@ Rails.application.routes.draw do
     end
 
     if ResumisConfig.multi_tenant?
-      if ResumisConfig.listing_enabled?
-        get '/' => 'page#bare_domain'
-      end
-
       # Redirect other requests to the site at www.
       match '*path', to: redirect { |path_params, req| "#{req.protocol}www.#{req.domain}#{req.fullpath}" }, via: :get
     end
@@ -42,10 +38,7 @@ Rails.application.routes.draw do
       controllers :applications => 'api/applications'
     end
 
-    resources :posts, path: 'blog/posts', only: [:index, :show], concerns: :paginatable
-    resources :post_categories, path: 'blog/categories', only: [:index, :show], concerns: :paginatable
     resources :resumes, only: [:show]
-    resources :projects, only: [:index, :show], concerns: :paginatable
 
     namespace :manage do
       resources :resumes, concerns: :paginatable
@@ -71,14 +64,10 @@ Rails.application.routes.draw do
       get '/' => 'dashboard#index', as: :dashboard
     end
 
-    get 'blog' => 'posts#index'
-    get 'profile' => 'profile#show'
-    get 'about', to: redirect('/')
-
     if ResumisConfig.multi_tenant?
       get 'auth/user/*path', to: redirect { |path_params, req| "#{req.protocol}accounts.#{req.domain}#{req.fullpath}" }
     end
   end
 
-  root 'profile#show'
+  root 'manage/dashboard#index'
 end

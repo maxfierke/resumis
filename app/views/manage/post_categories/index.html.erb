@@ -13,7 +13,7 @@
     <% @post_categories.each do |post_category| %>
       <tr>
         <td>
-          <%= link_to post_category.name, post_category_path(post_category) %>
+          <%= link_to post_category.name, edit_manage_post_category_path(post_category) %>
         </td>
         <td><%= post_category.posts.count %></td>
         <td>

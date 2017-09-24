@@ -15,10 +15,7 @@
       <span class="pull-right date-range">
         <%= education_experience.date_range %>
 
-        <% if user_signed_in? and
-              education_experience.user_id == current_user.id and
-              !(controller_name == 'resumes' and action_name == 'show')
-        %>
+        <% if user_signed_in? and education_experience.user_id == current_user.id %>
           <%= link_to edit_manage_education_experience_path(education_experience), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
             <%= icon 'pencil' %>
           <%- end -%>

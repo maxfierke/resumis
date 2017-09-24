@@ -6,8 +6,7 @@
 
   <div class="actionbar actionbar-fixed-bottom">
     <div class="actionbar-left">
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    request.referrer || manage_project_categories_path, :class => 'btn btn-default' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), manage_project_categories_path, :class => 'btn btn-default' %>
     </div>
     <div class="actionbar-right">
       <%= f.submit nil, :class => 'btn btn-primary' %>

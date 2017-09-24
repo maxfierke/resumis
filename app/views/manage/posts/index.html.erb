@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-xs-10 col-sm-11">
           <h4>
-            <%= link_to post_url(post) do %>
+            <%= link_to edit_manage_post_path(post) do %>
               <%= post.title -%>
             <% end %>
             <% if post.published && post.published_on %>

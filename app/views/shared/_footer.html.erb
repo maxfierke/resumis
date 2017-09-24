@@ -9,13 +9,9 @@
   </div>
 </footer>
 
-<% if user_signed_in? and current_tenant != current_user %>
-  <%= render :partial => 'shared/userbar' %>
-<% else %>
 <div class="pi">
   &pi;
   <span class="pi-hidden">
     Powered by <a href="https://github.com/maxfierke/resumis">Resumis</a>. A cool thing by <a href="https://www.maxfierke.com">Max Fierke</a>.
   </span>
 </div>
-<% end %>

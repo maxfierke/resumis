@@ -19,7 +19,7 @@ module Manage
       respond_to do |format|
         if @post_category.save
           format.html { redirect_to manage_post_categories_path, notice: 'Post category was successfully created.' }
-          format.json { render :show, status: :created, location: @post_category }
+          format.json { render :show, status: :created, location: manage_post_categories_path }
         else
           format.html { render :new }
           format.json { render json: @post_category.errors, status: :unprocessable_entity }
@@ -31,7 +31,7 @@ module Manage
       respond_to do |format|
         if @post_category.update(post_category_params)
           format.html { redirect_to manage_post_categories_path, notice: 'Post category was successfully updated.' }
-          format.json { render :show, status: :ok, location: @post_category }
+          format.json { render :show, status: :ok, location: manage_post_categories_path }
         else
           format.html { render :edit }
           format.json { render json: @post_category.errors, status: :unprocessable_entity }

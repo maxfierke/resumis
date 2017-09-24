@@ -18,10 +18,6 @@ module ResumisConfig
     tenancy_mode == :multi
   end
 
-  def self.listing_enabled?
-    ENV['RESUMIS_LISTING_ENABLED'].presence || true
-  end
-
   # Used for ensuring authentication routes and such point to the right place
   def self.canonical_host
     ENV['RESUMIS_CANONICAL_HOST'].presence || '127.0.0.1.xip.io'

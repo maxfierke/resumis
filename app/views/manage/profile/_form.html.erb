@@ -158,8 +158,7 @@
 
 <div class="actionbar actionbar-fixed-bottom">
   <div class="actionbar-left">
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                request.referrer || manage_dashboard_path, :class => 'btn btn-default' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), manage_dashboard_path, :class => 'btn btn-default' %>
   </div>
   <div class="actionbar-right">
     <%= f.submit "Save Changes", :class => 'btn btn-primary' %>

@@ -174,7 +174,7 @@
             <%= yield %>
           </div>
         </div>
-        <% if content_for?(:actionbar_left) || content_for(:actionbar_right) %>
+        <% if content_for?(:actionbar_left) || content_for?(:actionbar_right) %>
         <div class="actionbar actionbar-fixed-bottom">
           <% if content_for?(:actionbar_left) %>
           <div class="actionbar-left">

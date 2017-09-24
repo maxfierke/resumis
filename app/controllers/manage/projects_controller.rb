@@ -23,14 +23,14 @@ module Manage
       @project.user = current_user
       @project.save
       respond_with(@project) do |format|
-        format.html { redirect_to projects_path }
+        format.html { redirect_to manage_projects_path }
       end
     end
 
     def update
       @project.update(project_params)
       respond_with(@project) do |format|
-        format.html { redirect_to projects_path }
+        format.html { redirect_to manage_projects_path }
       end
     end
 

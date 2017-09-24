@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-xs-10 col-sm-11">
           <h4>
-            <%= link_to project_url(project) do %>
+            <%= link_to edit_manage_project_path(project) do %>
               <%= project.name -%>
             <% end %>
             <% if project.status %>
