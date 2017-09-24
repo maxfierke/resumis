@@ -25,5 +25,6 @@
 </table>
 
 <% content_for :actionbar_right do %>
+  <%= link_to "Authorized Applications", oauth_authorized_applications_path, class: 'btn btn-link' %>
   <%= link_to t('.new'), new_oauth_application_path, class: 'btn btn-success' %>
 <% end %>

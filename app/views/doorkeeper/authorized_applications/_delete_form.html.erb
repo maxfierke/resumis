@@ -1,0 +1,5 @@
+<%= link_to t('doorkeeper.authorized_applications.buttons.revoke'),
+      oauth_authorized_application_path(application),
+      :method => 'DELETE',
+      data: { confirm: t('doorkeeper.authorized_applications.confirmations.revoke') },
+      :class => 'btn btn-link link-danger' %>

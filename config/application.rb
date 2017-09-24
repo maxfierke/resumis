@@ -41,5 +41,11 @@ module Resumis
           :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
+    config.to_prepare do
+      Doorkeeper::ApplicationsController.layout "manage"
+      Doorkeeper::AuthorizationsController.layout "bare"
+      Doorkeeper::AuthorizedApplicationsController.layout "manage"
+    end
   end
 end

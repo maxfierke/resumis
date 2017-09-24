@@ -27,7 +27,7 @@
             <p class="navbar-text h5">
              Hey, <strong><%= current_user.first_name %></strong>!
             </p>
-            <%= link_to "Go to My Site", "#{request.protocol}#{u tenant_instance_hostname(current_user)}/", class: 'navbar-btn btn btn-link' %>
+            <%= link_to "Go to My Site", "#{request.protocol}#{tenant_instance_hostname(current_user)}/", class: 'navbar-btn btn btn-link' %>
             <%= link_to "Logout", destroy_user_session_url, :method => :delete, class: "navbar-btn btn btn-danger" %>
           <% else %>
             <%= link_to new_user_session_url, class: "navbar-btn btn btn-link" do %>
