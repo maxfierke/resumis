@@ -15,10 +15,15 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true
   validates_uniqueness_to_tenant :name
-
   validates_uniqueness_to_tenant :slug
 
-  default_scope { order(start_date: :desc, end_date: :desc) }
+  def self.ordered_by_activity
+    order(<<-SQL.strip_heredoc
+      end_date DESC NULLS FIRST,
+      start_date DESC
+    SQL
+    )
+  end
 
   def status
     project_status

@@ -56,7 +56,7 @@ module Api
       end
 
       def projects
-        @projects ||= Project.all
+        @projects ||= Project.ordered_by_activity
       end
 
       def project_params
