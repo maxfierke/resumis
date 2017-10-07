@@ -67,7 +67,7 @@ module Api
         # Only allow viewing of published resumes unless the resumes is owned by the user
         # TODO: Replace with real access controls
         resume.published ||
-          (current_resource_owner && current_resource_owner.id != resume.user.id)
+          (current_resource_owner && current_resource_owner.id == resume.user.id)
       end
 
       def resumes
