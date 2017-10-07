@@ -1,4 +1,4 @@
-class AddGithubURLToProject < ActiveRecord::Migration
+class AddGithubUrlToProject < ActiveRecord::Migration
   def change
     add_column :projects, :github_url, :string
   end

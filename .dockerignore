@@ -4,9 +4,15 @@
 /log/*
 !/log/.keep
 /tmp
+.DS_Store
+*.swp
+*~
+/vendor/bundle
 /vendor/cache
 /public/uploads
+/public/system
+/public/assets
 .env
+.env.*
 .rbenv-vars
 .capistrano/metrics
-/docker

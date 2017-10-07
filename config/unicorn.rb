@@ -1,9 +1,9 @@
-require File.dirname(__FILE__)+'/application'
+require_relative './application'
 
 home = ENV["RESUMIS_DEPLOY_ROOT"]
 port = ENV["RESUMIS_HTTP_PORT"].presence || ENV["PORT"]
 
-if Rails.env.production?
+unless port.present?
   listen "/tmp/resumis-unicorn.sock", backlog: 64
   worker_processes 2
 else
