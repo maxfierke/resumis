@@ -85,7 +85,7 @@ module Api
         # Only allow viewing of published posts unless the posts is owned by the user
         # TODO: Replace with real access controls
         post.published ||
-          (current_resource_owner && current_resource_owner.id != post.user.id)
+          (current_resource_owner && current_resource_owner.id == post.user.id)
       end
     end
   end
