@@ -14,6 +14,20 @@ RSpec.describe Project, type: :model do
     expect(FactoryGirl.build(:project, name: 'i am proj')).not_to be_valid
   end
 
+  describe '.featured' do
+    before do
+      @featured_project = FactoryGirl.create(:project, featured: true)
+      @normal_project = FactoryGirl.create(:project, featured: false)
+    end
+
+    let(:result){ described_class.featured }
+
+    it 'returns all featured projects' do
+      expect(result).to include(@featured_project)
+      expect(result).not_to include(@normal_project)
+    end
+  end
+
   describe '#css_classes' do
     it 'outputs css classes for each project category' do
       proj = FactoryGirl.create(:project,

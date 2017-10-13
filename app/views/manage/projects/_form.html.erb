@@ -37,6 +37,12 @@
             <%= f.label :project_status_id, :class => 'control-label' %>
             <%= f.collection_select :project_status_id, ProjectStatus.all, :id, :name, {}, :class => 'text_field form-control' %>
           </div>
+          <div class="form-check">
+            <%= f.label :featured, :class => 'form-check-label' do  %>
+              <%= f.check_box :featured, :class => 'text_field form-check-input' %> Featured
+            <% end %>
+          </div>
+          <br />
           <%= f.submit nil, :class => 'btn btn-primary btn-block' %>
           <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                           manage_projects_path, :class => 'btn btn-default btn-block' %>

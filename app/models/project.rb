@@ -17,6 +17,8 @@ class Project < ActiveRecord::Base
   validates_uniqueness_to_tenant :name
   validates_uniqueness_to_tenant :slug
 
+  scope :featured, -> { where(featured: true) }
+
   def self.ordered_by_activity
     order(<<-SQL.strip_heredoc
       end_date DESC NULLS FIRST,

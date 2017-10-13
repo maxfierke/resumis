@@ -5,5 +5,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     subdomain { Faker::Internet.domain_word }
     password { Faker::Internet.password }
+
+    trait :admin do
+      admin true
+    end
   end
 end
