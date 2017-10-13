@@ -51,6 +51,7 @@ module Manage
                                         :vimeo_url, :youtube_url,
                                         :soundcloud_url, :bandcamp_url,
                                         :penflip_url,
+                                        :featured,
                                         project_category_ids: [])
       end
   end

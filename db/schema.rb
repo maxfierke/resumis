@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402204112) do
+ActiveRecord::Schema.define(version: 20171013124123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20170402204112) do
     t.string   "penflip_url"
     t.string   "youtube_url"
     t.string   "slug"
+    t.boolean  "featured",                      default: false, null: false
     t.index ["name"], name: "index_projects_on_name", unique: true, using: :btree
     t.index ["project_status_id"], name: "index_projects_on_project_status_id", using: :btree
     t.index ["slug", "user_id"], name: "index_projects_on_slug_and_user_id", unique: true, using: :btree

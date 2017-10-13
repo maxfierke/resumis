@@ -88,3 +88,7 @@ group :development, :test do
   gem 'brakeman', :require => false
   gem 'bundler-audit', require: false
 end
+
+group :test do
+  gem 'database_cleaner'
+end

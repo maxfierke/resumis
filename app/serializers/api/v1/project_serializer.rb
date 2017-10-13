@@ -4,7 +4,7 @@ module Api
       include ApplicationHelper
 
       attributes :id, :slug, :name, :short_description, :description,
-                 :date_range, :start_date, :end_date, :created_at, :updated_at
+                 :date_range, :start_date, :end_date, :created_at, :updated_at, :featured
 
       attribute :description_html do
         markdown(object.description)
