@@ -88,7 +88,6 @@ GEM
       carrierwave (~> 0.5)
     case_transform (0.2)
       activesupport
-    cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
@@ -280,10 +279,6 @@ GEM
     orm_adapter (0.5.0)
     pager_api (0.2.3)
     pg (0.20.0)
-    poltergeist (1.16.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -433,7 +428,6 @@ DEPENDENCIES
   nilify_blanks
   pager_api
   pg
-  poltergeist
   pry-rails
   rack-cors
   rails (~> 5.0.2)
