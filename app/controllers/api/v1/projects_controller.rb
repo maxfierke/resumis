@@ -56,7 +56,15 @@ module Api
       end
 
       def projects
-        @projects ||= Project.ordered_by_activity
+        @projects ||= begin
+          scope = Project.ordered_by_activity
+
+          if include_params.include?('categories')
+            scope = scope.includes(:project_categories)
+          end
+
+          scope
+        end
       end
 
       def project_params

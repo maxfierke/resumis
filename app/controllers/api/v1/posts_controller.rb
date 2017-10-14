@@ -69,6 +69,10 @@ module Api
             query = Post.all
           end
 
+          if include_params.include?('categories')
+            query = query.includes(:post_categories)
+          end
+
           query.order(published_on: :desc, updated_at: :desc, created_at: :desc)
         end
       end

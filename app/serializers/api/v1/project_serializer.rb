@@ -21,7 +21,10 @@ module Api
         }
       }
       has_one :project_status, key: :status
-      has_many :project_categories, key: :categories
+      has_many :project_categories, key: :categories do
+        # AMS seems to return ALL project categories unless we do this explicitly
+        object.project_categories
+      end
     end
   end
 end
