@@ -28,30 +28,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe '#css_classes' do
-    it 'outputs css classes for each project category' do
-      proj = FactoryGirl.create(:project,
-        project_categories: [
-          FactoryGirl.create(:project_category, slug: 'one'),
-          FactoryGirl.create(:project_category, slug: 'two')
-        ],
-        start_date: DateTime.new(2014,1,1),
-        end_date: nil
-      )
-      expect(proj.css_classes).to include('current-projects', 'one', 'two')
-
-      proj2 = FactoryGirl.create(:project,
-        project_categories: [
-          FactoryGirl.create(:project_category, slug: 'three'),
-          FactoryGirl.create(:project_category, slug: 'four')
-        ],
-        start_date: DateTime.new(2013,4,1),
-        end_date: DateTime.new(2015,8,16)
-      )
-      expect(proj2.css_classes).to include('past-projects', 'three', 'four')
-    end
-  end
-
   describe '#date_range' do
     it "returns 'Month Year - present' without an end_date" do
       proj = FactoryGirl.create(:project,
