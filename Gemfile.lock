@@ -439,6 +439,7 @@ DEPENDENCIES
   sidekiq (< 5)
   sidekiq-failures
   sinatra (~> 2.0.0.rc1)
+  thor
   uglifier (>= 2.7.2)
   unicorn
   wicked_pdf (~> 1.1)
