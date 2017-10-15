@@ -8,7 +8,8 @@ ENV APP_HOME=/resumis \
     RESUMIS_DEPLOY_ROOT=/resumis \
     RESUMIS_TENANCY_MODE=single \
     RESUMIS_USER=resumis \
-    PORT=5000
+    PORT=5000 \
+    WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
 
 EXPOSE 5000
 
