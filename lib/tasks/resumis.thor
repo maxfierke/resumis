@@ -13,8 +13,10 @@ class Resumis < Thor
     say('')
     first_name = check_value('First Name: ')
     last_name = check_value('Last Name: ')
-    domain = ask('Domain: ')
-    subdomain = ask('Subdomain: ')
+    if ResumisConfig.multi_tenant?
+      domain = ask('Domain: ')
+      subdomain = ask('Subdomain: ')
+    end
     admin = yes?('Are you an Admin user? (yes or no)')
 
     User.create! do |u|
@@ -22,8 +24,8 @@ class Resumis < Thor
       u.last_name = last_name
       u.email = email
       u.password = password
-      u.domain = domain
-      u.subdomain = subdomain
+      u.domain = domain if domain
+      u.subdomain = subdomain if subdomain
       u.admin = admin
     end
   end
