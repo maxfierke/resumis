@@ -50,6 +50,8 @@ module Api
 
     def handle_exception(exception)
       raise exception if Rails.env.development?
+      Rails.logger.error exception.message
+      Rails.logger.error exception.backtrace.join("\n")
       error = Errors::Resolver.resolve_for(exception)
       render status: error.http_status_code.to_i, json: error.to_json_api(request)
     end

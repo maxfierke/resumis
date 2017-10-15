@@ -24,14 +24,16 @@ module Errors
 
     def to_json_api(request)
       {
-        errors: {
-          id: request.uuid,
-          meta: {
-            request_uuid: request.uuid,
-            content_type: request.content_type || request.headers['Accept'],
-            api_version: request.headers['X-Resumis-Version']
-          }
-        }.merge(to_h)
+        errors: [
+          {
+            id: request.uuid,
+            meta: {
+              request_uuid: request.uuid,
+              content_type: request.content_type || request.headers['Accept'],
+              api_version: request.headers['X-Resumis-Version']
+            }
+          }.merge(to_h)
+        ]
       }
     end
 

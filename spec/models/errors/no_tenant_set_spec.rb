@@ -9,18 +9,20 @@ RSpec.describe Errors::NoTenantSet do
 
       expect(json_errors).to eq(
         {
-          errors: {
-            id: 'uuid123',
-            title: 'No Tenant Set',
-            detail: "Attempting to access resource for authenticated user when not authenticated.",
-            code: 'RESUMIS-NO-TENANT',
-            status: '401',
-            meta: {
-              request_uuid: 'uuid123',
-              content_type: 'application/vnd.api+json',
-              api_version: 'v1'
+          errors: [
+            {
+              id: 'uuid123',
+              title: 'No Tenant Set',
+              detail: "Attempting to access resource for authenticated user when not authenticated.",
+              code: 'RESUMIS-NO-TENANT',
+              status: '401',
+              meta: {
+                request_uuid: 'uuid123',
+                content_type: 'application/vnd.api+json',
+                api_version: 'v1'
+              }
             }
-          }
+          ]
         }
       )
     end
