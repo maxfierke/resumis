@@ -10,18 +10,20 @@ RSpec.describe Errors::GuruMeditation do
 
       expect(json_errors).to eq(
         {
-          errors: {
-            id: 'uuid123',
-            title: 'Fatal Error or Uncaught Exception',
-            detail: "An error occurred that Resumis wasn't expecting.",
-            code: 'RESUMIS-GURU-MEDITATION',
-            status: '500',
-            meta: {
-              request_uuid: 'uuid123',
-              content_type: 'application/vnd.api+json',
-              api_version: 'v1'
+          errors: [
+            {
+              id: 'uuid123',
+              title: 'Fatal Error or Uncaught Exception',
+              detail: "An error occurred that Resumis wasn't expecting.",
+              code: 'RESUMIS-GURU-MEDITATION',
+              status: '500',
+              meta: {
+                request_uuid: 'uuid123',
+                content_type: 'application/vnd.api+json',
+                api_version: 'v1'
+              }
             }
-          }
+          ]
         }
       )
     end
