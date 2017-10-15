@@ -44,6 +44,10 @@ RUN rake assets:precompile
 
 RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout log/unicorn.log \
+  && ln -sf /dev/stderr log/production.log
+
 USER $RESUMIS_USER
 
 CMD [ "bundle", "exec", "unicorn", "-c", "config/unicorn.rb" ]
