@@ -1,4 +1,4 @@
-<% page_title "Resumes" %>
+<% page_title "CVs" %>
 
 <div class="list-group">
   <% @resumes.each do |resume| %>
@@ -42,6 +42,6 @@
 
 <% content_for :actionbar_right do %>
   <%= link_to new_manage_resume_path, :class => 'btn btn-primary' do %>
-    <%= icon 'plus', 'New Resume' %>
+    <%= icon 'plus', 'New CV' %>
   <% end %>
 <% end %>
