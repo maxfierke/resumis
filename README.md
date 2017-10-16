@@ -58,6 +58,10 @@ Resumis-specific configuration can be done either through the `config/initialize
 * `RESUMIS_MAIL_SENDER` - `From:` address for emails sent by Resumis (password resets, confirmations, etc.)
 * `RESUMIS_CANONICAL_HOST` - Canonical hostname.
 
+#### Deploying in Production
+
+* [Deploying with Docker](https://github.com/maxfierke/resumis/wiki/Running-Resumis-in-production-with-Docker)
+
 ## LICENSE
 
 Apache License 2.0. See LICENSE
