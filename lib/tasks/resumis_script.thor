@@ -3,7 +3,7 @@ require "thor"
 ENV['RAILS_ENV'] ||= 'development'
 require File.expand_path('config/environment.rb')
 
-class Resumis < Thor
+class ResumisScript < Thor
   desc "useradd", "creates a new user"
   def useradd
     say("Let's create your user")
@@ -24,8 +24,8 @@ class Resumis < Thor
       u.last_name = last_name
       u.email = email
       u.password = password
-      u.domain = domain if domain
-      u.subdomain = subdomain if subdomain
+      u.domain = domain if domain.present?
+      u.subdomain = subdomain if subdomain.present?
       u.admin = admin
     end
   end
