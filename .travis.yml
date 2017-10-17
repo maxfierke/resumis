@@ -6,7 +6,12 @@ services:
   - postgresql
 
 before_script:
+  - gem install brakeman
+  - gem install bundler-audit
   - bundle exec rake db:test:prepare
 
-script: bundle exec rake spec
+script:
+  - bundle-audit --update
+  - brakeman --no-pager --github-repo maxfierke/resumis
+  - bundle exec rake spec
 

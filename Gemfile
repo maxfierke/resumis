@@ -85,8 +85,4 @@ group :development, :test do
   gem 'faker', '~> 1.4.3'
   gem 'fuubar'
   gem 'pry-rails'
-
-  # for vulnerability scanning
-  gem 'brakeman', :require => false
-  gem 'bundler-audit', require: false
 end
