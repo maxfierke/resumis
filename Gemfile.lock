@@ -66,11 +66,7 @@ GEM
       rails (>= 3.1.0)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
-    brakeman (3.5.0)
     builder (3.2.3)
-    bundler-audit (0.5.0)
-      bundler (~> 1.2)
-      thor (~> 0.18)
     capybara (2.12.1)
       addressable
       mime-types (>= 1.16)
@@ -408,8 +404,6 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-sass-extras
   bootswatch-rails
-  brakeman
-  bundler-audit
   capybara
   carrierwave
   carrierwave_backgrounder
