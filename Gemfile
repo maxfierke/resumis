@@ -65,6 +65,8 @@ gem 'pager_api'
 
 gem 'unicorn'
 
+gem 'thor'
+
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
