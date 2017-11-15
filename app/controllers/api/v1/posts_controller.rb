@@ -18,15 +18,13 @@ module Api
       end
 
       def show
-        if has_access_to_post?(post)
-          render jsonapi: post, include: include_params
-        else
-          head :forbidden
-        end
+        authorize post
+        render jsonapi: post, include: include_params
       end
 
       def create
         new_post = Post.new(post_params)
+        authorize new_post
         if new_post.save
           render jsonapi: new_post, status: :created, location: new_post
         else
@@ -35,6 +33,7 @@ module Api
       end
 
       def update
+        authorize post
         if post.update_attributes(post_params)
           render jsonapi: post
         else
@@ -43,6 +42,7 @@ module Api
       end
 
       def destroy
+        authorize post
         post.destroy!
         head :no_content
       end
@@ -57,17 +57,12 @@ module Api
       end
 
       def post
-        @post ||= Post.find(params[:id])
+        @post ||= policy_scope(Post).find(params[:id])
       end
 
       def posts
-        # TODO: Replace with real access controls
         @posts ||= begin
-          if !current_resource_owner || current_resource_owner.id != current_tenant.id
-            query = Post.where(published: true)
-          else
-            query = Post.all
-          end
+          query = policy_scope(Post)
 
           if include_params.include?('categories')
             query = query.includes(:post_categories)
@@ -83,13 +78,6 @@ module Api
             :title, :body, :published, :published_on
           ]
         ).merge(user: current_tenant)
-      end
-
-      def has_access_to_post?(post)
-        # Only allow viewing of published posts unless the posts is owned by the user
-        # TODO: Replace with real access controls
-        post.published ||
-          (current_resource_owner && current_resource_owner.id == post.user.id)
       end
     end
   end
