@@ -53,7 +53,7 @@ Doorkeeper.configure do
   # For more information go to
   # https://github.com/doorkeeper-gem/doorkeeper/wiki/Using-Scopes
   default_scopes  :public
-  optional_scopes :projects_write, :resumes_write, :blogs_write, :settings, :settings_write
+  optional_scopes :projects_write, :resumes_write, :posts_write, :settings, :settings_write
 
   # Change the way client credentials are retrieved from the request object.
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
