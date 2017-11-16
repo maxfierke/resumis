@@ -7,6 +7,7 @@ module Api
       ]
 
       def show
+        authorize user
         render jsonapi: user, include: include_params
       end
 
@@ -20,7 +21,7 @@ module Api
       end
 
       def user
-        @user ||= User.find(params[:id])
+        @user ||= policy_scope(User).find(params[:id])
       end
     end
   end
