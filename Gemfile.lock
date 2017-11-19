@@ -53,9 +53,9 @@ GEM
     autoprefixer-rails (6.7.7)
       execjs
     bcrypt (3.1.11)
-    better_errors (2.1.1)
+    better_errors (2.4.0)
       coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
+      erubi (>= 1.0.0)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -84,7 +84,7 @@ GEM
       carrierwave (~> 0.5)
     case_transform (0.2)
       activesupport
-    coderay (1.1.1)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.2)
@@ -99,6 +99,7 @@ GEM
     diff-lcs (1.3)
     doorkeeper (4.2.5)
       railties (>= 4.2)
+    erubi (1.7.0)
     erubis (2.7.0)
     excon (0.55.0)
     execjs (2.7.0)
