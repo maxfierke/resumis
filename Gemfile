@@ -82,7 +82,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'faker', '~> 1.4.3'
+  gem 'faker', '~> 1.8.4'
   gem 'fuubar'
   gem 'pry-rails'
 end
