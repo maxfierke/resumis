@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ProjectCategoryPolicy do
-  let(:user) { FactoryGirl.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = user }
+  let(:current_tenant) { FactoryGirl.create(:user, admin: false) }
+  before { ActsAsTenant.current_tenant = current_tenant }
   after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
@@ -10,7 +10,7 @@ RSpec.describe ProjectCategoryPolicy do
 
     context 'user is nil' do
       let(:project_category) { FactoryGirl.create(:project_category) }
-      let(:policy_user) { PolicyUser.new(nil) }
+      let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
       it { is_expected.to forbid_actions([:create, :update, :destroy]) }
@@ -20,11 +20,11 @@ RSpec.describe ProjectCategoryPolicy do
       let(:access_token) do
         FactoryGirl.create(
           :access_token,
-          resource_owner_id: user.id,
+          resource_owner_id: current_tenant.id,
           scopes: nil
         )
       end
-      let(:policy_user) { PolicyUser.new(user, doorkeeper_token: access_token) }
+      let(:policy_user) { PolicyUser.new(current_tenant, current_tenant, doorkeeper_token: access_token) }
 
       context "user doesn't own the project category" do
         let(:other_user) { FactoryGirl.create(:user) }
@@ -49,7 +49,7 @@ RSpec.describe ProjectCategoryPolicy do
           let(:access_token) do
             FactoryGirl.create(
               :access_token,
-              resource_owner_id: user.id,
+              resource_owner_id: current_tenant.id,
               scopes: 'projects_write'
             )
           end
@@ -60,7 +60,7 @@ RSpec.describe ProjectCategoryPolicy do
     end
 
     context 'user is a browser user' do
-      let(:policy_user) { PolicyUser.new(user) }
+      let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
       context "user doesn't own the project category" do
         let(:other_user) { FactoryGirl.create(:user) }
@@ -85,7 +85,7 @@ RSpec.describe ProjectCategoryPolicy do
     subject { ProjectCategoryPolicy::Scope.new(policy_user, ProjectCategory.all).resolve }
 
     let!(:project_categories) { FactoryGirl.create_list(:project_category, 3) }
-    let(:policy_user) { PolicyUser.new(user) }
+    let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
     it 'returns all project categories for the user' do
       expect(subject).to match_array(project_categories)

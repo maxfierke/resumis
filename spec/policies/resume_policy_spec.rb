@@ -1,22 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe PostPolicy do
+RSpec.describe ResumePolicy do
   let(:current_tenant) { FactoryGirl.create(:user, admin: false) }
   before { ActsAsTenant.current_tenant = current_tenant }
   after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
-    subject { described_class.new(policy_user, post) }
+    subject { described_class.new(policy_user, resume) }
 
     context 'user is nil' do
-      let(:post) { FactoryGirl.create(:post) }
+      let(:resume) { FactoryGirl.create(:resume) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_action(:index) }
       it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
 
-      context 'post is published' do
-        let(:post) { FactoryGirl.create(:post, published: true) }
+      context 'resume is published' do
+        let(:resume) { FactoryGirl.create(:resume, published: true) }
 
         it { is_expected.to permit_action(:show) }
       end
@@ -32,31 +32,31 @@ RSpec.describe PostPolicy do
       end
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant, doorkeeper_token: access_token) }
 
-      context "user doesn't own the post" do
+      context "user doesn't own the resume" do
         let(:other_user) { FactoryGirl.create(:user) }
-        let(:post) do
+        let(:resume) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post, user: other_user, published: true)
+            FactoryGirl.create(:resume, user: other_user, published: true)
           end
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
-      context 'user owns post' do
-        let(:post) { FactoryGirl.create(:post) }
+      context 'user owns resume' do
+        let(:resume) { FactoryGirl.create(:resume) }
 
-        context "token doesn't have posts_write scope" do
+        context "token doesn't have resumes_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
           it { is_expected.to forbid_actions([:create, :update, :destroy]) }
         end
 
-        context 'token has posts_write scope' do
+        context 'token has resumes_write scope' do
           let(:access_token) do
             FactoryGirl.create(
               :access_token,
               resource_owner_id: current_tenant.id,
-              scopes: 'posts_write'
+              scopes: 'resumes_write'
             )
           end
 
@@ -68,19 +68,19 @@ RSpec.describe PostPolicy do
     context 'user is a browser user' do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
-      context "user doesn't own the post" do
+      context "user doesn't own the resume" do
         let(:other_user) { FactoryGirl.create(:user) }
-        let(:post) do
+        let(:resume) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post, user: other_user, published: true)
+            FactoryGirl.create(:resume, user: other_user, published: true)
           end
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
-      context 'user owns post' do
-        let(:post) { FactoryGirl.create(:post) }
+      context 'user owns resume' do
+        let(:resume) { FactoryGirl.create(:resume) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -88,32 +88,32 @@ RSpec.describe PostPolicy do
   end
 
   describe 'scope' do
-    subject { PostPolicy::Scope.new(policy_user, Post.all).resolve }
+    subject { ResumePolicy::Scope.new(policy_user, Resume.all).resolve }
 
-    let!(:secret_posts) { FactoryGirl.create_list(:post, 5, published: false) }
-    let!(:published_posts) { FactoryGirl.create_list(:post, 5, published: true) }
+    let!(:secret_resumes) { FactoryGirl.create_list(:resume, 5, published: false) }
+    let!(:published_resumes) { FactoryGirl.create_list(:resume, 5, published: true) }
 
     context 'user is nil' do
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
-      it 'returns only published posts' do
-        expect(subject).to match_array(published_posts)
+      it 'returns only published resumes' do
+        expect(subject).to match_array(published_resumes)
       end
     end
 
     context 'user is not the current tenant' do
       let(:policy_user) { PolicyUser.new(FactoryGirl.create(:user, admin: false), current_tenant) }
 
-      it 'returns only published posts' do
-        expect(subject).to match_array(published_posts)
+      it 'returns only published resumes' do
+        expect(subject).to match_array(published_resumes)
       end
     end
 
     context 'user is current_tenant' do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
-      it 'returns all posts for the current_tenant' do
-        expect(subject).to match_array(secret_posts + published_posts)
+      it 'returns all resumes for the current_tenant' do
+        expect(subject).to match_array(secret_resumes + published_resumes)
       end
     end
   end

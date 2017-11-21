@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 
   def pundit_user
-    PolicyUser.new(current_user)
+    PolicyUser.new(current_user, current_tenant)
   end
 
   def after_sign_in_path_for(resource)

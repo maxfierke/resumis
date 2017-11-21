@@ -1,4 +1,4 @@
-class PostPolicy < ApplicationPolicy
+class ResumePolicy < ApplicationPolicy
   def index?
     if user.api_user?
       has_public_access_scopes?
@@ -19,7 +19,7 @@ class PostPolicy < ApplicationPolicy
 
   def create?
     if user.api_user?
-      user.owns?(record) && user.has_oauth_scope?(:posts_write)
+      user.owns?(record) && user.has_oauth_scope?(:resumes_write)
     else
       user.owns?(record)
     end
@@ -39,11 +39,11 @@ class PostPolicy < ApplicationPolicy
         scope.where(published: true)
       else
         scope
-      end.order(published_on: :desc)
+      end
     end
   end
 
   private def has_public_access_scopes?
-    user.has_oauth_scope?(:public) || user.has_oauth_scope?(:posts_write)
+    user.has_oauth_scope?(:public) || user.has_oauth_scope?(:resumes_write)
   end
 end

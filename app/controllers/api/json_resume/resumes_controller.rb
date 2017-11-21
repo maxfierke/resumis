@@ -2,6 +2,7 @@ module Api
   module JsonResume
     class ResumesController < ::Api::BaseController
       def show
+        authorize resume
         render json: resume, serializer: ResumeSerializer, adapter: :attributes
       end
 
