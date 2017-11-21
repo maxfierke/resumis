@@ -77,7 +77,7 @@ module Api
           params, only: [
             :title, :body, :published, :published_on
           ]
-        ).merge(user: current_tenant)
+        ).merge(user: current_resource_owner)
       end
     end
   end

@@ -76,7 +76,7 @@ module Api
             :slug, :name, :short_description, :description, :status,
             :categories, :start_date, :end_date
           ]
-        ).merge(user: current_tenant)
+        ).merge(user: current_resource_owner)
       end
     end
   end
