@@ -252,9 +252,10 @@ GEM
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
     kgio (2.11.0)
-    listen (3.0.8)
+    listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     loofah (2.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -346,6 +347,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
     ruby-progressbar (1.8.1)
+    ruby_dep (1.5.0)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -424,7 +426,7 @@ DEPENDENCIES
   hiredis
   jquery-rails (>= 4.0.4)
   kaminari
-  listen (~> 3.0.5)
+  listen (~> 3.1.5)
   mini_magick
   nilify_blanks
   pager_api
