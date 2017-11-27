@@ -28,7 +28,7 @@ gem 'rails-bootstrap-markdown'
 gem 'redcarpet', '>= 3.2.3'
 
 # Utilize font-awesome iconogrphy set
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'font-awesome-sass', '~> 4.7.0'
 
 # Devise for user authentication
 gem 'devise', '~> 4.2.0'
