@@ -70,7 +70,7 @@ gem 'thor'
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.1.5'
 end
 
 group :production do
