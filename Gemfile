@@ -55,7 +55,7 @@ gem 'mini_magick'
 # queues are cool
 gem 'hiredis'
 gem 'redis-namespace'
-gem 'sidekiq', '< 5'
+gem 'sidekiq', '< 6'
 gem 'sidekiq-failures'
 gem 'sinatra', '~> 2.0.0', :require => nil # for sidekiq web UI
 
