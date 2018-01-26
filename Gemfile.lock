@@ -90,7 +90,7 @@ GEM
     crass (1.0.3)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
-    devise (4.3.0)
+    devise (4.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.2)
@@ -229,7 +229,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hiredis (0.6.1)
-    i18n (0.9.1)
+    i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -269,7 +269,7 @@ GEM
     mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.2)
     multi_json (1.12.1)
     mustermann (1.0.1)
     nilify_blanks (1.2.1)
@@ -416,7 +416,7 @@ DEPENDENCIES
   carrierwave
   carrierwave_backgrounder
   database_cleaner
-  devise (~> 4.3.0)
+  devise (~> 4.4.1)
   doorkeeper
   factory_girl_rails (~> 4.0)
   faker (~> 1.8.4)
