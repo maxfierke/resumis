@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PostCategoryPolicy do
-  let(:current_tenant) { FactoryGirl.create(:user, admin: false) }
+  let(:current_tenant) { FactoryBot.create(:user, admin: false) }
   before { ActsAsTenant.current_tenant = current_tenant }
   after { ActsAsTenant.current_tenant = nil }
 
@@ -9,7 +9,7 @@ RSpec.describe PostCategoryPolicy do
     subject { described_class.new(policy_user, post_category) }
 
     context 'user is nil' do
-      let(:post_category) { FactoryGirl.create(:post_category) }
+      let(:post_category) { FactoryBot.create(:post_category) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
@@ -18,7 +18,7 @@ RSpec.describe PostCategoryPolicy do
 
     context 'user is an API user' do
       let(:access_token) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :access_token,
           resource_owner_id: current_tenant.id,
           scopes: nil
@@ -27,10 +27,10 @@ RSpec.describe PostCategoryPolicy do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant, doorkeeper_token: access_token) }
 
       context "user doesn't own the post category" do
-        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_user) { FactoryBot.create(:user) }
         let(:post_category) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post_category, user: other_user)
+            FactoryBot.create(:post_category, user: other_user)
           end
         end
 
@@ -38,7 +38,7 @@ RSpec.describe PostCategoryPolicy do
       end
 
       context 'user owns post category' do
-        let(:post_category) { FactoryGirl.create(:post_category) }
+        let(:post_category) { FactoryBot.create(:post_category) }
 
         context "token doesn't have posts_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -47,7 +47,7 @@ RSpec.describe PostCategoryPolicy do
 
         context 'token has posts_write scope' do
           let(:access_token) do
-            FactoryGirl.create(
+            FactoryBot.create(
               :access_token,
               resource_owner_id: current_tenant.id,
               scopes: 'posts_write'
@@ -63,10 +63,10 @@ RSpec.describe PostCategoryPolicy do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
       context "user doesn't own the post category" do
-        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_user) { FactoryBot.create(:user) }
         let(:post_category) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post_category, user: other_user)
+            FactoryBot.create(:post_category, user: other_user)
           end
         end
 
@@ -74,7 +74,7 @@ RSpec.describe PostCategoryPolicy do
       end
 
       context 'user owns post category' do
-        let(:post_category) { FactoryGirl.create(:post_category) }
+        let(:post_category) { FactoryBot.create(:post_category) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -84,7 +84,7 @@ RSpec.describe PostCategoryPolicy do
   describe 'scope' do
     subject { PostCategoryPolicy::Scope.new(policy_user, PostCategory.all).resolve }
 
-    let!(:post_categories) { FactoryGirl.create_list(:post_category, 3) }
+    let!(:post_categories) { FactoryBot.create_list(:post_category, 3) }
     let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
     it 'returns all post categories for the user' do

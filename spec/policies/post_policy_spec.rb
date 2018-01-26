@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PostPolicy do
-  let(:current_tenant) { FactoryGirl.create(:user, admin: false) }
+  let(:current_tenant) { FactoryBot.create(:user, admin: false) }
   before { ActsAsTenant.current_tenant = current_tenant }
   after { ActsAsTenant.current_tenant = nil }
 
@@ -9,14 +9,14 @@ RSpec.describe PostPolicy do
     subject { described_class.new(policy_user, post) }
 
     context 'user is nil' do
-      let(:post) { FactoryGirl.create(:post) }
+      let(:post) { FactoryBot.create(:post) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_action(:index) }
       it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
 
       context 'post is published' do
-        let(:post) { FactoryGirl.create(:post, published: true) }
+        let(:post) { FactoryBot.create(:post, published: true) }
 
         it { is_expected.to permit_action(:show) }
       end
@@ -24,7 +24,7 @@ RSpec.describe PostPolicy do
 
     context 'user is an API user' do
       let(:access_token) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :access_token,
           resource_owner_id: current_tenant.id,
           scopes: nil
@@ -33,10 +33,10 @@ RSpec.describe PostPolicy do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant, doorkeeper_token: access_token) }
 
       context "user doesn't own the post" do
-        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_user) { FactoryBot.create(:user) }
         let(:post) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post, user: other_user, published: true)
+            FactoryBot.create(:post, user: other_user, published: true)
           end
         end
 
@@ -44,7 +44,7 @@ RSpec.describe PostPolicy do
       end
 
       context 'user owns post' do
-        let(:post) { FactoryGirl.create(:post) }
+        let(:post) { FactoryBot.create(:post) }
 
         context "token doesn't have posts_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -53,7 +53,7 @@ RSpec.describe PostPolicy do
 
         context 'token has posts_write scope' do
           let(:access_token) do
-            FactoryGirl.create(
+            FactoryBot.create(
               :access_token,
               resource_owner_id: current_tenant.id,
               scopes: 'posts_write'
@@ -69,10 +69,10 @@ RSpec.describe PostPolicy do
       let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
       context "user doesn't own the post" do
-        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_user) { FactoryBot.create(:user) }
         let(:post) do
           ActsAsTenant.without_tenant do
-            FactoryGirl.create(:post, user: other_user, published: true)
+            FactoryBot.create(:post, user: other_user, published: true)
           end
         end
 
@@ -80,7 +80,7 @@ RSpec.describe PostPolicy do
       end
 
       context 'user owns post' do
-        let(:post) { FactoryGirl.create(:post) }
+        let(:post) { FactoryBot.create(:post) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -90,8 +90,8 @@ RSpec.describe PostPolicy do
   describe 'scope' do
     subject { PostPolicy::Scope.new(policy_user, Post.all).resolve }
 
-    let!(:secret_posts) { FactoryGirl.create_list(:post, 5, published: false) }
-    let!(:published_posts) { FactoryGirl.create_list(:post, 5, published: true) }
+    let!(:secret_posts) { FactoryBot.create_list(:post, 5, published: false) }
+    let!(:published_posts) { FactoryBot.create_list(:post, 5, published: true) }
 
     context 'user is nil' do
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
@@ -102,7 +102,7 @@ RSpec.describe PostPolicy do
     end
 
     context 'user is not the current tenant' do
-      let(:policy_user) { PolicyUser.new(FactoryGirl.create(:user, admin: false), current_tenant) }
+      let(:policy_user) { PolicyUser.new(FactoryBot.create(:user, admin: false), current_tenant) }
 
       it 'returns only published posts' do
         expect(subject).to match_array(published_posts)
