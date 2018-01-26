@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :education_experience do
     school_name { Faker::Name.name[0..200] + ' University' }
     diploma { Faker::Lorem.words(4)[0..130] }

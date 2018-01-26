@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Managing Projects' do
   before do
-    user = FactoryGirl.create(:user, :admin)
+    user = FactoryBot.create(:user, :admin)
     login_as(user, scope: :user)
     visit '/manage'
   end

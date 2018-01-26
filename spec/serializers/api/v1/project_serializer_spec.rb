@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe Api::V1::ProjectSerializer do
-  before { ActsAsTenant.current_tenant = FactoryGirl.create :user }
+  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
   after { ActsAsTenant.current_tenant = nil }
 
   describe "categories" do
-    let(:project_categories) { FactoryGirl.create_list(:project_category, 4) }
+    let(:project_categories) { FactoryBot.create_list(:project_category, 4) }
     let(:project) do
-      FactoryGirl.create(:project,
+      FactoryBot.create(:project,
         project_categories: project_categories[0...2]
       )
     end

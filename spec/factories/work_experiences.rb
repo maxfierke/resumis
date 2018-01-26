@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :work_experience do
     organization { Faker::Name.name[0...255] + ' Inc.' }
     position { Faker::Lorem.words(4)[0...255] }

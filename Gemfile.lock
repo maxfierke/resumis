@@ -102,10 +102,10 @@ GEM
     erubis (2.7.0)
     excon (0.60.0)
     execjs (2.7.0)
-    factory_girl (4.8.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.8.0)
-      factory_girl (~> 4.8.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faker (1.8.7)
       i18n (>= 0.7)
@@ -323,7 +323,7 @@ DEPENDENCIES
   database_cleaner
   devise (~> 4.4.1)
   doorkeeper
-  factory_girl_rails (~> 4.0)
+  factory_bot_rails
   faker (~> 1.8.7)
   fog-aws (~> 2.0)
   font-awesome-sass (~> 4.7.0)

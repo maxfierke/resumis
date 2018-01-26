@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreateUserDefaultsJob, :type => :job do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   it 'should create standard project statuses' do
     CreateUserDefaultsJob.new().perform(user)
