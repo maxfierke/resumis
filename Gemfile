@@ -31,7 +31,7 @@ gem 'redcarpet', '>= 3.2.3'
 gem 'font-awesome-sass', '~> 4.7.0'
 
 # Devise for user authentication
-gem 'devise', '~> 4.3.0'
+gem 'devise', '~> 4.4.0'
 gem 'doorkeeper'
 gem 'rack-cors', :require => 'rack/cors'
 
