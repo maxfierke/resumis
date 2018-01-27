@@ -1,6 +1,6 @@
 module Api
   class ApplicationsController < Doorkeeper::ApplicationsController
-    before_filter :authenticate_user!
+    before_action :authenticate_user!
     layout "manage"
 
     def index
