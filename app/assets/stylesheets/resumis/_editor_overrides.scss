@@ -28,3 +28,13 @@
         border: none;
     }
 }
+
+// HACK: rails-bootstrap-markdown is unmaintained and uses one
+// FontAwesome 5.x incompatible icon
+.fa-picture-o {
+    @include fa-icon();
+
+    &:before {
+        content: fa-content($fa-var-image);
+    }
+}

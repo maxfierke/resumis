@@ -18,10 +18,10 @@
         <td><%= post_category.posts.count %></td>
         <td>
           <%= link_to edit_manage_post_category_path(post_category), class: 'btn btn-xs' do %>
-            <%= icon 'pencil', '' %>
+            <%= icon 'fas', 'pencil-alt', '' %>
           <% end %>
           <%= link_to manage_post_category_path(post_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'remove', '' %>
+            <%= icon 'fas', 'times', '' %>
           <% end %>
         </td>
       </tr>
@@ -35,6 +35,6 @@
 
 <% content_for :actionbar_right do %>
   <%= link_to new_manage_post_category_path, class: 'btn btn-primary' do %>
-    <%= icon 'plus', 'New Post Category' %>
+    <%= icon 'fas', 'plus', 'New Post Category' %>
   <% end %>
 <% end %>

@@ -47,10 +47,6 @@ body.bare {
     border-radius: 0;
 }
 
-.dropdown-contact {
-    min-width: 540px;
-}
-
 .highlight {
     color: $link-color;
 }
@@ -68,80 +64,6 @@ body.bare {
     .list-inline {
         margin: 0;
         padding: 0;
-    }
-}
-
-.img-about {
-    margin-top: 20px;
-    text-align: right;
-
-    small {
-        font-size: 10px;
-    }
-}
-
-.about-me {
-  font-size: $font-size-large;
-  line-height: floor(($font-size-base * 2.0));
-}
-
-.list-group-item-social {
-    a {
-        color: $text-color;
-    }
-    .fa-fw {
-        vertical-align: sub;
-    }
-}
-
-.jumbotron-about {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin-bottom: 15px;
-    box-shadow: inset #111 0 1px 10px;
-
-    &.video {
-        position: relative;
-        min-height: 800px;
-
-        .container {
-            margin-top: 30%;
-        }
-    }
-
-    h1, h2, h3 {
-        background-color: rgba(39,39,39, 0.9);
-        border-color: #272727;
-        border-radius: 3px;
-        display: inline-block;
-        padding: 7px;
-        color: #fff;
-    }
-
-    h2 {
-        font-size: 30px;
-    }
-
-    .tagline {
-        display: table;
-    }
-
-    .video-container {
-        position: absolute;
-
-        top: 0%;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-
-        video {
-            position: absolute;
-            z-index: 0;
-            width: 100%;
-        }
     }
 }
 
@@ -165,79 +87,5 @@ body.bare {
 
     .pi-hidden {
         display: none;
-    }
-}
-
-.project-img {
-    margin-bottom: 1.2em;
-}
-
-.project-tags {
-    margin-bottom: 0;
-}
-
-.row-profile {
-    .thumbnail {
-        margin: 40px 0 20px;
-    }
-}
-
-.userbar {
-    background-color: #cc0000;
-    font-size: 0.8em;
-    padding: 5px 0;
-    width: 100%;
-
-    p {
-        margin: 0;
-        color: #fefefe;
-    }
-
-    a {
-        color: #fefefe;
-    }
-}
-
-.userbar-fixed {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
-
-@media screen and (max-width: 767px) {
-    .jumbotron-about {
-        background-position: left center;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    .btn-group-responsive,
-    .btn-group-justified > .btn-group-responsive {
-        width: 100%;
-        display: block;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .jumbotron-about {
-        padding: 20px !important;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .jumbotron-about h1 {
-        font-size: 36px;
-    }
-    .jumbotron-about h2 {
-        font-size: 20px;
-    }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-    .jumbotron-about h1 {
-        font-size: 42px;
-    }
-    .jumbotron-about h2 {
-        font-size: 22px;
     }
 }

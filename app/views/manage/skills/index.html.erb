@@ -2,7 +2,7 @@
 <% content_for :actionbar_right do %>
   <div class="btn-group">
     <%= link_to new_manage_skill_category_path, class: 'btn btn-primary' do %>
-      <%= icon 'plus', 'Add New Skill Category' %>
+      <%= icon 'fas', 'plus', 'Add New Skill Category' %>
     <% end %>
   </div>
 <% end %>
@@ -11,10 +11,10 @@
 <h4>
   <%= skill_cat.name %>
   <%= link_to edit_manage_skill_category_path(skill_cat), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-    <%= icon 'pencil' %>
+    <%= icon 'fas', 'pencil-alt' %>
   <%- end -%>
   <%= link_to manage_skill_category_path(skill_cat), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-    <%= icon 'remove' %>
+    <%= icon 'fas', 'times' %>
   <%- end -%>
 </h4>
 <div class="list-group">
@@ -23,16 +23,16 @@
     <%= skill.name %>
     <div class="btn-group">
       <%= link_to edit_manage_skill_category_skill_path(skill_cat, skill), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-        <%= icon 'pencil' %>
+        <%= icon 'fas', 'pencil-alt' %>
       <%- end -%>
       <%= link_to manage_skill_category_skill_path(skill_cat, skill), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-        <%= icon 'remove' %>
+        <%= icon 'fas', 'times' %>
       <%- end -%>
     </div>
   </div>
   <% end %>
   <%= link_to new_manage_skill_category_skill_path(skill_cat), class: 'list-group-item list-group-item-inline-block' do %>
-    <%= icon 'plus', "Add #{skill_cat.name.singularize}" %>
+    <%= icon 'fas', 'plus', "Add #{skill_cat.name.singularize}" %>
   <% end %>
 </div>
 <% end %>

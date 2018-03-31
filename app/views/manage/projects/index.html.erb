@@ -21,10 +21,10 @@
         </div>
         <div class="col-xs-2 col-sm-1">
           <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
-            <%= icon 'pencil', '' %>
+            <%= icon 'fas', 'pencil-alt', '' %>
           <% end %>
           <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'remove', '' %>
+            <%= icon 'fas', 'times', '' %>
           <% end %>
         </div>
       </div>
@@ -39,7 +39,7 @@
 <% content_for :actionbar_right do %>
 <div class="btn-group dropup">
   <%= link_to new_manage_project_path, class: 'btn btn-primary' do %>
-    <%= icon 'plus', 'Add' %>
+    <%= icon 'fas', 'plus', 'Add' %>
   <% end %>
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     <span class="caret"></span>

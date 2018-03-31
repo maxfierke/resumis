@@ -21,10 +21,10 @@
         </div>
         <div class="col-xs-2 col-sm-1">
           <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
-            <%= icon 'pencil', '' %>
+            <%= icon 'fas', 'pencil-alt', '' %>
           <% end %>
           <%= link_to manage_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'remove', '' %>
+            <%= icon 'fas', 'times', '' %>
           <% end %>
         </div>
       </div>
@@ -38,6 +38,6 @@
 
 <% content_for :actionbar_right do %>
   <%= link_to new_manage_post_path, class: 'btn btn-primary' do %>
-    <%= icon 'plus', 'New Post' %>
+    <%= icon 'fas', 'plus', 'New Post' %>
   <% end %>
 <% end %>

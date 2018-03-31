@@ -48,42 +48,42 @@
               <ul class="dropdown-menu" role="menu">
                 <li>
                   <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank' do %>
-                    <%= icon 'external-link', 'View Site' %>
+                    <%= icon 'fas', 'external-link-alt', 'View Site' %>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to manage_edit_profile_path do %>
-                    <%= icon 'pencil', 'Edit Profile' %>
+                    <%= icon 'fas', 'pencil-alt', 'Edit Profile' %>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to destroy_user_session_url, :method => 'DELETE' do %>
-                    <%= icon 'sign-out', 'Logout' %>
+                    <%= icon 'fas', 'sign-out-alt', 'Logout' %>
                   <% end %>
                 </li>
               </ul>
             </li>
             <li>
               <%= link_to manage_dashboard_path do %>
-                <%= icon 'dashboard', '', class: 'fa-fw' %>
+                <%= icon 'fas', 'tachometer-alt', '', class: 'fa-fw' %>
                 <span class="expanded-only">Dashboard</span>
               <% end %>
             </li>
             <li class="dropdown" role="presentation">
               <%= link_to "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                <%= icon 'paragraph', '', class: 'fa-fw' %>
+                <%= icon 'fas', 'paragraph', '', class: 'fa-fw' %>
                 <span class="expanded-only">Blog</span>
               <% end %>
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to manage_posts_path do %>
-                    <%= icon 'pencil', '', class: 'fa-fw' %>
+                    <%= icon 'fas', 'pencil-alt', '', class: 'fa-fw' %>
                     <span class="expanded-only">Posts</span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to manage_post_categories_path do %>
-                    <%= icon 'folder', '', class: 'fa-fw' %>
+                    <%= icon 'fas', 'folder', '', class: 'fa-fw' %>
                     <span class="expanded-only">Post Categories</span>
                   <% end %>
                 </li>
@@ -91,7 +91,7 @@
             </li>
             <li class="dropdown" role="presentation">
               <%= link_to manage_projects_path, class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                <%= icon 'diamond', '', class: 'fa-fw' %>
+                <%= icon 'fas', 'gem', '', class: 'fa-fw' %>
                 <span class="expanded-only">Projects</span>
               <% end %>
               <ul class="dropdown-menu">
@@ -102,31 +102,31 @@
             </li>
             <li>
               <%= link_to manage_resumes_path do %>
-                <%= icon 'file-text-o', '', class: 'fa-fw' %>
+                <%= icon 'far', 'file-alt', '', class: 'fa-fw' %>
                 <span class="expanded-only">CVs</span>
               <% end %>
             </li>
             <li class="dropdown" role="presentation">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'road', '', class: 'fa-fw' %>
+                <%= icon 'fas', 'road', '', class: 'fa-fw' %>
                 <span class="expanded-only">Experiences</span>
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to manage_education_experiences_path do %>
-                    <%= icon 'mortar-board', '', class: 'fa-fw' %>
+                    <%= icon 'fas', 'graduation-cap', '', class: 'fa-fw' %>
                     <span class="expanded-only">Education</span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to manage_skills_path do %>
-                    <%= icon 'wrench', '', class: 'fa-fw' %>
+                    <%= icon 'fas', 'wrench', '', class: 'fa-fw' %>
                     <span class="expanded-only">Skills</span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to manage_work_experiences_path do %>
-                    <%= icon 'suitcase', '', class: 'fa-fw' %>
+                    <%= icon 'fas', 'suitcase', '', class: 'fa-fw' %>
                     <span class="expanded-only">Work</span>
                   <% end %>
                 </li>
@@ -135,18 +135,18 @@
             <% if current_user.admin? %>
             <li class="dropdown" role="presentation">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'shield', '', class: 'fa-fw' %>
+                <%= icon 'fas', 'shield-alt', '', class: 'fa-fw' %>
                 <span class="expanded-only">Administration</span>
               </a>
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to oauth_applications_url(host: ResumisConfig.canonical_host) do %>
-                    <%= icon 'exchange', '', class: 'fa-fw' %> OAuth2 Applications
+                    <%= icon 'fas', 'exchange-alt', '', class: 'fa-fw' %> OAuth2 Applications
                   <% end %>
                 </li>
                 <li>
                   <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), target: '_blank' do %>
-                    <%= icon 'external-link', '', class: 'fa-fw' %> Sidekiq UI
+                    <%= icon 'fas', 'external-link-alt', '', class: 'fa-fw' %> Sidekiq UI
                   <% end %>
                 </li>
               </ul>
@@ -161,12 +161,12 @@
             </a>
           </p>
           <p class="expanded-only">
-            Built with <%= icon 'heart', '', title: 'love' %> by
+            Built with <%= icon 'fas', 'heart', '', title: 'love' %> by
             <a href="https://www.maxfierke.com">Max Fierke</a>
           </p>
           <a class="collapsed-only" href="https://github.com/maxfierke/resumis">
-            <%= icon 'wrench', '', title: 'love' %><br />
-            <%= icon 'heart', '', title: 'love' %><br />
+            <%= icon 'fas', 'wrench', '', title: 'love' %><br />
+            <%= icon 'fas', 'heart', '', title: 'love' %><br />
             Max
           </a>
         </footer>
