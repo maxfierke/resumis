@@ -1,4 +1,4 @@
-FROM ruby:2.4.3-alpine3.6
+FROM ruby:2.4.4-alpine3.6
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 
