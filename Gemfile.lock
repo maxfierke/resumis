@@ -127,7 +127,7 @@ GEM
     font-awesome-sass (5.0.9)
       sass (>= 3.2)
     formatador (0.2.5)
-    friendly_id (5.2.3)
+    friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     fuubar (2.3.1)
       rspec-core (~> 3.0)
@@ -135,7 +135,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hiredis (0.6.1)
-    i18n (1.0.0)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jquery-rails (4.3.1)
@@ -326,7 +326,7 @@ DEPENDENCIES
   faker (~> 1.8.7)
   fog-aws (~> 2.0)
   font-awesome-sass (~> 5.0.9)
-  friendly_id (~> 5.2.0)
+  friendly_id (~> 5.2.4)
   fuubar
   hiredis
   jquery-rails (>= 4.0.4)
