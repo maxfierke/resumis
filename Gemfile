@@ -75,7 +75,7 @@ group :development do
 end
 
 group :production do
-  gem 'fog-aws', '~> 2.0'
+  gem 'fog-aws', '~> 3.0'
 end
 
 group :development, :test do
