@@ -4,5 +4,6 @@ FactoryBot.define do
     diploma { Faker::Lorem.words(4)[0..130] }
     start_date { Faker::Time.between(15.years.ago, 2.years.ago, :midnight) }
     end_date { Faker::Time.between(2.years.ago, Time.now, :midnight) }
+    association(:user)
   end
 end

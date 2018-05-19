@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'digest'
 
 RSpec.describe User, type: :model do
   def stub_tenancy_mode(mode)

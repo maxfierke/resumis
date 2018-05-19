@@ -13,6 +13,7 @@ feature 'Managing Projects' do
     fill_in('project_name', with: 'Testing')
     fill_in('project_short_description', with: 'Testing code is good')
     fill_in('project_description', with: 'Testing code is good')
+    select('Active', from: 'project_project_status_id')
     check('project_featured')
     click_button('Create Project')
 
