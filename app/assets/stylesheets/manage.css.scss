@@ -29,7 +29,11 @@ body {
 
 @media screen and (min-width: $screen-sm-min) {
     .manage-col-right {
-        padding-left: 95px
+        padding-left: 75px
+    }
+
+    .sidebar.collapse.in + .manage-col-right {
+        padding-left: calc(16.6666666667% + 15px);
     }
 }
 

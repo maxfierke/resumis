@@ -15,7 +15,7 @@
         padding: 15px;
         font-size: ceil(($font-size-base * 1.1));
         text-align: left;
-        transition: width 100ms linear, background-color 150ms linear;
+        transition: width 100ms ease, background-color 150ms ease;
         z-index: 1029;
 
         &:hover, &:active, &.active, &:focus {
@@ -59,7 +59,7 @@
 
         li > a {
             padding-left: 30px;
-            transition: all 0.2s linear;
+            transition: all 0.2s ease;
             z-index: 1029;
 
             &:before {
@@ -86,11 +86,11 @@
     padding: 0;
     padding-bottom: 70px;
     position: fixed;
-    transition: width 200ms linear, font-size 100ms linear;
+    transition: width 200ms ease, font-size 100ms ease;
     z-index: 1029;
 
     .expanded-only {
-        transition: width 200ms linear, font-size 100ms linear;
+        transition: width 200ms ease, font-size 100ms ease;
     }
 
     footer {
