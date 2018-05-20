@@ -3,6 +3,7 @@ module Api
     extend ActsAsTenant::ControllerExtensions
 
     include ActionController::Helpers
+    include Pundit
     include ResumisConfig
     include TenantHelper
 
@@ -14,6 +15,10 @@ module Api
 
     protected
 
+    def self.payload_type(payload_type)
+      @@payload_type = payload_type.to_s
+    end
+
     def current_resource_owner
       return nil unless doorkeeper_token
       @current_resource_owner ||= if doorkeeper_token.resource_owner_id
@@ -23,8 +28,8 @@ module Api
       end
     end
 
-    def self.payload_type(payload_type)
-      @@payload_type = payload_type.to_s
+    def pundit_user
+      PolicyUser.new(current_resource_owner, doorkeeper_token: doorkeeper_token)
     end
 
     def validate_content_type

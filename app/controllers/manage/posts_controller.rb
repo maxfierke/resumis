@@ -3,7 +3,7 @@ module Manage
     before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def index
-      @posts = Post.order(id: :desc).page params[:page]
+      @posts = policy_scope(Post).page(params[:page])
     end
 
     def show
@@ -11,6 +11,7 @@ module Manage
 
     def new
       @post = Post.new
+      authorize @post
     end
 
     def edit
@@ -18,6 +19,7 @@ module Manage
 
     def create
       @post = Post.new(post_params)
+      authorize @post
 
       respond_to do |format|
         if @post.save
@@ -53,7 +55,8 @@ module Manage
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.find(params[:id])
+        @post = policy_scope(Post).find(params[:id])
+        authorize @post
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.

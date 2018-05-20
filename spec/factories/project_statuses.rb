@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project_status do
-    name { Faker::Lorem.word }
+    sequence(:name) { |m| "#{Faker::Lorem.word}#{m}" }
     association(:user)
   end
 end

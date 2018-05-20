@@ -3,11 +3,12 @@ module Manage
     before_action :set_post_category, only: [:edit, :update, :destroy]
 
     def index
-      @post_categories = PostCategory.page params[:page]
+      @post_categories = policy_scope(PostCategory).page params[:page]
     end
 
     def new
       @post_category = PostCategory.new
+      authorize @post_category
     end
 
     def edit
@@ -15,6 +16,7 @@ module Manage
 
     def create
       @post_category = PostCategory.new(post_category_params)
+      authorize @post_category
 
       respond_to do |format|
         if @post_category.save
@@ -51,6 +53,7 @@ module Manage
       # Use callbacks to share common setup or constraints between actions.
       def set_post_category
         @post_category = PostCategory.find(params[:id])
+        authorize @post_category
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.

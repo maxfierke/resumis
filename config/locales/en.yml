@@ -29,7 +29,7 @@ en:
 
   doorkeeper:
     scopes:
-      public: 'Access your public data (social media information, published projects, resumes, and blog posts)'
-      projects_write: 'Update your projects'
-      resumes_write: 'Update your resumes'
-      blogs_write: 'Update your blog'
+      posts_write: 'Create, modify, and delete your blog posts'
+      projects_write: 'Create, modify, and delete your projects'
+      public: 'Access your public data, such as social media information and published projects, resumes, and blog posts'
+      resumes_write: 'Create, modify, and delete your resumes'

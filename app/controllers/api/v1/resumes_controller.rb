@@ -17,19 +17,18 @@ module Api
       end
 
       def index
+        authorize Resume
         render jsonapi: resumes, include: include_params
       end
 
       def show
-        if has_access_to_resume?(resume)
-          render jsonapi: resume, include: include_params
-        else
-          head :forbidden
-        end
+        authorize resume
+        render jsonapi: resume, include: include_params
       end
 
       def create
         new_resume = Resume.new(resume_params)
+        authorize new_resume
         if new_resume.save
           render jsonapi: new_resume, status: :created, location: new_resume
         else
@@ -38,6 +37,7 @@ module Api
       end
 
       def update
+        authorize resume
         if resume.update_attributes(resume_params)
           render jsonapi: resume
         else
@@ -46,6 +46,7 @@ module Api
       end
 
       def destroy
+        authorize resume
         resume.destroy!
         head :no_content
       end
@@ -60,27 +61,11 @@ module Api
       end
 
       def resume
-        @resume ||= Resume.find(params[:id])
-      end
-
-      def has_access_to_resume?(resume)
-        # Only allow viewing of published resumes unless the resumes is owned by the user
-        # TODO: Replace with real access controls
-        resume.published ||
-          (current_resource_owner && current_resource_owner.id == resume.user.id)
+        @resume ||= policy_scope(Resume).find(params[:id])
       end
 
       def resumes
-        # TODO: Replace with real access controls
-        @resumes ||= begin
-          if current_resource_owner.id != current_tenant.id
-            query = Resume.where(published: true)
-          else
-            query = Resume.all
-          end
-
-          query
-        end
+        @resumes ||= policy_scope(Resume)
       end
 
       def resume_params
@@ -89,7 +74,7 @@ module Api
             :slug, :name, :short_description, :description, :status,
             :categories, :start_date, :end_date
           ]
-        ).merge(user: current_tenant)
+        ).merge(user: current_resource_owner)
       end
     end
   end

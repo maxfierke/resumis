@@ -22,6 +22,7 @@ module Api
 
       def create
         new_project = Project.new(project_params)
+        authorize new_project
         if new_project.save
           render jsonapi: new_project, status: :created, location: new_project
         else
@@ -30,6 +31,7 @@ module Api
       end
 
       def update
+        authorize project
         if project.update_attributes(project_params)
           render jsonapi: project
         else
@@ -38,6 +40,7 @@ module Api
       end
 
       def destroy
+        authorize project
         project.destroy!
         head :no_content
       end
@@ -52,12 +55,12 @@ module Api
       end
 
       def project
-        @project ||= Project.find(params[:id])
+        @project ||= policy_scope(Project).find(params[:id])
       end
 
       def projects
         @projects ||= begin
-          scope = Project.ordered_by_activity
+          scope = policy_scope(Project.ordered_by_activity)
 
           if include_params.include?('categories')
             scope = scope.includes(:project_categories)
@@ -73,7 +76,7 @@ module Api
             :slug, :name, :short_description, :description, :status,
             :categories, :start_date, :end_date
           ]
-        ).merge(user: current_tenant)
+        ).merge(user: current_resource_owner)
       end
     end
   end

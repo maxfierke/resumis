@@ -10,6 +10,8 @@ module Errors
         NoRecordFound
       when ActsAsTenant::Errors::NoTenantSet
         NoTenantSet
+      when Pundit::NotAuthorizedError
+        Forbidden
       when StandardError
         GuruMeditation
       end.new(exception)

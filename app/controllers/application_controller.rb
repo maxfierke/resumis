@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   include TenantHelper
 
   # Prevent CSRF attacks by raising an exception.
@@ -8,6 +9,12 @@ class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
   before_action :find_tenant
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
+  after_action :verify_authorized, except: :index, unless: :devise_controller?
+  after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+
+  def pundit_user
+    PolicyUser.new(current_user, current_tenant)
+  end
 
   def after_sign_in_path_for(resource)
     if ResumisConfig.multi_tenant?
