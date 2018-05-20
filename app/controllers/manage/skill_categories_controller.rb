@@ -5,7 +5,7 @@ module Manage
     respond_to :html, :json
 
     def index
-      @skill_categories = SkillCategory.page params[:page]
+      @skill_categories = policy_scope(SkillCategory).page params[:page]
 
       respond_to do |format|
         format.html { redirect_to manage_skills_path }
@@ -15,6 +15,7 @@ module Manage
 
     def new
       @skill_category = SkillCategory.new
+      authorize @skill_category
       respond_with(@skill_category)
     end
 
@@ -23,6 +24,7 @@ module Manage
 
     def create
       @skill_category = SkillCategory.new(skill_category_params)
+      authorize @skill_category
       respond_to do |format|
         if @skill_category.save
           format.html { redirect_to manage_skills_path, notice: "#{@skill_category.name} was successfully created." }
@@ -60,11 +62,12 @@ module Manage
 
     private
       def set_skill_category
-        @skill_category = SkillCategory.find(params[:id])
+        @skill_category = policy_scope(SkillCategory).find(params[:id])
+        authorize @skill_category
       end
 
       def skill_category_params
-        params.require(:skill_category).permit(:name)
+        params.require(:skill_category).permit(:name).merge!(user: current_user)
       end
   end
 end

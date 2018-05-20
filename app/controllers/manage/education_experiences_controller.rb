@@ -5,12 +5,13 @@ module Manage
     respond_to :html, :json
 
     def index
-      @education_experiences = EducationExperience.page params[:page]
+      @education_experiences = policy_scope(EducationExperience).page params[:page]
       respond_with(@education_experiences)
     end
 
     def new
       @education_experience = EducationExperience.new
+      authorize @education_experience
       respond_with(@education_experience)
     end
 
@@ -19,7 +20,7 @@ module Manage
 
     def create
       @education_experience = EducationExperience.new(education_experience_params)
-      @education_experience.user = current_user
+      authorize @education_experience
       @education_experience.save
       respond_with(@education_experience, :location => manage_education_experiences_path)
     end
@@ -36,11 +37,18 @@ module Manage
 
     private
       def set_education_experience
-        @education_experience = EducationExperience.find(params[:id])
+        @education_experience = policy_scope(EducationExperience).find(params[:id])
+        authorize @education_experience
       end
 
       def education_experience_params
-        params.require(:education_experience).permit(:school_name, :diploma, :description, :start_date, :end_date)
+        params.require(:education_experience).permit(
+          :school_name,
+          :diploma,
+          :description,
+          :start_date,
+          :end_date
+        ).merge!(user: current_user)
       end
   end
 end

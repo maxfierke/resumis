@@ -1,7 +1,7 @@
 class ResumePolicy < ApplicationPolicy
   def index?
     if user.api_user?
-      has_public_access_scopes?
+      api_is_readable?
     else
       true
     end
@@ -11,7 +11,7 @@ class ResumePolicy < ApplicationPolicy
     record_exists = super
 
     if user.api_user?
-      record_exists && has_public_access_scopes?
+      record_exists && api_is_readable?
     else
       record_exists
     end
@@ -19,7 +19,7 @@ class ResumePolicy < ApplicationPolicy
 
   def create?
     if user.api_user?
-      user.owns?(record) && user.has_oauth_scope?(:resumes_write)
+      user.owns?(record) && api_is_writable?
     else
       user.owns?(record)
     end
@@ -43,7 +43,11 @@ class ResumePolicy < ApplicationPolicy
     end
   end
 
-  private def has_public_access_scopes?
-    user.has_oauth_scope?(:public) || user.has_oauth_scope?(:resumes_write)
+  private def api_is_writable?
+    user.has_oauth_scope?(:resumes_write)
+  end
+
+  private def api_is_readable?
+    user.has_oauth_scope?(:public) || api_is_writable?
   end
 end

@@ -20,7 +20,7 @@ class PolicyUser
   end
 
   def nil?
-    !user
+    user.nil?
   end
 
   def has_oauth_scope?(scope)
