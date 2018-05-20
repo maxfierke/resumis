@@ -9,7 +9,7 @@ module Api
       private
 
       def resume
-        @resume ||= Resume.find(params[:id])
+        @resume ||= policy_scope(Resume).find(params[:id])
       end
     end
   end
