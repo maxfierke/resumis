@@ -1,6 +1,7 @@
 class EducationExperience < ActiveRecord::Base
   belongs_to :user
-  has_many :resumes, through: :resume_education_experience
+  has_many :resume_education_experiences
+  has_many :resumes, through: :resume_education_experiences, dependent: :destroy
 
   acts_as_tenant(:user)
 

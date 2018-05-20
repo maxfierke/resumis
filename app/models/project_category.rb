@@ -1,6 +1,6 @@
 class ProjectCategory < ActiveRecord::Base
   has_many :project_category_joinings
-  has_many :projects, through: :project_category_joinings
+  has_many :projects, through: :project_category_joinings, dependent: :destroy
   belongs_to :user
 
   acts_as_tenant(:user)

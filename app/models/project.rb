@@ -6,8 +6,9 @@ class Project < ActiveRecord::Base
   belongs_to :project_status
   belongs_to :user
   has_many :project_category_joinings
-  has_many :project_categories, through: :project_category_joinings
-  has_many :resumes, through: :resume_project
+  has_many :project_categories, through: :project_category_joinings, dependent: :destroy
+  has_many :resume_projects
+  has_many :resumes, through: :resume_projects, dependent: :destroy
 
   acts_as_tenant(:user)
 
