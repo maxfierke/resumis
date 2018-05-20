@@ -40,7 +40,7 @@ RUN bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without test de
 
 ADD . $APP_HOME
 
-RUN rake assets:precompile
+RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE rake assets:precompile
 
 RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
