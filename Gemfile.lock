@@ -204,8 +204,7 @@ GEM
     public_suffix (3.0.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    pundit-matchers (1.4.1)
-      pundit (~> 1.1, >= 1.1.0)
+    pundit-matchers (1.6.0)
       rspec-rails (>= 3.0.0)
     rack (2.0.5)
     rack-cors (1.0.2)
@@ -355,7 +354,7 @@ DEPENDENCIES
   pg
   pry-rails
   pundit
-  pundit-matchers (~> 1.4.1)
+  pundit-matchers (~> 1.6.0)
   rack-cors
   rails (~> 5.2.0)
   rails-bootstrap-markdown

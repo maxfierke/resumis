@@ -87,5 +87,5 @@ group :development, :test do
   gem 'faker', '~> 1.8.7'
   gem 'fuubar'
   gem 'pry-rails'
-  gem 'pundit-matchers', '~> 1.4.1'
+  gem 'pundit-matchers', '~> 1.6.0'
 end
