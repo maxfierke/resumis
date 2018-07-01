@@ -208,7 +208,7 @@ GEM
       rspec-rails (>= 3.0.0)
     rack (2.0.5)
     rack-cors (1.0.2)
-    rack-protection (2.0.2)
+    rack-protection (2.0.3)
       rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -292,10 +292,10 @@ GEM
       redis (>= 3.3.5, < 5)
     sidekiq-failures (1.0.0)
       sidekiq (>= 4.0.0)
-    sinatra (2.0.2)
+    sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.2)
+      rack-protection (= 2.0.3)
       tilt (~> 2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -368,7 +368,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.7)
   sidekiq (< 6)
   sidekiq-failures
-  sinatra (~> 2.0.0)
+  sinatra (~> 2.0.3)
   thor
   uglifier (>= 4.1)
   unicorn
