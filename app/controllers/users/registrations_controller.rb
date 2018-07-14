@@ -47,12 +47,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up) << [:first_name, :last_name, :subdomain, :domain]
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :subdomain, :domain])
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update) << [:subdomain, :domain]
+    devise_parameter_sanitizer.permit(:account_update, keys: [:subdomain, :domain])
   end
 
   # The path used after sign up.
@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if ResumisConfig.multi_tenant?
       profile_url(subdomain: resource.subdomain)
     else
-      profile_url(host: canonical_host)
+      profile_url(host: ResumisConfig.canonical_host)
     end
   end
 
@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if ResumisConfig.multi_tenant?
       profile_url(subdomain: resource.subdomain)
     else
-      profile_url(host: canonical_host)
+      profile_url(host: ResumisConfig.canonical_host)
     end
   end
 
