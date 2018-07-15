@@ -58,17 +58,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     if ResumisConfig.multi_tenant?
-      profile_url(subdomain: resource.subdomain)
+      manage_dashboard_url(subdomain: resource.subdomain)
     else
-      profile_url(host: ResumisConfig.canonical_host)
+      manage_dashboard_url(host: ResumisConfig.canonical_host)
     end
   end
 
   def after_update_path_for(resource)
     if ResumisConfig.multi_tenant?
-      profile_url(subdomain: resource.subdomain)
+      manage_dashboard_url(subdomain: resource.subdomain)
     else
-      profile_url(host: ResumisConfig.canonical_host)
+      manage_dashboard_url(host: ResumisConfig.canonical_host)
     end
   end
 
