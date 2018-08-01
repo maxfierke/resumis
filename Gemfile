@@ -84,7 +84,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'faker', '~> 1.8.7'
+  gem 'faker', '~> 1.9.1'
   gem 'fuubar'
   gem 'pry-rails'
   gem 'pundit-matchers', '~> 1.6.0'
