@@ -5,6 +5,7 @@
   <tr>
     <th><%= t('.name') %></th>
     <th><%= t('.callback_url') %></th>
+    <th><%= t('.confidential') %></th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -13,6 +14,7 @@
     <tr id="application_<%= application.id %>">
       <td><%= link_to application.name, oauth_application_path(application) %></td>
       <td><%= application.redirect_uri %></td>
+      <td><%= application.confidential? ? t('doorkeeper.applications.index.confidentiality.yes') : t('doorkeeper.applications.index.confidentiality.no') %></td>
       <td>
         <%= link_to edit_oauth_application_path(application), class: 'btn btn-link' do %>
           <%= t('doorkeeper.applications.buttons.edit') %>

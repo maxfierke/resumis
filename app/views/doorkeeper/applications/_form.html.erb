@@ -32,6 +32,20 @@
     </span>
   <% end %>
 
+  <%= content_tag :div, class: "form-group#{' has-error' if application.errors[:confidential].present?}" do %>
+    <%= f.label :confidential, class: 'control-label' %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :confidential, disabled: !Doorkeeper::Application.supports_confidentiality? %>
+        Require secret to authenticate
+      </label>
+    </div>
+    <%= doorkeeper_errors_for application, :confidential %>
+    <span class="help-block">
+      <%= t('doorkeeper.applications.help.confidential') %>
+    </span>
+  <% end %>
+
   <div class="actionbar actionbar-fixed-bottom">
     <div class="actionbar-left">
       <%= link_to t('doorkeeper.applications.buttons.cancel'), oauth_applications_path, :class => "btn btn-default" %>
