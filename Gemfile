@@ -29,7 +29,7 @@ gem 'rails-bootstrap-markdown'
 gem 'redcarpet', '>= 3.2.3'
 
 # Utilize font-awesome iconogrphy set
-gem 'font-awesome-sass', '~> 5.0.9'
+gem 'font-awesome-sass', '~> 5.2.0'
 
 # Devise for user authentication
 gem 'devise', '~> 4.4.3'
@@ -84,7 +84,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'faker', '~> 1.8.7'
+  gem 'faker'
   gem 'fuubar'
   gem 'pry-rails'
   gem 'pundit-matchers', '~> 1.6.0'
