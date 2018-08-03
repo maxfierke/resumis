@@ -112,7 +112,7 @@ GEM
     factory_bot_rails (4.10.0)
       factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
-    faker (1.8.7)
+    faker (1.9.1)
       i18n (>= 0.7)
     ffi (1.9.25)
     fog-aws (3.0.0)
@@ -343,7 +343,7 @@ DEPENDENCIES
   devise (~> 4.4.3)
   doorkeeper
   factory_bot_rails
-  faker (~> 1.8.7)
+  faker (~> 1.9.1)
   fog-aws (~> 3.0)
   font-awesome-sass (~> 5.0.9)
   friendly_id (~> 5.2.0)
