@@ -186,7 +186,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     multi_json (1.13.1)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     nilify_blanks (1.3.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -208,7 +208,7 @@ GEM
       rspec-rails (>= 3.0.0)
     rack (2.0.5)
     rack-cors (1.0.2)
-    rack-protection (2.0.3)
+    rack-protection (2.0.4)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -291,10 +291,10 @@ GEM
       redis (>= 3.3.5, < 5)
     sidekiq-failures (1.0.0)
       sidekiq (>= 4.0.0)
-    sinatra (2.0.3)
+    sinatra (2.0.4)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.3)
+      rack-protection (= 2.0.4)
       tilt (~> 2.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -367,7 +367,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.7)
   sidekiq (< 6)
   sidekiq-failures
-  sinatra (~> 2.0.3)
+  sinatra (~> 2.0.4)
   thor
   uglifier (>= 4.1)
   unicorn

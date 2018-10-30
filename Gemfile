@@ -59,7 +59,7 @@ gem 'hiredis'
 gem 'redis-namespace'
 gem 'sidekiq', '< 6'
 gem 'sidekiq-failures'
-gem 'sinatra', '~> 2.0.3', :require => nil # for sidekiq web UI
+gem 'sinatra', '~> 2.0.4', :require => nil # for sidekiq web UI
 
 # pagination
 gem 'kaminari'
