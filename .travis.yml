@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.4.1
+  - 2.5.3
 
 services:
   - postgresql
@@ -14,4 +14,3 @@ script:
   - bundle-audit --update
   - brakeman --no-pager --github-repo maxfierke/resumis
   - bundle exec rake spec
-
