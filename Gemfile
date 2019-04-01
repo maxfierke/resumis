@@ -16,7 +16,7 @@ gem 'uglifier', '>= 4.1'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '>= 4.0.4'
 
-gem 'active_model_serializers', '~> 0.10.8'
+gem 'active_model_serializers', '~> 0.10.9'
 
 # Utilize the bootstrap frontend framework
 gem 'bootstrap-sass'
