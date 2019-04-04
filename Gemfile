@@ -44,7 +44,7 @@ gem 'wicked_pdf', '~> 1.1'
 gem 'nilify_blanks'
 
 # nice slugged URLs
-gem 'friendly_id', '~> 5.2.0'
+gem 'friendly_id', '~> 5.2.5'
 
 # Multi-tenancy
 gem 'acts_as_tenant'
