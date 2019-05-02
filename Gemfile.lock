@@ -106,7 +106,7 @@ GEM
     doorkeeper (4.4.1)
       railties (>= 4.2)
     erubi (1.8.0)
-    excon (0.62.0)
+    excon (0.64.0)
     execjs (2.7.0)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
@@ -116,7 +116,7 @@ GEM
     faker (1.9.3)
       i18n (>= 0.7)
     ffi (1.9.25)
-    fog-aws (3.4.0)
+    fog-aws (3.5.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -345,7 +345,7 @@ DEPENDENCIES
   doorkeeper
   factory_bot_rails
   faker
-  fog-aws (~> 3.4)
+  fog-aws (~> 3.5)
   font-awesome-sass (~> 5.6.1)
   friendly_id (~> 5.2.5)
   fuubar
