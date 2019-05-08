@@ -33,7 +33,7 @@ gem 'font-awesome-sass', '~> 5.6.1'
 
 # Devise for user authentication
 gem 'devise', '~> 4.6.2'
-gem 'doorkeeper'
+gem 'doorkeeper', '~> 5.1.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
