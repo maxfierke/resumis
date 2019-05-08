@@ -1,4 +1,4 @@
-FROM ruby:2.5.3-alpine
+FROM ruby:2.6.3-alpine3.9
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 
@@ -19,17 +19,19 @@ RUN apk add --update --no-cache \
   build-base \
   linux-headers \
   nodejs \
+  yarn \
   tzdata \
   libxml2-dev \
   libxslt-dev \
-  postgresql-dev
+  postgresql-dev \
+  imagemagick
 
 RUN apk add --update --no-cache \
   libgcc libstdc++ libx11 glib libxrender libxext libintl \
   libcrypto1.1 libssl1.1 \
-  ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family
-RUN apk add --no-cache qt5-qtbase-dev wkhtmltopdf \
-            --repository http://dl-3.alpinelinux.org/alpine/edge/community/
+  ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
+  qt5-qtbase-dev wkhtmltopdf
+
 
 RUN mkdir -p $APP_HOME/shared/pids
 WORKDIR $APP_HOME
