@@ -38,7 +38,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
 # Exporting resumes to PDF
-gem 'wicked_pdf', '~> 1.1'
+gem 'wicked_pdf', '~> 1.4'
 
 # because sometimes you need a NULL
 gem 'nilify_blanks'
