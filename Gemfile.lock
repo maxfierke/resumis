@@ -320,7 +320,8 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    wicked_pdf (1.1.0)
+    wicked_pdf (1.4.0)
+      activesupport
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -373,7 +374,7 @@ DEPENDENCIES
   thor
   uglifier (>= 4.1)
   unicorn
-  wicked_pdf (~> 1.1)
+  wicked_pdf (~> 1.4)
 
 BUNDLED WITH
    1.17.3
