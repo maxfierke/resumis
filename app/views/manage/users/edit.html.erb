@@ -1,0 +1,23 @@
+<% page_title "Editing #{@user.full_name}" %>
+<div class="btn-toolbar">
+  <div class="btn-group pull-right text-right">
+    <% if @user.locked_at %>
+      <%= button_to "Unlock", unlock_manage_user_path(@user), {
+        method: :patch,
+        remote: false,
+        form_class: 'inline-block',
+        class: 'btn btn-warning',
+        data: { confirm: "This will restore #{@user.full_name}'s ability to login. Do you want to continue?" }
+      } %>
+    <% else %>
+      <%= button_to "Lock", lock_manage_user_path(@user), {
+        method: :patch,
+        remote: false,
+        form_class: 'inline-block',
+        class: 'btn btn-danger',
+        data: { confirm: "This will lock #{@user.full_name}'s account and revoke any OAuth tokens. Do you want to continue?" }
+      } %>
+    <% end %>
+  </div>
+</div>
+<%= render 'form' %>

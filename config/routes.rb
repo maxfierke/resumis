@@ -53,6 +53,12 @@ Rails.application.routes.draw do
       resources :skill_categories, path: 'skill/categories', concerns: :paginatable do
         resources :skills, except: [:index]
       end
+      resources :users, except: [:new, :create, :show], concerns: :paginatable do
+        member do
+          patch 'lock'
+          patch 'unlock'
+        end
+      end
 
       get 'skills' => 'skills#index', as: :skills
       post 'skills' => 'skills#create'

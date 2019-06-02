@@ -1,0 +1,53 @@
+<% page_title "Manage Users" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Full Name</th>
+      <th>Subdomain</th>
+      <th>Domain</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user.email, edit_manage_user_path(user) %>
+        </td>
+        <td><%= user.full_name %></td>
+        <td><%= user.subdomain %></td>
+        <td><%= user.domain %></td>
+        <td>
+          <% if user.locked_at.present? %>
+            <span class="label label-danger">
+              <%= icon 'fas', 'lock', '' %> Locked
+            </span>
+          <% else %>
+            <span class="label label-success">
+              <%= icon 'fas', 'check', '' %> Active
+            </span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_manage_user_path(user), class: 'btn btn-xs' do %>
+            <%= icon 'fas', 'pencil-alt', '' %>
+          <% end %>
+          <%= link_to manage_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
+            <%= icon 'fas', 'times', '' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :actionbar_left do %>
+  <%= paginate @users %>
+<% end %>
+
+<% content_for :actionbar_right do %>
+<% end %>

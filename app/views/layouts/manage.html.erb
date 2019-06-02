@@ -154,6 +154,13 @@
                     <%= icon 'fas', 'external-link-alt', '', class: 'fa-fw' %> Sidekiq UI
                   <% end %>
                 </li>
+                <% if ResumisConfig.multi_tenant? %>
+                  <li>
+                    <%= link_to manage_users_path(host: ResumisConfig.canonical_host) do %>
+                      <%= icon 'fas', 'users', '', class: 'fa-fw' %> Users
+                    <% end %>
+                  </li>
+                <% end %>
               </ul>
             </li>
             <% end %>
