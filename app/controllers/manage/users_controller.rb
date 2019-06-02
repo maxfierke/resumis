@@ -23,7 +23,7 @@ module Manage
       @user.destroy!
 
       respond_to do |format|
-        format.html { redirect_to manage_users_path, notice: "#{@user.full_name} successfully updated." }
+        format.html { redirect_to manage_users_path, notice: "#{@user.full_name} successfully destroyed." }
       end
     end
 
@@ -51,15 +51,23 @@ module Manage
       end
 
       def user_params
-        params.require(:user).permit(
-          :first_name,
-          :last_name,
-          :email,
-          :password,
-          :password_confirmation,
-          :subdomain,
-          :domain
-        )
+        @user_params ||= begin
+          permitted = params.require(:user).permit(
+            :first_name,
+            :last_name,
+            :email,
+            :password,
+            :password_confirmation,
+            :subdomain,
+            :domain
+          )
+
+          if permitted[:password].blank?
+            permitted.extract!(:password, :password_confirmation)
+          end
+
+          permitted
+        end
       end
   end
 end
