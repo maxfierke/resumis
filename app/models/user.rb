@@ -14,7 +14,18 @@ class User < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
-  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
+  has_many :oauth_access_grants,
+    class_name: 'Doorkeeper::AccessGrant',
+    foreign_key: :resource_owner_id,
+    dependent: :destroy
+  has_many :oauth_access_tokens,
+    class_name: 'Doorkeeper::AccessToken',
+    foreign_key: :resource_owner_id,
+    dependent: :destroy
+  has_many :oauth_applications,
+    class_name: 'Doorkeeper::Application',
+    as: :owner,
+    dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

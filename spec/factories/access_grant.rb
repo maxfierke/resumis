@@ -1,9 +1,11 @@
 FactoryBot.define do
-  factory :access_token, class: Doorkeeper::AccessToken do
+  factory :access_grant, class: Doorkeeper::AccessGrant do
     sequence(:resource_owner_id) { |n| n }
     application
+    redirect_uri { "https://app.com/callback" }
     revoked_at { nil }
     expires_in { 900 }
+    scopes { "public" }
 
     trait :limitless do
       expires_in { nil }
