@@ -3,9 +3,10 @@ module TenantHelper
     if ResumisConfig.single_tenant?
       tenant = User.first
     else
-      tenant = User.where(:subdomain => request.subdomains.last).first ||
-               User.where(:domain => request.domain).first ||
-               User.where(:domain => request.host).first
+      tenant_scope = User.where(disabled_at: nil)
+      tenant = tenant_scope.find_by(subdomain: request.subdomains.last) ||
+               tenant_scope.find_by(domain: request.domain) ||
+               tenant_scope.find_by(domain: request.host)
     end
 
     set_current_tenant(tenant)

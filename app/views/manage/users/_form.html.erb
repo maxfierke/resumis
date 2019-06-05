@@ -1,0 +1,65 @@
+<%= form_for([:manage, @user]) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <%= f.text_field :first_name, :class => 'text_field form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <%= f.text_field :last_name, :class => 'text_field form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <h4>Change Password</h4>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+  </div>
+
+  <h4>Domain Settings</h4>
+
+  <div class="form-group">
+    <%= f.label :subdomain %>
+    <%= f.text_field :subdomain, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :domain %>
+    <%= f.text_field :domain, class: 'form-control' %>
+    <p class="help-block">
+      To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
+    </p>
+  </div>
+
+  <div class="actionbar actionbar-fixed-bottom">
+    <div class="actionbar-left">
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  manage_users_path, :class => 'btn btn-default' %>
+    </div>
+    <div class="actionbar-right">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

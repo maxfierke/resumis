@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  # :confirmable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects, dependent: :destroy
@@ -14,7 +14,18 @@ class User < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
-  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
+  has_many :oauth_access_grants,
+    class_name: 'Doorkeeper::AccessGrant',
+    foreign_key: :resource_owner_id,
+    dependent: :destroy
+  has_many :oauth_access_tokens,
+    class_name: 'Doorkeeper::AccessToken',
+    foreign_key: :resource_owner_id,
+    dependent: :destroy
+  has_many :oauth_applications,
+    class_name: 'Doorkeeper::Application',
+    as: :owner,
+    dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -35,9 +46,9 @@ class User < ActiveRecord::Base
   end
 
   def gravatar_url
-		hash = Digest::MD5.hexdigest(email)
+    hash = Digest::MD5.hexdigest(email)
 
-		"https://www.gravatar.com/avatar/#{hash}?s=256"
+    "https://www.gravatar.com/avatar/#{hash}?s=256"
   end
 
   def avatar_url
@@ -65,6 +76,26 @@ class User < ActiveRecord::Base
     networks << { network: 'medium', username: medium_handle, url: "https://medium.com/@#{medium_handle}"} if medium_handle.present?
 
     networks
+  end
+
+  def disabled?
+    !!disabled_at
+  end
+
+  def access_locked?
+    disabled? || super
+  end
+
+  def inactive_message
+    if disabled?
+      :disabled
+    else
+      super
+    end
+  end
+
+  def valid_for_authentication?
+    !disabled_at && super
   end
 
   def send_devise_notification(notification, *args)
