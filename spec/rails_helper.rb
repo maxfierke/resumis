@@ -33,6 +33,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
   config.before(:suite) do
     ActiveRecord::Migration.check_pending!
   end

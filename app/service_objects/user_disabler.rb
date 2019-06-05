@@ -8,7 +8,10 @@ class UserDisabler
   def disable!
     ActiveRecord::Base.transaction do
       revoked_at = DateTime.current
-      user.update!(locked_at: revoked_at)
+      user.update!(
+        disabled_at: revoked_at,
+        locked_at: revoked_at
+      )
       revoke_grants(revoked_at)
       revoke_tokens(revoked_at)
     end

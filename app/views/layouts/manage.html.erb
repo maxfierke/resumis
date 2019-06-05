@@ -138,7 +138,7 @@
               </ul>
             </li>
             <% if current_user.admin? %>
-            <li class="dropdown" role="presentation">
+            <li class="dropdown" role="presentation" data-test-key="nav-admin-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <%= icon 'fas', 'shield-alt', '', class: 'fa-fw' %>
                 <span class="expanded-only">Administration</span>

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe UserDisabler do
-  let(:user) { FactoryBot.create(:user, locked_at: nil) }
-  let(:other_user) { FactoryBot.create(:user, locked_at: nil) }
+  let(:user) { FactoryBot.create(:user, disabled_at: nil) }
+  let(:other_user) { FactoryBot.create(:user, disabled_at: nil) }
   let!(:access_tokens) do
     FactoryBot.create_list(:access_token, 3,
       revoked_at: nil,
@@ -37,6 +37,12 @@ describe UserDisabler do
     subject.disable!
 
     expect(user.locked_at).not_to be_nil
+  end
+
+  it "disables the user" do
+    subject.disable!
+
+    expect(user.disabled_at).not_to be_nil
   end
 
   it "revokes the access tokens for the user" do

@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.admin? || !record.disabled_at
   end
 
   def update?
@@ -15,11 +15,15 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
 
-  def lock?
+  def unlock?
     user.admin?
   end
 
-  def unlock?
+  def enable?
+    user.admin?
+  end
+
+  def disable?
     user.admin?
   end
 
@@ -28,7 +32,7 @@ class UserPolicy < ApplicationPolicy
       if user && user.admin?
         scope
       else
-        scope.where(id: record.id)
+        scope.where(disabled_at: nil)
       end
     end
   end

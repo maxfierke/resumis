@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_022245) do
+ActiveRecord::Schema.define(version: 2019_06_02_055241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 2019_06_02_022245) do
     t.string "medium_handle"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
+    t.datetime "disabled_at"
     t.index ["domain"], name: "index_users_on_domain", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

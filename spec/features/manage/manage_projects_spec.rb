@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Managing Projects' do
   before do
     user = FactoryBot.create(:user, :admin)
-    login_as(user, scope: :user)
+    sign_in(user, scope: :user)
     visit '/manage'
   end
 
@@ -24,4 +24,3 @@ feature 'Managing Projects' do
     end
   end
 end
-

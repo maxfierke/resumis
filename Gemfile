@@ -82,10 +82,12 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
   gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'pundit-matchers', '~> 1.6.0'
 end

@@ -55,8 +55,9 @@ Rails.application.routes.draw do
       end
       resources :users, except: [:new, :create, :show], concerns: :paginatable do
         member do
-          patch 'lock'
           patch 'unlock'
+          patch 'disable'
+          patch 'enable'
         end
       end
 

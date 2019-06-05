@@ -78,6 +78,26 @@ class User < ActiveRecord::Base
     networks
   end
 
+  def disabled?
+    !!disabled_at
+  end
+
+  def access_locked?
+    disabled? || super
+  end
+
+  def inactive_message
+    if disabled?
+      :disabled
+    else
+      super
+    end
+  end
+
+  def valid_for_authentication?
+    !disabled_at && super
+  end
+
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end

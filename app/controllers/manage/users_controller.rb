@@ -1,6 +1,6 @@
 module Manage
   class UsersController < ManageController
-    before_action :set_user, only: [:edit, :update, :destroy, :lock, :unlock]
+    before_action :set_user, except: [:index]
 
     def index
       @users = policy_scope(User).page params[:page]
@@ -27,20 +27,28 @@ module Manage
       end
     end
 
-    def lock
-      user_disabler = UserDisabler.new(@user)
-      user_disabler.disable!
-
-      respond_to do |format|
-        format.html { redirect_to manage_users_path, notice: "#{@user.full_name} was locked successfully." }
-      end
-    end
-
     def unlock
       @user.update!(locked_at: nil, failed_attempts: 0)
 
       respond_to do |format|
         format.html { redirect_to manage_users_path, notice: "#{@user.full_name} was unlocked successfully." }
+      end
+    end
+
+    def disable
+      user_disabler = UserDisabler.new(@user)
+      user_disabler.disable!
+
+      respond_to do |format|
+        format.html { redirect_to manage_users_path, notice: "#{@user.full_name} was disabled successfully." }
+      end
+    end
+
+    def enable
+      @user.update!(disabled_at: nil, locked_at: nil, failed_attempts: 0)
+
+      respond_to do |format|
+        format.html { redirect_to manage_users_path, notice: "#{@user.full_name} was enabled successfully." }
       end
     end
 

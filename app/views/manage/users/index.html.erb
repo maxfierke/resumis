@@ -22,8 +22,12 @@
         <td><%= user.subdomain %></td>
         <td><%= user.domain %></td>
         <td>
-          <% if user.locked_at.present? %>
+          <% if user.disabled_at.present? %>
             <span class="label label-danger">
+              <%= icon 'fas', 'times', '' %> Disabled
+            </span>
+          <% elsif user.locked_at.present? %>
+            <span class="label label-warning">
               <%= icon 'fas', 'lock', '' %> Locked
             </span>
           <% else %>
