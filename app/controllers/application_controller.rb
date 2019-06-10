@@ -2,10 +2,6 @@ class ApplicationController < ActionController::Base
   include Pundit
   include TenantHelper
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-
   set_current_tenant_through_filter
   before_action :find_tenant
   rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
