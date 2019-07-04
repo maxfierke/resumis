@@ -63,7 +63,7 @@ gem 'sinatra', '~> 2.0.4', :require => nil # for sidekiq web UI
 
 # pagination
 gem 'kaminari'
-gem 'pager_api', '~> 0.2.4'
+gem 'pager_api', '~> 0.3.2'
 
 gem 'unicorn'
 
