@@ -204,7 +204,7 @@ GEM
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pager_api (0.2.4)
+    pager_api (0.3.2)
     pastel (0.7.3)
       equatable (~> 0.6)
       tty-color (~> 0.5)
@@ -390,7 +390,7 @@ DEPENDENCIES
   listen (~> 3.1.5)
   mini_magick
   nilify_blanks
-  pager_api (~> 0.2.4)
+  pager_api (~> 0.3.2)
   pg
   pry-byebug
   pry-rails
