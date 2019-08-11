@@ -15,10 +15,10 @@ module Api
         {
           meta: {
             rel: 'github',
-            title: "@#{object.github_url}"
+            title: object.github_url
           },
           href: "https://github.com/#{object.github_url}"
-        }
+        } if object.github_url.present?
       }
       has_one :project_status, key: :status
       has_many :project_categories, key: :categories do
