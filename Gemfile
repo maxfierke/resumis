@@ -5,6 +5,7 @@ gem 'rails', '~> 5.2.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'webpacker'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.7'
 

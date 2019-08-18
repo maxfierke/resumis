@@ -226,6 +226,8 @@ GEM
     rack-cors (1.0.3)
     rack-protection (2.0.5)
       rack
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -351,6 +353,10 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.8)
       rack (>= 2.0.6)
+    webpacker (4.0.7)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -410,6 +416,7 @@ DEPENDENCIES
   thor
   uglifier (>= 4.1)
   unicorn
+  webpacker
   wicked_pdf (~> 1.4)
 
 BUNDLED WITH
