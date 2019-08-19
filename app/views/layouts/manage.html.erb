@@ -64,22 +64,10 @@
                   <%= icon 'fas', 'tachometer-alt fa-fw h-5 w-5 inline-block mr-4', 'Dashboard' %>
                 <% end %>
               </li>
-              <li class="mb-4" role="presentation">
-                <div class="text-gray-700 text-sm uppercase mb-4">
+              <li class="mb-4">
+                <%= link_to manage_posts_path do -%>
                   <%= icon 'fas', 'paragraph fa-fw h-5 w-5 inline-block mr-4', 'Blog' %>
-                </div>
-                <ul class="pl-4">
-                  <li class="mb-4">
-                    <%= link_to manage_posts_path do %>
-                      <%= icon 'fas', 'pencil-alt fa-fw h-5 w-5 inline-block mr-4', 'Posts' %>
-                    <% end %>
-                  </li>
-                  <li class="mb-4">
-                    <%= link_to manage_post_categories_path do %>
-                      <%= icon 'fas', 'folder fa-fw h-5 w-5 inline-block mr-4', 'Post Categories' %>
-                    <% end %>
-                  </li>
-                </ul>
+                <%- end -%>
               </li>
               <li class="mb-4">
                 <%= link_to manage_projects_path do %>

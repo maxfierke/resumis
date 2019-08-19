@@ -4,6 +4,7 @@ module Manage
 
     def index
       @posts = policy_scope(Post).page(params[:page])
+      @post_categories = policy_scope(PostCategory).all
     end
 
     def show

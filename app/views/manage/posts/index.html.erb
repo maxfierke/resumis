@@ -1,35 +1,57 @@
 <% page_title "Blog Posts" %>
 
-<div class="flex flex-col">
-  <% @posts.each do |post| %>
-    <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-      <div class="flex">
-        <div class="flex-1">
-          <h4 class="text-xl mb-4 flex w-full justify-between">
-            <%= link_to edit_manage_post_path(post), class: 'underline' do %>
-              <%= post.title -%>
+<div class="flex">
+  <div class="flex flex-1 flex-col md:mr-2">
+    <% @posts.each do |post| %>
+      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <div class="flex">
+          <div class="flex-1">
+            <h4 class="text-xl mb-4 flex w-full justify-between">
+              <%= link_to edit_manage_post_path(post), class: 'underline' do %>
+                <%= post.title -%>
+              <% end %>
+              <% if post.published && post.published_on %>
+                <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
+              <% else %>
+                <span class="label label-default">Draft</span>
+              <% end %>
+            </h4>
+            <h6 class="text-sm text-gray-600">
+              Updated <%= time_ago_in_words(post.updated_at) %> ago
+            </h6>
+          </div>
+          <div class="flex-grow-0 ml-6">
+            <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
+              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block mr-4', '' %>
             <% end %>
-            <% if post.published && post.published_on %>
-              <span class="label label-success">Published <%= post.published_on.strftime("%B %e, %Y") %></span>
-            <% else %>
-              <span class="label label-default">Draft</span>
+            <%= link_to manage_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
+              <%= icon 'fas', 'times h-4 w-4 inline-block mr-4', '' %>
             <% end %>
-          </h4>
-          <h6 class="text-sm text-gray-600">
-            Updated <%= time_ago_in_words(post.updated_at) %> ago
-          </h6>
-        </div>
-        <div class="flex-grow-0 ml-6">
-          <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block mr-4', '' %>
-          <% end %>
-          <%= link_to manage_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times h-4 w-4 inline-block mr-4', '' %>
-          <% end %>
+          </div>
         </div>
       </div>
+    <% end %>
+  </div>
+
+  <div class="w-full md:w-1/4 md:pl-2">
+    <div class="w-full px-6 py-4 mb-6">
+      <h3 class="font-medium mb-2 text-gray-700">Post Categories</h3>
+
+      <% @post_categories.each do |post_category| %>
+        <div class="flex justify-between mb-2">
+          <%= link_to edit_manage_post_category_path(post_category), class: 'underline' do -%>
+            <%= post_category.name -%>
+          <%- end -%>
+
+          <span class="label label-default">
+            <%= post_category.posts.count %> posts
+          </span>
+        </div>
+      <% end %>
+
+      <%= link_to "Add category", new_manage_post_category_path, class: 'btn btn-link block -ml-4' %>
     </div>
-  <% end %>
+  </div>
 </div>
 
 <% content_for :actionbar_left do %>
