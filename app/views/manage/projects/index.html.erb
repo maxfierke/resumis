@@ -1,42 +1,81 @@
 <% page_title "Projects" %>
 
-<div class="flex flex-col">
-  <% @projects.each do |project| %>
-    <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-      <div class="flex">
-        <div class="flex-1">
-          <h4 class="text-xl mb-4 flex w-full justify-between">
-            <%= link_to edit_manage_project_path(project), class: 'underline' do %>
-              <%= project.name -%>
+<div class="flex">
+  <div class="flex flex-1 flex-col md:mr-2">
+    <% @projects.each do |project| %>
+      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <div class="flex">
+          <div class="flex-1">
+            <h4 class="text-xl mb-4 flex w-full justify-between">
+              <%= link_to edit_manage_project_path(project), class: 'underline' do %>
+                <%= project.name -%>
+              <% end %>
+              <% if project.status %>
+                <span class="project-status label label-default label-<%= project.status.slug %>">
+                  <%= project.status.name %>
+                </span>
+              <% end %>
+            </h4>
+            <h6 class="text-sm text-gray-600">
+              Updated <%= time_ago_in_words(project.updated_at) %> ago
+            </h6>
+          </div>
+          <div class="flex-grow-0 ml-6">
+            <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
+              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', '', title: 'Edit' %>
             <% end %>
-            <% if project.status %>
-              <span class="project-status label label-default label-<%= project.status.slug %>">
-                <%= project.status.name %>
-              </span>
+            <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
+              <%= icon 'fas', 'times h-4 w-4 inline-block', '', title: 'Delete' %>
             <% end %>
-          </h4>
-          <h6 class="text-sm text-gray-600">
-            Updated <%= time_ago_in_words(project.updated_at) %> ago
-          </h6>
-        </div>
-        <div class="flex-grow-0 ml-6">
-          <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', '', title: 'Edit' %>
-          <% end %>
-          <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times h-4 w-4 inline-block', '', title: 'Delete' %>
-          <% end %>
+          </div>
         </div>
       </div>
+    <% end %>
+  </div>
+
+  <div class="w-full md:w-1/4 md:pl-2">
+    <div class="w-full px-6 py-4 mb-6">
+      <h3 class="font-medium mb-2 text-gray-700">Project Categories</h3>
+
+      <% @project_categories.each do |project_category| %>
+        <div class="mb-2">
+          <%= link_to edit_manage_project_category_path(project_category), class: 'underline' do -%>
+            <%= project_category.name -%>
+          <%- end -%>
+          <%= link_to manage_project_category_path(project_category), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= icon 'fas', 'times h-3 w-3 inline-block', title: 'Delete' %>
+          <%- end -%>
+        </div>
+      <% end %>
+
+      <%= link_to "Add category", new_manage_project_category_path, class: 'btn btn-link block -ml-2' %>
     </div>
-  <% end %>
+
+    <div class="w-full px-6 py-4 mb-6">
+      <h3 class="font-medium mb-2 text-gray-700">Project Statuses</h3>
+
+      <% @project_statuses.each do |project_status| %>
+        <span class="project-status label label-default label-<%= project_status.slug %> mr-2 mb-2">
+          <%= link_to edit_manage_project_status_path(project_status), class: 'underline' do -%>
+            <%= project_status.name -%>
+          <%- end -%>
+          <%= link_to manage_project_status_path(project_status), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= icon 'fas', 'times h-3 w-3 inline-block', title: 'Delete' %>
+          <%- end -%>
+        </span>
+      <% end %>
+
+      <%= link_to "Add status", new_manage_project_status_path, class: 'btn btn-link block -ml-2' %>
+    </div>
+  </div>
 </div>
+
+
 
 <% content_for :actionbar_left do %>
   <%= paginate @projects %>
 <% end %>
 
 <% content_for :actionbar_right do %>
-  <%= link_to "New Project", new_manage_project_path, class: 'btn btn-link' %>
-  <%= link_to "New Project Category", new_manage_project_category_path, class: 'btn btn-link' %>
+  <%= link_to "New Project", new_manage_project_path, class: 'btn btn-primary' %>
 <% end %>
