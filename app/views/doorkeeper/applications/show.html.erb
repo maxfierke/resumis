@@ -17,10 +17,10 @@
 <table>
   <% @application.redirect_uri.split.each do |uri| %>
     <tr>
-      <td>
+      <td class="px-4 py-2">
         <code><%= uri %></code>
       </td>
-      <td>
+      <td class="px-4 py-2">
         <%= link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes), class: 'btn btn-success', target: '_blank' %>
       </td>
     </tr>

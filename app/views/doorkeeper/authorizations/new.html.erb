@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
+<div class="flex">
+  <div class="md:w-3/12"></div>
+  <div class="md:w-6/12">
     <%= page_title t('.title') %>
 
     <main role="main" class="panel panel-default">
@@ -23,8 +23,8 @@
 
         <hr />
 
-        <div class="row">
-          <%= form_tag oauth_authorization_path, method: :post, class: 'col-xs-6' do %>
+        <div class="flex">
+          <%= form_tag oauth_authorization_path, method: :post, class: 'w-6/12' do %>
             <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
             <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
             <%= hidden_field_tag :state, @pre_auth.state %>
@@ -32,7 +32,7 @@
             <%= hidden_field_tag :scope, @pre_auth.scope %>
             <%= submit_tag t('doorkeeper.authorizations.buttons.authorize'), class: "btn btn-success btn-lg btn-block" %>
           <% end %>
-          <%= form_tag oauth_authorization_path, method: :delete, class: 'col-xs-6' do %>
+          <%= form_tag oauth_authorization_path, method: :delete, class: 'w-6/12' do %>
             <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
             <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
             <%= hidden_field_tag :state, @pre_auth.state %>
@@ -44,5 +44,5 @@
       </div>
     </main>
   </div>
-  <div class="col-md-3"></div>
+  <div class="md:w-3/12"></div>
 </div>

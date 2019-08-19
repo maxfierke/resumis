@@ -1,9 +1,10 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^4.0.7"
+    "@fortawesome/fontawesome-free": "^5.10.1",
+    "@rails/webpacker": "^4.0.7",
+    "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
-    "tailwindcss": "^1.1.2",
     "webpack-dev-server": "^3.8.0"
   }
 }

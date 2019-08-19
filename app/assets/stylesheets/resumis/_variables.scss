@@ -107,7 +107,7 @@ $caret-width-large:         5px;
 //
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
-//** Padding for `<th>`s and `<td>`s.
+//** Padding for `<th class="px-4 py-2">`s and `<td class="px-4 py-2">`s.
 $table-cell-padding:            8px;
 //** Padding for cells in `.table-condensed`.
 $table-condensed-cell-padding:  5px;

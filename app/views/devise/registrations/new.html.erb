@@ -11,14 +11,14 @@
     <%= f.email_field :email, autofocus: true, class: 'form-control' %>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="flex">
+    <div class="w-full sm:w-1/2">
       <div class="form-group">
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: 'form-control' %>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="w-full sm:w-1/2">
       <div class="form-group">
         <%= f.label :last_name %>
         <%= f.text_field :last_name, class: 'form-control' %>
@@ -26,8 +26,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="flex">
+    <div class="w-full sm:w-1/2">
       <div class="form-group">
         <%= f.label :password %>
         <% if @validatable %>
@@ -36,7 +36,7 @@
         <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="w-full sm:w-1/2">
       <div class="form-group">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>

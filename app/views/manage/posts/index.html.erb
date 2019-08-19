@@ -1,12 +1,12 @@
 <% page_title "Blog Posts" %>
 
-<div class="list-group">
+<div class="flex flex-col">
   <% @posts.each do |post| %>
-    <div class="list-group-item">
-      <div class="row">
-        <div class="col-xs-10 col-sm-11">
-          <h4>
-            <%= link_to edit_manage_post_path(post) do %>
+    <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+      <div class="flex">
+        <div class="w-10/12 sm:w-11/12">
+          <h4 class="text-xl mb-4 flex w-full justify-between">
+            <%= link_to edit_manage_post_path(post), class: 'underline' do %>
               <%= post.title -%>
             <% end %>
             <% if post.published && post.published_on %>
@@ -15,16 +15,16 @@
               <span class="label label-default">Draft</span>
             <% end %>
           </h4>
-          <h6 class="text-muted">
+          <h6 class="text-sm text-gray-600">
             Updated <%= time_ago_in_words(post.updated_at) %> ago
           </h6>
         </div>
-        <div class="col-xs-2 col-sm-1">
+        <div class="w-2/12 sm:w-1/12">
           <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt', '' %>
+            <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block mr-4', '' %>
           <% end %>
           <%= link_to manage_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times', '' %>
+            <%= icon 'fas', 'times h-4 w-4 inline-block mr-4', '' %>
           <% end %>
         </div>
       </div>
@@ -38,6 +38,6 @@
 
 <% content_for :actionbar_right do %>
   <%= link_to new_manage_post_path, class: 'btn btn-primary' do %>
-    <%= icon 'fas', 'plus', 'New Post' %>
+    <%= icon 'fas', 'plus h-5 w-5 inline-block mr-4', 'New Post' %>
   <% end %>
 <% end %>

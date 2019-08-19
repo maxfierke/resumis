@@ -1,31 +1,31 @@
 <% page_title "Dashboard" %>
 
-<div class="row">
-  <div class="col-md-4">
-    <%= link_to new_manage_project_path, class: 'btn btn-lg btn-primary btn-block' do %>
-      <%= icon 'fas', 'gem', '', class: 'fa-4x' %><br />
-      Add a New Project
+<div class="flex text-3xl justify-between">
+  <div class="flex-1 justify-center text-center">
+    <%= link_to new_manage_project_path, class: 'p-4 m-2 bg-blue-300 text-blue-900 rounded block' do %>
+      <%= icon 'fas', 'gem h-12 w-12 inline-block mr-4', '' %><br />
+      Start a Project
     <% end %>
   </div>
-  <div class="col-md-4">
-    <%= link_to new_manage_post_path, class: 'btn btn-lg btn-success btn-block' do %>
-      <%= icon 'fas', 'paragraph', '', class: 'fa-4x' %><br />
-      Add a New Blog Post
+  <div class="flex-1 justify-center text-center">
+    <%= link_to new_manage_post_path, class: 'p-4 m-2 bg-green-300 text-green-900 rounded block' do %>
+      <%= icon 'fas', 'paragraph h-12 w-12 inline-block mr-4', '' %><br />
+      Write a Blog Post
     <% end %>
   </div>
-  <div class="col-md-4">
-    <%= link_to manage_skills_path, class: 'btn btn-lg btn-danger btn-block' do %>
-      <%= icon 'fas', 'wrench', '', class: 'fa-4x' %><br />
+  <div class="flex-1 justify-center text-center">
+    <%= link_to manage_skills_path, class: 'p-4 m-2 bg-red-300 text-red-900 rounded block' do %>
+      <%= icon 'fas', 'wrench h-12 w-12 inline-block mr-4', '' %><br />
       Add a New Skill
     <% end %>
   </div>
 </div>
 
-<hr />
+<div class="border border-gray-100 m-2"></div>
 
 <% if current_user.ga_view_id %>
-<div class="row">
-  <div class="col-xs-12">
+<div class="flex">
+  <div class="w-full">
     <div class="panel panel-default">
       <div class="panel-body">
         <section id="auth-button"></section>

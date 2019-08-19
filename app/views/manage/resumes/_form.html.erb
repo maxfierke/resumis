@@ -14,16 +14,16 @@
 
   <h4>Education Experiences</h4>
 
-  <div class="list-group">
+  <div class="flex flex-col">
     <%= f.collection_check_boxes(:education_experience_ids,  EducationExperience.order("end_date ASC"), :id, :school_name,
       { :selected => @resume.education_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="list-group-item clearfix">
-        <p class="pull-left">
+      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+        <p>
           <%= b.check_box %>
           <%= b.text %><br />
           <small><%= b.object.diploma %></small>
         </p>
-        <div class="pull-right">
+        <div>
           <%= b.object.date_range %>
         </div>
       </label>
@@ -32,16 +32,16 @@
 
   <h4>Work Experiences</h4>
 
-  <div class="list-group">
+  <div class="flex flex-col">
     <%= f.collection_check_boxes(:work_experience_ids,  WorkExperience.order("end_date ASC"), :id, :organization,
       { :selected => @resume.work_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="list-group-item clearfix">
-        <p class="pull-left">
+      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+        <p>
           <%= b.check_box %>
           <%= b.text %><br />
           <small><%= b.object.position %></small>
         </p>
-        <div class="pull-right">
+        <div>
           <%= b.object.date_range %>
         </div>
       </label>
@@ -50,18 +50,20 @@
 
   <h4>Relevant Projects</h4>
 
-  <div class="list-group">
+  <div class="flex flex-col">
     <%= f.collection_check_boxes(:project_ids,  Project.order("end_date ASC"), :id, :name,
       { :selected => @resume.project_ids }, { :multiple => true } ) do |b| %>
-      <label class="list-group-item clearfix">
-        <%= b.check_box %>
-        <%= b.text %>
-        <% if b.object.project_status %>
-          <span class="label label-<%= b.object.project_status.slug %>">
-            <%= b.object.project_status.name %>
-          </span>
-        <% end %>
-        <div class="pull-right">
+      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+        <p>
+          <%= b.check_box %>
+          <%= b.text %>
+          <% if b.object.project_status %>
+            <span class="label label-<%= b.object.project_status.slug %>">
+              <%= b.object.project_status.name %>
+            </span>
+          <% end %>
+        </p>
+        <div>
           <%= b.object.date_range %>
         </div>
       </label>
@@ -70,15 +72,15 @@
 
   <h4>Relevant Skills</h4>
 
-  <div class="list-group">
+  <div class="flex flex-col">
     <%= f.collection_check_boxes(:skill_ids,  Skill.order("name ASC"), :id, :name,
       { :selected => @resume.skill_ids }, { :multiple => true } ) do |b| %>
-      <label class="list-group-item">
-        <div class="row">
-          <div class="col-xs-1">
+      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <div class="flex">
+          <div class="w-1/12">
             <%= b.check_box %>
           </div>
-          <div class="col-xs-11">
+          <div class="w-11/12">
             <%= b.text %>
             <span class="label label-default">
               <%= b.object.skill_category.name %>
@@ -96,7 +98,7 @@
     </div>
     <div class="actionbar-right">
       <% unless @resume.new_record? %>
-        <small class="text-muted">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
+        <small class="text-sm text-gray-600 mr-4">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
       <% end %>
       <%= f.submit nil, :class => 'btn btn-primary' %>
     </div>

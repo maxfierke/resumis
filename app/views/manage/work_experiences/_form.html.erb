@@ -1,6 +1,6 @@
 <%= form_for [:manage, @work_experience] do |f| %>
-  <div class="row">
-    <div class="col-sm-8">
+  <div class="flex">
+    <div class="sm:w-8/12">
       <div class="form-group">
         <%= f.label :organization, :class => 'control-label' %>
         <%= f.text_field :organization, :class => 'text_field form-control' %>
@@ -14,7 +14,7 @@
         <%= f.text_area :description, :class => 'text_area form-control', :rows => '8', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="sm:w-4/12">
       <div class="panel panel-default">
         <header class="panel-heading">
           Experience Details

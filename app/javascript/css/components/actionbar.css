@@ -1,0 +1,19 @@
+.actionbar {
+  @apply bg-white border-t border-gray-200 shadow rounded-none fixed w-full p-4 z-50 flex h-20 items-center justify-between;
+}
+
+.actionbar-left {
+  @apply flex justify-start items-center;
+}
+
+.actionbar-right {
+  @apply flex justify-end items-center;
+}
+
+.actionbar .pagination {
+  @apply m-0;
+}
+
+.actionbar-fixed-bottom {
+  @apply bottom-0 left-0;
+}
