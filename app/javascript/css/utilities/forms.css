@@ -40,6 +40,14 @@ textarea.form-control:focus {
   @apply outline-none bg-white;
 }
 
+select.form-control {
+  @apply bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight;
+}
+
+select.form-control:focus {
+  @apply outline-none bg-white;
+}
+
 .has-error .form-control {
   @apply border-red-500;
 }
