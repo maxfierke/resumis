@@ -81,15 +81,10 @@
                   </li>
                 </ul>
               </li>
-              <li class="mb-4" role="presentation">
-                <div class="text-gray-700 text-sm uppercase mb-4">
+              <li class="mb-4">
+                <%= link_to manage_projects_path do %>
                   <%= icon 'fas', 'gem fa-fw h-5 w-5 inline-block mr-4', 'Projects' %>
-                </div>
-                <ul class="pl-4">
-                  <li class="mb-4"><%= link_to "Projects", manage_projects_path %></li>
-                  <li class="mb-4"><%= link_to "Project Categories", manage_project_categories_path %></li>
-                  <li class="mb-4"><%= link_to "Project Statuses", manage_project_statuses_path %></li>
-                </ul>
+                <% end %>
               </li>
               <li class="mb-4">
                 <%= link_to manage_resumes_path do %>
