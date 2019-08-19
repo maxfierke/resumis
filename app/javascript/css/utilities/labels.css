@@ -1,0 +1,23 @@
+.label {
+  @apply inline-block rounded px-3 py-1 text-sm font-semibold;
+}
+
+.label-default,
+.label-inactive {
+  @apply bg-gray-200 text-gray-700;
+}
+
+.label-success,
+.label-active {
+  @apply bg-green-200 text-green-700;
+}
+
+.label-warning,
+.label-occasional-movement {
+  @apply bg-yellow-200 text-yellow-700;
+}
+
+.label-danger,
+.label-canceled {
+  @apply bg-red-200 text-red-700;
+}
