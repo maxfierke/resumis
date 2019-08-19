@@ -4,7 +4,7 @@
   <% @posts.each do |post| %>
     <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
       <div class="flex">
-        <div class="w-10/12 sm:w-11/12">
+        <div class="flex-1">
           <h4 class="text-xl mb-4 flex w-full justify-between">
             <%= link_to edit_manage_post_path(post), class: 'underline' do %>
               <%= post.title -%>
@@ -19,7 +19,7 @@
             Updated <%= time_ago_in_words(post.updated_at) %> ago
           </h6>
         </div>
-        <div class="w-2/12 sm:w-1/12">
+        <div class="flex-grow-0 ml-6">
           <%= link_to edit_manage_post_path(post), class: 'btn btn-xs' do %>
             <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block mr-4', '' %>
           <% end %>
