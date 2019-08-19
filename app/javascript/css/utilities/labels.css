@@ -1,5 +1,5 @@
 .label {
-  @apply inline-block rounded px-3 py-1 text-sm font-semibold;
+  @apply inline-block rounded px-3 py-1 text-sm font-semibold shadow;
 }
 
 .label-default,
