@@ -12,12 +12,12 @@
     <%= f.text_area :background, :class => 'text_area form-control', :rows => '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
   </div>
 
-  <h4>Education Experiences</h4>
+  <h4 class="mb-4 text-gray-600 text-lg">Education Experiences</h4>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:education_experience_ids,  EducationExperience.order("end_date ASC"), :id, :school_name,
       { :selected => @resume.education_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
         <p>
           <%= b.check_box %>
           <%= b.text %><br />
@@ -30,12 +30,12 @@
     <% end %>
   </div>
 
-  <h4>Work Experiences</h4>
+  <h4 class="mb-4 text-gray-600 text-lg">Work Experiences</h4>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:work_experience_ids,  WorkExperience.order("end_date ASC"), :id, :organization,
       { :selected => @resume.work_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
         <p>
           <%= b.check_box %>
           <%= b.text %><br />
@@ -48,12 +48,12 @@
     <% end %>
   </div>
 
-  <h4>Relevant Projects</h4>
+  <h4 class="mb-4 text-gray-600 text-lg">Relevant Projects</h4>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:project_ids,  Project.order("end_date ASC"), :id, :name,
       { :selected => @resume.project_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6 flex justify-between">
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
         <p>
           <%= b.check_box %>
           <%= b.text %>
@@ -70,12 +70,12 @@
     <% end %>
   </div>
 
-  <h4>Relevant Skills</h4>
+  <h4 class="mb-4 text-gray-600 text-lg">Relevant Skills</h4>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:skill_ids,  Skill.order("name ASC"), :id, :name,
       { :selected => @resume.skill_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4">
         <div class="flex">
           <div class="w-1/12">
             <%= b.check_box %>
