@@ -19,14 +19,14 @@
 
         <div class="form-group">
           <%= f.label :start_date, class: 'control-label' %>
-          <div>
-            <%= f.date_select :start_date, { start_year: 2005, end_year: Date.today.year }, class: 'form-control inline-block' %>
+          <div class="flex justify-between">
+            <%= f.date_select :start_date, { start_year: 2005, end_year: Date.today.year }, class: 'form-control' %>
           </div>
         </div>
         <div class="form-group">
           <%= f.label :end_date, class: 'control-label' %>
-          <div>
-            <%= f.date_select :end_date, { :include_blank => true, start_year: 2005, end_year: Date.today.year }, { class: 'form-control inline-block' } %>
+          <div class="flex justify-between">
+            <%= f.date_select :end_date, { :include_blank => true, start_year: 2005, end_year: Date.today.year }, { class: 'form-control' } %>
           </div>
         </div>
         <div class="form-group">

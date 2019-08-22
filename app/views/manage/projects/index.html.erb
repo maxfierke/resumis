@@ -20,12 +20,12 @@
               Updated <%= time_ago_in_words(project.updated_at) %> ago
             </h6>
           </div>
-          <div class="flex-grow-0 ml-6">
+          <div class="flex-grow-0 ml-2">
             <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', '', title: 'Edit' %>
+              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', title: 'Edit' %>
             <% end %>
             <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'times h-4 w-4 inline-block', '', title: 'Delete' %>
+              <%= icon 'fas', 'times h-4 w-4 inline-block', title: 'Delete' %>
             <% end %>
           </div>
         </div>

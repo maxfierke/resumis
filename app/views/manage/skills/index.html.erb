@@ -1,40 +1,38 @@
 <% page_title "Skills" %>
-<% content_for :actionbar_right do %>
-  <div class="btn-group">
-    <%= link_to new_manage_skill_category_path, class: 'btn btn-primary' do %>
-      <%= icon 'fas', 'plus h-5 w-5 inline-block mr-4', 'Add New Skill Category' %>
+
+<% @skills_with_cat.each do |skill_cat| %>
+  <h4 class="text-lg mb-4 flex items-center">
+    <%= skill_cat.name %>
+    <%= link_to edit_manage_skill_category_path(skill_cat), title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
+      <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block ml-2', title: 'Edit' %>
+    <%- end -%>
+    <%= link_to manage_skill_category_path(skill_cat), method: :delete, data: { :confirm => t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+      <%= icon 'fas', 'times h-4 w-4 inline-block ml-2', title: 'Delete' %>
+    <%- end -%>
+  </h4>
+
+  <div class="flex mb-4">
+    <% skill_cat.skills.each do |skill| %>
+    <div class="label label-default flex items-center mr-2">
+      <%= skill.name -%>
+      <%= link_to edit_manage_skill_category_skill_path(skill_cat, skill), title: "#{ t('.edit', default: t('helpers.links.edit')) }" do -%>
+        <%= icon 'fas', 'pencil-alt h-3 w-3 inline-block ml-1', title: 'Edit' -%>
+      <%- end -%>
+      <%= link_to manage_skill_category_skill_path(skill_cat, skill), method: :delete, data: { :confirm => t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do -%>
+        <%= icon 'fas', 'times h-3 w-3 inline-block ml-1', title: 'Delete' -%>
+      <%- end -%>
+    </div>
+    <% end %>
+    <%= link_to new_manage_skill_category_skill_path(skill_cat), class: 'btn btn-xs btn-default inline-flex items-center' do %>
+      <%= icon 'fas', 'plus h-3 w-3 inline-block mr-2', "Add #{skill_cat.name.singularize}" %>
     <% end %>
   </div>
 <% end %>
 
-<% @skills_with_cat.each do |skill_cat| %>
-<h4>
-  <%= skill_cat.name %>
-  <%= link_to edit_manage_skill_category_path(skill_cat), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-    <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block mr-4', title: 'Edit' %>
-  <%- end -%>
-  <%= link_to manage_skill_category_path(skill_cat), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-    <%= icon 'fas', 'times h-4 w-4 inline-block mr-4', title: 'Delete' %>
-  <%- end -%>
-</h4>
-<div class="flex flex-col">
-  <% skill_cat.skills.each do |skill| %>
-  <div class="list-group-item list-group-item-inline-block">
-    <%= skill.name %>
-    <div class="btn-group">
-      <%= link_to edit_manage_skill_category_skill_path(skill_cat, skill), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-        <%= icon 'fas', 'pencil-alt h-5 w-5 inline-block mr-4', title: 'Edit' %>
-      <%- end -%>
-      <%= link_to manage_skill_category_skill_path(skill_cat, skill), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-        <%= icon 'fas', 'times h-5 w-5 inline-block mr-4', title: 'Delete' %>
-      <%- end -%>
-    </div>
-  </div>
-  <% end %>
-  <%= link_to new_manage_skill_category_skill_path(skill_cat), class: 'list-group-item list-group-item-inline-block' do %>
-    <%= icon 'fas', 'plus h-5 w-5 inline-block mr-4', "Add #{skill_cat.name.singularize}" %>
-  <% end %>
-</div>
-<% end %>
-
 <%= paginate @skills_with_cat %>
+
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_skill_category_path, class: 'btn btn-primary' do %>
+    <%= icon 'fas', 'plus h-5 w-5 inline-block mr-2', 'Add New Skill Category' %>
+  <% end %>
+<% end %>

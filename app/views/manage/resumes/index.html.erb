@@ -4,31 +4,29 @@
   <% @resumes.each do |resume| %>
     <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
       <div class="flex">
-        <div class="w-9/12 sm:w-10/12">
+        <div class="flex-1">
           <h4 class="text-xl mb-4 flex w-full justify-between">
             <%= link_to resume_path(resume), title: "#{ t('.show', :default => t('helpers.links.show')) }", class: 'underline' do %>
               <%= resume.name -%>
             <% end %>
-            <small>
-              <% if resume.published %>
-                <span class="label label-success">Yes</span>
-              <% else %>
-                <span class="label label-danger">No</span>
-              <% end %>
-            </small>
+            <% if resume.published %>
+              <span class="label label-success">Published</span>
+            <% end %>
           </h4>
-          <h6 class="text-sm text-gray-600">Updated <%= time_ago_in_words(resume.updated_at) %> ago</h6>
+
           <p><%= resume.description %></p>
+
+          <h6 class="text-sm text-gray-600">Updated <%= time_ago_in_words(resume.updated_at) %> ago</h6>
         </div>
-        <div class="w-3/12 sm:w-2/12">
+        <div class="flex-grow-0 ml-2">
           <%= link_to resume_path(resume, :format => :pdf), :class => 'btn btn-xs', :title => 'PDF' do %>
-            <%= icon 'far', 'file-alt h-5 w-5 inline-block mr-4', '', title: 'PDF' %>
+            <%= icon 'far', 'file-alt h-4 w-4 inline-block', '', title: 'PDF' %>
           <%- end -%>
           <%= link_to edit_manage_resume_path(resume), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <%= icon 'fas', 'pencil-alt h-5 w-5 inline-block mr-4', '', title: 'Edit' %>
+            <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', '', title: 'Edit' %>
           <%- end -%>
           <%= link_to manage_resume_path(resume), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= icon 'fas', 'times h-5 w-5 inline-block mr-4', '', title: 'Delete' %>
+            <%= icon 'fas', 'times h-4 w-4 inline-block', '', title: 'Delete' %>
           <%- end -%>
         </div>
       </div>

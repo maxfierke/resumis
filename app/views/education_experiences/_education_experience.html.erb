@@ -14,22 +14,13 @@
       </span>
       <span class="pull-right date-range">
         <%= education_experience.date_range %>
-
-        <% if user_signed_in? and education_experience.user_id == current_user.id %>
-          <%= link_to edit_manage_education_experience_path(education_experience), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <%= icon 'fas', 'pencil-alt h-5 w-5 inline-block mr-2', title: 'Edit' %>
-          <%- end -%>
-          <%= link_to manage_education_experience_path(education_experience), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= icon 'fas', 'times h-5 w-5 inline-block mr-2', title: 'Delete' %>
-          <%- end -%>
-        <% end %>
       </span>
     </h4>
   </div>
   <% if education_experience.description.length > 0 %>
   <div class="panel-body">
-    <div class="flex">
-      <div class="w-12/12">
+    <div class="row">
+      <div class="col-xs-12">
         <p><%= markdown(education_experience.description) %></p>
       </div>
     </div>
