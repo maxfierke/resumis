@@ -1,0 +1,20 @@
+.user-menu {
+  @apply block flex-initial overflow-visible relative;
+}
+
+.user-menu .user-menu-dropdown.shown {
+  @apply flex flex-col bg-black absolute;
+  top: 3.5rem;
+  right: -1.5rem;
+}
+
+.user-menu-dropdown .nav-link {
+  @apply px-6 py-4 flex items-center;
+  min-width: 15rem;
+}
+
+.user-menu-dropdown .nav-link:hover,
+.user-menu-dropdown .nav-link:focus,
+.user-menu-dropdown .nav-link:active {
+  @apply bg-grey-darker;
+}

@@ -15,5 +15,5 @@
 }
 
 .actionbar-fixed-bottom {
-  @apply bottom-0 left-0;
+  @apply bottom-0 right-0 w-4/5;
 }
