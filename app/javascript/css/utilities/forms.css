@@ -65,5 +65,5 @@ select.form-control:focus {
 }
 
 .input-group .form-control {
-  @apply m-0 border-none bg-white;
+  @apply m-0 border-none bg-white overflow-hidden;
 }
