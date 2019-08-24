@@ -1,0 +1,20 @@
+<% page_title 'Forgot your password?' %>
+
+<div class="flex flex-col mx-auto w-full max-w-sm">
+  <main role="main" class="border-t-4 border-brand bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email, class: 'control-label' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
+
+      <%= f.submit "Send me reset password instructions", class: 'btn btn-primary block w-full' %>
+    <% end %>
+
+    <div class="mt-6 -ml-4">
+      <%= render "devise/shared/links" %>
+    </div>
+  </main>
+</div>
