@@ -1,31 +1,42 @@
 <% page_title t('.title', name: @application.name) %>
 
-<h4><%= t('.application_id') %>:</h4>
-<p><code id="application_id"><%= @application.uid %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.application_id') %></label>
+  <code id="application_id"><%= @application.uid %></code>
+</div>
 
-<h4><%= t('.secret') %>:</h4>
-<p><code id="secret"><%= @application.secret %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.secret') %></label>
+  <code id="secret"><%= @application.secret %></code>
+</div>
 
-<h4><%= t('.scopes') %>:</h4>
-<p><code id="scopes"><%= @application.scopes %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.scopes') %></label>
+  <code id="scopes"><%= @application.scopes %></code>
+</div>
 
-<h4><%= t('.confidential') %>:</h4>
-<p><code id="confidential"><%= @application.confidential? %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.confidential') %></label>
+  <code id="confidential"><%= @application.confidential? %></code>
+</div>
 
-<h4><%= t('.callback_urls') %>:</h4>
+<div class="form-group">
+  <label class="control-label"><%= t('.callback_urls') %></label>
 
-<table>
-  <% @application.redirect_uri.split.each do |uri| %>
-    <tr>
-      <td class="px-4 py-2">
-        <code><%= uri %></code>
-      </td>
-      <td class="px-4 py-2">
-        <%= link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes), class: 'btn btn-success', target: '_blank' %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+  <%- @application.redirect_uri.split.each do |uri| -%>
+    <div class="flex">
+      <div class="py-2">
+        <code><%= uri -%></code>
+      </div>
+      <div class="px-4 py-2">
+        <%= link_to t('doorkeeper.applications.buttons.authorize'),
+          oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes),
+          class: 'btn btn-link',
+          target: '_blank' -%>
+      </div>
+    </div>
+  <%- end -%>
+</div>
 
 <% content_for :actionbar_left do %>
   <%= link_to "Back to applications", oauth_applications_path, class: 'btn btn-default' %>

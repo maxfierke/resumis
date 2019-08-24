@@ -1,6 +1,7 @@
 @import "./utilities/buttons";
 @import "./utilities/forms";
 @import "./utilities/labels";
+@import "./utilities/tables";
 
 .link-danger {
   @apply text-red-700;

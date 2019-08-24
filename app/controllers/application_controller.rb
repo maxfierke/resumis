@@ -25,7 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_no_tenant_set
-    render :layout => 'bare',
-           :template => 'errors/no_tenant_set'
+    render template: 'errors/no_tenant_set'
   end
 end

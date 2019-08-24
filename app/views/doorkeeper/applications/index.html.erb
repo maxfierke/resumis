@@ -1,28 +1,38 @@
 <% page_title t('.title') %>
 
-<table class="w-full table-auto border border-gray-200">
+<table class="listing-table">
   <thead>
     <tr>
-      <th class="px-4 py-2"><%= t('.name') %></th>
-      <th class="px-4 py-2"><%= t('.callback_url') %></th>
-      <th class="px-4 py-2"><%= t('.confidential') %></th>
-      <th class="px-4 py-2">Actions</th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.callback_url') %></th>
+      <th><%= t('.confidential') %></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-  <% @applications.each do |application| %>
+  <%- @applications.each do |application| -%>
     <tr id="application_<%= application.id %>">
-      <td class="px-4 py-2"><%= link_to application.name, oauth_application_path(application) %></td>
-      <td class="px-4 py-2"><%= application.redirect_uri %></td>
-      <td class="px-4 py-2"><%= application.confidential? ? t('doorkeeper.applications.index.confidentiality.yes') : t('doorkeeper.applications.index.confidentiality.no') %></td>
-      <td class="px-4 py-2">
-        <%= link_to edit_oauth_application_path(application), class: 'btn btn-link' do %>
-          <%= t('doorkeeper.applications.buttons.edit') %>
-        <% end %>
-        <%= render 'delete_form', application: application %>
+      <td><%= link_to application.name, oauth_application_path(application), class: 'underline' %></td>
+      <td class="font-mono"><%= application.redirect_uri %></td>
+      <td>
+        <%- if application.confidential? -%>
+          <span class="label label-danger">
+            Yes, secret required
+          </span>
+        <%- else -%>
+          <span class="label label-success">
+            No, public
+          </span>
+        <%- end -%>
+      </td>
+      <td>
+        <%= link_to edit_oauth_application_path(application), class: 'btn btn-link -ml-4' do -%>
+          <%= t('doorkeeper.applications.buttons.edit') -%>
+        <%- end -%>
+        <%= render 'delete_form', application: application -%>
       </td>
     </tr>
-  <% end %>
+  <%- end -%>
   </tbody>
 </table>
 

@@ -7,42 +7,8 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="bg-gray-100 antialiased flex flex-col min-h-screen">
-    <nav class="flex flex-initial items-center justify-between flex-wrap bg-black text-white p-6">
-      <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <span class="font-semibold text-xl tracking-tight">Resumis</span>
-      </div>
-      <% if content_for?(:title) %>
-        <div class="block text-center flex-grow flex items-center w-auto">
-          <div class="text-lg lg:flex-grow">
-            <%= yield(:title) %>
-          </div>
-        </div>
-      <% end %>
-      <div class="user-menu">
-        <div class="flex items-center">
-          <span>
-            <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
-          </span>
-          <button class="appearance-none user-menu-dropdown-toggle" type="button">
-            <%= image_tag current_user.avatar_url, class: 'h-8 rounded-full ml-4' %>
-          </button>
-        </div>
-        <nav class="user-menu-dropdown hidden" role="menu">
-          <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank', class: 'nav-link' do %>
-            <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'View Site' %>
-          <% end %>
-          <%= link_to manage_edit_profile_path, class: 'nav-link' do %>
-            <%= icon 'fas', 'pencil-alt fa-fw h-5 w-5 inline-block mr-4', 'Edit Profile' %>
-          <% end %>
-          <%= link_to edit_user_registration_path, class: 'nav-link' do %>
-            <%= icon 'fas', 'user-circle fa-fw h-5 w-5 inline-block mr-4', 'Account Settings' %>
-          <% end %>
-          <%= link_to destroy_user_session_url, method: 'DELETE', class: 'nav-link' do %>
-            <%= icon 'fas', 'sign-out-alt fa-fw h-5 w-5 inline-block mr-4', 'Logout' %>
-          <% end %>
-        </nav>
-      </div>
-    </nav>
+    <%= render :partial => 'shared/navbar' %>
+
     <div class="flex flex-1 overflow-hidden">
       <aside class="w-1/5 bg-grey-dark text-white">
         <nav class="nav-tiles">
@@ -100,7 +66,7 @@
       <div class="w-4/5 px-4 px-6 py-4 pb-20">
         <div class="flex">
           <div class="w-full">
-            <%= bootstrap_flash %>
+            <%= render_alerts %>
             <%= yield %>
           </div>
         </div>

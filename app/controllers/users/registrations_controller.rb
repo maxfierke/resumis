@@ -3,8 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
   before_action :disable_registration, only: [:new, :create, :destroy]
 
-  layout "bare"
-
   # GET /resource/sign_up
   # def new
   #   super
