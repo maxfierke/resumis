@@ -14,7 +14,7 @@
   <%- if user_signed_in? -%>
     <div class="user-menu">
       <div class="flex items-center">
-        <span>
+        <span class="hidden md:inline">
           <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
         </span>
         <button class="appearance-none user-menu-dropdown-toggle" type="button">
