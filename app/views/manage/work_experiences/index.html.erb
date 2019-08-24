@@ -2,36 +2,39 @@
 
 <div class="flex flex-col">
   <% @work_experiences.each do |work_experience| %>
-    <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-      <div class="flex">
-        <div class="flex-1">
-          <h4 class="mb-2 text-xl">
+    <div class="card">
+      <header class="card-header">
+        <div class="flex justify-between mb-2">
+          <h4 class="text-xl">
             <%= link_to edit_manage_work_experience_path(work_experience), class: 'underline' do -%>
               <%= work_experience.organization %>
             <%- end -%>
           </h4>
-          <small class="text-sm mb-4 block"><%= work_experience.position %></small>
-          <div class="mb-4">
-            <%= markdown(work_experience.description) -%>
-          </div>
-          <footer class="text-sm text-gray-600">
-            Updated <%= time_ago_in_words(work_experience.updated_at) %> ago
-          </footer>
+
+          <%= work_experience.date_range %>
         </div>
-        <div class="flex-grow-0 ml-6">
-          <div class="flex items-center">
-            <span class="mr-2">
-              <%= work_experience.date_range %>
-            </span>
-            <%= link_to edit_manage_work_experience_path(work_experience), class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', title: 'Edit' %>
-            <% end %>
-            <%= link_to manage_work_experience_path(work_experience), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'times h-4 w-4 inline-block', title: 'Delete' %>
-            <% end %>
-          </div>
-        </div>
+        <small class="text-sm mb-4 block"><%= work_experience.position %></small>
+      </header>
+
+      <div class="card-body">
+        <%= markdown(work_experience.description) -%>
       </div>
+
+      <footer class="card-actions">
+        <div class="left">
+          <span class="px-6 py-2 text-gray-600">
+            Updated <%= time_ago_in_words(work_experience.updated_at) %> ago
+          </span>
+        </div>
+        <div class="right">
+          <%= link_to edit_manage_work_experience_path(work_experience), class: 'action-link' do %>
+            <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>
+          <% end %>
+          <%= link_to manage_work_experience_path(work_experience), class: 'danger-link', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon 'fas', 'times inline-block mr-1', 'Delete' %>
+          <% end %>
+        </div>
+      </footer>
     </div>
   <% end %>
 </div>

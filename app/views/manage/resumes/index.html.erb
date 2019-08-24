@@ -2,34 +2,43 @@
 
 <div class="flex flex-col">
   <% @resumes.each do |resume| %>
-    <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-      <div class="flex">
-        <div class="flex-1">
-          <h4 class="text-xl mb-4 flex w-full justify-between">
+    <div class="card">
+      <header class="card-header">
+        <div class="flex justify-between mb-4">
+          <h4 class="text-xl">
             <%= link_to resume_path(resume), title: "#{ t('.show', :default => t('helpers.links.show')) }", class: 'underline' do %>
               <%= resume.name -%>
             <% end %>
-            <% if resume.published %>
-              <span class="label label-success">Published</span>
-            <% end %>
           </h4>
 
-          <p><%= resume.description %></p>
+          <% if resume.published %>
+            <span class="label label-success">Published</span>
+          <% end %>
+        </div>
+      </header>
 
-          <h6 class="text-sm text-gray-600">Updated <%= time_ago_in_words(resume.updated_at) %> ago</h6>
-        </div>
-        <div class="flex-grow-0 ml-2">
-          <%= link_to resume_path(resume, :format => :pdf), :class => 'btn btn-xs', :title => 'PDF' do %>
-            <%= icon 'far', 'file-alt h-4 w-4 inline-block', '', title: 'PDF' %>
-          <%- end -%>
-          <%= link_to edit_manage_resume_path(resume), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', '', title: 'Edit' %>
-          <%- end -%>
-          <%= link_to manage_resume_path(resume), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= icon 'fas', 'times h-4 w-4 inline-block', '', title: 'Delete' %>
-          <%- end -%>
-        </div>
+      <div class="card-body">
+        <%= resume.description %>
       </div>
+
+      <footer class="card-actions">
+        <div class="left">
+          <span class="px-6 py-2 text-gray-600">
+            Updated <%= time_ago_in_words(resume.updated_at) %> ago
+          </span>
+        </div>
+        <div class="right">
+          <%= link_to resume_path(resume, :format => :pdf), class: 'action-link' do %>
+            <%= icon 'far', 'file-alt inline-block mr-1', 'PDF' %>
+          <%- end -%>
+          <%= link_to edit_manage_resume_path(resume), class: 'action-link' do %>
+            <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>
+          <% end %>
+          <%= link_to manage_resume_path(resume), class: 'danger-link', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon 'fas', 'times inline-block mr-1', 'Delete' %>
+          <% end %>
+        </div>
+      </footer>
     </div>
   <% end %>
 </div>

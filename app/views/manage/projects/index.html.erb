@@ -1,40 +1,50 @@
 <% page_title "Projects" %>
 
-<div class="flex">
+<div class="flex flex-col md:flex-row">
   <div class="flex flex-1 flex-col md:mr-2">
     <% @projects.each do |project| %>
-      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-        <div class="flex">
-          <div class="flex-1">
-            <h4 class="text-xl mb-4 flex w-full justify-between">
+      <div class="card">
+        <header class="card-header">
+          <div class="flex justify-between mb-4">
+            <h4 class="text-xl">
               <%= link_to edit_manage_project_path(project), class: 'underline' do %>
                 <%= project.name -%>
               <% end %>
-              <% if project.status %>
-                <span class="project-status label label-default label-<%= project.status.slug %>">
-                  <%= project.status.name %>
-                </span>
-              <% end %>
             </h4>
-            <h6 class="text-sm text-gray-600">
-              Updated <%= time_ago_in_words(project.updated_at) %> ago
-            </h6>
-          </div>
-          <div class="flex-grow-0 ml-2">
-            <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block', title: 'Edit' %>
-            <% end %>
-            <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-              <%= icon 'fas', 'times h-4 w-4 inline-block', title: 'Delete' %>
+
+            <% if project.status %>
+              <span class="project-status label label-default label-<%= project.status.slug %>">
+                <%= project.status.name %>
+              </span>
             <% end %>
           </div>
+        </header>
+
+        <div class="card-body">
+          <%= markdown(project.description) %>
         </div>
+
+        <footer class="card-actions">
+          <div class="left">
+            <span class="px-6 py-2 text-gray-600">
+              Updated <%= time_ago_in_words(project.updated_at) %> ago
+            </span>
+          </div>
+          <div class="right">
+            <%= link_to edit_manage_project_path(project), class: 'action-link' do %>
+              <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>
+            <% end %>
+            <%= link_to manage_project_path(project), class: 'danger-link', method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon 'fas', 'times inline-block mr-1', 'Delete' %>
+            <% end %>
+          </div>
+        </footer>
       </div>
     <% end %>
   </div>
 
-  <div class="w-full md:w-1/4 md:pl-2">
-    <div class="w-full px-6 py-4 mb-6">
+  <div class="flex-initial flex max-w-xs flex-col md:pl-2">
+    <div class="w-full mb-6 md:px-6">
       <h3 class="font-medium mb-2 text-gray-700">Project Categories</h3>
 
       <% @project_categories.each do |project_category| %>
@@ -51,7 +61,7 @@
       <%= link_to "Add category", new_manage_project_category_path, class: 'btn btn-link block -ml-4' %>
     </div>
 
-    <div class="w-full px-6 py-4 mb-6">
+    <div class="w-full mb-6 md:px-6">
       <h3 class="font-medium mb-2 text-gray-700">Project Statuses</h3>
 
       <% @project_statuses.each do |project_status| %>
