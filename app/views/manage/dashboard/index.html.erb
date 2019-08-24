@@ -1,6 +1,6 @@
 <% page_title "Dashboard" %>
 
-<div class="flex text-3xl justify-between">
+<div class="flex flex-wrap text-3xl justify-between">
   <div class="flex-1 justify-center text-center">
     <%= link_to new_manage_project_path, class: 'p-4 m-2 bg-blue-300 hover:bg-blue-400 text-blue-900 rounded shadow-lg block' do %>
       <%= icon 'fas', 'gem h-12 w-12 inline-block mr-4', '' %><br />
@@ -25,26 +25,22 @@
 
 <% if current_user.ga_view_id %>
 <div class="flex">
-  <div class="w-full">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <section id="auth-button"></section>
-        <section id="timeline"></section>
-      </div>
-    </div>
+  <div class="w-full shadow bg-white rounded border border-gray-200">
+    <section id="auth-button" class="px-6 py-4"></section>
+    <section id="timeline"></section>
   </div>
 </div>
 
-<script>
+<%= javascript_tag nonce: true do %>
 (function(w,d,s,g,js,fjs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
   js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
   js.src='https://apis.google.com/js/platform.js';
   fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
 }(window,document,'script'));
-</script>
+<% end %>
 
-<script>
+<%= javascript_tag nonce: true do %>
 gapi.analytics.ready(function() {
   gapi.analytics.auth.authorize({
     container: 'auth-button',
@@ -70,23 +66,22 @@ gapi.analytics.ready(function() {
         },
         hAxis: {
           gridlines: {
-            color: '#222'
+            color: '#efefef'
           },
           textStyle: {
-            color: '#efefef'
+            color: '#212121'
           }
         },
         legend: {
-          textStyle: {
-            color: '#efefef'
-          }
+          position: 'none'
         },
+        pointsVisible: false,
         vAxis: {
           gridlines: {
-            color: '#222'
+            color: '#efefef'
           },
           textStyle: {
-            color: '#efefef'
+            color: '#212121'
           }
         },
         width: '100%'
@@ -95,8 +90,9 @@ gapi.analytics.ready(function() {
   });
 
   gapi.analytics.auth.on('success', function(response) {
+    document.getElementById('auth-button').style.display = 'none';
     timeline.execute();
   });
 });
-</script>
+<% end %>
 <% end %>
