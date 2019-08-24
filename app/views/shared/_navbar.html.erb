@@ -5,11 +5,10 @@
     </span>
   </div>
   <% if content_for?(:title) %>
-    <div class="block text-center flex-grow flex items-center w-auto">
-      <div class="text-lg lg:flex-grow">
-        <%= yield(:title) %>
-      </div>
-    </div>
+    <button type="button" class="appearance-none flex items-center text-center text-lg nav-menu nav-menu-dropdown-toggle md:pointer-events-none md:cursor-pointer">
+      <%= yield(:title) %>
+      <%= icon 'fas', 'angle-down fa-fw h-5 w-5 inline-block ml-2 md:hidden' %>
+    </button>
   <% end %>
 
   <%- if user_signed_in? -%>
@@ -38,7 +37,7 @@
       </nav>
     </div>
   <% else %>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end">
+    <div class="block flex-initial flex items-center justify-end">
       <%= link_to new_user_session_url, class: "btn btn-link" do %>
         Login to Resumis
       <% end %>

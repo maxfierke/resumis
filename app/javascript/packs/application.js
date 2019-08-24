@@ -8,4 +8,5 @@ import Rails from 'rails-ujs';
 import UserMenu from '../js/user-menu';
 
 Rails.start();
-UserMenu.start();
+UserMenu.start('.user-menu');
+UserMenu.start('.nav-menu');

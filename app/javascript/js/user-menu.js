@@ -1,4 +1,4 @@
-let started = false;
+let started = {};
 
 export default class UserMenu {
   constructor(className = '.user-menu') {
@@ -6,38 +6,38 @@ export default class UserMenu {
     this.onClick = this.onClick.bind(this);
   }
 
-  static start() {
-    if (!started) {
+  static start(className = '.user-menu') {
+    if (!started[className]) {
       document.addEventListener('DOMContentLoaded', function() {
-        new UserMenu().attach();
+        new UserMenu(className).attach();
       });
-      started = true;
+      started[className] = true;
     }
   }
 
   attach() {
-    const userMenuToggle = document.querySelector('.user-menu-dropdown-toggle');
+    const menuToggle = document.querySelector(`${this.className}-dropdown-toggle`);
 
-    if (userMenuToggle) {
-      userMenuToggle.addEventListener('click', this.onClick);
+    if (menuToggle) {
+      menuToggle.addEventListener('click', this.onClick);
     }
   }
 
   detach() {
-    const userMenuToggle = document.querySelector('.user-menu-dropdown-toggle');
+    const menuToggle = document.querySelector(`${this.className}-dropdown-toggle`);
 
-    if (userMenuToggle) {
-      userMenuToggle.removeEventListener('click', this.onClick);
+    if (menuToggle) {
+      menuToggle.removeEventListener('click', this.onClick);
     }
   }
 
   onClick() {
-    const userMenu = document.querySelector('.user-menu-dropdown');
+    const menuDropdown = document.querySelector(`${this.className}-dropdown`);
 
-    if (userMenu.classList.contains('shown')) {
-      userMenu.classList.replace('shown', 'hidden');
+    if (menuDropdown.classList.contains('shown')) {
+      menuDropdown.classList.replace('shown', 'hidden');
     } else {
-      userMenu.classList.replace('hidden', 'shown');
+      menuDropdown.classList.replace('hidden', 'shown');
     }
   }
 }

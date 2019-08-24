@@ -15,5 +15,11 @@
 }
 
 .actionbar-fixed-bottom {
-  @apply bottom-0 right-0 w-4/5;
+  @apply bottom-0 right-0 w-full;
+}
+
+@screen md {
+  .actionbar-fixed-bottom {
+    @apply w-4/5;
+  }
 }

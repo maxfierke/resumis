@@ -9,8 +9,8 @@
   <body class="bg-gray-100 antialiased flex flex-col min-h-screen">
     <%= render :partial => 'shared/navbar' %>
 
-    <div class="flex flex-1 overflow-hidden">
-      <aside class="w-1/5 bg-grey-dark text-white">
+    <div class="flex flex-wrap flex-1 overflow-hidden">
+      <aside class="w-full bg-grey-dark text-white hidden nav-menu-dropdown md:w-1/5 md:flex md:flex-col">
         <nav class="nav-tiles">
           <%= link_to manage_dashboard_path, class: 'nav-link' do %>
             <%= icon 'fas', 'tachometer-alt fa-fw h-5 w-5 inline-block mr-4', 'Dashboard' %>
@@ -63,7 +63,7 @@
         </footer>
       </aside>
 
-      <div class="w-4/5 px-4 px-6 py-4 pb-20">
+      <div class="w-full md:w-4/5 px-4 px-6 py-4 pb-20">
         <div class="flex">
           <div class="w-full">
             <%= render_alerts %>
