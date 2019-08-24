@@ -61,13 +61,11 @@
     <h1 class="text-xl text-gray-600">Profile Photo</h1>
   </div>
 
-  <div class="w-full lg:w-2/5 pb-2">
-    <div class="w-full rounded">
-      <%= image_tag @user.avatar_url, alt: "Avatar" %>
-    </div>
+  <div class="w-full lg:w-2/5 pb-2 lg:pr-2">
+    <%= image_tag @user.avatar_url, alt: "Avatar", class: "rounded" %>
   </div>
 
-  <div class="lg:flex-1">
+  <div class="lg:flex-1 lg:pl-2">
     <div class="form-group">
       <%= f.label :avatar_image, :class => 'control-label' %>
       <%= f.file_field :avatar_image %>
