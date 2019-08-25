@@ -1,52 +1,58 @@
 <%= form_for([:manage, @user]) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div class="alert alert-danger" role="alert">
+      <strong class="font-bold">
+        <%= pluralize(@user.errors.count, "error") %>
+        prohibited this user from being saved:
+      </strong>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
+      <ul class="list-disc list-inside">
+      <%- @user.errors.full_messages.each do |message| -%>
         <li><%= message %></li>
-      <% end %>
+      <%- end -%>
       </ul>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.label :first_name, :class => 'control-label' %>
-    <%= f.text_field :first_name, :class => 'text_field form-control' %>
+    <%= f.label :first_name, class: 'control-label' %>
+    <%= f.text_field :first_name, class: 'text_field form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :last_name, :class => 'control-label' %>
-    <%= f.text_field :last_name, :class => 'text_field form-control' %>
+    <%= f.label :last_name, class: 'control-label' %>
+    <%= f.text_field :last_name, class: 'text_field form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email %><br />
+    <%= f.label :email, class: 'control-label' %>
     <%= f.email_field :email, autofocus: true, class: 'form-control' %>
   </div>
 
-  <h4>Change Password</h4>
+  <h2 class="text-lg mb-4">Change Password</h2>
 
   <div class="form-group">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    <%= f.label :password, class: 'control-label' %>
+    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+    <div class="help-block">
+      Leave blank if you don't want to change it.
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    <%= f.label :password_confirmation, class: 'control-label' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
   </div>
 
-  <h4>Domain Settings</h4>
+  <h2 class="text-lg mb-4">Domain Settings</h2>
 
   <div class="form-group">
-    <%= f.label :subdomain %>
+    <%= f.label :subdomain, class: 'control-label' %>
     <%= f.text_field :subdomain, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :domain %>
+    <%= f.label :domain, class: 'control-label' %>
     <%= f.text_field :domain, class: 'form-control' %>
     <p class="help-block">
       To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
@@ -55,11 +61,11 @@
 
   <div class="actionbar actionbar-fixed-bottom">
     <div class="actionbar-left">
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  manage_users_path, :class => 'btn btn-default' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  manage_users_path, class: 'btn btn-default' %>
     </div>
     <div class="actionbar-right">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

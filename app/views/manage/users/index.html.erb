@@ -1,48 +1,48 @@
 <% page_title "Manage Users" %>
 
-<table class="table-auto border border-gray-200">
+<table class="listing-table">
   <thead>
     <tr>
-      <th class="px-4 py-2">Email</th>
-      <th class="px-4 py-2">Full Name</th>
-      <th class="px-4 py-2">Subdomain</th>
-      <th class="px-4 py-2">Domain</th>
-      <th class="px-4 py-2">Status</th>
-      <th class="px-4 py-2">Actions</th>
+      <th>Email</th>
+      <th>Full Name</th>
+      <th>Subdomain</th>
+      <th>Domain</th>
+      <th>Status</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr data-user-id="<%= user.id %>">
-        <td class="px-4 py-2">
-          <%= link_to user.email, edit_manage_user_path(user) %>
+        <td>
+          <%= link_to user.email, edit_manage_user_path(user), class: 'underline' %>
         </td>
-        <td class="px-4 py-2"><%= user.full_name %></td>
-        <td class="px-4 py-2"><%= user.subdomain %></td>
-        <td class="px-4 py-2"><%= user.domain %></td>
-        <td class="px-4 py-2">
+        <td><%= user.full_name %></td>
+        <td><%= user.subdomain %></td>
+        <td><%= user.domain %></td>
+        <td>
           <% if user.disabled_at.present? %>
             <span class="label label-danger">
-              <%= icon 'fas', 'times h-5 w-5 inline-block mr-4', '' %> Disabled
+              <%= icon 'fas', 'times h-4 w-4 inline-block mr-1', 'Disabled' %>
             </span>
           <% elsif user.locked_at.present? %>
             <span class="label label-warning">
-              <%= icon 'fas', 'lock h-5 w-5 inline-block mr-4', '' %> Locked
+              <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Locked' %>
             </span>
           <% else %>
             <span class="label label-success">
-              <%= icon 'fas', 'check h-5 w-5 inline-block mr-4', '' %> Active
+              <%= icon 'fas', 'check h-4 w-4 inline-block mr-1', 'Active' %>
             </span>
           <% end %>
         </td>
-        <td class="px-4 py-2">
-          <%= link_to edit_manage_user_path(user), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt h-5 w-5 inline-block mr-4', '' %> Edit
-          <% end %>
-          <%= link_to manage_user_path(user), method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times h-5 w-5 inline-block mr-4', '' %> Delete
-          <% end %>
+        <td>
+          <%= link_to edit_manage_user_path(user), class: 'btn btn-link -ml-4' do -%>
+            Edit
+          <%- end -%>
+          <%= link_to manage_user_path(user), class: 'btn btn-link link-danger', method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' } do -%>
+            Delete
+          <%- end -%>
         </td>
       </tr>
     <% end %>
