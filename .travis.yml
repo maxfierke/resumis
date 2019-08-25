@@ -11,6 +11,7 @@ services:
 before_script:
   - gem install brakeman
   - gem install bundler-audit
+  - SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precompile
   - bundle exec rake db:test:prepare
 
 script:
