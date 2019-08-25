@@ -6,27 +6,18 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'webpacker'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.7'
+gem 'active_model_serializers', '~> 0.10.10'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails', '>= 4.0.4'
-
-gem 'active_model_serializers', '~> 0.10.10'
 
 # Utilize the bootstrap frontend framework
+gem 'sassc-rails'
 gem 'bootstrap-sass'
-gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 
 # Markdown editor and rendering
-gem 'rails-bootstrap-markdown'
 gem 'redcarpet', '>= 3.2.3'
 
 # Utilize font-awesome iconogrphy set
