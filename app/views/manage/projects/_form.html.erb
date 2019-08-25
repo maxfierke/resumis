@@ -78,7 +78,7 @@
         <%= link_to t('.destroy', default: t("helpers.links.destroy")),
           manage_project_path(@project), method: 'DELETE', data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-block link-danger' %>
       <% end %>
-      <%= f.submit "Save Changes", class: 'btn btn-primary' %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

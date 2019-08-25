@@ -14,7 +14,7 @@ feature 'Managing Users' do
   end
 
   scenario 'does show a link to manage users in the sidebar' do
-    within('[data-test-key="nav-admin-dropdown"]') do
+    within('.nav-tiles') do
       expect(page).to have_content('Users')
     end
   end
@@ -26,7 +26,7 @@ feature 'Managing Users' do
     end
 
     scenario 'does not show a link to manage users' do
-      within('[data-test-key="nav-admin-dropdown"]') do
+      within('.nav-tiles') do
         expect(page).not_to have_content('Users')
       end
     end

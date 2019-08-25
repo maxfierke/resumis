@@ -8,7 +8,7 @@ feature 'Managing Projects' do
   end
 
   scenario 'Creating a featured project' do
-    click_link('Add a New Project')
+    click_link('Start a Project')
 
     fill_in('project_name', with: 'Testing')
     fill_in('project_short_description', with: 'Testing code is good')
@@ -19,7 +19,7 @@ feature 'Managing Projects' do
 
     expect(current_path).to eq('/manage/projects')
 
-    within('.list-group-item') do
+    within('.card') do
       expect(page).to have_content('Testing')
     end
   end
