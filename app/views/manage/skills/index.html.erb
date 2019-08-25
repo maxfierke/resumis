@@ -4,10 +4,10 @@
   <h4 class="text-lg mb-4 flex items-center">
     <%= skill_cat.name %>
     <%= link_to edit_manage_skill_category_path(skill_cat), title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
-      <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block ml-2', title: 'Edit' %>
+      <%= icon 'fas', 'pencil-alt h-4 w-4 inline-block ml-2 text-gray-700 hover:text-gray-900', title: 'Edit' %>
     <%- end -%>
     <%= link_to manage_skill_category_path(skill_cat), method: :delete, data: { :confirm => t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
-      <%= icon 'fas', 'times h-4 w-4 inline-block ml-2', title: 'Delete' %>
+      <%= icon 'fas', 'times h-4 w-4 inline-block ml-2 text-gray-700 hover:text-gray-900', title: 'Delete' %>
     <%- end -%>
   </h4>
 
@@ -16,10 +16,10 @@
     <div class="label label-default shadow inline-flex items-center mb-2 mr-2">
       <%= skill.name -%>
       <%= link_to edit_manage_skill_category_skill_path(skill_cat, skill), title: "#{ t('.edit', default: t('helpers.links.edit')) }" do -%>
-        <%= icon 'fas', 'pencil-alt h-3 w-3 inline-block ml-1', title: 'Edit' -%>
+        <%= icon 'fas', 'pencil-alt h-3 w-3 inline-block ml-1 hover:text-gray-900', title: 'Edit' -%>
       <%- end -%>
       <%= link_to manage_skill_category_skill_path(skill_cat, skill), method: :delete, data: { :confirm => t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do -%>
-        <%= icon 'fas', 'times h-3 w-3 inline-block ml-1', title: 'Delete' -%>
+        <%= icon 'fas', 'times h-3 w-3 inline-block ml-1 hover:text-gray-900', title: 'Delete' -%>
       <%- end -%>
     </div>
     <% end %>

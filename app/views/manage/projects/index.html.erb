@@ -21,7 +21,11 @@
         </header>
 
         <div class="card-body">
-          <%= markdown(project.description) %>
+          <% project.project_categories.each do |project_category| %>
+            <span class="label label-default rounded-full mr-2 mb-2">
+              <%= project_category.name -%>
+            </span>
+          <% end %>
         </div>
 
         <footer class="card-actions">
