@@ -13,7 +13,7 @@
 
   <div class="flex flex-wrap mb-4">
     <% skill_cat.skills.each do |skill| %>
-    <div class="label label-default inline-flex items-center mb-2 mr-2">
+    <div class="label label-default shadow inline-flex items-center mb-2 mr-2">
       <%= skill.name -%>
       <%= link_to edit_manage_skill_category_skill_path(skill_cat, skill), title: "#{ t('.edit', default: t('helpers.links.edit')) }" do -%>
         <%= icon 'fas', 'pencil-alt h-3 w-3 inline-block ml-1', title: 'Edit' -%>

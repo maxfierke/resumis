@@ -12,7 +12,7 @@
     <%= f.text_area :background, :class => 'text_area form-control', :rows => '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
   </div>
 
-  <h4 class="mb-4 text-gray-600 text-lg">Education Experiences</h4>
+  <h4 class="mb-4 text-gray-700 text-lg">Education Experiences</h4>
 
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:education_experience_ids,  EducationExperience.order("end_date ASC"), :id, :school_name,
@@ -30,7 +30,7 @@
     <% end %>
   </div>
 
-  <h4 class="mb-4 text-gray-600 text-lg">Work Experiences</h4>
+  <h4 class="mb-4 text-gray-700 text-lg">Work Experiences</h4>
 
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:work_experience_ids,  WorkExperience.order("end_date ASC"), :id, :organization,
@@ -48,7 +48,7 @@
     <% end %>
   </div>
 
-  <h4 class="mb-4 text-gray-600 text-lg">Relevant Projects</h4>
+  <h4 class="mb-4 text-gray-700 text-lg">Relevant Projects</h4>
 
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:project_ids,  Project.order("end_date ASC"), :id, :name,
@@ -70,7 +70,7 @@
     <% end %>
   </div>
 
-  <h4 class="mb-4 text-gray-600 text-lg">Relevant Skills</h4>
+  <h4 class="mb-4 text-gray-700 text-lg">Relevant Skills</h4>
 
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:skill_ids,  Skill.order("name ASC"), :id, :name,
@@ -98,7 +98,7 @@
     </div>
     <div class="actionbar-right">
       <% unless @resume.new_record? %>
-        <small class="text-sm text-gray-600 mr-4">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
+        <small class="text-sm text-gray-700 mr-4">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
       <% end %>
       <%= f.submit nil, :class => 'btn btn-primary' %>
     </div>

@@ -1,5 +1,5 @@
 .alert {
-  @apply border-l-4 p-4;
+  @apply border-l-4 p-4 mb-4;
 }
 
 .alert-info {

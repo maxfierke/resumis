@@ -30,33 +30,33 @@
 }
 
 .btn-default {
-  @apply bg-gray-500 text-white;
+  @apply bg-gray-700 text-white;
 }
 
 .btn-default:hover {
-  @apply bg-gray-700;
+  @apply bg-gray-900;
 }
 
 .btn-primary {
-  @apply bg-blue-500 text-white;
+  @apply bg-blue-700 text-white;
 }
 
 .btn-primary:hover {
-  @apply bg-blue-700;
+  @apply bg-blue-900;
 }
 
 .btn-success {
-  @apply bg-green-500 text-white;
+  @apply bg-green-700 text-white;
 }
 
 .btn-success:hover {
-  @apply bg-green-700;
+  @apply bg-green-900;
 }
 
 .btn-danger {
-  @apply bg-red-500 text-white;
+  @apply bg-red-700 text-white;
 }
 
 .btn-danger:hover {
-  @apply bg-red-700;
+  @apply bg-red-900;
 }

@@ -3,7 +3,7 @@
 }
 
 .listing-table thead {
-  @apply text-left bg-gray-100 uppercase text-xs text-gray-600;
+  @apply text-left bg-gray-100 uppercase text-xs text-gray-700;
 }
 
 .listing-table tbody {

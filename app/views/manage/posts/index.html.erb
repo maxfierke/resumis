@@ -5,7 +5,7 @@
     <% @posts.each do |post| %>
       <div class="card">
         <header class="card-header">
-          <div class="flex justify-between mb-4">
+          <div class="flex items-center justify-between mb-4">
             <h4 class="text-xl">
               <%= link_to edit_manage_post_path(post), class: 'underline' do %>
                 <%= post.title -%>
@@ -30,7 +30,7 @@
 
         <footer class="card-actions">
           <div class="left">
-            <span class="px-6 py-2 text-gray-600">
+            <span class="px-6 py-2 text-gray-700">
               Updated <%= time_ago_in_words(post.updated_at) %> ago
             </span>
           </div>
@@ -52,13 +52,14 @@
       <h3 class="font-medium mb-2 text-gray-700">Post Categories</h3>
 
       <% @post_categories.each do |post_category| %>
-        <div class="flex justify-between mb-2">
+        <div class="flex items-center justify-between mb-2">
           <%= link_to edit_manage_post_category_path(post_category), class: 'underline' do -%>
             <%= post_category.name -%>
           <%- end -%>
 
           <span class="label label-default">
-            <%= post_category.posts.count %> posts
+            <%= post_category.posts.count %>
+            <span class="font-normal">posts</span>
           </span>
         </div>
       <% end %>

@@ -3,7 +3,7 @@
 }
 
 .card-header {
-  @apply px-6 pt-6;
+  @apply px-6 pt-4;
 }
 
 .card-body {

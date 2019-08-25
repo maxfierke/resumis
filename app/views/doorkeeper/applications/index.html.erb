@@ -17,11 +17,11 @@
       <td>
         <%- if application.confidential? -%>
           <span class="label label-danger">
-            Yes, secret required
+            <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Requires secret' %>
           </span>
         <%- else -%>
           <span class="label label-success">
-            No, public
+            <%= icon 'fas', 'globe-americas h-4 w-4 inline-block mr-1', 'Public' %>
           </span>
         <%- end -%>
       </td>

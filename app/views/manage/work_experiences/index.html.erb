@@ -4,7 +4,7 @@
   <% @work_experiences.each do |work_experience| %>
     <div class="card">
       <header class="card-header">
-        <div class="flex justify-between mb-2">
+        <div class="flex items-center justify-between mb-2">
           <h4 class="text-xl">
             <%= link_to edit_manage_work_experience_path(work_experience), class: 'underline' do -%>
               <%= work_experience.organization %>
@@ -22,7 +22,7 @@
 
       <footer class="card-actions">
         <div class="left">
-          <span class="px-6 py-2 text-gray-600">
+          <span class="px-6 py-2 text-gray-700">
             Updated <%= time_ago_in_words(work_experience.updated_at) %> ago
           </span>
         </div>

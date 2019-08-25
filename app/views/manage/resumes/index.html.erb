@@ -4,7 +4,7 @@
   <% @resumes.each do |resume| %>
     <div class="card">
       <header class="card-header">
-        <div class="flex justify-between mb-4">
+        <div class="flex items-center justify-between mb-4">
           <h4 class="text-xl">
             <%= link_to resume_path(resume), title: "#{ t('.show', :default => t('helpers.links.show')) }", class: 'underline' do %>
               <%= resume.name -%>
@@ -23,7 +23,7 @@
 
       <footer class="card-actions">
         <div class="left">
-          <span class="px-6 py-2 text-gray-600">
+          <span class="px-6 py-2 text-gray-700">
             Updated <%= time_ago_in_words(resume.updated_at) %> ago
           </span>
         </div>
