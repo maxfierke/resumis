@@ -5,56 +5,54 @@ gem 'rails', '~> 5.2.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'uglifier', '>= 4.1'
 gem 'webpacker'
+
+
+# JSON-API
 gem 'active_model_serializers', '~> 0.10.10'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 4.1'
+# ActiveRecord extensions
+gem 'acts_as_tenant'
+gem 'friendly_id', '~> 5.2.5'
+gem 'nilify_blanks'
 
-# Markdown rendering
-gem 'redcarpet', '>= 3.2.3'
 
-# Devise for user authentication
+# Authentication & Authorization
 gem 'devise', '~> 4.6.2'
 gem 'doorkeeper', '~> 5.1.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
-# Exporting resumes to PDF
-gem 'wicked_pdf', '~> 1.4'
+# CLI
+gem 'thor'
 
-# because sometimes you need a NULL
-gem 'nilify_blanks'
-
-# nice slugged URLs
-gem 'friendly_id', '~> 5.2.5'
-
-# Multi-tenancy
-gem 'acts_as_tenant'
-
-# Carrierwave for handling uploads to S3
+# Image uploads
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'mini_magick'
 
-# queues are cool
+# Markdown rendering
+gem 'redcarpet', '>= 3.2.3'
+
+# Exporting resumes to PDF
+gem 'wicked_pdf', '~> 1.4'
+
+# Pagination
+gem 'kaminari'
+gem 'pager_api', '~> 0.3.2'
+
+# Sidekiq
 gem 'hiredis'
 gem 'redis-namespace'
 gem 'sidekiq', '< 6'
 gem 'sidekiq-failures'
 gem 'sinatra', '~> 2.0.4', :require => nil # for sidekiq web UI
 
-# pagination
-gem 'kaminari'
-gem 'pager_api', '~> 0.3.2'
-
+# Web server
 gem 'unicorn'
 
-gem 'thor'
-
 group :development do
-  gem 'binding_of_caller'
-  gem 'better_errors'
   gem 'listen', '~> 3.1.5'
 end
 
