@@ -2,6 +2,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
     "@rails/webpacker": "^4.0.7",
+    "bootstrap": "^3.4.0",
+    "bootswatch": "^3.4.0",
     "easymde": "^2.8.0",
     "rails-ujs": "^5.2.3",
     "tailwindcss": "^1.1.2"

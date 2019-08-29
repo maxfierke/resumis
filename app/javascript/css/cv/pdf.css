@@ -1,0 +1,89 @@
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+h1, .h1 {
+  font-size: 24px;
+}
+
+h2, .h2 {
+  font-size: 20px;
+}
+
+h3, .h3 {
+  font-size: 16px;
+}
+
+h4, .h4 {
+  font-size: 14px;
+}
+
+.date-range {
+  font-size: 11px;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.page-header {
+  border-bottom: none;
+  margin: 18px 0 12px;
+  padding-bottom: 0;
+}
+
+.page-header h1,
+.page-header h2,
+.page-header h3 {
+  margin: 5px;
+}
+
+.panel-default {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 5px;
+}
+
+.panel-body {
+  padding: 5px;
+}
+
+.panel-default .panel-heading {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  background-color: #fefefe;
+  border-radius: 0;
+  padding: 2px 0;
+}
+
+.panel-default .panel-heading .panel-title {
+  padding: 5px 0;
+}
+
+.panel-default .panel-footer {
+  display: none;
+}
+
+.panel-project > .list-group,
+.panel-education-experience > .list-group,
+.panel-work-experience > .list-group {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.project-status.label {
+  display: none;
+}
+
+.section-header {
+  border-bottom: 1px solid #efefef;
+  padding: 7px 0;
+}
+
+@media print {
+  .page-header a[href]:after {
+    content: none;
+  }
+}

@@ -11,17 +11,8 @@ gem 'active_model_serializers', '~> 0.10.10'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1'
 
-# Utilize the bootstrap frontend framework
-gem 'sassc-rails'
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
-gem 'bootswatch-rails'
-
-# Markdown editor and rendering
+# Markdown rendering
 gem 'redcarpet', '>= 3.2.3'
-
-# Utilize font-awesome iconogrphy set
-gem 'font-awesome-sass', '~> 5.9.0'
 
 # Devise for user authentication
 gem 'devise', '~> 4.6.2'

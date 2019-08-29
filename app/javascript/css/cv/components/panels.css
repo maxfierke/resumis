@@ -1,0 +1,31 @@
+.panel-project > .panel-body,
+.panel-education-experience > .panel-body,
+.panel-work-experience > .panel-body {
+  transition: background-color 0.5s linear;
+}
+
+.panel-project > .panel-heading,
+.panel-education-experience > .panel-heading,
+.panel-work-experience > .panel-heading {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.panel-project > .panel-heading .label:not(:first-child),
+.panel-education-experience > .panel-heading .label:not(:first-child),
+.panel-work-experience > .panel-heading .label:not(:first-child) {
+  margin-left: 10px;
+}
+
+.panel-project > .list-group,
+.panel-education-experience > .list-group,
+.panel-work-experience > .list-group {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.panel-project .label,
+.panel-education-experience .label,
+.panel-work-experience .label {
+  display: inline-block;
+}
