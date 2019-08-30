@@ -23,11 +23,23 @@
 }
 
 .checkbox label {
-  @apply block text-gray-700 font-medium text-sm;
+  @apply text-gray-700 font-medium text-sm inline-flex items-center;
 }
 
 .checkbox input[type="checkbox"] {
-  @apply mr-2 leading-tight;
+  @apply mr-2;
+}
+
+.radio {
+  @apply mb-4;
+}
+
+.radio label {
+  @apply text-gray-700 font-medium text-sm inline-flex items-center;
+}
+
+.radio input[type="radio"] {
+  @apply mr-2;
 }
 
 input.form-control,

@@ -36,7 +36,7 @@
         <div class="form-group">
           <div class="checkbox">
             <%= f.label :featured do  %>
-              <%= f.check_box :featured %> Featured
+              <%= f.check_box :featured, class: 'form-checkbox' %> Featured
             <% end %>
           </div>
         </div>
@@ -49,7 +49,7 @@
             { :selected => @project.project_category_ids }, { :multiple => true } ) do |b| %>
             <div class="checkbox">
               <%= b.label do  %>
-                <%= b.check_box %> <%= b.text %>
+                <%= b.check_box(class: 'form-checkbox') %> <%= b.text %>
               <% end %>
             </div>
           <% end %>
