@@ -1,7 +1,7 @@
 <% page_title "Projects" %>
 
-<div class="flex flex-col md:flex-row">
-  <div class="flex flex-1 flex-col md:mr-2">
+<div class="flex flex-col lg:flex-row">
+  <div class="flex flex-col lg:w-3/4 lg:mr-2">
     <% @projects.each do |project| %>
       <div class="card">
         <header class="card-header">
@@ -47,9 +47,9 @@
     <% end %>
   </div>
 
-  <div class="flex-initial flex max-w-xs flex-col md:pl-2">
-    <div class="w-full mb-6 md:px-6">
-      <h3 class="font-medium mb-2 text-gray-700">Project Categories</h3>
+  <div class="flex flex-col w-full lg:w-1/4 lg:pl-2">
+    <div class="w-full mb-6 lg:px-6">
+      <h3 class="font-medium mb-4 text-gray-700">Project Categories</h3>
 
       <% @project_categories.each do |project_category| %>
         <div class="mb-2">
@@ -65,8 +65,8 @@
       <%= link_to "Add category", new_manage_project_category_path, class: 'btn btn-link block -ml-4' %>
     </div>
 
-    <div class="w-full mb-6 md:px-6">
-      <h3 class="font-medium mb-2 text-gray-700">Project Statuses</h3>
+    <div class="w-full mb-6 lg:px-6">
+      <h3 class="font-medium mb-4 text-gray-700">Project Statuses</h3>
 
       <% @project_statuses.each do |project_status| %>
         <span class="project-status label label-default label-<%= project_status.slug %> mr-2 mb-2">

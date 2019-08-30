@@ -10,7 +10,7 @@
     <%= render :partial => 'shared/navbar' %>
 
     <div class="flex flex-wrap flex-1 overflow-hidden">
-      <aside class="w-full bg-grey-dark text-white hidden nav-menu-dropdown md:w-1/5 md:flex md:flex-col">
+      <aside class="w-full bg-gray-800 text-white hidden nav-menu-dropdown md:w-1/4 xl:w-1/6 md:flex md:flex-col">
         <nav class="nav-tiles">
           <%= link_to manage_dashboard_path, class: 'nav-link' do %>
             <%= icon 'fas', 'tachometer-alt fa-fw h-5 w-5 inline-block mr-4', 'Dashboard' %>
@@ -41,7 +41,7 @@
               Administration
             </div>
             <%= link_to oauth_applications_url(host: ResumisConfig.canonical_host), class: 'nav-link' do %>
-              <%= icon 'fas', 'exchange-alt fa-fw h-5 w-5 inline-block mr-4', 'OAuth2 Applications' %>
+              <%= icon 'fas', 'exchange-alt fa-fw h-5 w-5 inline-block mr-4', 'API Apps' %>
             <% end %>
             <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), class: 'nav-link', target: '_blank' do %>
               <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'Sidekiq UI' %>
@@ -53,7 +53,7 @@
             <%- end -%>
           <%- end -%>
         </nav>
-        <footer class="px-6 py-4 text-sm text-gray-500">
+        <footer class="px-10 py-4 text-sm text-gray-500">
           <p>
             Powered by
             <a href="https://github.com/maxfierke/resumis" class="underline">
@@ -63,7 +63,7 @@
         </footer>
       </aside>
 
-      <div class="w-full md:w-4/5 px-4 px-6 py-6 pb-20">
+      <div class="w-full md:w-3/4 xl:w-5/6 px-10 py-10 pb-20">
         <div class="flex">
           <div class="w-full">
             <%= render_alerts %>

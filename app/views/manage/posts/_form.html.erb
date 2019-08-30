@@ -14,8 +14,8 @@
     </div>
   <% end %>
 
-  <div class="flex">
-    <div class="w-full md:w-3/4 mr-3">
+  <div class="flex flex-col lg:flex-row">
+    <div class="w-full lg:w-3/4 lg:mr-3">
       <div class="form-group">
         <%= f.label :title, class: 'control-label' %>
         <%= f.text_field :title, class: 'text_field form-control', placeholder: 'e.g. My favorite hip-hop albums of 2014' %>
@@ -26,9 +26,9 @@
       </div>
     </div>
 
-    <div class="md:w-4/12 pl-3">
+    <div class="w-full lg:w-4/12 lg:pl-3">
       <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
-        <h3 class="font-medium mb-2 text-gray-700">Post Options</h3>
+        <h3 class="font-medium mb-4 text-gray-700">Post Options</h3>
 
         <% unless @post.new_record? %>
           <div class="form-group">

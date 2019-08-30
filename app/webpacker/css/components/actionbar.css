@@ -1,5 +1,5 @@
 .actionbar {
-  @apply bg-white border-t border-gray-200 shadow rounded-none fixed w-full p-4 z-50 flex h-20 items-center justify-between;
+  @apply bg-white border-t border-gray-200 shadow rounded-none fixed w-full px-10 py-4 z-50 flex h-20 items-center justify-between;
 }
 
 .actionbar-left {
@@ -20,6 +20,12 @@
 
 @screen md {
   .actionbar-fixed-bottom {
-    @apply w-4/5;
+    @apply w-3/4;
+  }
+}
+
+@screen xl {
+  .actionbar-fixed-bottom {
+    @apply w-5/6;
   }
 }

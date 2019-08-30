@@ -1,13 +1,14 @@
 .nav-tiles {
-  @apply flex flex-col;
+  @apply flex flex-col px-4 py-4;
 }
 
 .nav-tiles .nav-link {
-  @apply px-6 py-4 border-r-4 border-transparent font-semibold;
+  @apply px-6 py-4 font-semibold text-grey-light flex items-center;
 }
 
 .nav-tiles .nav-link:hover,
 .nav-tiles .nav-link:focus,
-.nav-tiles .nav-link:active {
-  @apply bg-grey-darker border-grey-light;
+.nav-tiles .nav-link:active,
+.nav-tiles .nav-link.active {
+  @apply text-white;
 }
