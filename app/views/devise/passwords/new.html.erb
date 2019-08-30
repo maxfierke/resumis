@@ -1,7 +1,7 @@
 <% page_title 'Forgot your password?' %>
 
 <div class="flex flex-col mx-auto w-full max-w-sm">
-  <main role="main" class="border-t-4 border-brand bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <main role="main" class="border-t-4 border-blue-700 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

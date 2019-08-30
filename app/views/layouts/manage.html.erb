@@ -24,7 +24,7 @@
           <%= link_to manage_resumes_path, class: 'nav-link' do %>
             <%= icon 'far', 'file-alt fa-fw h-5 w-5 inline-block mr-4', 'CVs' %>
           <% end %>
-          <div class="text-grey-light text-sm uppercase px-6 py-2">
+          <div class="text-gray-500 text-sm uppercase px-6 py-2">
             Experiences
           </div>
           <%= link_to manage_education_experiences_path, class: 'nav-link' do %>
@@ -37,7 +37,7 @@
             <%= icon 'fas', 'suitcase fa-fw h-5 w-5 inline-block mr-4', 'Work' %>
           <% end %>
           <%- if current_user.admin? -%>
-            <div class="text-grey-light text-sm uppercase px-6 py-2">
+            <div class="text-gray-500 text-sm uppercase px-6 py-2">
               Administration
             </div>
             <%= link_to oauth_applications_url(host: ResumisConfig.canonical_host), class: 'nav-link' do %>

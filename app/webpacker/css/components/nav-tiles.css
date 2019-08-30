@@ -3,7 +3,7 @@
 }
 
 .nav-tiles .nav-link {
-  @apply px-6 py-4 font-semibold text-grey-light flex items-center;
+  @apply px-6 py-4 font-semibold text-gray-400 flex items-center;
 }
 
 .nav-tiles .nav-link:hover,
