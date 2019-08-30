@@ -5,19 +5,30 @@
   <code id="application_id"><%= @application.uid %></code>
 </div>
 
-<div class="form-group">
-  <label class="control-label"><%= t('.secret') %></label>
-  <code id="secret"><%= @application.secret %></code>
-</div>
+<%- if @application.confidential? -%>
+  <div class="form-group">
+    <label class="control-label"><%= t('.secret') %></label>
+    <code id="secret"><%= flash[:application_secret].presence || @application.plaintext_secret %></code>
+  </div>
+<%- end -%>
 
 <div class="form-group">
   <label class="control-label"><%= t('.scopes') %></label>
-  <code id="scopes"><%= @application.scopes %></code>
+  <code id="scopes"><%= @application.scopes.presence || raw('&nbsp;') %></code>
 </div>
 
 <div class="form-group">
   <label class="control-label"><%= t('.confidential') %></label>
-  <code id="confidential"><%= @application.confidential? %></code>
+
+  <%- if @application.confidential? -%>
+    <span class="text-red-700">
+      <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Requires client secret' %>
+    </span>
+  <%- else -%>
+    <span class="text-green-700">
+      <%= icon 'fas', 'globe-americas h-4 w-4 inline-block mr-1', 'Public (does not require secret)' %>
+    </span>
+  <%- end -%>
 </div>
 
 <div class="form-group">
@@ -43,6 +54,6 @@
 <% end %>
 
 <% content_for :actionbar_right do %>
-  <%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-danger link-danger' %>
+  <%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-link link-danger' %>
   <%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary' %>
 <% end %>

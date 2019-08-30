@@ -20,7 +20,7 @@ en:
         destroy: 'Are you sure?'
       buttons:
         edit: 'Edit'
-        destroy: 'Delete'
+        destroy: 'Delete app'
         submit: 'Submit'
         cancel: 'Cancel'
         authorize: 'Authorize'
@@ -49,7 +49,7 @@ en:
         application_id: 'Client ID'
         secret: 'Client Secret'
         scopes: 'Scopes'
-        confidential: 'Confidential'
+        confidential: 'Confidentiality'
         callback_urls: 'Callback URLs'
         actions: 'Actions'
 

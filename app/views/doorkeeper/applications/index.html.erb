@@ -6,14 +6,14 @@
       <th><%= t('.name') %></th>
       <th><%= t('.callback_url') %></th>
       <th><%= t('.confidential') %></th>
-      <th>Actions</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   <%- @applications.each do |application| -%>
     <tr id="application_<%= application.id %>">
-      <td><%= link_to application.name, oauth_application_path(application), class: 'underline' %></td>
-      <td class="font-mono"><%= application.redirect_uri %></td>
+      <td><%= link_to application.name, oauth_application_path(application), class: 'underline' -%></td>
+      <td class="font-mono"><%= simple_format(application.redirect_uri) -%></td>
       <td>
         <%- if application.confidential? -%>
           <span class="label label-danger">
@@ -25,11 +25,11 @@
           </span>
         <%- end -%>
       </td>
-      <td>
-        <%= link_to edit_oauth_application_path(application), class: 'btn btn-link -ml-4' do -%>
+      <td class="uppercase font-semibold text-right">
+        <%= link_to edit_oauth_application_path(application), class: 'hover:underline mr-4' do -%>
           <%= t('doorkeeper.applications.buttons.edit') -%>
         <%- end -%>
-        <%= render 'delete_form', application: application -%>
+        <%= render 'delete_form', application: application, submit_btn_css: 'link-danger hover:underline' -%>
       </td>
     </tr>
   <%- end -%>
