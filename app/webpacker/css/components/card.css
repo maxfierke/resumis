@@ -39,5 +39,5 @@
 .card-actions .danger-link:hover,
 .card-actions .danger-link:focus,
 .card-actions .danger-link:active {
-  @apply text-red-700 bg-red-200;
+  @apply text-red-900 bg-red-200;
 }
