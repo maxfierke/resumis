@@ -1,4 +1,6 @@
 class EducationExperience < ActiveRecord::Base
+  paginates_per 10
+
   belongs_to :user
   has_many :resume_education_experiences
   has_many :resumes, through: :resume_education_experiences, dependent: :destroy

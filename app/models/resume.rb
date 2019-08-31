@@ -3,6 +3,8 @@ class Resume < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  paginates_per 10
+
   belongs_to :user
   has_many :resume_education_experiences
   has_many :resume_projects

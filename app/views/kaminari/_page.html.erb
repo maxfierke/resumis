@@ -1,9 +1,15 @@
 <% if page.current? %>
-  <li class='active'>
-    <%= content_tag :a, page, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
-  </li>
+  <%= content_tag :a,
+    page,
+    remote: remote,
+    rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)),
+    class: 'bg-blue-700 text-white hover:bg-blue-900 px-4 py-2'
+  %>
 <% else %>
-  <li>
-    <%= link_to page, url, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
-  </li>
+  <%= link_to page,
+    url,
+    remote: remote,
+    rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)),
+    class: 'text-blue-500 hover:text-blue-800 px-4 py-2'
+   %>
 <% end %>
