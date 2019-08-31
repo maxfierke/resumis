@@ -6,11 +6,11 @@
       <div class="card">
         <header class="card-header">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-xl">
+            <h1 class="text-xl">
               <%= link_to edit_manage_post_path(post), class: 'underline' do %>
                 <%= post.title -%>
               <% end %>
-            </h4>
+            </h1>
 
             <% if post.published && post.published_on %>
               <span class="label label-success">Published <%= post.published_on.strftime("%b %e, %Y") %></span>
@@ -26,6 +26,12 @@
               #<%= post_category.name -%>
             </span>
           <% end %>
+
+          <div class="rich-text-content">
+            <%= markdown(
+              truncate(post.body, length: 500, escape: false, separator: ' ')
+            ) %>
+          </div>
         </div>
 
         <footer class="card-actions">
@@ -47,9 +53,9 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col w-full lg:w-1/4 lg:pl-2">
-    <div class="w-full mb-6 lg:px-6">
-      <h3 class="font-medium mb-4 text-gray-700">Post Categories</h3>
+  <div class="flex flex-col w-full lg:w-1/4 lg:pl-8">
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Post Categories</h1>
 
       <% @post_categories.each do |post_category| %>
         <div class="flex items-center justify-between mb-2">

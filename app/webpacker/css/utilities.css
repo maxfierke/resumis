@@ -1,6 +1,7 @@
 @import "./utilities/buttons";
 @import "./utilities/forms";
 @import "./utilities/labels";
+@import "./utilities/rich-text-content";
 @import "./utilities/tables";
 
 .link-danger {

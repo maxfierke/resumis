@@ -6,11 +6,11 @@
       <div class="card">
         <header class="card-header">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-xl">
+            <h1 class="text-xl">
               <%= link_to edit_manage_project_path(project), class: 'underline' do %>
                 <%= project.name -%>
               <% end %>
-            </h4>
+            </h1>
 
             <% if project.status %>
               <span class="project-status label label-default label-<%= project.status.slug %>">
@@ -26,6 +26,10 @@
               <%= project_category.name -%>
             </span>
           <% end %>
+
+          <div class="rich-text-content">
+            <%= markdown(project.description) %>
+          </div>
         </div>
 
         <footer class="card-actions">
@@ -47,9 +51,9 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col w-full lg:w-1/4 lg:pl-2">
-    <div class="w-full mb-6 lg:px-6">
-      <h3 class="font-medium mb-4 text-gray-700">Project Categories</h3>
+  <div class="flex flex-col w-full lg:w-1/4 lg:pl-8">
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Project Categories</h1>
 
       <% @project_categories.each do |project_category| %>
         <div class="mb-2">
@@ -65,8 +69,8 @@
       <%= link_to "Add category", new_manage_project_category_path, class: 'btn btn-link block -ml-4' %>
     </div>
 
-    <div class="w-full mb-6 lg:px-6">
-      <h3 class="font-medium mb-4 text-gray-700">Project Statuses</h3>
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Project Statuses</h1>
 
       <% @project_statuses.each do |project_status| %>
         <span class="project-status label label-default label-<%= project_status.slug %> mr-2 mb-2">
