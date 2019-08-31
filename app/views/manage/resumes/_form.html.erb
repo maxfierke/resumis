@@ -1,15 +1,15 @@
 <%= form_for [:manage, @resume] do |f| %>
   <div class="form-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <%= f.text_field :name, :class => 'text_field form-control' %>
+    <%= f.label :name, class: 'control-label' %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <%= f.text_field :description, :class => 'text_field form-control' %>
+    <%= f.label :description, class: 'control-label' %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :background, :class => 'control-label' %>
-    <%= f.text_area :background, :class => 'text_area form-control', :rows => '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
+    <%= f.label :background, class: 'control-label' %>
+    <%= f.text_area :background, class: 'form-control', rows: '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
   </div>
 
   <h4 class="mb-4 text-gray-700 text-lg">Education Experiences</h4>
@@ -17,14 +17,20 @@
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:education_experience_ids,  EducationExperience.order("end_date ASC"), :id, :school_name,
       { :selected => @resume.education_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
-        <p>
-          <%= b.check_box %>
-          <%= b.text %><br />
-          <small><%= b.object.diploma %></small>
-        </p>
-        <div>
-          <%= b.object.date_range %>
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4">
+        <div class="flex items-center">
+          <div class="mr-6">
+            <%= b.check_box(class: 'form-checkbox h-5 w-5') %>
+          </div>
+          <div class="flex-1 flex justify-between items-center">
+            <div>
+              <%= b.text %>
+              <small class="text-sm block text-gray-700"><%= b.object.date_range %></small>
+            </div>
+            <div>
+              <%= b.object.diploma %>
+            </div>
+          </div>
         </div>
       </label>
     <% end %>
@@ -35,14 +41,20 @@
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:work_experience_ids,  WorkExperience.order("end_date ASC"), :id, :organization,
       { :selected => @resume.work_experience_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
-        <p>
-          <%= b.check_box %>
-          <%= b.text %><br />
-          <small><%= b.object.position %></small>
-        </p>
-        <div>
-          <%= b.object.date_range %>
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4">
+        <div class="flex items-center">
+          <div class="mr-6">
+            <%= b.check_box(class: 'form-checkbox h-5 w-5') %>
+          </div>
+          <div class="flex-1 flex justify-between items-center">
+            <div>
+              <%= b.text %>
+              <small class="text-sm block text-gray-700"><%= b.object.date_range %></small>
+            </div>
+            <div>
+              <%= b.object.position %>
+            </div>
+          </div>
         </div>
       </label>
     <% end %>
@@ -53,18 +65,24 @@
   <div class="flex flex-col rounded shadow-lg mb-4">
     <%= f.collection_check_boxes(:project_ids,  Project.order("end_date ASC"), :id, :name,
       { :selected => @resume.project_ids }, { :multiple => true } ) do |b| %>
-      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4 flex justify-between">
-        <p>
-          <%= b.check_box %>
-          <%= b.text %>
-          <% if b.object.project_status %>
-            <span class="label label-<%= b.object.project_status.slug %>">
-              <%= b.object.project_status.name %>
-            </span>
-          <% end %>
-        </p>
-        <div>
-          <%= b.object.date_range %>
+      <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4">
+        <div class="flex items-center">
+          <div class="mr-6">
+            <%= b.check_box(class: 'form-checkbox h-5 w-5') %>
+          </div>
+          <div class="flex-1 flex justify-between items-center">
+            <div>
+              <%= b.text %>
+              <small class="text-sm block text-gray-700"><%= b.object.date_range %></small>
+            </div>
+            <div>
+              <% if b.object.project_status %>
+                <span class="label label-<%= b.object.project_status.slug %>">
+                  <%= b.object.project_status.name %>
+                </span>
+              <% end %>
+            </div>
+          </div>
         </div>
       </label>
     <% end %>
@@ -76,11 +94,11 @@
     <%= f.collection_check_boxes(:skill_ids,  Skill.order("name ASC"), :id, :name,
       { :selected => @resume.skill_ids }, { :multiple => true } ) do |b| %>
       <label class="w-full border-b border-gray-200 bg-white overflow-hidden px-6 py-4">
-        <div class="flex">
-          <div class="w-1/12">
-            <%= b.check_box %>
+        <div class="flex items-center">
+          <div class="mr-6">
+            <%= b.check_box(class: 'form-checkbox h-5 w-5') %>
           </div>
-          <div class="w-11/12">
+          <div class="flex-1 flex justify-between items-center">
             <%= b.text %>
             <span class="label label-default">
               <%= b.object.skill_category.name %>
@@ -94,13 +112,13 @@
   <div class="actionbar actionbar-fixed-bottom">
     <div class="actionbar-left">
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  manage_resumes_path, :class => 'btn btn-default' %>
+                  manage_resumes_path, class: 'btn btn-default' %>
     </div>
     <div class="actionbar-right">
       <% unless @resume.new_record? %>
-        <small class="text-sm text-gray-700 mr-4">Modified <%= time_ago_in_words(@resume.updated_at) %> ago</small>
+        <small class="text-sm text-gray-700 mr-4">Updated <%= time_ago_in_words(@resume.updated_at) %> ago</small>
       <% end %>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
