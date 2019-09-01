@@ -58,7 +58,8 @@ ENV APP_HOME=/resumis \
     WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
 
 RUN mkdir -p $APP_HOME/shared/pids
-RUN addgroup $RESUMIS_USER && adduser -s /bin/sh -D -G $RESUMIS_USER $RESUMIS_USER
+RUN addgroup -g 1000 -S $RESUMIS_USER && \
+    adduser -u 1000 -S $RESUMIS_USER -G $RESUMIS_USER -D
 RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
 # Runtime deps
