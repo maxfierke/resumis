@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/maxfierke/active_link_to.git
+  revision: 531501e8ea97dac6014824182d8bc7fdba147c14
+  tag: v1.0.6-pre_reduce_object_allocations
+  specs:
+    active_link_to (1.0.6.pre1allocreduction)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -332,6 +341,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to!
   active_model_serializers (~> 0.10.10)
   acts_as_tenant
   bootsnap (>= 1.1.0)

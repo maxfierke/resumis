@@ -17,6 +17,8 @@ gem 'acts_as_tenant'
 gem 'friendly_id', '~> 5.2.5'
 gem 'nilify_blanks'
 
+# ActionView extension
+gem 'active_link_to', git: 'https://github.com/maxfierke/active_link_to.git', tag: 'v1.0.6-pre_reduce_object_allocations'
 
 # Authentication & Authorization
 gem 'devise', '~> 4.6.2'
