@@ -60,7 +60,6 @@ ENV APP_HOME=/resumis \
 RUN mkdir -p $APP_HOME/shared/pids
 RUN addgroup -g 1000 -S $RESUMIS_USER && \
     adduser -u 1000 -S $RESUMIS_USER -G $RESUMIS_USER -D
-RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
 # Runtime deps
 RUN apk add --update --no-cache \
@@ -76,7 +75,8 @@ RUN apk add --update --no-cache \
 
 WORKDIR $APP_HOME
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
-COPY --from=builder --chown=$RESUMIS_USER:$RESUMIS_USER $APP_HOME $APP_HOME
+COPY --from=builder $APP_HOME $APP_HOME
+RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout log/unicorn.log && ln -sf /dev/stderr log/production.log
