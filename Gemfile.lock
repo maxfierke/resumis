@@ -104,7 +104,6 @@ GEM
     equatable (0.6.1)
     erubi (1.8.0)
     excon (0.65.0)
-    execjs (2.7.0)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.0.2)
@@ -316,8 +315,6 @@ GEM
     tty-which (0.4.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.20)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
     unicode_utils (1.4.0)
     unicorn (5.5.1)
@@ -377,7 +374,6 @@ DEPENDENCIES
   sidekiq-failures
   sinatra (~> 2.0.4)
   thor
-  uglifier (>= 4.1)
   unicorn
   webpacker
   wicked_pdf (~> 1.4)
