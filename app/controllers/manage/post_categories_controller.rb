@@ -2,10 +2,6 @@ module Manage
   class PostCategoriesController < ManageController
     before_action :set_post_category, only: [:edit, :update, :destroy]
 
-    def index
-      @post_categories = policy_scope(PostCategory).page params[:page]
-    end
-
     def new
       @post_category = PostCategory.new
       authorize @post_category
@@ -58,7 +54,7 @@ module Manage
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_category_params
-        params[:post_category].permit(:name)
+        params.require(:post_category).permit(:name)
       end
   end
 end
