@@ -1,15 +1,15 @@
 # Resumis
 
-Resumis is _Esperanto_ for "summarized". It's also an API and backend for your
+Resumis is _Esperanto_ for "summarized". It's also an API and headless CMS for your
 personal web presence, a CV generator, and JSON Resume provider.
 
 ### Requirements
-* Ruby 2.4
+* Ruby 2.6
 * PostgreSQL 9.3+ with development dependencies
-* Node.js or another supported execjs runtime. I assume node.js. If you prefer `therubyracer`, uncomment it in the Gemfile.
-* `wkhtmltopdf`. 0.12.3 recommended. 0.9.9.x has issues with the resume layout. 0.12.4 has DPI bugs on high-DPI displays on macOS. Will use either a binary specified by `WKHTMLTOPDF_PATH` (defaults to `/usr/local/bin/wkhtmltopdf`)
+* Node.js 10+
+* `wkhtmltopdf`. 0.12.5 recommended. Anything lower has known issues. Will use a binary specified by `WKHTMLTOPDF_PATH` or defaults to `/usr/local/bin/wkhtmltopdf`.
 * `imagemagick`
-* Redis for Sidekiq, but you can sub this out for Resque, `delayed_job`, and other queues supported by ActiveJob and `carrierwave_backgrounder`.
+* Redis for Sidekiq.
 * SMTP server (Production is configured to use SendGrid with credentials set by environmental variables `SENDGRID_USERNAME`, `SENDGRID_PASSWORD`, and `SENDGRID_DOMAIN`). It's only used by Devise for things like password resets, or confirmation emails. This is not a hard dependency and certainly not needed for development.
 
 and others. See [Gemfile](Gemfile).
@@ -58,7 +58,7 @@ Resumis-specific configuration can be done either through the `config/initialize
 * `RESUMIS_MAIL_SENDER` - `From:` address for emails sent by Resumis (password resets, confirmations, etc.)
 * `RESUMIS_CANONICAL_HOST` - Canonical hostname.
 
-#### Deploying in Production
+#### Deploying in Production (preferred)
 
 * [Deploying with Docker](https://github.com/maxfierke/resumis/wiki/Running-Resumis-in-production-with-Docker)
 
