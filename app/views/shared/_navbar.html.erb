@@ -1,7 +1,7 @@
 <nav class="flex flex-initial items-center justify-between flex-wrap bg-gray-900 text-white px-10 py-4" role="navigation">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
     <span class="font-semibold text-xl tracking-tight">
-      <%= link_to 'Resumis', manage_dashboard_path -%>
+      <%= link_to 'Resumis', manage_dashboard_path, class: 'hover:underline' -%>
     </span>
   </div>
   <% if content_for?(:title) %>
@@ -13,14 +13,14 @@
 
   <%- if user_signed_in? -%>
     <div class="user-menu">
-      <div class="flex items-center">
+      <button class="appearance-none user-menu-dropdown-toggle flex items-center" type="button">
         <span class="hidden md:inline">
           <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
         </span>
-        <button class="appearance-none user-menu-dropdown-toggle" type="button">
+        <div>
           <%= image_tag current_user.avatar_url, class: 'h-10 rounded-full ml-4' %>
-        </button>
-      </div>
+        </div>
+      </button>
       <nav class="user-menu-dropdown hidden" role="menu">
         <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank', class: 'nav-link' do %>
           <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'View Site' %>

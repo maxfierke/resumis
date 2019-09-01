@@ -3,7 +3,7 @@
 }
 
 .user-menu .user-menu-dropdown.shown {
-  @apply flex flex-col bg-gray-900 absolute;
+  @apply flex flex-col bg-gray-800 absolute;
   top: 3.5rem;
   left: 0;
   right: 0;
@@ -16,7 +16,7 @@
 .user-menu-dropdown .nav-link:hover,
 .user-menu-dropdown .nav-link:focus,
 .user-menu-dropdown .nav-link:active {
-  @apply bg-gray-800;
+  @apply bg-gray-700;
 }
 
 @screen sm {
