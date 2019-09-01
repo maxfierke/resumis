@@ -22,10 +22,6 @@
 .rbenv-vars
 .capistrano/metrics
 .idea
-
-# production & custom docker-compose yml
-/docker/custom-*.yml
-/docker/production.yml
 .env
 
 /public/packs
