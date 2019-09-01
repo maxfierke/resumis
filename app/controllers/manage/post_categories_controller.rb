@@ -2,10 +2,6 @@ module Manage
   class PostCategoriesController < ManageController
     before_action :set_post_category, only: [:edit, :update, :destroy]
 
-    def index
-      @post_categories = policy_scope(PostCategory).page params[:page]
-    end
-
     def new
       @post_category = PostCategory.new
       authorize @post_category
@@ -20,8 +16,8 @@ module Manage
 
       respond_to do |format|
         if @post_category.save
-          format.html { redirect_to manage_post_categories_path, notice: 'Post category was successfully created.' }
-          format.json { render :show, status: :created, location: manage_post_categories_path }
+          format.html { redirect_to manage_posts_path, notice: 'Post category was successfully created.' }
+          format.json { render :show, status: :created, location: manage_posts_path }
         else
           format.html { render :new }
           format.json { render json: @post_category.errors, status: :unprocessable_entity }
@@ -32,8 +28,8 @@ module Manage
     def update
       respond_to do |format|
         if @post_category.update(post_category_params)
-          format.html { redirect_to manage_post_categories_path, notice: 'Post category was successfully updated.' }
-          format.json { render :show, status: :ok, location: manage_post_categories_path }
+          format.html { redirect_to manage_posts_path, notice: 'Post category was successfully updated.' }
+          format.json { render :show, status: :ok, location: manage_posts_path }
         else
           format.html { render :edit }
           format.json { render json: @post_category.errors, status: :unprocessable_entity }
@@ -44,7 +40,7 @@ module Manage
     def destroy
       @post_category.destroy
       respond_to do |format|
-        format.html { redirect_to manage_post_categories_path, notice: 'Post category was successfully destroyed.' }
+        format.html { redirect_to manage_posts_path, notice: 'Post category was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
@@ -58,7 +54,7 @@ module Manage
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_category_params
-        params[:post_category].permit(:name)
+        params.require(:post_category).permit(:name)
       end
   end
 end

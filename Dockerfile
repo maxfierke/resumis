@@ -1,20 +1,13 @@
-FROM ruby:2.6.3-alpine3.9
+FROM ruby:2.6.3-alpine3.9 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
-      description="An API for your personal site & resume"
+      description="Build image for resumis"
 
 ENV APP_HOME=/resumis \
+    NODE_ENV=production \
     RAILS_ENV=production \
-    RAILS_SERVE_STATIC_FILES=true \
-    RESUMIS_DEPLOY_ROOT=/resumis \
-    RESUMIS_TENANCY_MODE=single \
-    RESUMIS_USER=resumis \
-    PORT=5000 \
-    WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
+    RESUMIS_USER=resumis
 
-EXPOSE 5000
-
-RUN addgroup $RESUMIS_USER && adduser -h $APP_HOME -s /bin/sh -D -G $RESUMIS_USER $RESUMIS_USER
-
+# Build-time deps
 RUN apk add --update --no-cache \
   build-base \
   linux-headers \
@@ -23,33 +16,73 @@ RUN apk add --update --no-cache \
   tzdata \
   libxml2-dev \
   libxslt-dev \
-  postgresql-dev \
-  imagemagick
+  libgcc libstdc++ \
+  git \
+  postgresql-dev
 
-RUN apk add --update --no-cache \
-  libgcc libstdc++ libx11 glib libxrender libxext libintl \
-  libcrypto1.1 libssl1.1 \
-  ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
-  qt5-qtbase-dev wkhtmltopdf
-
-
-RUN mkdir -p $APP_HOME/shared/pids
+RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
 ADD ./Gemfile* $APP_HOME/
-RUN bundle config build.nokogiri --use-system-libraries
-RUN bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without test development
+RUN bundle config --global frozen 1 \
+  && bundle config build.nokogiri --use-system-libraries \
+  && bundle install -j$(getconf _NPROCESSORS_ONLN) \
+    --without development test \
+    --retry 3 \
+  # Remove unneeded files (cached *.gem, *.o, *.c)
+  && rm -rf /usr/local/bundle/cache/*.gem \
+  && find /usr/local/bundle/gems/ -name "*.c" -delete \
+  && find /usr/local/bundle/gems/ -name "*.o" -delete
+
+ADD ./package.json ./yarn.lock $APP_HOME/
+RUN yarn install
 
 ADD . $APP_HOME
 
 RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precompile
+RUN rm -rf node_modules tmp/cache
 
+# Runtime image
+FROM ruby:2.6.3-alpine3.9
+LABEL maintainer="Max Fierke <max@maxfierke.com>" \
+      description="An API for your personal site & resume"
+ENV APP_HOME=/resumis \
+    EXECJS_RUNTIME=Disabled \
+    NODE_ENV=production \
+    RAILS_ENV=production \
+    RAILS_SERVE_STATIC_FILES=true \
+    RESUMIS_DEPLOY_ROOT=/resumis \
+    RESUMIS_TENANCY_MODE=single \
+    RESUMIS_USER=resumis \
+    PORT=5000 \
+    WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
+
+RUN mkdir -p $APP_HOME/shared/pids
+RUN addgroup $RESUMIS_USER && adduser -s /bin/sh -D -G $RESUMIS_USER $RESUMIS_USER
 RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
+# Runtime deps
+RUN apk add --update --no-cache \
+  postgresql-client \
+  file \
+  imagemagick \
+  tzdata \
+  # wkhtmltopdf stuff
+  libx11 glib libxrender libxext libintl \
+  libcrypto1.1 libssl1.1 \
+  ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
+  qt5-qtbase-dev wkhtmltopdf
+
+WORKDIR $APP_HOME
+COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY --from=builder --chown=$RESUMIS_USER:$RESUMIS_USER $APP_HOME $APP_HOME
+
 # forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout log/unicorn.log \
-  && ln -sf /dev/stderr log/production.log
+RUN ln -sf /dev/stdout log/unicorn.log && ln -sf /dev/stderr log/production.log
 
 USER $RESUMIS_USER
+EXPOSE 5000
+
+RUN date -u > IMAGE_BUILD_TIME
 
 CMD [ "bundle", "exec", "unicorn", "-c", "config/unicorn.rb" ]

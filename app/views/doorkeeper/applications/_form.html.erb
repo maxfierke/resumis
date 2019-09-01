@@ -36,7 +36,7 @@
     <%= f.label :confidential, class: 'control-label' %>
     <div class="checkbox">
       <label>
-        <%= f.check_box :confidential, disabled: !Doorkeeper::Application.supports_confidentiality? %>
+        <%= f.check_box :confidential, class: 'form-checkbox' %>
         Require secret to authenticate
       </label>
     </div>

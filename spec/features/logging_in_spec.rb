@@ -10,7 +10,7 @@ feature 'Logging in' do
     end
 
     scenario 'can login and see stuff' do
-      expect(page).to have_content('Add a New Project')
+      expect(page).to have_content('Start a Project')
     end
   end
 
@@ -23,7 +23,7 @@ feature 'Logging in' do
     end
 
     scenario 'can login and see stuff' do
-      expect(page).to have_content('Add a New Project')
+      expect(page).to have_content('Start a Project')
     end
   end
 

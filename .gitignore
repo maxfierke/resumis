@@ -22,8 +22,11 @@
 .rbenv-vars
 .capistrano/metrics
 .idea
-
-# production & custom docker-compose yml
-/docker/custom-*.yml
-/docker/production.yml
 .env
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

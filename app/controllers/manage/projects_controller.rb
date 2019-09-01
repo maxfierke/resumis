@@ -6,7 +6,8 @@ module Manage
 
     def index
       @projects = policy_scope(Project.ordered_by_activity).page(params[:page])
-      @project_categories = ProjectCategory.with_projects
+      @project_categories = policy_scope(ProjectCategory).with_projects
+      @project_statuses = policy_scope(ProjectStatus).all
       respond_with(@projects)
     end
 

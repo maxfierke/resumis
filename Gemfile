@@ -5,73 +5,56 @@ gem 'rails', '~> 5.2.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.7'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'webpacker'
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails', '>= 4.0.4'
 
+# JSON-API
 gem 'active_model_serializers', '~> 0.10.10'
 
-# Utilize the bootstrap frontend framework
-gem 'bootstrap-sass'
-gem 'bootstrap-sass-extras'
-gem 'autoprefixer-rails'
-gem 'bootswatch-rails'
+# ActiveRecord extensions
+gem 'acts_as_tenant'
+gem 'friendly_id', '~> 5.2.5'
+gem 'nilify_blanks'
 
-# Markdown editor and rendering
-gem 'rails-bootstrap-markdown'
-gem 'redcarpet', '>= 3.2.3'
+# ActionView extension
+gem 'active_link_to', git: 'https://github.com/maxfierke/active_link_to.git', tag: 'v1.0.6-pre_reduce_object_allocations'
 
-# Utilize font-awesome iconogrphy set
-gem 'font-awesome-sass', '~> 5.9.0'
-
-# Devise for user authentication
+# Authentication & Authorization
 gem 'devise', '~> 4.6.2'
 gem 'doorkeeper', '~> 5.1.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
-# Exporting resumes to PDF
-gem 'wicked_pdf', '~> 1.4'
+# CLI
+gem 'thor'
 
-# because sometimes you need a NULL
-gem 'nilify_blanks'
-
-# nice slugged URLs
-gem 'friendly_id', '~> 5.2.5'
-
-# Multi-tenancy
-gem 'acts_as_tenant'
-
-# Carrierwave for handling uploads to S3
+# Image uploads
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'mini_magick'
 
-# queues are cool
+# Markdown rendering
+gem 'redcarpet', '>= 3.2.3'
+
+# Exporting resumes to PDF
+gem 'wicked_pdf', '~> 1.4'
+
+# Pagination
+gem 'kaminari'
+gem 'pager_api', '~> 0.3.2'
+
+# Sidekiq
 gem 'hiredis'
 gem 'redis-namespace'
 gem 'sidekiq', '< 6'
 gem 'sidekiq-failures'
 gem 'sinatra', '~> 2.0.4', :require => nil # for sidekiq web UI
 
-# pagination
-gem 'kaminari'
-gem 'pager_api', '~> 0.3.2'
-
+# Web server
 gem 'unicorn'
 
-gem 'thor'
-
 group :development do
-  gem 'binding_of_caller'
-  gem 'better_errors'
   gem 'listen', '~> 3.1.5'
 end
 

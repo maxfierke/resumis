@@ -1,37 +1,59 @@
 <% page_title t('.title', name: @application.name) %>
 
-<h4><%= t('.application_id') %>:</h4>
-<p><code id="application_id"><%= @application.uid %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.application_id') %></label>
+  <code id="application_id"><%= @application.uid %></code>
+</div>
 
-<h4><%= t('.secret') %>:</h4>
-<p><code id="secret"><%= @application.secret %></code></p>
+<%- if @application.confidential? -%>
+  <div class="form-group">
+    <label class="control-label"><%= t('.secret') %></label>
+    <code id="secret"><%= flash[:application_secret].presence || @application.plaintext_secret %></code>
+  </div>
+<%- end -%>
 
-<h4><%= t('.scopes') %>:</h4>
-<p><code id="scopes"><%= @application.scopes %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.scopes') %></label>
+  <code id="scopes"><%= @application.scopes.presence || raw('&nbsp;') %></code>
+</div>
 
-<h4><%= t('.confidential') %>:</h4>
-<p><code id="confidential"><%= @application.confidential? %></code></p>
+<div class="form-group">
+  <label class="control-label"><%= t('.confidential') %></label>
 
-<h4><%= t('.callback_urls') %>:</h4>
+  <%- if @application.confidential? -%>
+    <span class="text-red-700">
+      <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Requires client secret' %>
+    </span>
+  <%- else -%>
+    <span class="text-green-700">
+      <%= icon 'fas', 'globe-americas h-4 w-4 inline-block mr-1', 'Public (does not require secret)' %>
+    </span>
+  <%- end -%>
+</div>
 
-<table>
-  <% @application.redirect_uri.split.each do |uri| %>
-    <tr>
-      <td>
-        <code><%= uri %></code>
-      </td>
-      <td>
-        <%= link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes), class: 'btn btn-success', target: '_blank' %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="form-group">
+  <label class="control-label"><%= t('.callback_urls') %></label>
+
+  <%- @application.redirect_uri.split.each do |uri| -%>
+    <div class="flex">
+      <div class="py-2">
+        <code><%= uri -%></code>
+      </div>
+      <div class="px-4 py-2">
+        <%= link_to t('doorkeeper.applications.buttons.authorize'),
+          oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code', scope: @application.scopes),
+          class: 'btn btn-link',
+          target: '_blank' -%>
+      </div>
+    </div>
+  <%- end -%>
+</div>
 
 <% content_for :actionbar_left do %>
   <%= link_to "Back to applications", oauth_applications_path, class: 'btn btn-default' %>
 <% end %>
 
 <% content_for :actionbar_right do %>
-  <%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-danger link-danger' %>
+  <%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-link link-danger' %>
   <%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary' %>
 <% end %>

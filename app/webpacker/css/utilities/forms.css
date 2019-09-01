@@ -1,0 +1,81 @@
+.form-group {
+  @apply w-full mb-4;
+}
+
+.form-horizontal {
+  @apply flex flex-col;
+}
+
+.form-horizontal .form-group {
+  @apply flex justify-between;
+}
+
+.control-label {
+  @apply flex items-center uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+
+.form-horizontal .control-label {
+  @apply flex-initial;
+}
+
+.checkbox {
+  @apply mb-4;
+}
+
+.checkbox label {
+  @apply text-gray-700 font-medium text-sm inline-flex items-center;
+}
+
+.checkbox input[type="checkbox"] {
+  @apply mr-2;
+}
+
+.radio {
+  @apply mb-4;
+}
+
+.radio label {
+  @apply text-gray-700 font-medium text-sm inline-flex items-center;
+}
+
+.radio input[type="radio"] {
+  @apply mr-2;
+}
+
+input.form-control,
+textarea.form-control {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  @apply outline-none bg-white;
+}
+
+select.form-control {
+  @apply bg-gray-200 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 leading-tight;
+}
+
+select.form-control:focus {
+  @apply outline-none bg-white;
+}
+
+.has-error .form-control {
+  @apply border-red-500;
+}
+
+.help-block {
+  @apply block text-gray-700 mb-4 text-sm;
+}
+
+.input-group {
+  @apply flex items-center mb-3 w-full border border-gray-300 rounded;
+}
+
+.input-group .input-group-addon {
+  @apply block bg-gray-200 text-gray-700 flex-initial px-4 py-3 leading-tight;
+}
+
+.input-group .form-control {
+  @apply m-0 border-none bg-white overflow-hidden;
+}

@@ -3,7 +3,8 @@ module Manage
     before_action :set_post, only: [:show, :edit, :update, :destroy]
 
     def index
-      @posts = policy_scope(Post).page(params[:page])
+      @posts = policy_scope(Post).includes(:post_categories).page(params[:page])
+      @post_categories = policy_scope(PostCategory).all
     end
 
     def show

@@ -20,7 +20,7 @@ en:
         destroy: 'Are you sure?'
       buttons:
         edit: 'Edit'
-        destroy: 'Destroy'
+        destroy: 'Delete app'
         submit: 'Submit'
         cancel: 'Cancel'
         authorize: 'Authorize'
@@ -46,11 +46,11 @@ en:
         title: 'New Application'
       show:
         title: 'Application: %{name}'
-        application_id: 'Application Id'
-        secret: 'Secret'
+        application_id: 'Client ID'
+        secret: 'Client Secret'
         scopes: 'Scopes'
-        confidential: 'Confidential'
-        callback_urls: 'Callback urls'
+        confidential: 'Confidentiality'
+        callback_urls: 'Callback URLs'
         actions: 'Actions'
 
     authorizations:
@@ -62,7 +62,7 @@ en:
       new:
         title: 'Authorization required'
         prompt: 'Authorize %{client_name} to use your account?'
-        able_to: 'This application will be able to'
+        able_to: 'This application will be able to do these operations on your behalf'
       show:
         title: 'Authorization code'
 

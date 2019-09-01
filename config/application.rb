@@ -46,7 +46,7 @@ module Resumis
 
     config.to_prepare do
       Doorkeeper::ApplicationsController.layout "manage"
-      Doorkeeper::AuthorizationsController.layout "bare"
+      Doorkeeper::AuthorizationsController.layout "application"
       Doorkeeper::AuthorizedApplicationsController.layout "manage"
     end
   end

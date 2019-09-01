@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/maxfierke/active_link_to.git
+  revision: 531501e8ea97dac6014824182d8bc7fdba147c14
+  tag: v1.0.6-pre_reduce_object_allocations
+  specs:
+    active_link_to (1.0.6.pre1allocreduction)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,24 +62,9 @@ GEM
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.6.5)
-      execjs
     bcrypt (3.1.12)
-    better_errors (2.5.1)
-      coderay (>= 1.0.0)
-      erubi (>= 1.0.0)
-      rack (>= 0.9.0)
-    binding_of_caller (0.8.0)
-      debug_inspector (>= 0.0.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
-    bootstrap-sass-extras (0.0.7)
-      rails (>= 3.1.0)
-    bootswatch-rails (3.3.5)
-      railties (>= 3.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.27.0)
@@ -98,7 +92,6 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
-    debug_inspector (0.0.3)
     devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -141,8 +134,6 @@ GEM
     fog-xml (0.1.3)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    font-awesome-sass (5.9.0)
-      sassc (>= 1.11)
     formatador (0.2.5)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
@@ -155,10 +146,6 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
-    jquery-rails (4.3.5)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     json (2.1.0)
     jsonapi-renderer (0.2.2)
     kaminari (1.1.1)
@@ -226,6 +213,8 @@ GEM
     rack-cors (1.0.3)
     rack-protection (2.0.5)
       rack
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -241,7 +230,6 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.3)
       sprockets-rails (>= 2.0.0)
-    rails-bootstrap-markdown (2.6.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -288,20 +276,6 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
-    sass (3.7.3)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
-    sassc (2.0.1)
-      ffi (~> 1.9)
-      rake
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -351,6 +325,10 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.8)
       rack (>= 2.0.6)
+    webpacker (4.0.7)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -363,15 +341,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to!
   active_model_serializers (~> 0.10.10)
   acts_as_tenant
-  autoprefixer-rails
-  better_errors
-  binding_of_caller
   bootsnap (>= 1.1.0)
-  bootstrap-sass
-  bootstrap-sass-extras
-  bootswatch-rails
   capybara
   carrierwave
   carrierwave_backgrounder
@@ -381,11 +354,9 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog-aws (~> 3.5)
-  font-awesome-sass (~> 5.9.0)
   friendly_id (~> 5.2.5)
   fuubar
   hiredis
-  jquery-rails (>= 4.0.4)
   kaminari
   listen (~> 3.1.5)
   mini_magick
@@ -398,11 +369,9 @@ DEPENDENCIES
   pundit-matchers (~> 1.6.0)
   rack-cors
   rails (~> 5.2.3)
-  rails-bootstrap-markdown
   redcarpet (>= 3.2.3)
   redis-namespace
   rspec-rails (~> 3.8)
-  sass-rails (~> 5.0.7)
   selenium-webdriver
   sidekiq (< 6)
   sidekiq-failures
@@ -410,6 +379,7 @@ DEPENDENCIES
   thor
   uglifier (>= 4.1)
   unicorn
+  webpacker
   wicked_pdf (~> 1.4)
 
 BUNDLED WITH

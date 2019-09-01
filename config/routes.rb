@@ -46,10 +46,10 @@ Rails.application.routes.draw do
       resources :work_experiences, path: 'experiences/work', concerns: :paginatable
 
       resources :posts, path: 'blog/posts', except: [:show], concerns: :paginatable
-      resources :post_categories, path: 'blog/categories', except: [:show]
+      resources :post_categories, path: 'blog/categories', except: [:index, :show]
       resources :projects, concerns: :paginatable
-      resources :project_statuses, path: 'project/statuses', concerns: :paginatable
-      resources :project_categories, path: 'project/categories', concerns: :paginatable
+      resources :project_statuses, path: 'project/statuses', except: [:index]
+      resources :project_categories, path: 'project/categories', except: [:index]
       resources :skill_categories, path: 'skill/categories', concerns: :paginatable do
         resources :skills, except: [:index]
       end

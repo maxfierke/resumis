@@ -1,0 +1,43 @@
+.card {
+  @apply w-full rounded bg-white overflow-hidden shadow-lg mb-6;
+}
+
+.card-header {
+  @apply px-6 pt-4;
+}
+
+.card-body {
+  @apply px-6 mb-4 text-gray-700 text-base;
+}
+
+.card-actions {
+  @apply bg-gray-200 flex items-center justify-between text-xs font-semibold;
+}
+
+.card-actions > .left {
+  @apply flex justify-start text-left;
+}
+
+.card-actions > .right {
+  @apply flex justify-end text-right;
+}
+
+.card-actions .action-link {
+  @apply uppercase px-6 py-2 text-gray-700;
+}
+
+.card-actions .action-link:hover,
+.card-actions .action-link:focus,
+.card-actions .action-link:active {
+  @apply text-gray-900;
+}
+
+.card-actions .danger-link {
+  @apply uppercase px-6 py-2 text-gray-700;
+}
+
+.card-actions .danger-link:hover,
+.card-actions .danger-link:focus,
+.card-actions .danger-link:active {
+  @apply text-red-900 bg-red-200;
+}

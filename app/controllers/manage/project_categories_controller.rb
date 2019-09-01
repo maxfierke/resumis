@@ -4,15 +4,10 @@ module Manage
 
     respond_to :html, :json
 
-    def index
-      @project_categories = policy_scope(ProjectCategory).page params[:page]
-      respond_with(@project_categories)
-    end
-
     def new
       @project_category = ProjectCategory.new
       authorize @project_category
-      respond_with(@project_category, :location => manage_project_categories_path)
+      respond_with(@project_category, :location => manage_projects_path)
     end
 
     def edit
@@ -22,17 +17,17 @@ module Manage
       @project_category = ProjectCategory.new(project_category_params)
       authorize @project_category
       @project_category.save
-      respond_with(@project_category, :location => manage_project_categories_path)
+      respond_with(@project_category, :location => manage_projects_path)
     end
 
     def update
       @project_category.update(project_category_params)
-      respond_with(@project_category, :location => manage_project_categories_path)
+      respond_with(@project_category, :location => manage_projects_path)
     end
 
     def destroy
       @project_category.destroy
-      respond_with(@project_category, :location => manage_project_categories_path)
+      respond_with(@project_category, :location => manage_projects_path)
     end
 
     private

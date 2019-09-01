@@ -1,6 +1,6 @@
 <% page_title "Manage Users" %>
 
-<table class="table table-striped">
+<table class="listing-table">
   <thead>
     <tr>
       <th>Email</th>
@@ -16,7 +16,7 @@
     <% @users.each do |user| %>
       <tr data-user-id="<%= user.id %>">
         <td>
-          <%= link_to user.email, edit_manage_user_path(user) %>
+          <%= link_to user.email, edit_manage_user_path(user), class: 'underline' %>
         </td>
         <td><%= user.full_name %></td>
         <td><%= user.subdomain %></td>
@@ -24,25 +24,25 @@
         <td>
           <% if user.disabled_at.present? %>
             <span class="label label-danger">
-              <%= icon 'fas', 'times', '' %> Disabled
+              <%= icon 'fas', 'times h-4 w-4 inline-block mr-1', 'Disabled' %>
             </span>
           <% elsif user.locked_at.present? %>
             <span class="label label-warning">
-              <%= icon 'fas', 'lock', '' %> Locked
+              <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Locked' %>
             </span>
           <% else %>
             <span class="label label-success">
-              <%= icon 'fas', 'check', '' %> Active
+              <%= icon 'fas', 'check h-4 w-4 inline-block mr-1', 'Active' %>
             </span>
           <% end %>
         </td>
         <td>
-          <%= link_to edit_manage_user_path(user), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt', '' %> Edit
-          <% end %>
-          <%= link_to manage_user_path(user), method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times', '' %> Delete
-          <% end %>
+          <%= link_to edit_manage_user_path(user), class: 'btn btn-link -ml-4' do -%>
+            Edit
+          <%- end -%>
+          <%= link_to manage_user_path(user), class: 'btn btn-link link-danger', method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' } do -%>
+            Delete
+          <%- end -%>
         </td>
       </tr>
     <% end %>

@@ -1,61 +1,72 @@
-<h2>User Settings</h2>
+<% page_title 'User Settings' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="flex flex-col mx-auto w-full max-w-lg">
+  <main role="main" class="border-t-4 border-blue-700 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, class: 'control-label' %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <h4>Change Password</h4>
+      <h1 class="text-lg mb-4">Change Password</h1>
 
-  <div class="form-group">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password, class: 'control-label' %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        <div class="help-block">
+          Leave blank if you don't want to change it.
+        </div>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: 'control-label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
 
-  <% if ResumisConfig.multi_tenant? %>
+      <% if ResumisConfig.multi_tenant? %>
+        <h2 class="text-lg mb-4">Domain Settings</h2>
 
-  <h4>Domain Settings</h4>
+        <div class="form-group">
+          <%= f.label :subdomain, class: 'control-label' %>
+          <%= f.text_field :subdomain, class: 'form-control' %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :subdomain %>
-    <%= f.text_field :subdomain, class: 'form-control' %>
-  </div>
+        <div class="form-group">
+          <%= f.label :domain, class: 'control-label' %>
+          <%= f.text_field :domain, class: 'form-control' %>
+          <p class="help-block">
+            To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
+          </p>
+        </div>
+      <% end %>
 
-  <div class="form-group">
-    <%= f.label :domain %>
-    <%= f.text_field :domain, class: 'form-control' %>
-    <p class="help-block">
-      To get this to work, assign the domain's CNAME record to <code><%= ResumisConfig.canonical_host %></code>
-    </p>
-  </div>
+      <div class="border-t border-gray-200 my-4"></div>
 
-  <% end %>
+      <div class="form-group">
+        <%= f.label :current_password, class: 'control-label' %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
 
-  <hr />
+        <div class="help-block">
+          We need your current password to confirm your changes
+        </div>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-  </div>
+      <%= f.submit "Update", class: 'btn btn-primary w-full block' %>
+    <% end %>
 
-  <%= f.submit "Update", class: 'btn btn-primary btn-lg' %>
-<% end %>
-
-<% if request.referrer %>
-  <hr />
-  <%= link_to request.referrer, class: 'btn btn-default' do %>
-    Back
-  <% end %>
-<% end %>
+    <% if request.referrer %>
+      <div class="border-t border-gray-200 my-4"></div>
+      <div class="mt-6 -ml-4">
+        <%= link_to request.referrer, class: 'btn btn-link' do %>
+          Back
+        <% end %>
+      </div>
+    <% end %>
+  </main>
+</div>

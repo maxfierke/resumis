@@ -1,0 +1,62 @@
+.btn {
+  @apply font-bold px-4 py-2 rounded;
+}
+
+.btn-xs {
+  @apply px-2 py-1 text-xs;
+}
+
+.btn-sm {
+  @apply px-3 py-2 text-sm;
+}
+
+
+.btn-md {
+  @apply px-6 py-4 text-xl;
+}
+
+.btn-lg {
+  @apply px-10 py-8 text-2xl;
+}
+
+.btn.disabled,
+.btn[disabled],
+.btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.btn-link {
+  @apply underline;
+}
+
+.btn-default {
+  @apply bg-gray-700 text-white;
+}
+
+.btn-default:hover {
+  @apply bg-gray-900;
+}
+
+.btn-primary {
+  @apply bg-blue-700 text-white;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-900;
+}
+
+.btn-success {
+  @apply bg-green-700 text-white;
+}
+
+.btn-success:hover {
+  @apply bg-green-900;
+}
+
+.btn-danger {
+  @apply bg-red-700 text-white;
+}
+
+.btn-danger:hover {
+  @apply bg-red-900;
+}

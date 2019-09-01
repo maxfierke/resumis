@@ -1,38 +1,51 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<%= root_path %>">
-        <% if current_tenant %>
-          <%= current_tenant.first_name %> <strong><%= current_tenant.last_name %></strong>
-        <% else %>
-          Resumis
-        <% end %>
-      </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? and current_tenant == current_user %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <%= image_tag current_user.avatar_url, height: 18, class: "inline-block img-rounded" %><span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Manage Site", manage_dashboard_path %></li>
-            <li><%= link_to "Settings", edit_user_registration_url %></li>
-            <li><%= link_to "Logout", destroy_user_session_url, :method => 'DELETE' %></li>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+<nav class="flex flex-initial items-center justify-between flex-wrap bg-gray-900 text-white px-10 py-4" role="navigation">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <span class="font-semibold text-xl tracking-tight">
+      <%= link_to 'Resumis', manage_dashboard_path, class: 'hover:underline' -%>
+    </span>
   </div>
+  <% if content_for?(:title) %>
+    <button type="button" class="appearance-none flex items-center text-center text-lg nav-menu nav-menu-dropdown-toggle md:pointer-events-none md:cursor-pointer">
+      <%= yield(:title) %>
+      <%= icon 'fas', 'angle-down fa-fw h-5 w-5 inline-block ml-2 md:hidden' %>
+    </button>
+  <% end %>
+
+  <%- if user_signed_in? -%>
+    <div class="user-menu">
+      <button class="appearance-none user-menu-dropdown-toggle flex items-center" type="button">
+        <span class="hidden md:inline">
+          <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
+        </span>
+        <div>
+          <%= image_tag current_user.avatar_url, class: 'h-10 rounded-full ml-4' %>
+        </div>
+      </button>
+      <nav class="user-menu-dropdown hidden" role="menu">
+        <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank', class: 'nav-link' do %>
+          <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'View Site' %>
+        <% end %>
+        <%= link_to manage_edit_profile_path, class: 'nav-link' do %>
+          <%= icon 'fas', 'pencil-alt fa-fw h-5 w-5 inline-block mr-4', 'Edit Profile' %>
+        <% end %>
+        <%= link_to edit_user_registration_path, class: 'nav-link' do %>
+          <%= icon 'fas', 'user-circle fa-fw h-5 w-5 inline-block mr-4', 'Account Settings' %>
+        <% end %>
+        <%= link_to destroy_user_session_url, method: 'DELETE', class: 'nav-link' do %>
+          <%= icon 'fas', 'sign-out-alt fa-fw h-5 w-5 inline-block mr-4', 'Logout' %>
+        <% end %>
+      </nav>
+    </div>
+  <% else %>
+    <div class="block flex-initial flex items-center justify-end">
+      <%= link_to new_user_session_url, class: "btn btn-link" do %>
+        Login to Resumis
+      <% end %>
+      <% if Devise.mappings[:user].registerable? && ResumisConfig.multi_tenant? %>
+        <%= link_to new_user_registration_url, class: "btn btn-primary" do %>
+          Sign Up
+        <% end %>
+      <% end %>
+    </div>
+  <%- end -%>
 </nav>

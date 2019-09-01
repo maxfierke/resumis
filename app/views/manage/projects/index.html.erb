@@ -1,53 +1,99 @@
 <% page_title "Projects" %>
 
-<div class="list-group">
-  <% @projects.each do |project| %>
-    <div class="list-group-item">
-      <div class="row">
-        <div class="col-xs-10 col-sm-11">
-          <h4>
-            <%= link_to edit_manage_project_path(project) do %>
-              <%= project.name -%>
-            <% end %>
+<div class="flex flex-col lg:flex-row">
+  <div class="flex flex-col lg:w-3/4 lg:mr-2">
+    <% @projects.each do |project| %>
+      <div class="card">
+        <header class="card-header">
+          <div class="flex items-center justify-between mb-4">
+            <h1 class="text-xl">
+              <%= link_to edit_manage_project_path(project), class: 'underline' do %>
+                <%= project.name -%>
+              <% end %>
+            </h1>
+
             <% if project.status %>
               <span class="project-status label label-default label-<%= project.status.slug %>">
                 <%= project.status.name %>
               </span>
             <% end %>
-          </h4>
-          <h6 class="text-muted">
-            Updated <%= time_ago_in_words(project.updated_at) %> ago
-          </h6>
-        </div>
-        <div class="col-xs-2 col-sm-1">
-          <%= link_to edit_manage_project_path(project), class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'pencil-alt', '' %>
+          </div>
+        </header>
+
+        <div class="card-body">
+          <% project.project_categories.each do |project_category| %>
+            <span class="label label-default rounded-full mr-2 mb-2">
+              <%= project_category.name -%>
+            </span>
           <% end %>
-          <%= link_to manage_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' do %>
-            <%= icon 'fas', 'times', '' %>
-          <% end %>
+
+          <div class="rich-text-content">
+            <%= markdown(project.description) %>
+          </div>
         </div>
+
+        <footer class="card-actions">
+          <div class="left">
+            <span class="px-6 py-2 text-gray-700">
+              Updated <%= time_ago_in_words(project.updated_at) %> ago
+            </span>
+          </div>
+          <div class="right">
+            <%= link_to edit_manage_project_path(project), class: 'action-link' do %>
+              <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>
+            <% end %>
+            <%= link_to manage_project_path(project), class: 'danger-link', method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon 'fas', 'times inline-block mr-1', 'Delete' %>
+            <% end %>
+          </div>
+        </footer>
       </div>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col w-full lg:w-1/4 lg:pl-8">
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Project Categories</h1>
+
+      <% @project_categories.each do |project_category| %>
+        <div class="mb-2">
+          <%= link_to edit_manage_project_category_path(project_category), class: 'underline' do -%>
+            <%= project_category.name -%>
+          <%- end -%>
+          <%= link_to manage_project_category_path(project_category), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= icon 'fas', 'times h-3 w-3 inline-block', title: 'Delete' %>
+          <%- end -%>
+        </div>
+      <% end %>
+
+      <%= link_to "Add category", new_manage_project_category_path, class: 'btn btn-link block -ml-4' %>
     </div>
-  <% end %>
+
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Project Statuses</h1>
+
+      <% @project_statuses.each do |project_status| %>
+        <span class="project-status label label-default label-<%= project_status.slug %> mr-2 mb-2">
+          <%= link_to edit_manage_project_status_path(project_status), class: 'hover:underline' do -%>
+            <%= project_status.name -%>
+          <%- end -%>
+          <%= link_to manage_project_status_path(project_status), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+            <%= icon 'fas', 'times h-3 w-3 inline-block', title: 'Delete' %>
+          <%- end -%>
+        </span>
+      <% end %>
+
+      <%= link_to "Add status", new_manage_project_status_path, class: 'btn btn-link block -ml-4' %>
+    </div>
+  </div>
 </div>
+
+
 
 <% content_for :actionbar_left do %>
   <%= paginate @projects %>
 <% end %>
 
 <% content_for :actionbar_right do %>
-<div class="btn-group dropup">
-  <%= link_to new_manage_project_path, class: 'btn btn-primary' do %>
-    <%= icon 'fas', 'plus', 'Add' %>
-  <% end %>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu right" role="menu">
-    <li><%= link_to "New Project", new_manage_project_path %></li>
-    <li><%= link_to "New Project Category", new_manage_project_category_path %></li>
-  </ul>
-</div>
+  <%= link_to "New Project", new_manage_project_path, class: 'btn btn-primary' %>
 <% end %>

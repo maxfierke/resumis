@@ -1,0 +1,64 @@
+.rich-text-content {
+  @apply max-w-full break-words;
+}
+
+.rich-text-content h1 {
+  @apply text-2xl font-bold;
+}
+.rich-text-content h2 {
+  @apply text-xl font-semibold;
+}
+
+.rich-text-content h3 {
+  @apply text-lg font-bold;
+}
+
+.rich-text-content h4 {
+  @apply text-lg font-semibold;
+}
+
+.rich-text-content h5 {
+  @apply text-lg font-semibold;
+}
+
+.rich-text-content h6 {
+  @apply font-medium;
+}
+
+.rich-text-content a {
+  @apply text-gray-700 underline;
+}
+
+.rich-text-content a:hover,
+.rich-text-content a:active {
+  @apply text-gray-900;
+}
+
+.rich-text-content code,
+.rich-text-content kbd {
+  @apply rounded-sm bg-gray-200 text-gray-700 px-2 py-1;
+}
+
+.rich-text-content p {
+  @apply pb-4 leading-loose;
+}
+
+.rich-text-content blockquote {
+  @apply bg-gray-200 border-l-4 border-gray-400 text-gray-700 px-5 pt-3 -ml-6 -mr-6 my-2;
+}
+
+.rich-text-content img {
+  @apply w-full p-1 border border-gray-900 bg-gray-200;
+}
+
+.rich-text-content ol {
+  @apply list-inside list-decimal pl-4;
+}
+
+.rich-text-content ul {
+  @apply list-inside list-disc pl-4;
+}
+
+.rich-text-content li {
+  @apply mb-2;
+}

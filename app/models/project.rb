@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  paginates_per 10
+
   belongs_to :project_status
   belongs_to :user
   has_many :project_category_joinings

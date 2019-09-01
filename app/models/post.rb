@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
+  paginates_per 10
+
   # we belong to user and are treated as an object of a tenant
   belongs_to :user
   acts_as_tenant(:user)

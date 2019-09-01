@@ -1,4 +1,6 @@
 class WorkExperience < ActiveRecord::Base
+  paginates_per 10
+
   belongs_to :user
   has_many :resume_work_experiences
   has_many :resumes, through: :resume_work_experiences, dependent: :destroy

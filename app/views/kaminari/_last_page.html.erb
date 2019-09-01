@@ -1,3 +1,6 @@
-<li>
-  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, {:remote => remote} %>
-</li>
+<%= link_to_unless current_page.last?,
+  raw(t 'views.pagination.last'),
+  url,
+  remote: remote,
+  class: 'text-blue-700 hover:text-blue-900 px-4 py-2'
+%>

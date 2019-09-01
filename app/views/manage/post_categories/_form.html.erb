@@ -1,12 +1,15 @@
 <%= form_for([:manage, @post_category]) do |f| %>
   <% if @post_category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post_category.errors.count, "error") %> prohibited this category from being saved:</h2>
+    <div class="alert alert-danger" role="alert">
+      <strong class="font-bold">
+        <%= pluralize(@post_category.errors.count, "error") %>
+        prohibited this category from being saved:
+      </strong>
 
-      <ul>
-      <% @post_category.errors.full_messages.each do |message| %>
+      <ul class="list-disc list-inside">
+      <%- @post_category.errors.full_messages.each do |message| -%>
         <li><%= message %></li>
-      <% end %>
+      <%- end -%>
       </ul>
     </div>
   <% end %>
@@ -19,7 +22,7 @@
   <div class="actionbar actionbar-fixed-bottom">
     <div class="actionbar-left">
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  manage_post_categories_path, :class => 'btn btn-default' %>
+                  manage_posts_path, :class => 'btn btn-default' %>
     </div>
     <div class="actionbar-right">
       <%= f.submit nil, :class => 'btn btn-primary' %>

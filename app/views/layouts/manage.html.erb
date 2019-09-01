@@ -3,208 +3,90 @@
   <head>
     <%= render :partial => 'shared/head' %>
     <title><%= content_for?(:title) ? yield(:title) : "Resumis" %></title>
-    <%= stylesheet_link_tag "manage", :media => "all" %>
-    <%= javascript_include_tag "manage" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="sidebar-toggle" data-toggle="collapse" data-target=".sidebar">
-            <span class="sr-only">Toggle Sidebar</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" href="<%= manage_dashboard_path %>">
-            Resumis
-          </a>
-          <% if content_for?(:title) %>
-          <p class="navbar-text navbar-title">
-            <%= yield(:title) %>
-          </p>
+  <body class="bg-gray-100 antialiased flex flex-col min-h-screen">
+    <%= render :partial => 'shared/navbar' %>
+
+    <div class="flex flex-wrap flex-1 overflow-hidden">
+      <aside class="w-full bg-gray-800 text-white hidden nav-menu-dropdown md:w-1/4 xl:w-1/6 md:flex md:flex-col">
+        <nav class="nav-tiles">
+          <%= active_link_to manage_dashboard_path, class: 'nav-link', active: :exclusive do %>
+            <%= icon 'fas', 'tachometer-alt fa-fw h-5 w-5 inline-block mr-4', 'Dashboard' %>
           <% end %>
-        </div>
-
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav navbar-right">
-
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div>
-    </nav>
-    <div class="manage-container">
-      <aside class="sidebar collapse">
-        <nav>
-          <ul class="nav nav-tiles nav-stacked">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= image_tag current_user.avatar_url, height: 23, class: 'img-rounded' %>
-                <span class="expanded-only">
-                  <%= current_user.first_name %> <strong><%= current_user.last_name %></strong>
-                </span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <%= link_to "#{request.protocol}#{tenant_instance_hostname(current_user)}", target: '_blank' do %>
-                    <%= icon 'fas', 'external-link-alt fa-fw', 'View Site' %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to manage_edit_profile_path do %>
-                    <%= icon 'fas', 'pencil-alt fa-fw', 'Edit Profile' %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to edit_user_registration_path do %>
-                    <%= icon 'fas', 'user-circle fa-fw', 'Account Settings' %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to destroy_user_session_url, :method => 'DELETE' do %>
-                    <%= icon 'fas', 'sign-out-alt fa-fw', 'Logout' %>
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <%= link_to manage_dashboard_path do %>
-                <%= icon 'fas', 'tachometer-alt', '', class: 'fa-fw' %>
-                <span class="expanded-only">Dashboard</span>
-              <% end %>
-            </li>
-            <li class="dropdown" role="presentation">
-              <%= link_to "#", class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                <%= icon 'fas', 'paragraph', '', class: 'fa-fw' %>
-                <span class="expanded-only">Blog</span>
-              <% end %>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to manage_posts_path do %>
-                    <%= icon 'fas', 'pencil-alt', '', class: 'fa-fw' %>
-                    <span class="expanded-only">Posts</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to manage_post_categories_path do %>
-                    <%= icon 'fas', 'folder', '', class: 'fa-fw' %>
-                    <span class="expanded-only">Post Categories</span>
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown" role="presentation">
-              <%= link_to manage_projects_path, class: 'dropdown-toggle', :'data-toggle' => 'dropdown', role: 'button', :'aria-expanded' => 'false' do %>
-                <%= icon 'fas', 'gem', '', class: 'fa-fw' %>
-                <span class="expanded-only">Projects</span>
-              <% end %>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Projects", manage_projects_path %></li>
-                <li><%= link_to "Project Categories", manage_project_categories_path %></li>
-                <li><%= link_to "Project Statuses", manage_project_statuses_path %></li>
-              </ul>
-            </li>
-            <li>
-              <%= link_to manage_resumes_path do %>
-                <%= icon 'far', 'file-alt', '', class: 'fa-fw' %>
-                <span class="expanded-only">CVs</span>
-              <% end %>
-            </li>
-            <li class="dropdown" role="presentation">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'fas', 'road', '', class: 'fa-fw' %>
-                <span class="expanded-only">Experiences</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to manage_education_experiences_path do %>
-                    <%= icon 'fas', 'graduation-cap', '', class: 'fa-fw' %>
-                    <span class="expanded-only">Education</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to manage_skills_path do %>
-                    <%= icon 'fas', 'wrench', '', class: 'fa-fw' %>
-                    <span class="expanded-only">Skills</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to manage_work_experiences_path do %>
-                    <%= icon 'fas', 'suitcase', '', class: 'fa-fw' %>
-                    <span class="expanded-only">Work</span>
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-            <% if current_user.admin? %>
-            <li class="dropdown" role="presentation" data-test-key="nav-admin-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= icon 'fas', 'shield-alt', '', class: 'fa-fw' %>
-                <span class="expanded-only">Administration</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to oauth_applications_url(host: ResumisConfig.canonical_host) do %>
-                    <%= icon 'fas', 'exchange-alt', '', class: 'fa-fw' %> OAuth2 Applications
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), target: '_blank' do %>
-                    <%= icon 'fas', 'external-link-alt', '', class: 'fa-fw' %> Sidekiq UI
-                  <% end %>
-                </li>
-                <% if ResumisConfig.multi_tenant? %>
-                  <li>
-                    <%= link_to manage_users_path(host: ResumisConfig.canonical_host) do %>
-                      <%= icon 'fas', 'users', '', class: 'fa-fw' %> Users
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
+          <%= active_link_to manage_posts_path, class: 'nav-link', active: :inclusive do -%>
+            <%= icon 'fas', 'paragraph fa-fw h-5 w-5 inline-block mr-4', 'Blog' %>
+          <%- end -%>
+          <%= active_link_to manage_projects_path, class: 'nav-link', active: :inclusive do %>
+            <%= icon 'fas', 'gem fa-fw h-5 w-5 inline-block mr-4', 'Projects' %>
+          <% end %>
+          <%= active_link_to manage_resumes_path, class: 'nav-link', active: :inclusive do %>
+            <%= icon 'far', 'file-alt fa-fw h-5 w-5 inline-block mr-4', 'CVs' %>
+          <% end %>
+          <div class="text-gray-500 text-sm uppercase px-6 py-2">
+            Experiences
+          </div>
+          <%= active_link_to manage_education_experiences_path, class: 'nav-link', active: :inclusive do %>
+            <%= icon 'fas', 'graduation-cap fa-fw h-5 w-5 inline-block mr-4', 'Education' %>
+          <% end %>
+          <%= active_link_to manage_skills_path, class: 'nav-link', active: /^\/manage\/skills?/ do %>
+            <%= icon 'fas', 'wrench fa-fw h-5 w-5 inline-block mr-4', 'Skills' %>
+          <% end %>
+          <%= active_link_to manage_work_experiences_path, class: 'nav-link', active: :inclusive do %>
+            <%= icon 'fas', 'suitcase fa-fw h-5 w-5 inline-block mr-4', 'Work' %>
+          <% end %>
+          <%- if current_user.admin? -%>
+            <div class="text-gray-500 text-sm uppercase px-6 py-2">
+              Administration
+            </div>
+            <%= active_link_to oauth_applications_url(host: ResumisConfig.canonical_host), class: 'nav-link', active: /^\/api\/oauth2/ do %>
+              <%= icon 'fas', 'exchange-alt fa-fw h-5 w-5 inline-block mr-4', 'API Apps' %>
             <% end %>
-          </ul>
+            <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), class: 'nav-link', target: '_blank' do %>
+              <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'Sidekiq UI' %>
+            <% end %>
+            <%- if ResumisConfig.multi_tenant? -%>
+              <%= active_link_to manage_users_path(host: ResumisConfig.canonical_host), class: 'nav-link', active: :inclusive do %>
+                <%= icon 'fas', 'users fa-fw h-5 w-5 inline-block mr-4', 'Users' %>
+              <% end %>
+            <%- end -%>
+          <%- end -%>
         </nav>
-        <footer class="text-muted text-center">
-          <p class="expanded-only">Powered by
-            <a href="https://github.com/maxfierke/resumis">
+        <footer class="px-10 py-4 text-sm text-gray-500">
+          <p>
+            Powered by
+            <a href="https://github.com/maxfierke/resumis" class="underline">
               Resumis
             </a>
           </p>
-          <p class="expanded-only">
-            Built with <%= icon 'fas', 'heart', '', title: 'love' %> by
-            <a href="https://www.maxfierke.com">Max Fierke</a>
-          </p>
-          <a class="collapsed-only" href="https://github.com/maxfierke/resumis">
-            <%= icon 'fas', 'wrench', '', title: 'love' %><br />
-            <%= icon 'fas', 'heart', '', title: 'love' %><br />
-            Max
-          </a>
         </footer>
       </aside>
 
-      <div class="manage-col-right container-fluid">
-        <div class="row">
-          <div class="col-xs-12">
-            <%= bootstrap_flash %>
+      <div class="w-full md:w-3/4 xl:w-5/6 px-10 py-10 pb-20">
+        <div class="flex">
+          <div class="w-full">
+            <%= render_alerts %>
             <%= yield %>
           </div>
         </div>
-        <% if content_for?(:actionbar_left) || content_for?(:actionbar_right) %>
-        <div class="actionbar actionbar-fixed-bottom">
-          <% if content_for?(:actionbar_left) %>
-          <div class="actionbar-left">
-            <%= yield(:actionbar_left) %>
-          </div>
-          <% end %>
-          <% if content_for?(:actionbar_right) %>
-          <div class="actionbar-right">
-            <%= yield(:actionbar_right) %>
-          </div>
+
+        <div class="flex">
+          <% if content_for?(:actionbar_left) || content_for?(:actionbar_right) %>
+            <div class="actionbar actionbar-fixed-bottom">
+              <div class="actionbar-left">
+                <% if content_for?(:actionbar_left) %>
+                  <%= yield(:actionbar_left) %>
+                <% end %>
+              </div>
+              <div class="actionbar-right">
+                <% if content_for?(:actionbar_right) %>
+                  <%= yield(:actionbar_right) %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </body>

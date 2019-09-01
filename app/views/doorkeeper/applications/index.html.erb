@@ -1,28 +1,38 @@
 <% page_title t('.title') %>
 
-<table class="table table-striped">
+<table class="listing-table">
   <thead>
-  <tr>
-    <th><%= t('.name') %></th>
-    <th><%= t('.callback_url') %></th>
-    <th><%= t('.confidential') %></th>
-    <th>Actions</th>
-  </tr>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.callback_url') %></th>
+      <th><%= t('.confidential') %></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
-  <% @applications.each do |application| %>
+  <%- @applications.each do |application| -%>
     <tr id="application_<%= application.id %>">
-      <td><%= link_to application.name, oauth_application_path(application) %></td>
-      <td><%= application.redirect_uri %></td>
-      <td><%= application.confidential? ? t('doorkeeper.applications.index.confidentiality.yes') : t('doorkeeper.applications.index.confidentiality.no') %></td>
+      <td><%= link_to application.name, oauth_application_path(application), class: 'underline' -%></td>
+      <td class="font-mono"><%= simple_format(application.redirect_uri) -%></td>
       <td>
-        <%= link_to edit_oauth_application_path(application), class: 'btn btn-link' do %>
-          <%= t('doorkeeper.applications.buttons.edit') %>
-        <% end %>
-        <%= render 'delete_form', application: application %>
+        <%- if application.confidential? -%>
+          <span class="label label-danger">
+            <%= icon 'fas', 'lock h-4 w-4 inline-block mr-1', 'Requires secret' %>
+          </span>
+        <%- else -%>
+          <span class="label label-success">
+            <%= icon 'fas', 'globe-americas h-4 w-4 inline-block mr-1', 'Public' %>
+          </span>
+        <%- end -%>
+      </td>
+      <td class="uppercase font-semibold text-right">
+        <%= link_to edit_oauth_application_path(application), class: 'hover:underline mr-4' do -%>
+          <%= t('doorkeeper.applications.buttons.edit') -%>
+        <%- end -%>
+        <%= render 'delete_form', application: application, submit_btn_css: 'link-danger hover:underline' -%>
       </td>
     </tr>
-  <% end %>
+  <%- end -%>
   </tbody>
 </table>
 

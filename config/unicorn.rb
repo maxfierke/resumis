@@ -1,25 +1,26 @@
 require_relative './application'
 
-home = ENV["RESUMIS_DEPLOY_ROOT"]
+home = ENV["RESUMIS_DEPLOY_ROOT"].presence
 port = ENV["RESUMIS_HTTP_PORT"].presence || ENV["PORT"]
 
 unless port.present?
   listen "/tmp/resumis-unicorn.sock", backlog: 64
-  worker_processes 2
 else
   listen port, tcp_nopush: true
-  worker_processes 1
 end
 
 preload_app true
-timeout 30
+timeout 15
+worker_processes 2
 
 Unicorn::Configurator::DEFAULTS[:logger].formatter = Logger::Formatter.new
 
 stderr_path "log/unicorn.log"
 stdout_path "log/unicorn.log"
 
-pid "#{home}/shared/pids/unicorn.pid"
+if home
+  pid "#{home}/shared/pids/unicorn.pid"
+end
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!

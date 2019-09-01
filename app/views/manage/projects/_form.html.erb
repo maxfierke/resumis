@@ -1,89 +1,84 @@
 <%= form_for [:manage, @project] do |f| %>
-  <div class="row">
-    <div class="col-md-8">
+  <div class="flex">
+    <div class="w-full md:w-3/4 mr-3">
       <div class="form-group">
-        <%= f.label :name, :class => 'control-label' %>
-        <%= f.text_field :name, :class => 'text_field form-control' %>
+        <%= f.label :name, class: 'control-label' %>
+        <%= f.text_field :name, class: 'text_field form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :short_description, :class => 'control-label' %>
-        <%= f.text_field :short_description, :class => 'text_field form-control' %>
+        <%= f.label :short_description, class: 'control-label' %>
+        <%= f.text_field :short_description, class: 'text_field form-control' %>
       </div>
       <div class="form-group">
-        <%= f.text_area :description, :class => 'text_field form-control', :rows => '6', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
+        <%= f.text_area :description, class: 'text_field form-control', :rows => '6', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
       </div>
     </div>
-    <aside class="col-md-4">
-      <div class="panel panel-default">
-        <header class="panel-heading">
-          <h3 class="panel-title">
-            Project Details
-          </h3>
-        </header>
-        <div class="panel-body">
-          <div class="form-group">
-            <%= f.label :start_date, :class => 'control-label' %>
-            <div>
-              <%= f.date_select :start_date, { start_year: 2005, end_year: Date.today.year }, :class => 'form-control inline-block', :style => 'max-width: 100px;' %>
-            </div>
+    <aside class="md:w-4/12 pl-3">
+      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <h3 class="font-medium mb-4 text-gray-700">Project Details</h3>
+
+        <div class="form-group">
+          <%= f.label :start_date, class: 'control-label' %>
+          <div class="flex justify-between">
+            <%= f.date_select :start_date, { start_year: 2005, end_year: Date.today.year }, class: 'form-control' %>
           </div>
-          <div class="form-group">
-            <%= f.label :end_date, :class => 'control-label' %>
-            <div>
-              <%= f.date_select :end_date, { :include_blank => true, start_year: 2005, end_year: Date.today.year }, { :class => 'form-control inline-block', :style => 'max-width: 100px;' } %>
-            </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_date, class: 'control-label' %>
+          <div class="flex justify-between">
+            <%= f.date_select :end_date, { :include_blank => true, start_year: 2005, end_year: Date.today.year }, { class: 'form-control' } %>
           </div>
-          <div class="form-group">
-            <%= f.label :project_status_id, :class => 'control-label' %>
-            <%= f.collection_select :project_status_id, ProjectStatus.all, :id, :name, {}, :class => 'text_field form-control' %>
-          </div>
-          <div class="form-check">
-            <%= f.label :featured, :class => 'form-check-label' do  %>
-              <%= f.check_box :featured, :class => 'text_field form-check-input' %> Featured
+        </div>
+        <div class="form-group">
+          <%= f.label :project_status_id, class: 'control-label' %>
+          <%= f.collection_select :project_status_id, ProjectStatus.all, :id, :name, {}, class: 'text_field form-control' %>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <%= f.label :featured do  %>
+              <%= f.check_box :featured, class: 'form-checkbox' %> Featured
             <% end %>
           </div>
-          <br />
-          <%= f.submit nil, :class => 'btn btn-primary btn-block' %>
-          <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                          manage_projects_path, :class => 'btn btn-default btn-block' %>
-          <% unless @project.new_record? %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          manage_project_path(@project), :method => 'DELETE', data: { confirm: 'Are you sure?' }, :class => 'btn btn-link btn-block link-danger' %>
+        </div>
+      </div>
+      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <h3 class="font-medium mb-4 text-gray-700">Project Categories</h3>
+
+        <div class="flex flex-col">
+          <%= f.collection_check_boxes(:project_category_ids,  ProjectCategory.order("name ASC"), :id, :name,
+            { :selected => @project.project_category_ids }, { :multiple => true } ) do |b| %>
+            <div class="checkbox">
+              <%= b.label do  %>
+                <%= b.check_box(class: 'form-checkbox') %> <%= b.text %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
-      <div class="panel panel-default">
-        <header class="panel-heading">
-          <h3 class="panel-title">Project Categories</h3>
-        </header>
-        <div class="panel-body">
-          <ul class="list-unstyled">
-            <%= f.collection_check_boxes(:project_category_ids,  ProjectCategory.order("name ASC"), :id, :name,
-              { :selected => @project.project_category_ids }, { :multiple => true } ) do |b| %>
-              <li>
-                <%= b.label(class: "checkbox-inline") do %>
-                  <%= b.check_box %>
-                  <%= b.text %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <header class="panel-heading">
-          <h3 class="panel-title">Project Links</h3>
-        </header>
-        <div class="panel-body">
-          <div class="form-group">
-            <%= f.label :github_url, :class => 'control-label' %>
-            <div class="input-group">
-              <span class="input-group-addon">github.com/</span>
-              <%= f.text_field :github_url, :class => 'text_field form-control' %>
-            </div>
+      <div class="w-full rounded bg-white overflow-hidden shadow-lg px-6 py-4 mb-6">
+        <h3 class="font-medium mb-4 text-gray-700">Project Links</h3>
+
+        <div class="form-group">
+          <%= f.label :github_url, class: 'control-label' %>
+          <div class="input-group">
+            <span class="input-group-addon">github.com/</span>
+            <%= f.text_field :github_url, class: 'text_field form-control' %>
           </div>
         </div>
       </div>
     </aside>
+  </div>
+
+  <div class="actionbar actionbar-fixed-bottom">
+    <div class="actionbar-left">
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")), manage_projects_path, class: 'btn btn-default' %>
+    </div>
+    <div class="actionbar-right">
+      <% unless @project.new_record? %>
+        <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+          manage_project_path(@project), method: 'DELETE', data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-block link-danger' %>
+      <% end %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

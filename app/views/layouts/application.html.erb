@@ -3,23 +3,24 @@
   <head>
     <%= render :partial => 'shared/head' %>
     <title><%= content_for?(:title) ? yield(:title) : "Resumis" %></title>
-
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-
+  <body class="bg-gray-100 antialiased flex flex-col min-h-screen">
     <%= render :partial => 'shared/navbar' %>
 
-    <div class="container">
-      <%= bootstrap_flash %>
-      <%= yield %>
-    </div>
-
-    <footer class="footer-page">
-      <div class="container">
-        <p>Powered by Resumis</p>
+    <div class="w-full flex-1">
+      <div class="container mx-auto px-4 py-6">
+        <%= render_alerts %>
+        <%= yield %>
       </div>
-    </footer>
+      <footer class="flex-initial">
+        <div class="container mx-auto">
+          <p class="text-gray-700 text-center text-sm">
+            Powered by <a href="https://github.com/maxfierke/resumis" class="underline">Resumis</a>
+          </p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
