@@ -47,7 +47,6 @@ FROM ruby:2.6.3-alpine3.9
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \
-    EXECJS_RUNTIME=Disabled \
     NODE_ENV=production \
     RAILS_ENV=production \
     RAILS_SERVE_STATIC_FILES=true \
