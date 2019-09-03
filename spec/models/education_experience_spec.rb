@@ -18,7 +18,7 @@ RSpec.describe EducationExperience, type: :model do
   end
 
   it 'is invalid with an school_name greater than 255 characters' do
-    expect(FactoryBot.build(:education_experience, school_name: Faker::Lorem.characters(256))).not_to be_valid
+    expect(FactoryBot.build(:education_experience, school_name: Faker::Lorem.characters(number: 256))).not_to be_valid
   end
 
   it 'is invalid without a diploma' do
@@ -30,7 +30,7 @@ RSpec.describe EducationExperience, type: :model do
   end
 
   it 'is invalid with a diploma greater than 255 characters' do
-    expect(FactoryBot.build(:education_experience, diploma: Faker::Lorem.characters(256))).not_to be_valid
+    expect(FactoryBot.build(:education_experience, diploma: Faker::Lorem.characters(number: 256))).not_to be_valid
   end
 
   it 'is invalid without a start_date' do

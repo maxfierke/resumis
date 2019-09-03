@@ -17,7 +17,7 @@ RSpec.describe WorkExperience, type: :model do
   end
 
   it 'is invalid with an organization greater than 255 characters' do
-    expect(FactoryBot.build(:work_experience, organization: Faker::Lorem.characters(256))).not_to be_valid
+    expect(FactoryBot.build(:work_experience, organization: Faker::Lorem.characters(number: 256))).not_to be_valid
   end
 
   it 'is invalid without a position' do
@@ -29,7 +29,7 @@ RSpec.describe WorkExperience, type: :model do
   end
 
   it 'is invalid with a position greater than 255 characters' do
-    expect(FactoryBot.build(:work_experience, position: Faker::Lorem.characters(256))).not_to be_valid
+    expect(FactoryBot.build(:work_experience, position: Faker::Lorem.characters(number: 256))).not_to be_valid
   end
 
   it 'is invalid without a start_date' do

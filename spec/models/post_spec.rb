@@ -23,7 +23,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is invalid with a title greater than 60 characters' do
-    long_title = Faker::Lorem.characters(61)
+    long_title = Faker::Lorem.characters(number: 61)
 
     expect(FactoryBot.build(:post, title: long_title)).not_to be_valid
   end
