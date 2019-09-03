@@ -12,7 +12,7 @@ gem 'webpacker'
 gem 'active_model_serializers', '~> 0.10.10'
 
 # ActiveRecord extensions
-gem 'acts_as_tenant'
+gem 'acts_as_tenant', '0.4.3'
 gem 'friendly_id', '~> 5.2.5'
 gem 'nilify_blanks'
 
