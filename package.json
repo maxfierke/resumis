@@ -6,6 +6,7 @@
     "bootstrap": "^3.4.0",
     "bootswatch": "^3.4.0",
     "easymde": "^2.8.0",
+    "open-color": "^1.7.0",
     "rails-ujs": "^5.2.3",
     "tailwindcss": "^1.1.2"
   },
