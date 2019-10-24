@@ -46,9 +46,8 @@ gem 'pager_api', '~> 0.3.2'
 # Sidekiq
 gem 'hiredis'
 gem 'redis-namespace'
-gem 'sidekiq', '< 6'
+gem 'sidekiq', '< 7'
 gem 'sidekiq-failures'
-gem 'sinatra', '~> 2.0.7', :require => nil # for sidekiq web UI
 
 # Web server
 gem 'unicorn'
