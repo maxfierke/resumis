@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import "../css/application.css";
 
-import Rails from 'rails-ujs';
+import Rails from '@rails/ujs';
 import UserMenu from '../js/user-menu';
 import Editor from '../js/editor';
 
