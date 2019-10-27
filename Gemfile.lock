@@ -70,7 +70,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.8)
-    acts_as_tenant (0.4.3)
+    acts_as_tenant (0.4.4)
       rails (>= 4.0)
       request_store (>= 1.0.5)
     addressable (2.7.0)
@@ -325,7 +325,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to!
   active_model_serializers (~> 0.10.10)
-  acts_as_tenant (= 0.4.3)
+  acts_as_tenant (= 0.4.4)
   bootsnap (>= 1.1.0)
   capybara
   carrierwave
