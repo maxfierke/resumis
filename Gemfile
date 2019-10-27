@@ -21,7 +21,7 @@ gem 'active_link_to', git: 'https://github.com/maxfierke/active_link_to.git', ta
 
 # Authentication & Authorization
 gem 'devise', '~> 4.7.1'
-gem 'doorkeeper', '~> 5.1.0'
+gem 'doorkeeper', '~> 5.2.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
