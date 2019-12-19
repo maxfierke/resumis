@@ -2,9 +2,6 @@ language: ruby
 rvm:
   - 2.6.3
 
-node_js:
-  - 10
-
 addons:
   chrome: stable
 
@@ -12,6 +9,8 @@ services:
   - postgresql
 
 before_script:
+  - nvm install 10
+  - nvm use 10
   - gem install brakeman
   - gem install bundler-audit
   - SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precompile
