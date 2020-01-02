@@ -70,7 +70,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
-    acts_as_tenant (0.4.3)
+    acts_as_tenant (0.4.4)
       rails (>= 4.0)
       request_store (>= 1.0.5)
     addressable (2.7.0)
@@ -254,7 +254,7 @@ GEM
     redis-namespace (1.7.0)
       redis (>= 3.0.4)
     regexp_parser (1.6.0)
-    request_store (1.4.1)
+    request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -297,7 +297,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicorn (5.5.1)
       kgio (~> 2.6)
@@ -323,7 +323,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to!
   active_model_serializers (~> 0.10.10)
-  acts_as_tenant (= 0.4.3)
+  acts_as_tenant (= 0.4.4)
   bootsnap (>= 1.1.0)
   capybara
   carrierwave
