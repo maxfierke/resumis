@@ -111,7 +111,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    doorkeeper (5.2.2)
+    doorkeeper (5.2.3)
       railties (>= 5)
     erubi (1.9.0)
     excon (0.71.1)
@@ -297,7 +297,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicorn (5.5.2)
       kgio (~> 2.6)
@@ -330,7 +330,7 @@ DEPENDENCIES
   carrierwave_backgrounder
   database_cleaner
   devise (~> 4.7.1)
-  doorkeeper (~> 5.2.2)
+  doorkeeper (~> 5.2.3)
   factory_bot_rails
   faker
   fog-aws (~> 3.5)
