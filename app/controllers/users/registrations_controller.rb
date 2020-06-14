@@ -57,16 +57,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     if ResumisConfig.multi_tenant?
       manage_dashboard_url(subdomain: resource.subdomain)
-    else
+    elsif ResumisConfig.canonical_host
       manage_dashboard_url(host: ResumisConfig.canonical_host)
+    else
+      manage_dashboard_url
     end
   end
 
   def after_update_path_for(resource)
     if ResumisConfig.multi_tenant?
       manage_dashboard_url(subdomain: resource.subdomain)
-    else
+    elsif ResumisConfig.canonical_host
       manage_dashboard_url(host: ResumisConfig.canonical_host)
+    else
+      manage_dashboard_url
     end
   end
 

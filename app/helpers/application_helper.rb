@@ -28,12 +28,16 @@ module ApplicationHelper
     parser.render(content).html_safe
   end
 
+  def resumis_canonical_host
+    ResumisConfig.canonical_host || request.host_with_port
+  end
+
   def tenant_instance_hostname(tenant, domains_allowed = true)
     if ResumisConfig.multi_tenant?
       return tenant.domain if tenant.domain && domains_allowed
       "#{tenant.subdomain}.#{request.domain}"
     else
-      ResumisConfig.canonical_host
+      resumis_canonical_host
     end
   end
 end

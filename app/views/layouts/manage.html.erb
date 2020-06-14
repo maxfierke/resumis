@@ -40,14 +40,14 @@
             <div class="text-gray-500 text-sm uppercase px-6 py-2">
               Administration
             </div>
-            <%= active_link_to oauth_applications_url(host: ResumisConfig.canonical_host), class: 'nav-link', active: /^\/api\/oauth2/ do %>
+            <%= active_link_to oauth_applications_url(host: resumis_canonical_host), class: 'nav-link', active: /^\/api\/oauth2/ do %>
               <%= icon 'fas', 'exchange-alt fa-fw h-5 w-5 inline-block mr-4', 'API Apps' %>
             <% end %>
-            <%= link_to sidekiq_web_url(host: ResumisConfig.canonical_host), class: 'nav-link', target: '_blank' do %>
+            <%= link_to sidekiq_web_url(host: resumis_canonical_host), class: 'nav-link', target: '_blank' do %>
               <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'Sidekiq UI' %>
             <% end %>
             <%- if ResumisConfig.multi_tenant? -%>
-              <%= active_link_to manage_users_path(host: ResumisConfig.canonical_host), class: 'nav-link', active: :inclusive do %>
+              <%= active_link_to manage_users_path(host: resumis_canonical_host), class: 'nav-link', active: :inclusive do %>
                 <%= icon 'fas', 'users fa-fw h-5 w-5 inline-block mr-4', 'Users' %>
               <% end %>
             <%- end -%>
