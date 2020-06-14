@@ -13,11 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if ResumisConfig.multi_tenant?
-      root_url(subdomain: resource.subdomain)
-    else
-      root_url(host: ResumisConfig.canonical_host)
-    end
+    root_url
   end
 
   def after_sign_out_path_for(resource_or_scope)
