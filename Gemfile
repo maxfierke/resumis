@@ -37,7 +37,7 @@ gem 'mini_magick'
 gem 'redcarpet', '>= 3.2.3'
 
 # Exporting resumes to PDF
-gem 'wicked_pdf', '~> 2.0'
+gem 'wicked_pdf', '~> 2.1'
 
 # Pagination
 gem 'kaminari'
