@@ -20,7 +20,7 @@ gem 'nilify_blanks'
 gem 'active_link_to', git: 'https://github.com/maxfierke/active_link_to.git', tag: 'v1.0.6-pre_reduce_object_allocations'
 
 # Authentication & Authorization
-gem 'devise', '~> 4.7.1'
+gem 'devise', '~> 4.7.2'
 gem 'doorkeeper', '~> 5.4'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
