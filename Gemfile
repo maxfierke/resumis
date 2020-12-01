@@ -13,7 +13,7 @@ gem 'active_model_serializers', '~> 0.10.10'
 
 # ActiveRecord extensions
 gem 'acts_as_tenant', '0.4.3'
-gem 'friendly_id', '~> 5.4.0'
+gem 'friendly_id', '~> 5.4.1'
 gem 'nilify_blanks'
 
 # ActionView extension
