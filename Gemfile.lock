@@ -140,7 +140,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
-    friendly_id (5.4.0)
+    friendly_id (5.4.1)
       activerecord (>= 4.0.0)
     fuubar (2.5.0)
       rspec-core (~> 3.0)
@@ -314,7 +314,7 @@ GEM
       activesupport
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
@@ -333,7 +333,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog-aws (~> 3.6)
-  friendly_id (~> 5.4.0)
+  friendly_id (~> 5.4.1)
   fuubar
   hiredis
   kaminari
