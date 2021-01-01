@@ -9,7 +9,7 @@ gem 'webpacker'
 
 
 # JSON-API
-gem 'active_model_serializers', '~> 0.10.10'
+gem 'active_model_serializers', '~> 0.10.12'
 
 # ActiveRecord extensions
 gem 'acts_as_tenant', '0.4.3'
