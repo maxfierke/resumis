@@ -114,7 +114,7 @@ GEM
     doorkeeper (5.4.0)
       railties (>= 5)
     erubi (1.10.0)
-    excon (0.76.0)
+    excon (0.78.1)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -123,12 +123,12 @@ GEM
     faker (2.14.0)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
-    fog-aws (3.6.7)
+    fog-aws (3.7.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-core (2.2.0)
+    fog-core (2.2.3)
       builder
       excon (~> 0.71)
       formatador (~> 0.2)
@@ -179,7 +179,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
+    mime-types-data (3.2020.1104)
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
@@ -332,7 +332,7 @@ DEPENDENCIES
   doorkeeper (~> 5.4)
   factory_bot_rails
   faker
-  fog-aws (~> 3.6)
+  fog-aws (~> 3.7)
   friendly_id (~> 5.4.1)
   fuubar
   hiredis
