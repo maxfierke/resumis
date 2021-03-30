@@ -61,7 +61,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-rails', '~> 5.0'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
