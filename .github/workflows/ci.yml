@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  security_checks:
+    name: Security Checks
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install ruby and bundled gems
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Install gems
+      run: gem install brakeman bundler-audit
+
+    # Ignore some known issues with very old carrierwave
+    # Low severity, as it requires authentication in what is typically a single
+    # user system.
+    - name: Run bundle-audit
+      run: bundle-audit check --update --ignore CVE-2021-21288 CVE-2021-21305
+
+    - name: Run brakeman
+      run: brakeman --no-pager --github-repo maxfierke/resumis
+
+  rspec:
+    name: Rspec
+
+    runs-on: ubuntu-latest
+
+    needs: [security_checks]
+
+    env:
+      # I heard you like postgres, so we put some postgres, etc. etc.
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/resumis_test
+      RAILS_ENV: test
+
+    services:
+      postgres:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install PG dependencies
+      run: sudo apt-get install libpq-dev
+
+    - name: Install node and npm packages
+      uses: actions/setup-node@v2
+      with:
+        node-version: '10'
+
+    - name: Install ruby and bundled gems
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Precompile assets
+      env:
+        SECRET_KEY_BASE: IGNORE_ME_I_AM_A_BAD_KEY_BASE
+      run: bundle exec rake assets:precompile
+
+    - name: Setup test database
+      run: bundle exec rake db:setup
+
+    - name: Run rspec
+      run: bundle exec rake spec
