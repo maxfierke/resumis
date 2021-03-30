@@ -42,6 +42,7 @@ jobs:
     env:
       # I heard you like postgres, so we put some postgres, etc. etc.
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/resumis_test
+      RAILS_ENV: test
 
     services:
       postgres:
@@ -75,7 +76,7 @@ jobs:
       run: bundle exec rake assets:precompile
 
     - name: Setup test database
-      run: bundle exec rake db:test:prepare
+      run: bundle exec rake db:setup
 
     - name: Run rspec
       run: bundle exec rake spec
