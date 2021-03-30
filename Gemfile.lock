@@ -70,8 +70,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    acts_as_tenant (0.4.3)
-      rails (>= 4.0)
+    acts_as_tenant (0.5.0)
+      rails (>= 5.2)
       request_store (>= 1.0.5)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
@@ -255,7 +255,7 @@ GEM
     redis-namespace (1.8.0)
       redis (>= 3.0.4)
     regexp_parser (1.8.2)
-    request_store (1.4.1)
+    request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -325,7 +325,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to!
   active_model_serializers (~> 0.10.12)
-  acts_as_tenant (= 0.4.3)
+  acts_as_tenant (= 0.5.0)
   bootsnap (>= 1.1.0)
   capybara
   carrierwave
