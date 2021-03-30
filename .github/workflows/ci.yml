@@ -39,6 +39,10 @@ jobs:
 
     needs: [security_checks]
 
+    env:
+      # I heard you like postgres, so we put some postgres, etc. etc.
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/resumis_test
+
     services:
       postgres:
         image: postgres:12
@@ -51,6 +55,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Install PG dependencies
+      run: sudo apt-get install libpq-dev
 
     - name: Install node and npm packages
       uses: actions/setup-node@v2
