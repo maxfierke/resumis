@@ -20,6 +20,9 @@ jobs:
       with:
         bundler-cache: true
 
+    - name: Install gems
+      run: gem install brakeman bundler-audit
+
     # Ignore some known issues with very old carrierwave
     # Low severity, as it requires authentication in what is typically a single
     # user system.
