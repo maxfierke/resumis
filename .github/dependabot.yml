@@ -1,0 +1,55 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "09:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - maxfierke
+  ignore:
+  - dependency-name: acts_as_tenant
+    versions:
+    - ">= 0.4.4.a, < 0.4.5"
+  - dependency-name: autoprefixer-rails
+    versions:
+    - "< 10, >= 9.a"
+  - dependency-name: pager_api
+    versions:
+    - ">= 0.3.1.a, < 0.3.2"
+  - dependency-name: sidekiq
+    versions:
+    - 5.2.4
+  - dependency-name: faker
+    versions:
+    - 2.15.1
+    - 2.16.0
+  - dependency-name: listen
+    versions:
+    - 3.4.0
+    - 3.4.1
+  - dependency-name: fog-aws
+    versions:
+    - 3.7.0
+    - 3.8.0
+  - dependency-name: database_cleaner
+    versions:
+    - 2.0.0
+  - dependency-name: nokogiri
+    versions:
+    - 1.11.0
+    - 1.11.1
+  - dependency-name: rspec-rails
+    versions:
+    - 4.0.2
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "09:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: ruby
+    versions:
+    - ">= 2.6.4.pre.alpine3.a, < 2.6.5"
