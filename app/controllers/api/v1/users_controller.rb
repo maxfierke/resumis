@@ -1,6 +1,8 @@
 module Api
   module V1
     class UsersController < ApiController
+      include ActiveStorage::SetCurrent
+
       ALLOWED_INCLUDES = [
         'projects', 'projects.*',
         'skills', 'skills.*'

@@ -1,5 +1,4 @@
 ---
 :queues:
   - default
-  - [carrierwave, 2]
 :logfile: ./log/sidekiq.log

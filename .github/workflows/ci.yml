@@ -23,11 +23,8 @@ jobs:
     - name: Install gems
       run: gem install brakeman bundler-audit
 
-    # Ignore some known issues with very old carrierwave
-    # Low severity, as it requires authentication in what is typically a single
-    # user system.
     - name: Run bundle-audit
-      run: bundle-audit check --update --ignore CVE-2021-21288 CVE-2021-21305
+      run: bundle-audit check --update
 
     - name: Run brakeman
       run: brakeman --no-pager --github-repo maxfierke/resumis

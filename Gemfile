@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'webpacker'
-
 
 # JSON-API
 gem 'active_model_serializers', '~> 0.10.12'
@@ -29,9 +27,7 @@ gem 'pundit'
 gem 'thor'
 
 # Image uploads
-gem 'carrierwave'
-gem 'carrierwave_backgrounder'
-gem 'mini_magick'
+gem 'image_processing'
 
 # Markdown rendering
 gem 'redcarpet', '>= 3.2.3'
@@ -57,7 +53,7 @@ group :development do
 end
 
 group :production do
-  gem 'fog-aws', '~> 3.10'
+  gem 'aws-sdk-s3', require: false
 end
 
 group :development, :test do

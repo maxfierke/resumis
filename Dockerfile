@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine3.9 AS builder
+FROM ruby:2.7.3-alpine3.13 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -26,9 +26,8 @@ WORKDIR $APP_HOME
 ADD ./Gemfile* $APP_HOME/
 RUN bundle config --global frozen 1 \
   && bundle config build.nokogiri --use-system-libraries \
-  && bundle install -j$(getconf _NPROCESSORS_ONLN) \
-    --without development test \
-    --retry 3 \
+  && bundle config set without development test \
+  && bundle install -j$(getconf _NPROCESSORS_ONLN) --retry 3 \
   # Remove unneeded files (cached *.gem, *.o, *.c)
   && rm -rf /usr/local/bundle/cache/*.gem \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
@@ -43,7 +42,7 @@ RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precom
 RUN rm -rf node_modules tmp/cache
 
 # Runtime image
-FROM ruby:2.6.3-alpine3.9
+FROM ruby:2.7.3-alpine3.13
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \

@@ -18,6 +18,7 @@
 
 /vendor/cache
 /public/uploads
+/storage
 
 .rbenv-vars
 .capistrano/metrics
