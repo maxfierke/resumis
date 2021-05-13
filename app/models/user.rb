@@ -1,4 +1,16 @@
 class User < ActiveRecord::Base
+  AVATAR_IMAGE_VARIANTS = {
+    small: { resize_to_fill: [100, 100] },
+    medium: { resize_to_fill: [256, 256] },
+    large: { resize_to_fill: [512, 512] },
+  }.freeze
+
+  HEADER_IMAGE_VARIANTS = {
+    small: { resize_to_fill: [800, 267], gravity: 'center' },
+    medium: { resize_to_fill: [1500, 500], gravity: 'center' },
+    large: { resize_to_fill: [3000, 1000], gravity: 'center' },
+  }.freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,
@@ -37,22 +49,31 @@ class User < ActiveRecord::Base
 
   nilify_blanks :only => [:domain]
 
-  mount_uploader :header_image, HeaderImageUploader
-  mount_uploader :avatar_image, AvatarImageUploader
-  process_in_background :avatar_image
+  has_one_attached :avatar_image
+  has_one_attached :header_image
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  def gravatar_url
+  def gravatar_url(size = 256)
     hash = Digest::MD5.hexdigest(email)
 
-    "https://www.gravatar.com/avatar/#{hash}?s=256"
+    "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
   end
 
-  def avatar_url
-    avatar_image_url || gravatar_url
+  def avatar_url(size = :medium)
+    if avatar_image.attached?
+      avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).processed.service_url
+    else
+      gravatar_url
+    end
+  end
+
+  def header_image_url(size = :medium)
+    if header_image.attached?
+      header_image.variant(**HEADER_IMAGE_VARIANTS[size]).processed.service_url
+    end
   end
 
   def copyright_range

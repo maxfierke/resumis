@@ -30,8 +30,11 @@ Rails.application.configure do
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
+  # Use inline job processing to make things happen immediately
+  config.active_job.queue_adapter = :inline
+
   # Store uploaded files on the local file system in a temporary directory
-  # config.active_storage.service = :test
+  config.active_storage.service = :test
 
   config.action_mailer.perform_caching = false
 
