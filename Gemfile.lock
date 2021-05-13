@@ -124,7 +124,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
-    doorkeeper (5.4.0)
+    doorkeeper (5.5.1)
       railties (>= 5)
     erubi (1.10.0)
     factory_bot (6.1.0)
@@ -323,7 +323,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   devise (~> 4.7.3)
-  doorkeeper (~> 5.4)
+  doorkeeper (~> 5.5)
   factory_bot_rails
   faker
   friendly_id (~> 5.4.2)
