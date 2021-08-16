@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :medium)
     if avatar_image.attached?
-      avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).processed.service_url
+      avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).service_url
     else
       gravatar_url
     end
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
 
   def header_image_url(size = :medium)
     if header_image.attached?
-      header_image.variant(**HEADER_IMAGE_VARIANTS[size]).processed.service_url
+      header_image.variant(**HEADER_IMAGE_VARIANTS[size]).service_url
     end
   end
 
