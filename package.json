@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/ujs": "^6.1.4",
+    "@rails/webpacker": "^5.4.3",
     "@tailwindcss/custom-forms": "^0.2.0",
     "bootstrap": "^3.4.0",
     "bootswatch": "^3.4.0",
@@ -11,6 +11,9 @@
     "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^4.2.1"
+  },
+  "engines": {
+    "node": ">= 12.*"
   }
 }
