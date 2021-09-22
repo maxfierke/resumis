@@ -63,7 +63,7 @@ RUN addgroup -g 1000 -S $RESUMIS_USER && \
 RUN apk add --update --no-cache \
   postgresql-client \
   file \
-  imagemagick \
+  imagemagick vips \
   tzdata \
   # wkhtmltopdf stuff
   libx11 glib libxrender libxext libintl \

@@ -42,8 +42,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :subdomain, presence: { if: -> { ResumisConfig.multi_tenant? } },
-                        uniqueness: true,
-                        case_sensitive: false,
+                        uniqueness: { case_sensitive: false },
                         exclusion: { in: ResumisConfig.excluded_subdomains,
                                      message: "%{value} is reserved." }
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.4'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -10,12 +10,9 @@ gem 'webpacker'
 gem 'active_model_serializers', '~> 0.10.12'
 
 # ActiveRecord extensions
-gem 'acts_as_tenant', '0.4.3'
+gem 'acts_as_tenant', '~> 0.5.1'
 gem 'friendly_id', '~> 5.4.2'
 gem 'nilify_blanks'
-
-# ActionView extension
-gem 'active_link_to', git: 'https://github.com/maxfierke/active_link_to.git', tag: 'v1.0.6-pre_reduce_object_allocations'
 
 # Authentication & Authorization
 gem 'devise', '~> 4.8.0'
