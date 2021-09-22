@@ -66,5 +66,5 @@ group :development, :test do
   gem 'fuubar'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'pundit-matchers', '~> 1.6.0'
+  gem 'pundit-matchers', '~> 1.7.0'
 end
