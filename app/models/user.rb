@@ -62,16 +62,24 @@ class User < ActiveRecord::Base
   end
 
   def avatar_url(size = :medium)
-    if avatar_image.attached?
-      avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).service_url
-    else
-      gravatar_url
+    url = if avatar_image.attached?
+      begin
+        avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).url
+      rescue URI::InvalidURIError
+        nil
+      end
     end
+
+    url || gravatar_url(AVATAR_IMAGE_VARIANTS.dig(size, :resize_to_fill)&.first)
   end
 
   def header_image_url(size = :medium)
     if header_image.attached?
-      header_image.variant(**HEADER_IMAGE_VARIANTS[size]).service_url
+      begin
+        header_image.variant(**HEADER_IMAGE_VARIANTS[size]).url
+      rescue URI::InvalidURIError
+        nil
+      end
     end
   end
 
