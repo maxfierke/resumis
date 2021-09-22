@@ -60,7 +60,7 @@ jobs:
     - name: Install node and npm packages
       uses: actions/setup-node@v2
       with:
-        node-version: '10'
+        node-version: '12'
 
     - name: Install ruby and bundled gems
       uses: ruby/setup-ruby@v1
