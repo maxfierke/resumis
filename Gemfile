@@ -49,7 +49,7 @@ gem 'sidekiq-failures'
 gem 'unicorn'
 
 group :development do
-  gem 'listen', '~> 3.5.1'
+  gem 'listen', '~> 3.7.0'
 end
 
 group :production do
