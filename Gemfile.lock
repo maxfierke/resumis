@@ -163,7 +163,7 @@ GEM
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
     kgio (2.11.3)
-    listen (3.5.1)
+    listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.12.0)
@@ -331,7 +331,7 @@ DEPENDENCIES
   hiredis
   image_processing
   kaminari
-  listen (~> 3.5.1)
+  listen (~> 3.7.0)
   nilify_blanks
   pager_api (~> 0.3.2)
   pg
