@@ -29,7 +29,11 @@ module Api
     end
 
     def pundit_user
-      PolicyUser.new(current_resource_owner, doorkeeper_token: doorkeeper_token)
+      PolicyUser.new(
+        current_resource_owner,
+        current_tenant,
+        doorkeeper_token: doorkeeper_token
+      )
     end
 
     def validate_content_type
