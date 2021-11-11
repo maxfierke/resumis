@@ -120,7 +120,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
-    doorkeeper (5.5.2)
+    doorkeeper (5.5.4)
       railties (>= 5)
     erubi (1.10.0)
     factory_bot (6.2.0)
@@ -305,7 +305,7 @@ GEM
       activesupport
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
