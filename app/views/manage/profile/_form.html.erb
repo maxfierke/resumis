@@ -47,7 +47,7 @@
   <div class="lg:flex-1">
     <div class="form-group">
       <%= f.label :header_image, :class => 'control-label' %>
-      <% if @user.header_image.attached? %>
+      <% if @user.header_image.attached? && @user.header_image_url %>
         <div class="w-full rounded mb-4">
           <%= image_tag @user.header_image_url %>
         </div>
