@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 7.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'webpacker'
 
 # JSON-API
-gem 'active_model_serializers', '~> 0.10.12'
+gem 'active_model_serializers', '~> 0.10.13'
 
 # ActiveRecord extensions
 gem 'acts_as_tenant', '~> 0.5.1'
@@ -54,7 +54,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-rails', '~> 5.1'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
