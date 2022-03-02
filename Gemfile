@@ -7,7 +7,7 @@ gem 'pg'
 gem 'webpacker'
 
 # JSON-API
-gem 'active_model_serializers', '~> 0.10.12'
+gem 'active_model_serializers', '~> 0.10.13'
 
 # ActiveRecord extensions
 gem 'acts_as_tenant', '~> 0.5.1'
