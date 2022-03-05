@@ -1,4 +1,4 @@
-class AddSlugToResume < ActiveRecord::Migration
+class AddSlugToResume < ActiveRecord::Migration[5.0]
   def up
     add_column :resumes, :slug, :string
     add_index :resumes, [:slug, :user_id], unique: true

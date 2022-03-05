@@ -1,4 +1,4 @@
-class AddSlugToProjects < ActiveRecord::Migration
+class AddSlugToProjects < ActiveRecord::Migration[5.0]
   def up
     add_column :projects, :slug, :string
     add_index :projects, [:slug, :user_id], unique: true

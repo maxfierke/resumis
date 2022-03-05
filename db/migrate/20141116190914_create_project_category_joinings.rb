@@ -1,4 +1,4 @@
-class CreateProjectCategoryJoinings < ActiveRecord::Migration
+class CreateProjectCategoryJoinings < ActiveRecord::Migration[5.0]
   def change
     create_table :project_category_joinings do |t|
       t.references :project, index: true

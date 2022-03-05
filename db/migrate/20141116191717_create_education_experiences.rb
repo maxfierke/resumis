@@ -1,4 +1,4 @@
-class CreateEducationExperiences < ActiveRecord::Migration
+class CreateEducationExperiences < ActiveRecord::Migration[5.0]
   def change
     create_table :education_experiences do |t|
       t.string :school_name

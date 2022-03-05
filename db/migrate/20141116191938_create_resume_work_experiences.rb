@@ -1,4 +1,4 @@
-class CreateResumeWorkExperiences < ActiveRecord::Migration
+class CreateResumeWorkExperiences < ActiveRecord::Migration[5.0]
   def change
     create_table :resume_work_experiences do |t|
       t.references :resume, index: true
