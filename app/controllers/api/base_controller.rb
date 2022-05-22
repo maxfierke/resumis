@@ -3,7 +3,7 @@ module Api
     extend ActsAsTenant::ControllerExtensions
 
     include ActionController::Helpers
-    include Pundit
+    include Pundit::Authorization
     include ResumisConfig
     include TenantHelper
 
