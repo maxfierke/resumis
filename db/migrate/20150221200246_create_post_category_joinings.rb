@@ -1,4 +1,4 @@
-class CreatePostCategoryJoinings < ActiveRecord::Migration
+class CreatePostCategoryJoinings < ActiveRecord::Migration[5.0]
   def change
     create_table :post_category_joinings do |t|
       t.references :post, index: true
