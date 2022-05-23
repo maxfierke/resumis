@@ -1,4 +1,3 @@
-import 'easymde/dist/easymde.min.css';
 import EasyMDE from 'easymde';
 
 let started = false;

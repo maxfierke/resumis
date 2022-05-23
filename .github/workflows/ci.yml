@@ -43,7 +43,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:12
+        image: postgres:14
         ports:
           - 5432:5432
         env:
@@ -58,9 +58,9 @@ jobs:
       run: sudo apt-get install libpq-dev
 
     - name: Install node and npm packages
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '12'
+        node-version-file: '.node-version'
 
     - name: Install ruby and bundled gems
       uses: ruby/setup-ruby@v1

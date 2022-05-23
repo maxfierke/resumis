@@ -2,11 +2,10 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-import "../css/application.css";
 
 import Rails from '@rails/ujs';
-import UserMenu from '../js/user-menu';
-import Editor from '../js/editor';
+import UserMenu from './components/user-menu';
+import Editor from './components/editor';
 
 Rails.start();
 UserMenu.start('.user-menu');

@@ -1,5 +1,5 @@
-require_relative 'boot'
-require_relative 'initializers/resumis'
+require_relative "boot"
+require_relative "initializers/resumis"
 
 require "rails"
 require "active_model/railtie"
@@ -12,7 +12,7 @@ require "action_mailer/railtie"
 # require "action_text/engine"
 require "action_view/railtie"
 # require "action_cable/engine"
-# require "sprockets/railtie"
+require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -21,10 +21,7 @@ Bundler.require(*Rails.groups)
 
 module Resumis
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-
+    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
     config.middleware.insert_before 0, Rack::Cors do
@@ -40,7 +37,11 @@ module Resumis
     end
 
     # activejob queue adapter
-    config.active_job.queue_adapter = :sidekiq
+    if Rails.env.test?
+      config.active_job.queue_adapter = :test
+    else
+      config.active_job.queue_adapter = :sidekiq
+    end
 
     if Rails.env.development?
       config.action_mailer.default_url_options = { host: ::ResumisConfig.canonical_host }

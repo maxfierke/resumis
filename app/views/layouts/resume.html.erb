@@ -3,8 +3,8 @@
   <head>
     <%= render :partial => 'shared/head' %>
     <title><%= content_for?(:title) ? yield(:title) : "" %></title>
-    <%= stylesheet_pack_tag "cv_screen", :media => "all" %>
-    <%= javascript_pack_tag "cv_screen" %>
+    <%= stylesheet_link_tag "cv_screen", :media => "all" %>
+    <%= javascript_include_tag "cv_screen" %>
   </head>
   <body>
     <div class="container">

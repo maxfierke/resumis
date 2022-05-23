@@ -1,19 +1,46 @@
 {
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "dependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/plugin-proposal-class-properties": "^7.17.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.0",
+    "@babel/plugin-transform-destructuring": "^7.18.0",
+    "@babel/plugin-transform-regenerator": "^7.18.0",
+    "@babel/plugin-transform-runtime": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
     "@fortawesome/fontawesome-free": "^5.10.1",
-    "@rails/ujs": "^6.1.4",
-    "@rails/webpacker": "^5.4.3",
-    "@tailwindcss/custom-forms": "^0.2.0",
+    "@rails/ujs": "^7.0.3",
+    "@tailwindcss/forms": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^3.4.0",
     "bootswatch": "^3.4.0",
+    "css-loader": "^6.7.1",
     "easymde": "^2.8.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.6.0",
     "open-color": "^1.7.0",
-    "tailwindcss": "^1.1.2"
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0",
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.6.0",
+    "tailwindcss": "^3.0.24",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-remove-empty-scripts": "^0.8.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^4.2.1"
   },
   "engines": {
-    "node": ">= 12.*"
+    "node": ">= 16.*"
+  },
+  "scripts": {
+    "build": "webpack --config ./config/webpack/webpack.config.js",
+    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
   }
 }
