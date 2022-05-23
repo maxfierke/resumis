@@ -3,3 +3,5 @@
 @import "./components";
 @import "tailwindcss/utilities";
 @import "./utilities";
+
+@import "easymde/dist/easymde.min.css";

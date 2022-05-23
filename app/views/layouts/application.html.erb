@@ -3,8 +3,8 @@
   <head>
     <%= render :partial => 'shared/head' %>
     <title><%= content_for?(:title) ? yield(:title) : "Resumis" %></title>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application" %>
   </head>
   <body class="bg-gray-100 antialiased flex flex-col min-h-screen">
     <%= render :partial => 'shared/navbar' %>

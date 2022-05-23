@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 7.0.0'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'cssbundling-rails', '~> 1.1'
+gem 'jsbundling-rails'
+gem 'sprockets-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'webpacker'
 
 # JSON-API
 gem 'active_model_serializers', '~> 0.10.13'

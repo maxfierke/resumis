@@ -1,4 +1,4 @@
-FROM ruby:3.0.3-alpine3.13 AS builder
+FROM ruby:3.1.2-alpine3.15 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -42,7 +42,7 @@ RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precom
 RUN rm -rf node_modules tmp/cache
 
 # Runtime image
-FROM ruby:3.0.3-alpine3.13
+FROM ruby:3.1.2-alpine3.15
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \
@@ -65,11 +65,11 @@ RUN apk add --update --no-cache \
   file \
   imagemagick vips \
   tzdata \
-  # wkhtmltopdf stuff
-  libx11 glib libxrender libxext libintl \
+  # PDF stuff
+  libintl \
   libcrypto1.1 libssl1.1 \
-  ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
-  qt5-qtbase-dev wkhtmltopdf
+  ttf-dejavu ttf-droid ttf-freefont ttf-liberation \
+  weasyprint
 
 WORKDIR $APP_HOME
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
