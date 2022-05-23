@@ -42,10 +42,6 @@ jobs:
       RAILS_ENV: test
 
     services:
-      redis:
-        image: redis:latest
-        ports:
-          - 5379:5379
       postgres:
         image: postgres:14
         ports:

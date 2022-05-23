@@ -37,7 +37,11 @@ module Resumis
     end
 
     # activejob queue adapter
-    config.active_job.queue_adapter = :sidekiq
+    if Rails.env.test?
+      config.active_job.queue_adapter = :test
+    else
+      config.active_job.queue_adapter = :sidekiq
+    end
 
     if Rails.env.development?
       config.action_mailer.default_url_options = { host: ::ResumisConfig.canonical_host }
