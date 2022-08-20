@@ -84,4 +84,6 @@ EXPOSE 5000
 
 RUN date -u > IMAGE_BUILD_TIME
 
+ENTRYPOINT [ "./entrypoint.sh" ]
+
 CMD [ "bundle", "exec", "unicorn", "-c", "config/unicorn.rb" ]
