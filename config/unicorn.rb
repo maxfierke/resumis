@@ -15,8 +15,10 @@ worker_processes 2
 
 Unicorn::Configurator::DEFAULTS[:logger].formatter = Logger::Formatter.new
 
-stderr_path "log/unicorn.log"
-stdout_path "log/unicorn.log"
+unless ENV["RAILS_LOG_TO_STDOUT"]
+  stderr_path "log/unicorn.log"
+  stdout_path "log/unicorn.log"
+end
 
 if home
   pid "#{home}/shared/pids/unicorn.pid"
