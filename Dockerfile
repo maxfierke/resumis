@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine3.15 AS builder
+FROM ruby:3.1.2-alpine3.16 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -42,7 +42,7 @@ RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precom
 RUN rm -rf node_modules tmp/cache
 
 # Runtime image
-FROM ruby:3.1.2-alpine3.15
+FROM ruby:3.1.2-alpine3.16
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \
