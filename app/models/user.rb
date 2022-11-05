@@ -97,7 +97,6 @@ class User < ActiveRecord::Base
     networks = []
 
     networks << { network: 'github', username: github_handle, url: "https://github.com/#{github_handle}" } if github_handle.present?
-    networks << { network: 'googleplus', username: googleplus_handle, url: "https://plus.google.com/#{googleplus_handle}"} if googleplus_handle.present?
     networks << { network: 'linkedin', username: linkedin_handle, url: "http://www.linkedin.com/in/#{linkedin_handle}/" } if linkedin_handle.present?
     networks << { network: 'tumblr', username: nil, url: tumblr_url } if tumblr_url.present?
     networks << { network: 'twitter', username: twitter_handle, url: "https://twitter.com/#{twitter_handle}" } if twitter_handle.present?

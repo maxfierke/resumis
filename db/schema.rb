@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_223305) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_040639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
@@ -277,7 +277,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_223305) do
     t.text "about_me"
     t.string "tagline"
     t.string "github_handle"
-    t.string "googleplus_handle"
     t.string "linkedin_handle"
     t.string "twitter_handle"
     t.string "subdomain"
