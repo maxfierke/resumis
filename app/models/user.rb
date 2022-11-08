@@ -103,6 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def mastodon_url
+    return unless mastodon_handle.present?
     handle, host = mastodon_handle.split("@")[1,2]
     "https://#{host}/@#{handle}"
   end
