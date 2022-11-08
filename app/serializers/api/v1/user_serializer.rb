@@ -29,6 +29,15 @@ module Api
           href: "https://linkedin.com/in/#{object.linkedin_handle}"
         }
       }
+      link(:mastodon) {
+        {
+          meta: {
+            rel: 'mastodon',
+            title: object.mastodon_handle
+          },
+          href: object.mastodon_url
+        }
+      }
       link(:medium) {
         {
           meta: {

@@ -65,4 +65,12 @@ RSpec.describe User, type: :model do
       expect(user.copyright_range).to eq("2001-#{DateTime.now.year} #{user.full_name}")
     end
   end
+
+  describe "#mastodon_url" do
+    it "returns the expected shortcut URL" do
+      user = FactoryBot.build(:user, mastodon_handle: "@lol@masto.host")
+
+      expect(user.mastodon_url).to eq("https://masto.host/@lol")
+    end
+  end
 end
