@@ -41,10 +41,19 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :subdomain, presence: { if: -> { ResumisConfig.multi_tenant? } },
-                        uniqueness: { case_sensitive: false },
-                        exclusion: { in: ResumisConfig.excluded_subdomains,
-                                     message: "%{value} is reserved." }
+  validates :subdomain,
+    presence: { if: -> { ResumisConfig.multi_tenant? } },
+    uniqueness: { case_sensitive: false },
+    exclusion: {
+      in: ResumisConfig.excluded_subdomains,
+      message: "%{value} is reserved."
+  }
+  validates :mastodon_handle,
+    allow_blank: true,
+    format: {
+      with: /\A@\w+(?:\.\w+)?@\w+(?:\.\w+)?\z/,
+      message: "must match @user@masto.host format"
+    }
 
   nilify_blanks :only => [:domain]
 
@@ -93,14 +102,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def mastodon_url
+    handle, host = mastodon_handle.split("@")[1,2]
+    "https://#{host}/@#{handle}"
+  end
+
   def social_networks
     networks = []
 
     networks << { network: 'github', username: github_handle, url: "https://github.com/#{github_handle}" } if github_handle.present?
     networks << { network: 'linkedin', username: linkedin_handle, url: "http://www.linkedin.com/in/#{linkedin_handle}/" } if linkedin_handle.present?
+    networks << { network: 'medium', username: medium_handle, url: "https://medium.com/@#{medium_handle}"} if medium_handle.present?
+    networks << { network: 'mastodon', username: mastodon_handle, url: mastodon_url } if mastodon_handle.present?
     networks << { network: 'tumblr', username: nil, url: tumblr_url } if tumblr_url.present?
     networks << { network: 'twitter', username: twitter_handle, url: "https://twitter.com/#{twitter_handle}" } if twitter_handle.present?
-    networks << { network: 'medium', username: medium_handle, url: "https://medium.com/@#{medium_handle}"} if medium_handle.present?
 
     networks
   end

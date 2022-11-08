@@ -45,7 +45,7 @@ module Manage
         params.require(:user).permit(
           :first_name, :last_name, :tagline, :about_me,
           :header_image, :avatar_image,
-          :medium_handle, :github_handle,
+          :github_handle, :mastodon_handle, :medium_handle,
           :linkedin_handle, :tumblr_url, :twitter_handle,
           :avatar_label, :ga_property_id, :ga_view_id
         )
