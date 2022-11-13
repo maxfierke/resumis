@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
     large: { resize_to_fill: [3000, 1000], gravity: 'center' },
   }.freeze
 
+  self.ignored_columns = ["ga_view_id", "ga_property_id"].freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,

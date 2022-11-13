@@ -30,8 +30,4 @@ module ResumisConfig
       DEFAULT_EXCLUDED_SUBDOMAINS
     end
   end
-
-  def self.google_client_id
-    ENV['RESUMIS_GOOGLE_CLIENT_ID']
-  end
 end
