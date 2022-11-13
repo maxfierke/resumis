@@ -47,7 +47,7 @@ module Manage
           :header_image, :avatar_image,
           :github_handle, :mastodon_handle, :medium_handle,
           :linkedin_handle, :tumblr_url, :twitter_handle,
-          :avatar_label, :ga_property_id, :ga_view_id
+          :avatar_label
         )
       end
   end

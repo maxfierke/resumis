@@ -34,8 +34,6 @@ en:
     label:
       user:
         types: 'What best describes you? (Check all that apply)'
-        ga_property_id: 'Google Analytics Property ID (Tracking ID)'
-        ga_view_id: 'Google Analytics View ID'
 
   doorkeeper:
     scopes:

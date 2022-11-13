@@ -165,23 +165,6 @@
   </div>
 </div>
 
-<div class="flex flex-col lg:flex-row pt-4 mb-4">
-  <div class="w-full lg:w-1/5 pb-2">
-    <h1 class="text-xl text-gray-700">Google Analytics</h1>
-  </div>
-
-  <div class="lg:flex-1">
-    <div class="form-group">
-      <%= f.label :ga_property_id, :class => 'control-label' %>
-      <%= f.text_field :ga_property_id, :class => 'text_field form-control', placeholder: 'e.g. UA-XXXXXXXX-X' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :ga_view_id, :class => 'control-label' %>
-      <%= f.text_field :ga_view_id, :class => 'text_field form-control', placeholder: 'e.g. 01234567' %>
-    </div>
-  </div>
-</div>
-
 <div class="actionbar actionbar-fixed-bottom">
   <div class="actionbar-left">
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), manage_dashboard_path, :class => 'btn btn-default' %>
