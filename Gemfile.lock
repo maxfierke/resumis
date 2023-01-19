@@ -144,7 +144,7 @@ GEM
     fuubar (2.5.1)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     hiredis (0.6.3)
     i18n (1.12.0)
@@ -183,7 +183,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    minitest (5.17.0)
     msgpack (1.5.4)
     net-imap (0.3.1)
       net-protocol
