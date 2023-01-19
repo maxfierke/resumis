@@ -14,7 +14,7 @@ gem 'active_model_serializers', '~> 0.10.13'
 
 # ActiveRecord extensions
 gem 'acts_as_tenant', '~> 0.5.1'
-gem 'friendly_id', '~> 5.4.2'
+gem 'friendly_id', '~> 5.5.0'
 gem 'nilify_blanks'
 
 # Authentication & Authorization
