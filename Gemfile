@@ -40,9 +40,7 @@ gem 'kaminari'
 gem 'pager_api', '~> 0.3.2'
 
 # Sidekiq
-gem 'hiredis'
-gem 'redis-namespace'
-gem 'sidekiq', '< 7'
+gem 'sidekiq', '< 8'
 gem 'sidekiq-failures'
 
 # Web server
