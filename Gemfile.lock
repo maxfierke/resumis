@@ -168,7 +168,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kgio (2.11.4)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -216,6 +215,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (5.0.0)
+    puma (6.1.1)
+      nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
     pundit-matchers (1.8.4)
@@ -252,7 +253,6 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    raindrops (0.20.0)
     rake (13.0.6)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
@@ -310,9 +310,6 @@ GEM
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicorn (6.1.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket (1.2.9)
@@ -352,6 +349,7 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-rails
+  puma
   pundit
   pundit-matchers (~> 1.8.4)
   rack-cors
@@ -364,7 +362,6 @@ DEPENDENCIES
   sidekiq-failures
   sprockets-rails
   thor
-  unicorn
   wicked_pdf (~> 2.1)
 
 BUNDLED WITH

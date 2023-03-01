@@ -46,7 +46,7 @@ gem 'sidekiq', '< 7'
 gem 'sidekiq-failures'
 
 # Web server
-gem 'unicorn'
+gem 'puma'
 
 group :development do
   gem 'listen', '~> 3.7.1'

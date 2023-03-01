@@ -49,6 +49,7 @@ ENV APP_HOME=/resumis \
     NODE_ENV=production \
     RAILS_ENV=production \
     RAILS_SERVE_STATIC_FILES=true \
+    RAILS_LOG_TO_STDOUT=true \
     RESUMIS_DEPLOY_ROOT=/resumis \
     RESUMIS_TENANCY_MODE=single \
     RESUMIS_USER=resumis \
@@ -77,7 +78,7 @@ COPY --from=builder $APP_HOME $APP_HOME
 RUN chown -R $RESUMIS_USER:$RESUMIS_USER $APP_HOME
 
 # forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout log/unicorn.log && ln -sf /dev/stderr log/production.log
+RUN ln -sf /dev/stdout log/puma.log && ln -sf /dev/stderr log/production.log
 
 USER $RESUMIS_USER
 EXPOSE 5000
@@ -86,4 +87,4 @@ RUN date -u > IMAGE_BUILD_TIME
 
 ENTRYPOINT [ "./entrypoint.sh" ]
 
-CMD [ "bundle", "exec", "unicorn", "-c", "config/unicorn.rb" ]
+CMD [ "bundle", "exec", "puma", "-C", "config/puma.rb" ]
