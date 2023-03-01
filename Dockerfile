@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine3.16 AS builder
+FROM ruby:3.2.1-alpine3.16 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -14,6 +14,7 @@ RUN apk add --update --no-cache \
   nodejs \
   yarn \
   tzdata \
+  gcompat \
   libxml2-dev \
   libxslt-dev \
   libgcc libstdc++ \
@@ -27,7 +28,7 @@ ADD ./Gemfile* $APP_HOME/
 RUN bundle config --global frozen 1 \
   && bundle config build.nokogiri --use-system-libraries \
   && bundle config set without development test \
-  && bundle install -j$(getconf _NPROCESSORS_ONLN) --retry 3 \
+  && bundle install --retry 3 \
   # Remove unneeded files (cached *.gem, *.o, *.c)
   && rm -rf /usr/local/bundle/cache/*.gem \
   && find /usr/local/bundle/gems/ -name "*.c" -delete \
@@ -38,11 +39,13 @@ RUN yarn install
 
 ADD . $APP_HOME
 
-RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precompile
-RUN rm -rf node_modules tmp/cache
+# Precompile assets & bootsnap cache
+RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precompile && \
+    rm -rf node_modules tmp/cache && \
+    bundle exec bootsnap precompile --gemfile app/ lib/
 
 # Runtime image
-FROM ruby:3.1.2-alpine3.16
+FROM ruby:3.2.1-alpine3.16
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \
@@ -66,9 +69,10 @@ RUN apk add --update --no-cache \
   file \
   imagemagick vips \
   tzdata \
+  gcompat \
   # PDF stuff
   libintl \
-  libcrypto1.1 libssl1.1 \
+  libcrypto3 libssl3 \
   ttf-dejavu ttf-droid ttf-freefont ttf-liberation \
   weasyprint
 
