@@ -167,7 +167,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    listen (3.7.1)
+    listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.19.1)
@@ -261,7 +261,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    rb-fsevent (0.11.1)
+    rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
@@ -353,7 +353,7 @@ DEPENDENCIES
   image_processing
   jsbundling-rails
   kaminari
-  listen (~> 3.7.1)
+  listen (~> 3.8.0)
   nilify_blanks
   pager_api (~> 0.3.2)
   pg
