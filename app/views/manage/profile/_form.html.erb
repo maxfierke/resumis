@@ -1,4 +1,4 @@
-<%= form_for @user, url: manage_profile_path, :html => { :multipart => true } do |f| %>
+<%= form_for @user, url: manage_profile_path, html: { multipart: true } do |f| %>
 <% if @user.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <strong class="font-bold">
@@ -21,20 +21,20 @@
 
   <div class="lg:flex-1">
     <div class="form-group">
-      <%= f.label :first_name, :class => 'control-label' %>
-      <%= f.text_field :first_name, :class => 'text_field form-control' %>
+      <%= f.label :first_name, class: 'control-label' %>
+      <%= f.text_field :first_name, class: 'text_field form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :last_name, :class => 'control-label' %>
-      <%= f.text_field :last_name, :class => 'text_field form-control' %>
+      <%= f.label :last_name, class: 'control-label' %>
+      <%= f.text_field :last_name, class: 'text_field form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :tagline, :class => 'control-label' %>
-      <%= f.text_field :tagline, :class => 'text_field form-control' %>
+      <%= f.label :tagline, class: 'control-label' %>
+      <%= f.text_field :tagline, class: 'text_field form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :about_me, :class => 'control-label' %>
-      <%= f.text_area :about_me, :class => 'text_field form-control', rows: '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
+      <%= f.label :about_me, class: 'control-label' %>
+      <%= f.text_area :about_me, class: 'text_field form-control', rows: '12', :"data-provide" => "markdown", :'data-iconlibrary' => 'fa' %>
     </div>
   </div>
 </div>
@@ -46,7 +46,7 @@
 
   <div class="lg:flex-1">
     <div class="form-group">
-      <%= f.label :header_image, :class => 'control-label' %>
+      <%= f.label :header_image, class: 'control-label' %>
       <% if @user.header_image.attached? && @user.header_image_url %>
         <div class="w-full rounded mb-4">
           <%= image_tag @user.header_image_url %>
@@ -79,12 +79,43 @@
 
   <div class="lg:flex-1 lg:pl-2">
     <div class="form-group">
-      <%= f.label :avatar_image, :class => 'control-label' %>
+      <%= f.label :avatar_image, class: 'control-label' %>
       <%= f.file_field :avatar_image %>
     </div>
     <div class="form-group">
-      <%= f.label :avatar_label, :class => 'control-label' %>
-      <%= f.text_field :avatar_label, :class => 'text_field form-control' %>
+      <%= f.label :avatar_label, class: 'control-label' %>
+      <%= f.text_field :avatar_label, class: 'text_field form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col lg:flex-row border-b border-gray-300 pt-4 mb-4">
+  <div class="w-full lg:w-1/5 pb-2">
+    <h1 class="text-xl text-gray-700">Public URLs</h1>
+  </div>
+
+  <div class="lg:flex-1">
+    <div class="form-group">
+      <%= f.label :homepage_url, class: 'control-label' %>
+      <%= f.text_field :homepage_url, class: 'form-control' %>
+      <p class="help-block">
+        Set this to the root URL (no trailing slash) of your website
+      </p>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :blog_url, class: 'control-label' %>
+      <%= f.text_field :blog_url, class: 'form-control' %>
+      <p class="help-block">
+        <strong>If you're using the blog/posts API,</strong>
+        set this to the root URL of your blog (no trailing slash).<br />
+        This is mostly used for URLs in the generated blog RSS feed.
+        It's assumed the path immediately after will receive the blog post
+        slug.<br /><br />
+
+        e.g. Set this to <code>https://your.website/blog/posts</code> if your posts
+        are live at <code>https://your.website/blog/posts/my-trip-to-new-york</code>
+      </p>
     </div>
   </div>
 </div>
@@ -96,28 +127,28 @@
 
   <div class="form-horizontal lg:flex-1">
     <div class="form-group">
-      <%= f.label :github_handle, :class => 'control-label' do %>
+      <%= f.label :github_handle, class: 'control-label' do %>
         <%= icon('fab', 'github-square fa-fw h-5 w-5 inline-block mr-4', 'GitHub') %>
       <% end %>
       <div class="ml-4">
         <div class="input-group">
           <span class="input-group-addon">@</span>
-          <%= f.text_field :github_handle, :class => 'text_field form-control' %>
+          <%= f.text_field :github_handle, class: 'text_field form-control' %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :linkedin_handle, :class => 'control-label' do %>
+      <%= f.label :linkedin_handle, class: 'control-label' do %>
         <%= icon('fab', 'linkedin fa-fw h-5 w-5 inline-block mr-4', 'LinkedIn') %>
       <% end %>
       <div class="ml-4">
-        <%= f.text_field :linkedin_handle, :class => 'text_field form-control' %>
+        <%= f.text_field :linkedin_handle, class: 'text_field form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :mastodon_handle, :class => 'control-label' do %>
+      <%= f.label :mastodon_handle, class: 'control-label' do %>
         <%= icon('fab', 'mastodon fa-fw h-5 w-5 inline-block mr-4', 'Mastodon') %>
       <% end %>
       <div class="ml-4">
@@ -131,34 +162,34 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :medium_handle, :class => 'control-label' do %>
+      <%= f.label :medium_handle, class: 'control-label' do %>
         <%= icon('fab', 'medium fa-fw h-5 w-5 inline-block mr-4', 'Medium') %>
       <% end %>
       <div class="ml-4">
         <div class="input-group">
           <span class="input-group-addon">@</span>
-          <%= f.text_field :medium_handle, :class => 'text_field form-control' %>
+          <%= f.text_field :medium_handle, class: 'text_field form-control' %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :tumblr_url, :class => 'control-label' do %>
+      <%= f.label :tumblr_url, class: 'control-label' do %>
         <%= icon('fab', 'tumblr-square fa-fw h-5 w-5 inline-block mr-4', 'Tumblr') %>
       <% end %>
       <div class="ml-4">
-        <%= f.text_field :tumblr_url, :class => 'text_field form-control' %>
+        <%= f.text_field :tumblr_url, class: 'text_field form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <%= f.label :twitter_handle, :class => 'control-label' do %>
+      <%= f.label :twitter_handle, class: 'control-label' do %>
         <%= icon('fab', 'twitter-square fa-fw h-5 w-5 inline-block mr-4', 'Twitter') %>
       <% end %>
       <div class="ml-4">
         <div class="input-group">
           <span class="input-group-addon">@</span>
-          <%= f.text_field :twitter_handle, :class => 'text_field form-control' %>
+          <%= f.text_field :twitter_handle, class: 'text_field form-control' %>
         </div>
       </div>
     </div>
@@ -167,10 +198,10 @@
 
 <div class="actionbar actionbar-fixed-bottom">
   <div class="actionbar-left">
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), manage_dashboard_path, :class => 'btn btn-default' %>
+    <%= link_to t('.cancel', default: t("helpers.links.cancel")), manage_dashboard_path, class: 'btn btn-default' %>
   </div>
   <div class="actionbar-right">
-    <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
+    <%= f.submit "Save Changes", class: 'btn btn-primary' %>
   </div>
 </div>
 <% end %>

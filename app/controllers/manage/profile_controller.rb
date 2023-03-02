@@ -2,12 +2,9 @@ module Manage
   class ProfileController < ManageController
     before_action :set_user, only: [:edit, :update]
 
-    # GET /profile/edit
     def edit
     end
 
-    # PATCH/PUT /profile
-    # PATCH/PUT /profile.json
     def update
       respond_to do |format|
         @user.assign_attributes(user_params)
@@ -34,20 +31,18 @@ module Manage
         @user.header_image.attach(params[:header_image]) if params[:header_image]
       end
 
-      # Use callbacks to share common setup or constraints between actions.
       def set_user
         @user = current_tenant
         authorize @user
       end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
       def user_params
         params.require(:user).permit(
           :first_name, :last_name, :tagline, :about_me,
-          :header_image, :avatar_image,
+          :header_image, :avatar_image, :avatar_label,
+          :homepage_url, :blog_url,
           :github_handle, :mastodon_handle, :medium_handle,
           :linkedin_handle, :tumblr_url, :twitter_handle,
-          :avatar_label
         )
       end
   end
