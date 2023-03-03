@@ -59,10 +59,9 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'debug'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'pundit-matchers', '~> 1.8.4'
 end
