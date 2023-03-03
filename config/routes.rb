@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       controllers :applications => 'api/applications'
     end
 
+    get 'posts', to: 'feeds#posts', as: :posts_feed
+
     resources :resumes, only: [:show]
 
     namespace :manage do
