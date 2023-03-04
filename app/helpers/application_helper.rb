@@ -27,6 +27,7 @@ module ApplicationHelper
     parser = Redcarpet::Markdown.new(renderer, strikethrough: true, underline: true, fenced_code_blocks: true)
     parser.render(content).html_safe
   end
+  module_function :markdown
 
   def resumis_canonical_host
     ResumisConfig.canonical_host || request.host_with_port

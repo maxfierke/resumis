@@ -38,6 +38,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     ActsAsTenant.current_tenant = nil
+    ActsAsTenant.test_tenant = nil
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

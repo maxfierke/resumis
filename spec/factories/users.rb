@@ -5,6 +5,9 @@ FactoryBot.define do
     email { Faker::Internet.email }
     sequence(:subdomain) { |n| "#{Faker::Internet.domain_word}#{n}" }
     password { Faker::Internet.password }
+    tagline { Faker::Lorem.sentence }
+    homepage_url { Faker::Internet.url(path: '') }
+    blog_url { Faker::Internet.url(path: '/blog') }
 
     trait :admin do
       admin { true }
