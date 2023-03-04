@@ -49,7 +49,7 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only returns the latest 15" do
-      FactoryBot.create_list(:post, 25, :with_categories, :published)
+      FactoryBot.create_list(:post, 25, :published)
 
       get posts_feed_path(format: :rss)
       expect(response).to have_http_status(200)
@@ -57,6 +57,18 @@ RSpec.describe "Feeds", type: :request do
       posts_rss = Nokogiri::XML(response.body)
       post_items = posts_rss.xpath("//rss//channel//item")
       expect(post_items.size).to eq(15)
+    end
+
+    it "only does not include unpublished posts" do
+      FactoryBot.create_list(:post, 3, :published)
+      FactoryBot.create_list(:post, 2, published: false)
+
+      get posts_feed_path(format: :rss)
+      expect(response).to have_http_status(200)
+
+      posts_rss = Nokogiri::XML(response.body)
+      post_items = posts_rss.xpath("//rss//channel//item")
+      expect(post_items.size).to eq(3)
     end
   end
 
@@ -104,7 +116,7 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only returns the latest 15" do
-      FactoryBot.create_list(:post, 25, :with_categories, :published)
+      FactoryBot.create_list(:post, 25, :published)
 
       get posts_feed_path(format: :atom)
       expect(response).to have_http_status(200)
@@ -112,6 +124,18 @@ RSpec.describe "Feeds", type: :request do
       posts_rss = Nokogiri::XML(response.body)
       post_items = posts_rss.xpath("//xmlns:feed//xmlns:entry")
       expect(post_items.size).to eq(15)
+    end
+
+    it "only does not include unpublished posts" do
+      FactoryBot.create_list(:post, 3, :published)
+      FactoryBot.create_list(:post, 2, published: false)
+
+      get posts_feed_path(format: :atom)
+      expect(response).to have_http_status(200)
+
+      posts_rss = Nokogiri::XML(response.body)
+      post_items = posts_rss.xpath("//xmlns:feed//xmlns:entry")
+      expect(post_items.size).to eq(3)
     end
   end
 end
