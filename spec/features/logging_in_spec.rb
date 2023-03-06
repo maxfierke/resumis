@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Logging in' do
+RSpec.describe 'Logging in', type: :system do
   context 'admin user' do
     let!(:admin_user) { FactoryBot.create(:user, :admin) }
 

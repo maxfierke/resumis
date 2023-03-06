@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Managing Projects' do
+RSpec.describe 'Managing Projects', type: :system do
   before do
     user = FactoryBot.create(:user, :admin)
     sign_in(user, scope: :user)

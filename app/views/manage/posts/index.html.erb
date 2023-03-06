@@ -3,7 +3,7 @@
 <div class="flex flex-col lg:flex-row">
   <div class="flex flex-col lg:w-3/4 lg:mr-2">
     <% @posts.each do |post| %>
-      <div class="card">
+      <article class="card" data-post-id="<%= post.id %>">
         <header class="card-header">
           <div class="flex items-center justify-between mb-4">
             <h1 class="text-xl">
@@ -13,26 +13,26 @@
             </h1>
 
             <% if post.published && post.published_on %>
-              <span class="label label-success">Published <%= post.published_on.strftime("%b %e, %Y") %></span>
+              <span class="label label-success">Published <%= post.published_on.strftime("%b %-d, %Y") %></span>
             <% else %>
               <span class="label label-default">Draft</span>
             <% end %>
           </div>
         </header>
 
-        <div class="card-body">
-          <% post.post_categories.each do |post_category| %>
-            <span class="label label-default rounded-full mr-2 mb-2">
-              #<%= post_category.name -%>
-            </span>
-          <% end %>
-
+        <section class="card-body">
           <div class="rich-text-content">
             <%= markdown(
               truncate(post.body, length: 500, escape: false, separator: ' ')
             ) %>
           </div>
-        </div>
+
+          <% post.post_categories.each do |post_category| %>
+            <span class="label label-default rounded-full mr-2 mb-2">
+              #<%= post_category.name -%>
+            </span>
+          <% end %>
+        </section>
 
         <footer class="card-actions">
           <div class="left">
@@ -49,7 +49,7 @@
             <% end %>
           </div>
         </footer>
-      </div>
+      </article>
     <% end %>
   </div>
 
@@ -71,6 +71,18 @@
       <% end %>
 
       <%= link_to "Add category", new_manage_post_category_path, class: 'btn btn-link block -ml-4' %>
+    </div>
+
+    <div class="w-full mb-6">
+      <h1 class="font-medium mb-4 text-gray-700">Post Feeds</h1>
+
+      <%= link_to posts_feed_path(format: :rss), class: "label label-default" do %>
+        <% icon 'fas', 'rss-square', 'RSS' %>
+      <% end %>
+
+      <%= link_to posts_feed_path(format: :atom), class: "label label-default" do %>
+        <% icon 'fas', 'rss', 'Atom' %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -22,6 +22,7 @@ module TenantHelper
 
   def current_tenant
     return ActsAsTenant.current_tenant if ActsAsTenant.current_tenant
+    return ActsAsTenant.test_tenant if ActsAsTenant.test_tenant && Rails.env.test?
     raise ActsAsTenant::Errors::NoTenantSet
   end
 end

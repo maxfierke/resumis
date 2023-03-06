@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Managing Users' do
+RSpec.describe 'Managing Users', type: :system do
   let!(:admin_user) { FactoryBot.create(:user, :admin) }
   let!(:random_user) { FactoryBot.create(:user) }
   let!(:troublesome_user) { FactoryBot.create(:user) }

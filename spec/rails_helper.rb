@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:suite) do
     ActiveRecord::Migration.maintain_test_schema!
