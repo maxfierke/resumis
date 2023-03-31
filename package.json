@@ -24,7 +24,7 @@
     "easymde": "^2.8.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.6.0",
-    "open-color": "^1.7.0",
+    "open-color": "^1.9.1",
     "postcss": "^8.4.14",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.1.0",
