@@ -16,9 +16,9 @@ RSpec.describe Errors::Resolver, type: :model do
       end
     end
 
-    context 'when a ActsAsTenant::Errors::NoTenantSet' do
+    context 'when a ::Errors::NoTenantSet' do
       it 'returns an Errors::NoTenantSet' do
-        error = Errors::Resolver.resolve_for(ActsAsTenant::Errors::NoTenantSet.new)
+        error = Errors::Resolver.resolve_for(::Errors::NoTenantSet.new)
         expect(error).to be_a(Errors::NoTenantSet)
       end
     end

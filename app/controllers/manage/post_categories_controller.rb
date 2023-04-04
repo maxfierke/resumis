@@ -3,7 +3,7 @@ module Manage
     before_action :set_post_category, only: [:edit, :update, :destroy]
 
     def new
-      @post_category = PostCategory.new
+      @post_category = PostCategory.new(user: current_user)
       authorize @post_category
     end
 
@@ -54,7 +54,7 @@ module Manage
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_category_params
-        params.require(:post_category).permit(:name)
+        params.require(:post_category).permit(:name).merge!(user: current_user)
       end
   end
 end

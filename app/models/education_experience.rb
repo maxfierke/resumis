@@ -5,8 +5,6 @@ class EducationExperience < ActiveRecord::Base
   has_many :resume_education_experiences
   has_many :resumes, through: :resume_education_experiences, dependent: :destroy
 
-  acts_as_tenant(:user)
-
   default_scope { order(start_date: :asc, end_date: :asc) }
 
   validates :school_name, presence: true, length: { minimum: 5, maximum: 255 }

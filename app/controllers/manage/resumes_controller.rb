@@ -10,7 +10,7 @@ module Manage
     end
 
     def new
-      @resume = Resume.new
+      @resume = Resume.new(user: current_user)
       authorize @resume
       respond_with(@resume)
     end
@@ -27,12 +27,12 @@ module Manage
 
     def update
       @resume.update(resume_params)
-      respond_with(@resume, :location => edit_manage_resume_path(@resume))
+      respond_with(@resume, location: edit_manage_resume_path(@resume))
     end
 
     def destroy
       @resume.destroy
-      respond_with(@resume, :location => manage_resumes_path)
+      respond_with(@resume, location: manage_resumes_path)
     end
 
     private

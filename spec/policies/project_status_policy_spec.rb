@@ -2,14 +2,12 @@ require 'rails_helper'
 
 RSpec.describe ProjectStatusPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, project_status) }
 
     context 'user is nil' do
-      let(:project_status) { FactoryBot.create(:project_status) }
+      let(:project_status) { FactoryBot.create(:project_status, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
@@ -29,16 +27,14 @@ RSpec.describe ProjectStatusPolicy do
       context "user doesn't own the project status" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project_status) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project_status, user: other_user)
-          end
+          FactoryBot.create(:project_status, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project status' do
-        let(:project_status) { FactoryBot.create(:project_status) }
+        let(:project_status) { FactoryBot.create(:project_status, user: current_tenant) }
 
         context "token doesn't have projects_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -65,16 +61,14 @@ RSpec.describe ProjectStatusPolicy do
       context "user doesn't own the project status" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project_status) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project_status, user: other_user)
-          end
+          FactoryBot.create(:project_status, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project status' do
-        let(:project_status) { FactoryBot.create(:project_status) }
+        let(:project_status) { FactoryBot.create(:project_status, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end

@@ -11,7 +11,7 @@ module Manage
     end
 
     def new
-      @post = Post.new
+      @post = Post.new(user: current_user)
       authorize @post
     end
 
@@ -62,7 +62,13 @@ module Manage
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params[:post].permit(:title, :body, :published, :published_on, post_category_ids: [])
+        params.require(:post).permit(
+          :title,
+          :body,
+          :published,
+          :published_on,
+          post_category_ids: []
+        ).merge!(user: current_user)
       end
   end
 end

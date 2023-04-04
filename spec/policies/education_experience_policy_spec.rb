@@ -3,25 +3,21 @@ require 'rails_helper'
 RSpec.describe EducationExperiencePolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
   let(:education_experience) do
-    ActsAsTenant.without_tenant do
-      FactoryBot.create(:education_experience, resumes: [resume], user: resume.user)
-    end
+    FactoryBot.create(:education_experience, resumes: [resume], user: resume.user)
   end
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, education_experience) }
 
     context 'user is nil' do
-      let(:resume) { FactoryBot.create(:resume) }
+      let(:resume) { FactoryBot.create(:resume, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_action(:index) }
       it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
 
       context 'resume is published' do
-        let!(:resume) { FactoryBot.create(:resume, published: true) }
+        let!(:resume) { FactoryBot.create(:resume, published: true, user: current_tenant) }
 
         it { is_expected.to permit_action(:show) }
       end
@@ -40,16 +36,14 @@ RSpec.describe EducationExperiencePolicy do
       context "user doesn't own the resume" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:resume) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:resume, user: other_user, published: true)
-          end
+          FactoryBot.create(:resume, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns resume' do
-        let!(:resume) { FactoryBot.create(:resume) }
+        let!(:resume) { FactoryBot.create(:resume, user: current_tenant) }
 
         context "token doesn't have resumes_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -76,16 +70,14 @@ RSpec.describe EducationExperiencePolicy do
       context "user doesn't own the resume" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:resume) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:resume, user: other_user, published: true)
-          end
+          FactoryBot.create(:resume, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns resume' do
-        let!(:resume) { FactoryBot.create(:resume) }
+        let!(:resume) { FactoryBot.create(:resume, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -100,17 +92,17 @@ RSpec.describe EducationExperiencePolicy do
       ).resolve
     end
 
-    let!(:secret_resume) { FactoryBot.create(:resume, published: false) }
+    let!(:secret_resume) { FactoryBot.create(:resume, published: false, user: current_tenant) }
     let!(:secret_experiences) do
       FactoryBot.create_list(:education_experience, 5, resumes: [
         secret_resume
-      ])
+      ], user: current_tenant)
     end
-    let!(:published_resume) { FactoryBot.create(:resume, published: true) }
+    let!(:published_resume) { FactoryBot.create(:resume, published: true, user: current_tenant) }
     let!(:published_experiences) do
       FactoryBot.create_list(:education_experience, 5, resumes: [
         published_resume
-      ])
+      ], user: current_tenant)
     end
 
     context 'user is nil' do

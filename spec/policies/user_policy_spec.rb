@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe UserPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, user) }

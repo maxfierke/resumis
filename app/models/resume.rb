@@ -15,12 +15,8 @@ class Resume < ActiveRecord::Base
   has_many :skills, through: :resume_skills, dependent: :destroy
   has_many :work_experiences, through: :resume_work_experiences, dependent: :destroy
 
-  acts_as_tenant(:user)
-
-  validates :name, presence: true
-  validates_uniqueness_to_tenant :name
-
-  validates_uniqueness_to_tenant :slug
+  validates :name, presence: true, uniqueness: { scope: :user }
+  validates :slug, presence: true, uniqueness: { scope: :user }
 
   def self.latest
     Resume.where(published: true).order(updated_at: :desc).first

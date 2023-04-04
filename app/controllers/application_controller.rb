@@ -2,9 +2,8 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   include TenantHelper
 
-  set_current_tenant_through_filter
   before_action :find_tenant
-  rescue_from ActsAsTenant::Errors::NoTenantSet, :with => :handle_no_tenant_set
+  rescue_from ::Errors::NoTenantSet, with: :handle_no_tenant_set
   after_action :verify_authorized, except: :index, unless: :devise_controller?
   after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
 

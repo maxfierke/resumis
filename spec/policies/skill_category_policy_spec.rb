@@ -2,14 +2,12 @@ require 'rails_helper'
 
 RSpec.describe SkillCategoryPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, skill_category) }
 
     context 'user is nil' do
-      let(:skill_category) { FactoryBot.create(:skill_category) }
+      let(:skill_category) { FactoryBot.create(:skill_category, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
@@ -29,16 +27,14 @@ RSpec.describe SkillCategoryPolicy do
       context "user doesn't own the skill_category" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:skill_category) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:skill_category, user: other_user)
-          end
+          FactoryBot.create(:skill_category, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns skill_category' do
-        let(:skill_category) { FactoryBot.create(:skill_category) }
+        let(:skill_category) { FactoryBot.create(:skill_category, user: current_tenant) }
 
         context "token doesn't have resumes_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -65,16 +61,14 @@ RSpec.describe SkillCategoryPolicy do
       context "user doesn't own the skill_category" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:skill_category) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:skill_category, user: other_user)
-          end
+          FactoryBot.create(:skill_category, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns skill_category' do
-        let(:skill_category) { FactoryBot.create(:skill_category) }
+        let(:skill_category) { FactoryBot.create(:skill_category, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end

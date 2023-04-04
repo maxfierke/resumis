@@ -4,9 +4,7 @@ class AddSlugToProjects < ActiveRecord::Migration[5.0]
     add_index :projects, [:slug, :user_id], unique: true
 
     Project.unscoped.find_each do |p|
-      ActsAsTenant.with_tenant(p.user) do
-        p.save!
-      end
+      p.save!
     end
   end
 

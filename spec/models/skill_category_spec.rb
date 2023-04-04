@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SkillCategory, type: :model do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it 'has a valid factory' do
     expect(FactoryBot.create(:skill_category)).to be_valid
   end
@@ -13,8 +10,18 @@ RSpec.describe SkillCategory, type: :model do
   end
 
   it 'is unique to a tenanted user' do
-    FactoryBot.create(:skill_category, name: 'I am a cat')
+    user = FactoryBot.create(:user)
+    FactoryBot.create(:skill_category, name: 'I am a cat', user: user)
 
-    expect(FactoryBot.build(:skill_category, name: 'I am a cat')).not_to be_valid
+    expect(
+      FactoryBot.build(:skill_category, name: 'I am a cat', user: user)
+    ).not_to be_valid
+    expect(
+      FactoryBot.build(
+        :skill_category,
+        name: 'I am a cat',
+        user: FactoryBot.create(:user)
+      )
+    ).to be_valid
   end
 end

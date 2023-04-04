@@ -30,9 +30,6 @@ describe UserDisabler do
 
   subject { described_class.new(user) }
 
-  before { ActsAsTenant.current_tenant = user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it "locks the users account" do
     subject.disable!
 

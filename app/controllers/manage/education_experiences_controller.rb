@@ -10,7 +10,7 @@ module Manage
     end
 
     def new
-      @education_experience = EducationExperience.new
+      @education_experience = EducationExperience.new(user: current_user)
       authorize @education_experience
       respond_with(@education_experience)
     end
@@ -22,17 +22,17 @@ module Manage
       @education_experience = EducationExperience.new(education_experience_params)
       authorize @education_experience
       @education_experience.save
-      respond_with(@education_experience, :location => manage_education_experiences_path)
+      respond_with(@education_experience, location: manage_education_experiences_path)
     end
 
     def update
       @education_experience.update(education_experience_params)
-      respond_with(@education_experience, :location => manage_education_experiences_path)
+      respond_with(@education_experience, location: manage_education_experiences_path)
     end
 
     def destroy
       @education_experience.destroy
-      respond_with(@education_experience, :location => manage_education_experiences_path)
+      respond_with(@education_experience, location: manage_education_experiences_path)
     end
 
     private

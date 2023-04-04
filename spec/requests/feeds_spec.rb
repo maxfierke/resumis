@@ -5,13 +5,9 @@ RSpec.describe "Feeds", type: :request do
     FactoryBot.create(:user)
   end
 
-  before do
-    ActsAsTenant.test_tenant = user
-  end
-
   describe "GET /posts.rss", :aggregate_failures do
     it "returns an RSS feed w/ the expected posts" do
-      FactoryBot.create_list(:post, 4, :with_categories, :published)
+      FactoryBot.create_list(:post, 4, :with_categories, :published, user: user)
       posts = user.posts.includes(:post_categories).order(
         published_on: :desc,
         updated_at: :desc,
@@ -49,7 +45,7 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only returns the latest 15" do
-      FactoryBot.create_list(:post, 25, :published)
+      FactoryBot.create_list(:post, 25, :published, user: user)
 
       get posts_feed_path(format: :rss)
       expect(response).to have_http_status(200)
@@ -60,8 +56,8 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only does not include unpublished posts" do
-      FactoryBot.create_list(:post, 3, :published)
-      FactoryBot.create_list(:post, 2, published: false)
+      FactoryBot.create_list(:post, 3, :published, user: user)
+      FactoryBot.create_list(:post, 2, published: false, user: user)
 
       get posts_feed_path(format: :rss)
       expect(response).to have_http_status(200)
@@ -74,7 +70,7 @@ RSpec.describe "Feeds", type: :request do
 
   describe "GET /posts.atom", :aggregate_failures do
     it "returns an Atom feed w/ the expected posts" do
-      FactoryBot.create_list(:post, 4, :with_categories, :published)
+      FactoryBot.create_list(:post, 4, :with_categories, :published, user: user)
       posts = user.posts.includes(:post_categories).order(
         published_on: :desc,
         updated_at: :desc,
@@ -116,7 +112,7 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only returns the latest 15" do
-      FactoryBot.create_list(:post, 25, :published)
+      FactoryBot.create_list(:post, 25, :published, user: user)
 
       get posts_feed_path(format: :atom)
       expect(response).to have_http_status(200)
@@ -127,8 +123,8 @@ RSpec.describe "Feeds", type: :request do
     end
 
     it "only does not include unpublished posts" do
-      FactoryBot.create_list(:post, 3, :published)
-      FactoryBot.create_list(:post, 2, published: false)
+      FactoryBot.create_list(:post, 3, :published, user: user)
+      FactoryBot.create_list(:post, 2, published: false, user: user)
 
       get posts_feed_path(format: :atom)
       expect(response).to have_http_status(200)

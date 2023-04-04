@@ -11,7 +11,7 @@ module Manage
     end
 
     def new
-      @skill = Skill.new({ skill_category_id: params[:skill_category_id] })
+      @skill = Skill.new(user: current_user, skill_category_id: params[:skill_category_id])
       authorize @skill
       respond_with(@skill)
     end
@@ -47,7 +47,7 @@ module Manage
 
     def destroy
       @skill.destroy
-      respond_with(@skill, :location => manage_skills_path)
+      respond_with(@skill, location: manage_skills_path)
     end
 
     private

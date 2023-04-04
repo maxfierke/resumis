@@ -36,9 +36,9 @@ class PostPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.nil? || !user.current_tenant?
-        scope.where(published: true)
+        scope.where(user: user.current_tenant).where(published: true)
       else
-        scope
+        scope.where(user: user.user)
       end.order(published_on: :desc)
     end
   end

@@ -1,17 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it 'has a valid factory' do
     expect(FactoryBot.build(:project)).to be_valid
   end
 
   it 'is invalid without a name unique to the user' do
-    FactoryBot.create(:project, name: 'i am proj')
+    user = FactoryBot.create(:user)
+    FactoryBot.create(:project, name: 'i am proj', user: user)
 
-    expect(FactoryBot.build(:project, name: 'i am proj')).not_to be_valid
+    expect(FactoryBot.build(:project, name: 'i am proj', user: user)).not_to be_valid
+    expect(
+      FactoryBot.build(
+        :project,
+        name: 'i am proj',
+        user: FactoryBot.create(:user)
+      )
+    ).to be_valid
   end
 
   describe '.featured' do

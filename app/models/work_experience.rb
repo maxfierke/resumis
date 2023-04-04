@@ -5,8 +5,6 @@ class WorkExperience < ActiveRecord::Base
   has_many :resume_work_experiences
   has_many :resumes, through: :resume_work_experiences, dependent: :destroy
 
-  acts_as_tenant(:user)
-
   default_scope { order(end_date: :desc) }
 
   validates :organization, presence: true, length: { minimum: 2, maximum: 255 }

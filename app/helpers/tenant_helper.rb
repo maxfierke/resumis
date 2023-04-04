@@ -1,19 +1,24 @@
 module TenantHelper
   def find_tenant
     if ResumisConfig.single_tenant?
-      tenant = User.first
+      tenant = current_user || User.first
     else
       tenant_scope = User.where(disabled_at: nil)
-      tenant = tenant_scope.find_by(subdomain: request.subdomains.last) ||
+      tenant = current_user ||
+               tenant_scope.find_by(subdomain: request.subdomains.last) ||
                tenant_scope.find_by(domain: request.domain) ||
                tenant_scope.find_by(domain: request.host)
     end
 
-    set_current_tenant(tenant)
+    if tenant
+      @current_tenant = tenant
+    else
+      raise ::Errors::NoTenantSet
+    end
   end
 
   def require_current_tenant_session!
-    if user_signed_in? and current_tenant == current_user
+    if user_signed_in? && current_tenant == current_user
       return true
     end
 
@@ -21,8 +26,6 @@ module TenantHelper
   end
 
   def current_tenant
-    return ActsAsTenant.current_tenant if ActsAsTenant.current_tenant
-    return ActsAsTenant.test_tenant if ActsAsTenant.test_tenant && Rails.env.test?
-    raise ActsAsTenant::Errors::NoTenantSet
+    @current_tenant
   end
 end

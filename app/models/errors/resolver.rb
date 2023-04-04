@@ -8,7 +8,7 @@ module Errors
         InvalidSemantics
       when ActiveRecord::RecordNotFound
         NoRecordFound
-      when ActsAsTenant::Errors::NoTenantSet
+      when ::Errors::NoTenantSet
         NoTenantSet
       when Pundit::NotAuthorizedError
         Forbidden
