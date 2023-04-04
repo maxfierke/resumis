@@ -108,7 +108,7 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.2.2)
-    connection_pool (2.3.0)
+    connection_pool (2.4.0)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -261,7 +261,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
-    redis-client (0.13.0)
+    redis-client (0.14.1)
       connection_pool
     regexp_parser (2.6.1)
     reline (0.3.2)
@@ -297,7 +297,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.0.6)
+    sidekiq (7.0.7)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
