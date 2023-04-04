@@ -1,4 +1,4 @@
-FROM ruby:3.2.1-alpine3.16 AS builder
+FROM ruby:3.2.2-alpine3.16 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -45,7 +45,7 @@ RUN SECRET_KEY_BASE=IGNORE_ME_I_AM_A_BAD_KEY_BASE bundle exec rake assets:precom
     bundle exec bootsnap precompile --gemfile app/ lib/
 
 # Runtime image
-FROM ruby:3.2.1-alpine3.16
+FROM ruby:3.2.2-alpine3.16
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="An API for your personal site & resume"
 ENV APP_HOME=/resumis \
