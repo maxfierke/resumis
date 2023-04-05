@@ -1,4 +1,4 @@
-<%= form_for([:manage, @post]) do |f| %>
+<%= form_for([:manage, @post], html: { :"data-post-id" => @post.id }) do |f| %>
   <% if @post.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <strong class="font-bold">
