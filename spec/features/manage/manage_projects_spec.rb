@@ -4,7 +4,7 @@ RSpec.describe 'Managing Projects', type: :system do
   before do
     user = FactoryBot.create(:user, :admin)
     sign_in(user, scope: :user)
-    visit '/manage'
+    visit manage_dashboard_path
   end
 
   scenario 'Creating a featured project' do
@@ -17,7 +17,7 @@ RSpec.describe 'Managing Projects', type: :system do
     check('project_featured')
     click_button('Create Project')
 
-    expect(current_path).to eq('/manage/projects')
+    expect(page).to have_current_path(manage_projects_path)
 
     within('.card') do
       expect(page).to have_content('Testing')

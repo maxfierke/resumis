@@ -2,21 +2,19 @@ require 'rails_helper'
 
 RSpec.describe ResumePolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, resume) }
 
     context 'user is nil' do
-      let(:resume) { FactoryBot.create(:resume) }
+      let(:resume) { FactoryBot.create(:resume, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_action(:index) }
       it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
 
       context 'resume is published' do
-        let(:resume) { FactoryBot.create(:resume, published: true) }
+        let(:resume) { FactoryBot.create(:resume, published: true, user: current_tenant) }
 
         it { is_expected.to permit_action(:show) }
       end
@@ -35,16 +33,14 @@ RSpec.describe ResumePolicy do
       context "user doesn't own the resume" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:resume) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:resume, user: other_user, published: true)
-          end
+          FactoryBot.create(:resume, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns resume' do
-        let(:resume) { FactoryBot.create(:resume) }
+        let(:resume) { FactoryBot.create(:resume, user: current_tenant) }
 
         context "token doesn't have resumes_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -71,16 +67,14 @@ RSpec.describe ResumePolicy do
       context "user doesn't own the resume" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:resume) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:resume, user: other_user, published: true)
-          end
+          FactoryBot.create(:resume, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns resume' do
-        let(:resume) { FactoryBot.create(:resume) }
+        let(:resume) { FactoryBot.create(:resume, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -90,8 +84,18 @@ RSpec.describe ResumePolicy do
   describe 'scope' do
     subject { ResumePolicy::Scope.new(policy_user, Resume.all).resolve }
 
-    let!(:secret_resumes) { FactoryBot.create_list(:resume, 5, published: false) }
-    let!(:published_resumes) { FactoryBot.create_list(:resume, 5, published: true) }
+    let!(:secret_resumes) do
+      FactoryBot.create_list(:resume, 5,
+        published: false,
+        user: current_tenant
+      )
+    end
+    let!(:published_resumes) do
+      FactoryBot.create_list(:resume, 5,
+        published: true,
+        user: current_tenant
+      )
+    end
 
     context 'user is nil' do
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }

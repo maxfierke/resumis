@@ -1,14 +1,10 @@
 module Api
   class BaseController < ActionController::API
-    extend ActsAsTenant::ControllerExtensions
-
     include ActionController::Helpers
     include Pundit::Authorization
     include ResumisConfig
     include TenantHelper
 
-    set_current_tenant_through_filter
-    before_action :find_tenant
     before_action :validate_content_type
 
     rescue_from StandardError, with: :handle_exception

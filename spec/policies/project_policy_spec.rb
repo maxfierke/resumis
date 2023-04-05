@@ -2,14 +2,12 @@ require 'rails_helper'
 
 RSpec.describe ProjectPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, project) }
 
     context 'user is nil' do
-      let(:project) { FactoryBot.create(:project) }
+      let(:project) { FactoryBot.create(:project, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
@@ -29,16 +27,14 @@ RSpec.describe ProjectPolicy do
       context "user doesn't own the project" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project, user: other_user)
-          end
+          FactoryBot.create(:project, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project' do
-        let(:project) { FactoryBot.create(:project) }
+        let(:project) { FactoryBot.create(:project, user: current_tenant) }
 
         context "token doesn't have projects_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -65,16 +61,14 @@ RSpec.describe ProjectPolicy do
       context "user doesn't own the project" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project, user: other_user)
-          end
+          FactoryBot.create(:project, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project' do
-        let(:project) { FactoryBot.create(:project) }
+        let(:project) { FactoryBot.create(:project, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -84,7 +78,8 @@ RSpec.describe ProjectPolicy do
   describe 'scope' do
     subject { ProjectPolicy::Scope.new(policy_user, Project.all).resolve }
 
-    let!(:projects) { FactoryBot.create_list(:project, 3) }
+    let!(:projects) { FactoryBot.create_list(:project, 3, user: current_tenant) }
+    let!(:not_scoped_projects) { FactoryBot.create_list(:project, 2) }
     let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
     it 'returns all projects for the user' do

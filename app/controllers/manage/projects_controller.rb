@@ -12,7 +12,7 @@ module Manage
     end
 
     def new
-      @project = Project.new
+      @project = Project.new(user: current_user)
       authorize @project
       respond_with(@project)
     end
@@ -38,7 +38,7 @@ module Manage
 
     def destroy
       @project.destroy
-      respond_with(@project, :location => manage_projects_path)
+      respond_with(@project, location: manage_projects_path)
     end
 
     private

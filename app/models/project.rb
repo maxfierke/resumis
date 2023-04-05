@@ -12,22 +12,18 @@ class Project < ActiveRecord::Base
   has_many :resume_projects
   has_many :resumes, through: :resume_projects, dependent: :destroy
 
-  acts_as_tenant(:user)
-
   accepts_nested_attributes_for :project_category_joinings, :allow_destroy => true
 
-  validates :name, presence: true
-  validates_uniqueness_to_tenant :name
-  validates_uniqueness_to_tenant :slug
+  validates :name, presence: true, uniqueness: { scope: :user }
+  validates :slug, presence: true, uniqueness: { scope: :user }
 
   scope :featured, -> { where(featured: true) }
-
-  def self.ordered_by_activity
-    order(Arel.sql(<<-SQL.strip_heredoc))
+  scope :ordered_by_activity, -> {
+    order(Arel.sql(<<~SQL))
       end_date DESC NULLS FIRST,
       start_date DESC
     SQL
-  end
+  }
 
   def status
     project_status

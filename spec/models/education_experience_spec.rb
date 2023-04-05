@@ -2,9 +2,6 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe EducationExperience, type: :model do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it 'has a valid factory' do
     expect(FactoryBot.create(:education_experience)).to be_valid
   end

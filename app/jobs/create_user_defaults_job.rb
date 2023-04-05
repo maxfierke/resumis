@@ -16,9 +16,7 @@ class CreateUserDefaultsJob < ApplicationJob
   ].freeze
 
   def perform(user)
-    ActsAsTenant.with_tenant(user) do
-      ProjectStatus.create(PROJECT_STATUSES)
-      SkillCategory.create(SKILL_CATEGORIES)
-    end
+    ProjectStatus.create(PROJECT_STATUSES.map { |s| s.merge(user: user) })
+    SkillCategory.create(SKILL_CATEGORIES.map { |c| c.merge(user: user) })
   end
 end

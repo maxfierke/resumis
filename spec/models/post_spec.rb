@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it 'has a valid factory' do
     expect(FactoryBot.create(:post)).to be_valid
   end
@@ -13,9 +10,17 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is invalid with a duplicate title (by user)' do
-    FactoryBot.create(:post, title: 'I am a post')
+    user = FactoryBot.create(:user)
+    FactoryBot.create(:post, title: 'I am a post', user: user)
 
-    expect(FactoryBot.build(:post, title: 'I am a post')).not_to be_valid
+    expect(FactoryBot.build(:post, title: 'I am a post', user: user)).not_to be_valid
+    expect(
+      FactoryBot.build(
+        :project,
+        name: 'i am post',
+        user: FactoryBot.create(:user)
+      )
+    ).to be_valid
   end
 
   it 'is invalid with a title less than 3 characters' do

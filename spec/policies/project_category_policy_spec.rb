@@ -2,14 +2,12 @@ require 'rails_helper'
 
 RSpec.describe ProjectCategoryPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, project_category) }
 
     context 'user is nil' do
-      let(:project_category) { FactoryBot.create(:project_category) }
+      let(:project_category) { FactoryBot.create(:project_category, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_actions([:index, :show]) }
@@ -29,16 +27,14 @@ RSpec.describe ProjectCategoryPolicy do
       context "user doesn't own the project category" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project_category) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project_category, user: other_user)
-          end
+          FactoryBot.create(:project_category, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project category' do
-        let(:project_category) { FactoryBot.create(:project_category) }
+        let(:project_category) { FactoryBot.create(:project_category, user: current_tenant) }
 
         context "token doesn't have projects_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -65,16 +61,14 @@ RSpec.describe ProjectCategoryPolicy do
       context "user doesn't own the project category" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:project_category) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:project_category, user: other_user)
-          end
+          FactoryBot.create(:project_category, user: other_user)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns project category' do
-        let(:project_category) { FactoryBot.create(:project_category) }
+        let(:project_category) { FactoryBot.create(:project_category, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -84,7 +78,8 @@ RSpec.describe ProjectCategoryPolicy do
   describe 'scope' do
     subject { ProjectCategoryPolicy::Scope.new(policy_user, ProjectCategory.all).resolve }
 
-    let!(:project_categories) { FactoryBot.create_list(:project_category, 3) }
+    let!(:project_categories) { FactoryBot.create_list(:project_category, 3, user: current_tenant) }
+    let!(:not_scoped_categories) { FactoryBot.create_list(:project_category, 2) }
     let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
 
     it 'returns all project categories for the user' do

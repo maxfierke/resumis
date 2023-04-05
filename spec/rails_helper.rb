@@ -29,17 +29,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.include Devise::Test::IntegrationHelpers, type: :feature
-  config.include Devise::Test::IntegrationHelpers, type: :system
-
   config.before(:suite) do
     ActiveRecord::Migration.maintain_test_schema!
     ActiveRecord::Migration.check_pending!
-  end
-
-  config.after(:each) do
-    ActsAsTenant.current_tenant = nil
-    ActsAsTenant.test_tenant = nil
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests

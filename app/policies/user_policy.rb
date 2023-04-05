@@ -32,7 +32,7 @@ class UserPolicy < ApplicationPolicy
       if user && user.admin?
         scope
       else
-        scope.where(disabled_at: nil)
+        scope.where(user: user.user, disabled_at: nil)
       end
     end
   end

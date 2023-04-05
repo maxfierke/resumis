@@ -14,7 +14,7 @@ module Manage
     end
 
     def new
-      @skill_category = SkillCategory.new
+      @skill_category = SkillCategory.new(user: current_user)
       authorize @skill_category
       respond_with(@skill_category)
     end

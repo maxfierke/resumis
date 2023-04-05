@@ -1,5 +1,5 @@
 class PolicyUser
-  attr_reader :user
+  attr_reader :current_tenant, :user
 
   def initialize(user, current_tenant, doorkeeper_token: nil)
     @user = user
@@ -52,5 +52,5 @@ class PolicyUser
 
   private
 
-  attr_reader :current_tenant, :doorkeeper_token
+  attr_reader :doorkeeper_token
 end

@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe WorkExperience, type: :model do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
   it 'has a valid factory' do
     expect(FactoryBot.create(:work_experience)).to be_valid
   end

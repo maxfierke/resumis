@@ -5,9 +5,7 @@ RSpec.configure do |config|
     begin
       DatabaseCleaner.start
 
-      ActsAsTenant.without_tenant do
-        FactoryBot.lint
-      end
+      FactoryBot.lint
     ensure
       DatabaseCleaner.clean
     end

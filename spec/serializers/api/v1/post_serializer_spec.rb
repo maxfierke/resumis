@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::PostSerializer do
-  before { ActsAsTenant.current_tenant = FactoryBot.create :user }
-  after { ActsAsTenant.current_tenant = nil }
-
+describe Api::V1::PostSerializer, type: :serializer do
   describe "categories" do
     let(:post_categories) { FactoryBot.create_list(:post_category, 4) }
     let(:post) do

@@ -5,22 +5,17 @@ RSpec.describe 'Managing Posts', type: :system do
 
   let!(:user) { FactoryBot.create(:user) }
   let!(:post_categories) do
-    ActsAsTenant.with_tenant(user) do
-      FactoryBot.create_list(:post_category, 3, user: user)
-    end
+    FactoryBot.create_list(:post_category, 3, user: user)
   end
   let!(:posts) do
-    ActsAsTenant.with_tenant(user) do
-      [
-        FactoryBot.create(:post, :published, post_categories: [post_categories.sample]),
-        FactoryBot.create(:post, :published, post_categories: [post_categories.sample]),
-        FactoryBot.create(:post, post_categories: [post_categories.sample]),
-      ]
-    end
+    [
+      FactoryBot.create(:post, :published, post_categories: [post_categories.sample], user: user),
+      FactoryBot.create(:post, :published, post_categories: [post_categories.sample], user: user),
+      FactoryBot.create(:post, post_categories: [post_categories.sample], user: user),
+    ]
   end
 
   before do
-    ActsAsTenant.test_tenant = user
     sign_in(user, scope: :user)
     visit manage_posts_path
   end

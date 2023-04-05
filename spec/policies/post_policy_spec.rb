@@ -2,21 +2,19 @@ require 'rails_helper'
 
 RSpec.describe PostPolicy do
   let(:current_tenant) { FactoryBot.create(:user, admin: false) }
-  before { ActsAsTenant.current_tenant = current_tenant }
-  after { ActsAsTenant.current_tenant = nil }
 
   describe 'actions' do
     subject { described_class.new(policy_user, post) }
 
     context 'user is nil' do
-      let(:post) { FactoryBot.create(:post) }
+      let(:post) { FactoryBot.create(:post, user: current_tenant) }
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
 
       it { is_expected.to permit_action(:index) }
       it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
 
       context 'post is published' do
-        let(:post) { FactoryBot.create(:post, published: true) }
+        let(:post) { FactoryBot.create(:post, published: true, user: current_tenant) }
 
         it { is_expected.to permit_action(:show) }
       end
@@ -35,16 +33,14 @@ RSpec.describe PostPolicy do
       context "user doesn't own the post" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:post) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:post, user: other_user, published: true)
-          end
+          FactoryBot.create(:post, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns post' do
-        let(:post) { FactoryBot.create(:post) }
+        let(:post) { FactoryBot.create(:post, user: current_tenant) }
 
         context "token doesn't have posts_write scope" do
           it { is_expected.to permit_actions([:index, :show]) }
@@ -71,16 +67,14 @@ RSpec.describe PostPolicy do
       context "user doesn't own the post" do
         let(:other_user) { FactoryBot.create(:user) }
         let(:post) do
-          ActsAsTenant.without_tenant do
-            FactoryBot.create(:post, user: other_user, published: true)
-          end
+          FactoryBot.create(:post, user: other_user, published: true)
         end
 
         it { is_expected.to forbid_actions([:show, :create, :update, :destroy]) }
       end
 
       context 'user owns post' do
-        let(:post) { FactoryBot.create(:post) }
+        let(:post) { FactoryBot.create(:post, user: current_tenant) }
 
         it { is_expected.to permit_actions([:index, :show, :create, :update, :destroy]) }
       end
@@ -90,8 +84,8 @@ RSpec.describe PostPolicy do
   describe 'scope' do
     subject { PostPolicy::Scope.new(policy_user, Post.all).resolve }
 
-    let!(:secret_posts) { FactoryBot.create_list(:post, 5, published: false) }
-    let!(:published_posts) { FactoryBot.create_list(:post, 5, published: true) }
+    let!(:secret_posts) { FactoryBot.create_list(:post, 5, published: false, user: current_tenant) }
+    let!(:published_posts) { FactoryBot.create_list(:post, 5, published: true, user: current_tenant) }
 
     context 'user is nil' do
       let(:policy_user) { PolicyUser.new(nil, current_tenant) }
