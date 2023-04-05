@@ -1,9 +1,8 @@
 module Errors
-  class BaseError
-    attr_reader :exception
-
-    def initialize(exception = nil)
-      @exception = exception
+  class BaseError < StandardError
+    def initialize(cause = nil)
+      super
+      @cause = cause
     end
 
     def title
