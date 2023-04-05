@@ -61,4 +61,41 @@ RSpec.describe UserPolicy do
       end
     end
   end
+
+  describe 'scope' do
+    subject { UserPolicy::Scope.new(policy_user, User.all).resolve }
+
+    context 'user is nil' do
+      let(:policy_user) { PolicyUser.new(nil, current_tenant) }
+
+      it 'returns only the current tenant' do
+        expect(subject).to match_array([current_tenant])
+      end
+    end
+
+    context 'user is not the current tenant' do
+      let(:current_user) { FactoryBot.create(:user, admin: false) }
+      let(:policy_user) { PolicyUser.new(current_user, current_tenant) }
+
+      it 'returns only the current user' do
+        expect(subject).to match_array([current_user])
+      end
+
+      context 'user has been disabled' do
+        let(:current_user) { FactoryBot.create(:user, :disabled, admin: false) }
+
+        it 'does not return any users' do
+          expect(subject).to match_array([])
+        end
+      end
+    end
+
+    context 'user is current_tenant' do
+      let(:policy_user) { PolicyUser.new(current_tenant, current_tenant) }
+
+      it 'returns only the current_tenant' do
+        expect(subject).to match_array([current_tenant])
+      end
+    end
+  end
 end

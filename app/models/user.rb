@@ -62,6 +62,8 @@ class User < ActiveRecord::Base
   has_one_attached :avatar_image
   has_one_attached :header_image
 
+  scope :enabled, -> { where(disabled_at: nil) }
+
   def full_name
     "#{first_name} #{last_name}"
   end

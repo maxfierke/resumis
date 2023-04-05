@@ -13,6 +13,10 @@ FactoryBot.define do
       admin { true }
     end
 
+    trait :disabled do
+      disabled_at { 5.minutes.ago }
+    end
+
     after(:create) do |user|
       CreateUserDefaultsJob.new.perform(user)
     end

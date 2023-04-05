@@ -29,10 +29,12 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user && user.admin?
+      if user.nil?
+        scope.enabled.where(id: user.current_tenant.id)
+      elsif user.admin?
         scope
       else
-        scope.where(user: user.user, disabled_at: nil)
+        scope.enabled.where(id: user.user.id)
       end
     end
   end
