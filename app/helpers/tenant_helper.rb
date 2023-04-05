@@ -1,5 +1,7 @@
 module TenantHelper
-  def find_tenant
+  def current_tenant
+    return @current_tenant unless @current_tenant.nil?
+
     if ResumisConfig.single_tenant?
       tenant = current_user || User.first
     else
@@ -23,9 +25,5 @@ module TenantHelper
     end
 
     head :forbidden
-  end
-
-  def current_tenant
-    @current_tenant
   end
 end

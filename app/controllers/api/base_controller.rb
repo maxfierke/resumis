@@ -5,7 +5,6 @@ module Api
     include ResumisConfig
     include TenantHelper
 
-    before_action :find_tenant
     before_action :validate_content_type
 
     rescue_from StandardError, with: :handle_exception
