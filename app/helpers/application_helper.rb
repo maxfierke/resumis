@@ -22,9 +22,21 @@ module ApplicationHelper
     renderer = Redcarpet::Render::HTML.new(
       filter_html: true,
       no_styles: true,
-      safe_links_only: true
+      safe_links_only: true,
+      with_toc_data: true,
+      link_attributes: { rel: 'noreferrer' },
     )
-    parser = Redcarpet::Markdown.new(renderer, strikethrough: true, underline: true, fenced_code_blocks: true)
+    parser = Redcarpet::Markdown.new(
+      renderer,
+      strikethrough: true,
+      underline: true,
+      fenced_code_blocks: true,
+      disable_indented_code_blocks: true,
+      no_intra_emphasis: true,
+      highlight: true,
+      footnotes: true,
+      tables: true,
+    )
     parser.render(content).html_safe
   end
   module_function :markdown
