@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     url = if avatar_image.attached?
       begin
         avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).url
-      rescue URI::InvalidURIError
+      rescue URI::InvalidURIError, Aws::Errors::MissingRegionError
         nil
       end
     end
@@ -88,14 +88,14 @@ class User < ActiveRecord::Base
     if header_image.attached?
       begin
         header_image.variant(**HEADER_IMAGE_VARIANTS[size]).url
-      rescue URI::InvalidURIError
+      rescue URI::InvalidURIError, Aws::Errors::MissingRegionError
         nil
       end
     end
   end
 
   def copyright_range
-    current_year = DateTime.now.year
+    current_year = Time.current.year
 
     if created_at.year != current_year
       "#{created_at.year}-#{current_year} #{full_name}"
