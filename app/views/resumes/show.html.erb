@@ -5,7 +5,7 @@
   <h2>
     <%= mail_to @resume.user.email %>
   </h2>
-  <h3><%= tenant_instance_hostname(current_tenant) %></h3>
+  <h3><%= @resume.user.homepage_url || tenant_instance_hostname(current_tenant) %></h3>
 </div>
 
 <h3 class="section-header">Background</h3>
