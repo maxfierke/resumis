@@ -14,41 +14,45 @@
 </div>
 
 <h3 class="section-header">Relevant Skills</h3>
-<%= render :partial => "skills/skills.html", locals: { skills_by_cat: @skills_by_cat } %>
+<%= render partial: "skills/skills", formats: [:html], locals: { skills_by_cat: @skills_by_cat } %>
 
 <h3 class="section-header">Education</h3>
-<%= render :partial => 'education_experiences/education_experience.html', collection: @resume.education_experiences %>
+<%= render partial: 'education_experiences/education_experience', formats: [:html], collection: @resume.education_experiences %>
 
 <h3 class="section-header">Work History</h3>
-<%= render :partial => 'work_experiences/work_experience.html', collection: @resume.work_experiences %>
+<%= render partial: 'work_experiences/work_experience', formats: [:html], collection: @resume.work_experiences %>
 
+<%- if @resume.projects.any? -%>
 <h3 class="section-header">Relevant Projects</h3>
-<%= render :partial => 'projects/project.html', collection: @resume.projects %>
+<%= render partial: 'projects/project', formats: [:html], collection: @resume.projects %>
+<%- end -%>
 
 
 <% if params[:format] != 'pdf' %>
 <div class="form-group">
 <% if user_signed_in? and @resume.user.id == current_user.id %>
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              manage_resumes_path, :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_manage_resume_path(@resume), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              manage_resumes_path, class: 'btn btn-default' %>
+  <%= link_to t('.edit', default: t("helpers.links.edit")),
+              edit_manage_resume_path(@resume), class: 'btn btn-default' %>
+  <%= link_to t('.destroy', default: t("helpers.links.destroy")),
               resume_path(@resume),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+              method: 'delete',
+              data: {
+                confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?'))
+              },
+              class: 'btn btn-danger' %>
 <% elsif request.referrer %>
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              request.referrer, :class => 'btn btn-default'  %>
+  <%= link_to t('.back', default: t("helpers.links.back")),
+              request.referrer, class: 'btn btn-default'  %>
 <% else %>
-  <%= link_to "Back to #{request.host}", root_path, :class => 'btn btn-default' %>
+  <%= link_to "Back to #{request.host}", root_path, class: 'btn btn-default' %>
 <% end %>
   <div class="pull-right">
-    <%= link_to resume_path(@resume, :format => :pdf), :class => 'btn btn-lg' do %>
+    <%= link_to resume_path(@resume, format: :pdf), class: 'btn btn-lg' do %>
       <%= icon 'far', "file-pdf", "PDF" %>
     <% end %>
-    <%= link_to resume_path(@resume, :format => :md), :class => 'btn btn-lg' do %>
+    <%= link_to resume_path(@resume, format: :md), class: 'btn btn-lg' do %>
       <%= icon 'far', "file-alt", "Markdown" %>
     <% end %>
   </div>
