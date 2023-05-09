@@ -17,9 +17,12 @@ class ResumesController < ApplicationController
         format.html
         format.md
         format.pdf do
+          @inline_assets = true
+
           render pdf:           @resume.name,
-                 layout:        'resume.pdf.erb',
-                 template:      'resumes/show.html.erb',
+                 layout:        'resume',
+                 template:      'resumes/show',
+                 formats: [:html],
                  page_size:     'Letter',
                  show_as_html:   params.key?('debug') && Rails.env.development?,
                  disable_external_links: false,
