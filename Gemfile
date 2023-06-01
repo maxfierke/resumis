@@ -62,5 +62,5 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
-  gem 'pundit-matchers', '~> 2.1'
+  gem 'pundit-matchers', '~> 2.3'
 end
