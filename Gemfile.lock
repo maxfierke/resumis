@@ -215,7 +215,7 @@ GEM
     pager_api (0.3.2)
     pg (1.5.3)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
