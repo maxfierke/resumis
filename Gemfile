@@ -56,11 +56,11 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 6.0'
   gem 'capybara'
-  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'debug'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
   gem 'pundit-matchers', '~> 3.1'
+  gem 'selenium-webdriver', '~> 4.11'
 end
