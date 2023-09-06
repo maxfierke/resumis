@@ -32,7 +32,7 @@ gem 'image_processing'
 gem 'redcarpet', '>= 3.2.3'
 
 # Exporting resumes to PDF
-gem 'wicked_pdf', '~> 2.1'
+gem 'wicked_pdf', '~> 2.7'
 
 # Pagination
 gem 'kaminari'
