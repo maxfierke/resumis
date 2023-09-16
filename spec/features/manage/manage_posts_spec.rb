@@ -92,7 +92,7 @@ RSpec.describe 'Managing Posts', type: :system do
 
     within("[data-post-id='#{post.id}']") do
       expect(page).to have_content("EDITED: #{post.title}")
-      expect(crunch(page.text)).to have_content("EDITED: #{post_summary_text(post)[0, 40]}")
+      expect(crunch(page.text)).to have_content(post_summary_text(post.reload)[0, 40])
       expect(page).to have_content("Updated less than a minute ago")
       expect(page).not_to have_content("##{category.name}")
     end
