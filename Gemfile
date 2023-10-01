@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.6'
+gem 'rails', '~> 7.0.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cssbundling-rails', '~> 1.2'
 gem 'jsbundling-rails'
