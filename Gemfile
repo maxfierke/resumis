@@ -62,5 +62,5 @@ group :development, :test do
   gem 'faker'
   gem 'fuubar'
   gem 'pundit-matchers', '~> 3.1'
-  gem 'selenium-webdriver', '~> 4.13'
+  gem 'selenium-webdriver', '~> 4.14'
 end
