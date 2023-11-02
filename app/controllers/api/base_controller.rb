@@ -60,5 +60,28 @@ module Api
       error = Errors::Resolver.resolve_for(exception)
       render status: error.http_status_code.to_i, json: error.to_json_api(request)
     end
+
+    private
+
+    def meta(collection, options = {})
+      meta_resp = super
+
+      meta_resp[:pagination][:first] = { page: 1 }
+      meta_resp[:pagination][:last] = { page: collection.total_pages }
+
+      unless collection.first_page?
+        meta_resp[:pagination][:prev] = {
+          page: collection.current_page - 1,
+        }
+      end
+
+      unless collection.last_page? || collection.current_page >= collection.total_pages
+        meta_resp[:pagination][:next] = {
+          page: collection.current_page + 1
+        }
+      end
+
+      meta_resp
+    end
   end
 end
