@@ -263,7 +263,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
-    redis-client (0.17.0)
+    redis-client (0.18.0)
       connection_pool
     regexp_parser (2.8.1)
     reline (0.3.3)
@@ -297,7 +297,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (7.1.4)
+    sidekiq (7.2.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
