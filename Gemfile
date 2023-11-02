@@ -10,7 +10,7 @@ gem 'sprockets-rails'
 gem 'pg'
 
 # JSON-API
-gem 'active_model_serializers', '~> 0.10.13'
+gem 'active_model_serializers', '~> 0.10.14'
 
 # ActiveRecord extensions
 gem 'friendly_id', '~> 5.5.0'
