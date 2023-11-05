@@ -3,6 +3,8 @@ module Api
     class ProjectSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
+      cache key: 'project', expires_in: 12.hours
+
       attributes :id, :slug, :name, :short_description, :description,
                  :date_range, :start_date, :end_date, :created_at, :updated_at, :featured
 

@@ -3,6 +3,8 @@ module Api
     class ResumeSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
+      cache key: 'resume', expires_in: 12.hours
+
       attributes :basics, :work, :volunteer, :education, :awards, :publications,
                  :skills, :languages, :interests, :references
 

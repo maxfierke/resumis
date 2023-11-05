@@ -3,6 +3,8 @@ module Api
     class PostSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
+      cache key: 'post', expires_in: 12.hours
+
       attributes :id, :slug, :title, :body, :published, :published_on,
                  :created_at, :updated_at
 

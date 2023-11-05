@@ -60,6 +60,8 @@ Rails.application.configure do
       write_timeout:      0.2,
       reconnect_attempts: 1,
     }
+    ActiveModelSerializers.config.perform_caching = true
+    ActiveModelSerializers.config.cache_store = config.cache_store
   end
 
   # Use a real queuing backend for Active Job (and separate queues per environment).

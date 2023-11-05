@@ -27,6 +27,8 @@ Rails.application.configure do
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
+    ActiveModelSerializers.config.perform_caching = true
+    ActiveModelSerializers.config.cache_store = config.cache_store
   else
     config.action_controller.perform_caching = false
 
