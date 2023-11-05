@@ -43,9 +43,10 @@ module Resumis
       config.active_job.queue_adapter = :sidekiq
     end
 
-    if Rails.env.development?
-      config.action_mailer.default_url_options = { host: ::ResumisConfig.canonical_host }
-    end
+    config.action_mailer.default_url_options = {
+      host: ::ResumisConfig.canonical_host || 'http://localhost:5000'
+    }
+    Rails.application.routes.default_url_options = config.action_mailer.default_url_options
 
     config.generators do |g|
       g.test_framework :rspec,

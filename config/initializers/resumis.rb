@@ -23,6 +23,10 @@ module ResumisConfig
     ENV['RESUMIS_CANONICAL_HOST'].presence
   end
 
+  def self.cdn_host
+    ENV['RESUMIS_CDN_HOST'].presence
+  end
+
   def self.excluded_subdomains
     if ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].present?
       ENV['RESUMIS_EXCLUDED_SUBDOMAINS'].split(',')

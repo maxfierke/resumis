@@ -76,11 +76,7 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :medium)
     url = if avatar_image.attached?
-      begin
-        avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]).url
-      rescue URI::InvalidURIError, Aws::Errors::MissingRegionError
-        nil
-      end
+      Rails.application.routes.url_helpers.cdn_blob_url(avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]))
     end
 
     url || gravatar_url(AVATAR_IMAGE_VARIANTS.dig(size, :resize_to_fill)&.first)
@@ -88,11 +84,7 @@ class User < ActiveRecord::Base
 
   def header_image_url(size = :medium)
     if header_image.attached?
-      begin
-        header_image.variant(**HEADER_IMAGE_VARIANTS[size]).url
-      rescue URI::InvalidURIError, Aws::Errors::MissingRegionError
-        nil
-      end
+      Rails.application.routes.url_helpers.cdn_blob_url(header_image.variant(**HEADER_IMAGE_VARIANTS[size]))
     end
   end
 

@@ -78,5 +78,13 @@ Rails.application.routes.draw do
     end
   end
 
+  direct :cdn_blob do |blob|
+    if ResumisConfig.cdn_host
+      File.join(ResumisConfig.cdn_host, blob.key)
+    else
+      route_for(:rails_blob, blob)
+    end
+  end
+
   root 'manage/dashboard#index'
 end
