@@ -51,6 +51,7 @@ end
 
 group :production do
   gem 'aws-sdk-s3', require: false
+  gem 'hiredis'
 end
 
 group :development, :test do
