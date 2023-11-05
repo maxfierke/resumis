@@ -3,7 +3,7 @@ module Api
     class UserSerializer < ActiveModel::Serializer
       include ApplicationHelper
 
-      cache key: 'user', expires_in: 12.hours
+      cache key: 'user', expires_in: 12.hours, except: [:avatar_url, :header_image_url]
 
       attributes :id, :first_name, :last_name, :about_me, :tagline, :full_name,
                  :copyright_range, :avatar_url, :avatar_label, :header_image_url
