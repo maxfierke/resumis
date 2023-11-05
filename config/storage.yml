@@ -12,6 +12,7 @@ amazon:
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY']%>
   region: <%= ENV['S3_REGION'] %>
   bucket: <%= ENV['S3_BUCKET_NAME'] %>
+  public: true
 
 digitalocean:
   service: S3
@@ -20,6 +21,7 @@ digitalocean:
   region: <%= ENV['S3_REGION'] %>
   bucket: <%= ENV['S3_BUCKET_NAME'] %>
   endpoint: <%= ENV['S3_ENDPOINT'] %>
+  public: true
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
