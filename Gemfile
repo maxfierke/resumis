@@ -51,8 +51,8 @@ end
 
 group :production do
   gem 'aws-sdk-s3', require: false
-  gem 'hiredis'
-  gem "redis", require: ["redis", "redis/connection/hiredis"]
+  gem 'redis'
+  gem 'hiredis-client'
 end
 
 group :development, :test do
