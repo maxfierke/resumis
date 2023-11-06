@@ -53,6 +53,9 @@ group :production do
   gem 'aws-sdk-s3', require: false
   gem 'redis'
   gem 'hiredis-client'
+
+  gem 'sentry-ruby'
+  gem 'sentry-rails'
 end
 
 group :development, :test do
