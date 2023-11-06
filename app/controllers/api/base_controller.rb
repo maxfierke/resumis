@@ -55,6 +55,7 @@ module Api
 
     def handle_exception(exception)
       raise exception if Rails.env.development?
+      defined?(Sentry) && Sentry.capture_exception(exception)
       Rails.logger.error exception.message
       Rails.logger.error exception.backtrace.join("\n")
       error = Errors::Resolver.resolve_for(exception)
