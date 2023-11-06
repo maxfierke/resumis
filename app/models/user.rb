@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   AVATAR_IMAGE_VARIANTS = {
-    small: { resize_to_fill: [100, 100] },
-    medium: { resize_to_fill: [256, 256] },
-    large: { resize_to_fill: [512, 512] },
+    small: { resize_to_fill: [100, 100], saver: { quality: 85 }, strip: true },
+    medium: { resize_to_fill: [256, 256], saver: { quality: 85 }, strip: true },
+    large: { resize_to_fill: [512, 512], saver: { quality: 85 }, strip: true },
   }.freeze
 
   HEADER_IMAGE_VARIANTS = {
-    small: { resize_to_fill: [800, 267], gravity: 'center' },
-    medium: { resize_to_fill: [1500, 500], gravity: 'center' },
-    large: { resize_to_fill: [3000, 1000], gravity: 'center' },
+    small: { resize_to_fill: [800, 267], gravity: 'center', saver: { quality: 85 }, strip: true },
+    medium: { resize_to_fill: [1500, 500], gravity: 'center', saver: { quality: 85 }, strip: true },
+    large: { resize_to_fill: [3000, 1000], gravity: 'center', saver: { quality: 85 }, strip: true },
   }.freeze
 
   self.ignored_columns = ["ga_view_id", "ga_property_id"].freeze
@@ -76,7 +76,9 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :medium)
     url = if avatar_image.attached?
-      Rails.application.routes.url_helpers.cdn_blob_url(avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size]))
+      Rails.application.routes.url_helpers.cdn_blob_url(
+        avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size])
+      )
     end
 
     url || gravatar_url(AVATAR_IMAGE_VARIANTS.dig(size, :resize_to_fill)&.first)
@@ -84,7 +86,9 @@ class User < ActiveRecord::Base
 
   def header_image_url(size = :medium)
     if header_image.attached?
-      Rails.application.routes.url_helpers.cdn_blob_url(header_image.variant(**HEADER_IMAGE_VARIANTS[size]))
+      Rails.application.routes.url_helpers.cdn_blob_url(
+        header_image.variant(**HEADER_IMAGE_VARIANTS[size])
+      )
     end
   end
 
