@@ -60,13 +60,17 @@ module Api
 
       def projects
         @projects ||= begin
-          scope = policy_scope(Project.ordered_by_activity)
+          scope = policy_scope(Project)
 
           if include_params.include?('categories')
             scope = scope.includes(:project_categories)
           end
 
-          scope
+          if include_params.include?('status')
+            scope = scope.includes(:project_status)
+          end
+
+          scope.ordered_by_activity
         end
       end
 

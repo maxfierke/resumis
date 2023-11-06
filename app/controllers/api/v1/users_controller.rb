@@ -23,7 +23,23 @@ module Api
       end
 
       def user
-        @user ||= policy_scope(User).find(params[:id])
+        @user ||= begin
+          scope = policy_scope(User)
+
+          if include_params.include?('projects.*')
+            scope = scope.includes(projects: [:project_categories, :project_status])
+          elsif include_params.include?('projects')
+            scope = scope.includes(:projects)
+          end
+
+          if include_params.include?('skills.*')
+            scope = scope.includes(skills: [:skill_category])
+          elsif include_params.include?('skills')
+            scope = scope.includes(:skills)
+          end
+
+          scope.find(params[:id])
+        end
       end
     end
   end
