@@ -5,7 +5,7 @@ class FeedsController < ApplicationController
     authorize(Post, :index?)
 
     @posts = policy_scope(Post).
-      includes(:post_categories).
+      includes(:post_categories, :user).
       order(published_on: :desc, updated_at: :desc, created_at: :desc).
       limit(15)
 
