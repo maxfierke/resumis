@@ -51,6 +51,9 @@ end
 
 group :production do
   gem 'aws-sdk-s3', require: false
+
+  gem 'fly-ruby', require: !!ENV['FLY_REGION']
+
   gem 'redis'
   gem 'hiredis-client'
 
