@@ -57,6 +57,8 @@ group :production do
   gem 'redis'
   gem 'hiredis-client'
 
+  gem 'puma-metrics', require: !!ENV["RESUMIS_PUMA_METRICS"]
+
   gem 'sentry-ruby'
   gem 'sentry-rails'
 end

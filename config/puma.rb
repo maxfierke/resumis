@@ -3,6 +3,8 @@ if home
   directory home
 end
 
+plugin "metrics" if ENV["RESUMIS_PUMA_METRICS"]
+
 port (ENV["RESUMIS_HTTP_PORT"] || ENV["PORT"] || 5000).to_i
 workers (ENV["WEB_CONCURRENCY"] || 2).to_i
 worker_timeout 15
