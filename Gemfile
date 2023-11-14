@@ -52,12 +52,12 @@ end
 group :production do
   gem 'aws-sdk-s3', require: false
 
-  gem 'fly-ruby', require: !!ENV['FLY_REGION']
+  gem 'fly-ruby', require: false
 
   gem 'redis'
   gem 'hiredis-client'
 
-  gem 'puma-metrics', require: !!ENV["RESUMIS_PUMA_METRICS"]
+  gem 'puma-metrics'
 
   gem 'sentry-ruby'
   gem 'sentry-rails'
