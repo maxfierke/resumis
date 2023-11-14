@@ -19,6 +19,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Registers some railties, so should happen early
+require "initializers/fly"
+
 module Resumis
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
