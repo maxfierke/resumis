@@ -20,7 +20,7 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 # Registers some railties, so should happen early
-require "initializers/fly"
+require_relative "initializers/fly"
 
 module Resumis
   class Application < Rails::Application
