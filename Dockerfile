@@ -68,6 +68,7 @@ RUN addgroup -g 1000 -S $RESUMIS_USER && \
 RUN apk add --update --no-cache \
   postgresql-client \
   file \
+  jemalloc \
   imagemagick vips \
   tzdata \
   gcompat \
@@ -76,6 +77,9 @@ RUN apk add --update --no-cache \
   libcrypto3 libssl3 \
   ttf-dejavu ttf-droid ttf-freefont ttf-liberation \
   weasyprint
+
+ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2 \
+    MALLOC_CONF=dirty_decay_ms:1000,narenas:2,background_thread:true
 
 WORKDIR $APP_HOME
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
