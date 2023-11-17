@@ -56,6 +56,7 @@ ENV APP_HOME=/resumis \
     RESUMIS_DEPLOY_ROOT=/resumis \
     RESUMIS_TENANCY_MODE=single \
     RESUMIS_USER=resumis \
+    RUBY_YJIT_ENABLE=1 \
     PORT=5000 \
     WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
 
