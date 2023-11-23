@@ -17,12 +17,12 @@ class IncludeParamsValidator
     new(**kwargs).include_params!
   end
 
-  def matches?
+  def valid?
     @include_params.all? { |param| @allowed.include?(param) }
   end
 
   def include_params!
-    raise InvalidIncludesError unless matches?
+    raise InvalidIncludesError unless valid?
     @include_params
   end
 end

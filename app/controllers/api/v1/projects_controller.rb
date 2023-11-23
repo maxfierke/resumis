@@ -1,11 +1,6 @@
 module Api
   module V1
     class ProjectsController < ApiController
-      ALLOWED_INCLUDES = [
-        'status',
-        'categories'
-      ]
-
       payload_type :project
       before_action :validate_payload_type, only: [:create, :update]
       before_action only: [:create, :update, :destroy] do
@@ -47,11 +42,12 @@ module Api
 
       private
 
-      def include_params
-        @include_params ||= IncludeParamsValidator.include_params!(
-          include_params: params[:include],
-          allowed: ALLOWED_INCLUDES
-        )
+      def allowed_includes
+        %w(categories status)
+      end
+
+      def allowed_sorts
+        %w(end_date featured name start_date)
       end
 
       def project
@@ -70,7 +66,20 @@ module Api
             scope = scope.includes(:project_status)
           end
 
-          scope.ordered_by_activity
+          if sort_fields.any?
+            sort_fields.each do |field, direction|
+              if field == :end_date && direction == :desc
+                # A null end_date is considered "on-going", so we want it on top
+                scope = scope.order(Project.arel_table[field].desc.nulls_first)
+              else
+                scope = scope.order(field => direction)
+              end
+            end
+          else
+            scope = scope.ordered_by_activity
+          end
+
+          scope
         end
       end
 

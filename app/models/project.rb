@@ -19,10 +19,10 @@ class Project < ActiveRecord::Base
 
   scope :featured, -> { where(featured: true) }
   scope :ordered_by_activity, -> {
-    order(Arel.sql(<<~SQL))
-      end_date DESC NULLS FIRST,
-      start_date DESC
-    SQL
+    order(
+      arel_table[:end_date].desc.nulls_first,
+      arel_table[:start_date].desc
+    )
   }
 
   def status

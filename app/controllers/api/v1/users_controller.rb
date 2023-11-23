@@ -3,11 +3,6 @@ module Api
     class UsersController < ApiController
       include ActiveStorage::SetCurrent
 
-      ALLOWED_INCLUDES = [
-        'projects', 'projects.*',
-        'skills', 'skills.*'
-      ]
-
       def show
         authorize user
         render jsonapi: user, include: include_params
@@ -15,10 +10,12 @@ module Api
 
       private
 
-      def include_params
-        @include_params ||= IncludeParamsValidator.include_params!(
-          include_params: params[:include],
-          allowed: ALLOWED_INCLUDES
+      def allowed_includes
+        %w(
+          projects
+          projects.*
+          skills
+          skills.*
         )
       end
 

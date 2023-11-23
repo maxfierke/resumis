@@ -1,12 +1,6 @@
 module Api
   module V1
     class ResumesController < ApiController
-      ALLOWED_INCLUDES = [
-        'education_experiences', 'education_experiences.*',
-        'skills', 'skills.*',
-        'work_experiences', 'work_experiences.*'
-      ]
-
       payload_type :resume
       before_action :validate_payload_type, only: [:create, :update]
       before_action only: [:index] do
@@ -53,10 +47,14 @@ module Api
 
       private
 
-      def include_params
-        @include_params ||= IncludeParamsValidator.include_params!(
-          include_params: params[:include],
-          allowed: ALLOWED_INCLUDES
+      def allowed_includes
+        %w(
+          education_experiences
+          education_experiences.*
+          skills
+          skills.*
+          work_experiences
+          work_experiences.*
         )
       end
 

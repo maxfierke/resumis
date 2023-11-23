@@ -3,10 +3,6 @@ module Api
     class PostsController < ApiController
       include ActionController::MimeResponds
 
-      ALLOWED_INCLUDES = [
-        'categories'
-      ]
-
       payload_type :post
       before_action :validate_payload_type, only: [:create, :update]
       before_action only: [:create, :update, :destroy] do
@@ -49,11 +45,8 @@ module Api
 
       private
 
-      def include_params
-        @include_params ||= IncludeParamsValidator.include_params!(
-          include_params: params[:include],
-          allowed: ALLOWED_INCLUDES
-        )
+      def allowed_includes
+        %w(categories)
       end
 
       def post
