@@ -89,16 +89,17 @@ class User < ActiveRecord::Base
   end
 
   def header_image_url(size: :medium, quality: nil)
-    if header_image.attached? && header_image.image?
-      variant = ImageVariants.variant_for_image(header_image, size: size, quality: quality)
+    return unless header_image.attached? && header_image.image?
 
-      if variant.image
-        return Rails.application.routes.url_helpers.cdn_blob_url(variant)
-      else
-        # If variants change, the `image` is nil, and we should fallback &
-        # queue processing
-        ProfileImageVariantGeneratorJob.perform_later(self.id)
-      end
+    variant = ImageVariants.variant_for_image(header_image, size: size, quality: quality)
+
+    if variant.image
+      Rails.application.routes.url_helpers.cdn_blob_url(variant)
+    else
+      # If variants change, the `image` is nil, and we should fallback to nil &
+      # queue processing
+      ProfileImageVariantGeneratorJob.perform_later(self.id)
+      nil
     end
   end
 
