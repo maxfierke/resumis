@@ -118,6 +118,10 @@ RSpec.describe User, type: :model do
       context "avatar image variant hasn't processed yet" do
         let(:gravatar_hash) { Digest::MD5.hexdigest(user.email) }
 
+        before do
+          allow(ProfileImageVariantGeneratorJob).to receive(:perform_later)
+        end
+
         it "returns a gravatar URL instead" do
           variant_name = ImageVariants.variant_name_for_image(
             user.avatar_image, size: :medium
@@ -130,6 +134,12 @@ RSpec.describe User, type: :model do
           expect(user.avatar_url).to eq(
             "https://www.gravatar.com/avatar/#{gravatar_hash}?s=256"
           )
+        end
+
+        it "enqueues job to process variants" do
+          user.avatar_url
+
+          expect(ProfileImageVariantGeneratorJob).to have_received(:perform_later).with(user.id)
         end
       end
 
@@ -195,6 +205,10 @@ RSpec.describe User, type: :model do
       end
 
       context "header image variant hasn't processed yet" do
+        before do
+          allow(ProfileImageVariantGeneratorJob).to receive(:perform_later)
+        end
+
         it "returns nil" do
           variant_name = ImageVariants.variant_name_for_image(
             user.header_image, size: :medium
@@ -204,6 +218,12 @@ RSpec.describe User, type: :model do
           blob = user.header_image.variant(variant_name)
 
           expect(user.header_image_url).to be_nil
+        end
+
+        it "enqueues job to process variants" do
+          user.header_image_url
+
+          expect(ProfileImageVariantGeneratorJob).to have_received(:perform_later).with(user.id)
         end
       end
 

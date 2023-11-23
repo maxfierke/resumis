@@ -78,6 +78,9 @@ class User < ActiveRecord::Base
       if variant.image
         # If variants change, the `image` is nil
         return Rails.application.routes.url_helpers.cdn_blob_url(variant)
+      else
+        # Enqueue processing
+        ProfileImageVariantGeneratorJob.perform_later(self.id)
       end
     end
 
@@ -92,6 +95,9 @@ class User < ActiveRecord::Base
       if variant.image
         # If variants change, the `image` is nil
         return Rails.application.routes.url_helpers.cdn_blob_url(variant)
+      else
+        # Enqueue processing
+        ProfileImageVariantGeneratorJob.perform_later(self.id)
       end
     end
   end
