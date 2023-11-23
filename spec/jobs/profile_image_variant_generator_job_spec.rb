@@ -10,10 +10,10 @@ RSpec.describe ProfileImageVariantGeneratorJob, type: :job do
     )
     user.save!
 
-    ProfileImageVariantGeneratorJob.new.perform(user.id)
+    ProfileImageVariantGeneratorJob.perform_now(user.id)
 
-    User::AVATAR_IMAGE_VARIANTS.each do |name, variant_config|
-      variant = user.avatar_image.variant(**variant_config)
+    ImageVariants.variants_for_style(:square).each do |name, _opts|
+      variant = user.avatar_image.variant(name)
       expect(variant.send(:processed?)).to eq(true)
     end
   end
@@ -25,10 +25,10 @@ RSpec.describe ProfileImageVariantGeneratorJob, type: :job do
     )
     user.save!
 
-    ProfileImageVariantGeneratorJob.new.perform(user.id)
+    ProfileImageVariantGeneratorJob.perform_now(user.id)
 
-    User::HEADER_IMAGE_VARIANTS.each do |name, variant_config|
-      variant = user.header_image.variant(**variant_config)
+    ImageVariants.variants_for_style(:header).each do |name, _opts|
+      variant = user.header_image.variant(name)
       expect(variant.send(:processed?)).to eq(true)
     end
   end

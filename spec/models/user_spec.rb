@@ -73,4 +73,138 @@ RSpec.describe User, type: :model do
       expect(user.mastodon_url).to eq("https://masto.host/@lol")
     end
   end
+
+  describe "#avatar_url" do
+    let(:user) { FactoryBot.create(:user) }
+
+    context "avatar is not set" do
+      let(:gravatar_hash) { Digest::MD5.hexdigest(user.email) }
+
+      it "returns a gravatar URL for a medium-sized image" do
+        expect(user.avatar_url).to eq(
+          "https://www.gravatar.com/avatar/#{gravatar_hash}?s=256"
+        )
+      end
+
+      context "size is specified" do
+        it "returns a gravatar URL instead" do
+          expect(user.avatar_url(size: :small)).to eq(
+            "https://www.gravatar.com/avatar/#{gravatar_hash}?s=100"
+          )
+        end
+      end
+    end
+
+    context "avatar is set" do
+      before do
+        user.avatar_image.attach(
+          io: File.open("#{Rails.root}/spec/fixtures/worm_drive.jpg"),
+          filename: 'avatar.jpg'
+        )
+        user.save!
+      end
+
+      it "returns a URL to the medium-sized variant" do
+        variant_name = ImageVariants.variant_name_for_image(
+          user.avatar_image, size: :medium
+        )
+        blob = user.avatar_image.variant(variant_name)
+
+        expect(user.avatar_url).to eq(
+          Rails.application.routes.url_helpers.cdn_blob_url(blob)
+        )
+      end
+
+      context "size is specified" do
+        let(:size) { :small }
+
+        it "returns a URL to the relevant-sized variant" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.avatar_image, size: size
+          )
+          blob = user.avatar_image.variant(variant_name)
+
+          expect(user.avatar_url(size: size)).to eq(
+            Rails.application.routes.url_helpers.cdn_blob_url(blob)
+          )
+        end
+      end
+
+      context "quality is specified" do
+        let(:quality) { :lossless }
+
+        it "returns a URL to the relevant-sized variant" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.avatar_image, quality: quality
+          )
+          blob = user.avatar_image.variant(variant_name)
+
+          expect(user.avatar_url(quality: quality)).to eq(
+            Rails.application.routes.url_helpers.cdn_blob_url(blob)
+          )
+        end
+      end
+    end
+  end
+
+  describe "#header_image_url" do
+    let(:user) { FactoryBot.create(:user) }
+
+    context "header image is not set" do
+      it "returns nil" do
+        expect(user.header_image_url).to be_nil
+      end
+    end
+
+    context "header image is set" do
+      before do
+        user.header_image.attach(
+          io: File.open("#{Rails.root}/spec/fixtures/worm_drive.jpg"),
+          filename: 'header_image.jpg'
+        )
+        user.save!
+      end
+
+      it "returns a URL to the medium-sized variant" do
+        variant_name = ImageVariants.variant_name_for_image(
+          user.header_image, size: :medium
+        )
+        blob = user.header_image.variant(variant_name)
+
+        expect(user.header_image_url).to eq(
+          Rails.application.routes.url_helpers.cdn_blob_url(blob)
+        )
+      end
+
+      context "size is specified" do
+        let(:size) { :small }
+
+        it "returns a URL to the relevant-sized variant" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.header_image, size: size
+          )
+          blob = user.header_image.variant(variant_name)
+
+          expect(user.header_image_url(size: size)).to eq(
+            Rails.application.routes.url_helpers.cdn_blob_url(blob)
+          )
+        end
+      end
+
+      context "quality is specified" do
+        let(:quality) { :lossless }
+
+        it "returns a URL to the relevant-quality variant" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.header_image, quality: quality
+          )
+          blob = user.header_image.variant(variant_name)
+
+          expect(user.header_image_url(quality: quality)).to eq(
+            Rails.application.routes.url_helpers.cdn_blob_url(blob)
+          )
+        end
+      end
+    end
+  end
 end
