@@ -108,11 +108,29 @@ RSpec.describe User, type: :model do
         variant_name = ImageVariants.variant_name_for_image(
           user.avatar_image, size: :medium
         )
-        blob = user.avatar_image.variant(variant_name)
+        blob = user.avatar_image.variant(variant_name).processed
 
         expect(user.avatar_url).to eq(
           Rails.application.routes.url_helpers.cdn_blob_url(blob)
         )
+      end
+
+      context "avatar image variant hasn't processed yet" do
+        let(:gravatar_hash) { Digest::MD5.hexdigest(user.email) }
+
+        it "returns a gravatar URL instead" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.avatar_image, size: :medium
+          )
+
+          # Note, not calling #processed
+          variant = user.avatar_image.variant(variant_name)
+
+          expect(variant.key).to be_nil
+          expect(user.avatar_url).to eq(
+            "https://www.gravatar.com/avatar/#{gravatar_hash}?s=256"
+          )
+        end
       end
 
       context "size is specified" do
@@ -122,7 +140,7 @@ RSpec.describe User, type: :model do
           variant_name = ImageVariants.variant_name_for_image(
             user.avatar_image, size: size
           )
-          blob = user.avatar_image.variant(variant_name)
+          blob = user.avatar_image.variant(variant_name).processed
 
           expect(user.avatar_url(size: size)).to eq(
             Rails.application.routes.url_helpers.cdn_blob_url(blob)
@@ -137,7 +155,7 @@ RSpec.describe User, type: :model do
           variant_name = ImageVariants.variant_name_for_image(
             user.avatar_image, quality: quality
           )
-          blob = user.avatar_image.variant(variant_name)
+          blob = user.avatar_image.variant(variant_name).processed
 
           expect(user.avatar_url(quality: quality)).to eq(
             Rails.application.routes.url_helpers.cdn_blob_url(blob)
@@ -169,11 +187,24 @@ RSpec.describe User, type: :model do
         variant_name = ImageVariants.variant_name_for_image(
           user.header_image, size: :medium
         )
-        blob = user.header_image.variant(variant_name)
+        blob = user.header_image.variant(variant_name).processed
 
         expect(user.header_image_url).to eq(
           Rails.application.routes.url_helpers.cdn_blob_url(blob)
         )
+      end
+
+      context "header image variant hasn't processed yet" do
+        it "returns nil" do
+          variant_name = ImageVariants.variant_name_for_image(
+            user.header_image, size: :medium
+          )
+
+          # Note, not calling #processed
+          blob = user.header_image.variant(variant_name)
+
+          expect(user.header_image_url).to be_nil
+        end
       end
 
       context "size is specified" do
@@ -183,7 +214,7 @@ RSpec.describe User, type: :model do
           variant_name = ImageVariants.variant_name_for_image(
             user.header_image, size: size
           )
-          blob = user.header_image.variant(variant_name)
+          blob = user.header_image.variant(variant_name).processed
 
           expect(user.header_image_url(size: size)).to eq(
             Rails.application.routes.url_helpers.cdn_blob_url(blob)
@@ -198,7 +229,7 @@ RSpec.describe User, type: :model do
           variant_name = ImageVariants.variant_name_for_image(
             user.header_image, quality: quality
           )
-          blob = user.header_image.variant(variant_name)
+          blob = user.header_image.variant(variant_name).processed
 
           expect(user.header_image_url(quality: quality)).to eq(
             Rails.application.routes.url_helpers.cdn_blob_url(blob)

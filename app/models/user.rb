@@ -74,17 +74,25 @@ class User < ActiveRecord::Base
   def avatar_url(size: :medium, quality: nil)
     if avatar_image.attached? && avatar_image.image?
       variant = ImageVariants.variant_for_image(avatar_image, size: size, quality: quality)
-      Rails.application.routes.url_helpers.cdn_blob_url(variant)
-    else
-      dimensions = ImageVariants.dimensions_for_style(:square, size)
-      gravatar_url(dimensions&.first)
+
+      if variant.image
+        # If variants change, the `image` is nil
+        return Rails.application.routes.url_helpers.cdn_blob_url(variant)
+      end
     end
+
+    dimensions = ImageVariants.dimensions_for_style(:square, size)
+    gravatar_url(dimensions&.first)
   end
 
   def header_image_url(size: :medium, quality: nil)
     if header_image.attached? && header_image.image?
       variant = ImageVariants.variant_for_image(header_image, size: size, quality: quality)
-      Rails.application.routes.url_helpers.cdn_blob_url(variant)
+
+      if variant.image
+        # If variants change, the `image` is nil
+        return Rails.application.routes.url_helpers.cdn_blob_url(variant)
+      end
     end
   end
 
