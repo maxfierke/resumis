@@ -76,10 +76,10 @@ class User < ActiveRecord::Base
       variant = ImageVariants.variant_for_image(avatar_image, size: size, quality: quality)
 
       if variant.image
-        # If variants change, the `image` is nil
         return Rails.application.routes.url_helpers.cdn_blob_url(variant)
       else
-        # Enqueue processing
+        # If variants change, the `image` is nil, and we should fallback &
+        # queue processing
         ProfileImageVariantGeneratorJob.perform_later(self.id)
       end
     end
@@ -93,10 +93,10 @@ class User < ActiveRecord::Base
       variant = ImageVariants.variant_for_image(header_image, size: size, quality: quality)
 
       if variant.image
-        # If variants change, the `image` is nil
         return Rails.application.routes.url_helpers.cdn_blob_url(variant)
       else
-        # Enqueue processing
+        # If variants change, the `image` is nil, and we should fallback &
+        # queue processing
         ProfileImageVariantGeneratorJob.perform_later(self.id)
       end
     end
