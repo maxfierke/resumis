@@ -4,7 +4,7 @@ module Errors
       case exception
       when ::PayloadTypeMismatch
         PayloadTypeMismatch
-      when InvalidIncludesError
+      when InvalidIncludesError, InvalidSortError
         InvalidSemantics
       when ActiveRecord::RecordNotFound
         NoRecordFound

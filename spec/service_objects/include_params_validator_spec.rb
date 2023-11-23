@@ -5,7 +5,7 @@ RSpec.describe IncludeParamsValidator do
     %w(foo foo.* blim blim.blam flim flim.flam.**)
   end
 
-  describe '#matches' do
+  describe '#valid?' do
     let(:validator) do
       IncludeParamsValidator.new(
         include_params: include_params,
@@ -19,7 +19,7 @@ RSpec.describe IncludeParamsValidator do
       end
 
       it 'returns true' do
-        expect(validator.matches?).to be(true)
+        expect(validator.valid?).to be(true)
       end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe IncludeParamsValidator do
       end
 
       it 'returns false' do
-        expect(validator.matches?).to be(false)
+        expect(validator.valid?).to be(false)
       end
     end
   end

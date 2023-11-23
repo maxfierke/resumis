@@ -1,0 +1,2 @@
+class InvalidSortError < ResumisError
+end
