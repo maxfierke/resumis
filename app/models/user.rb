@@ -1,16 +1,4 @@
 class User < ActiveRecord::Base
-  AVATAR_IMAGE_VARIANTS = {
-    small: { resize_to_fill: [100, 100], saver: { quality: 85 }, strip: true },
-    medium: { resize_to_fill: [256, 256], saver: { quality: 85 }, strip: true },
-    large: { resize_to_fill: [512, 512], saver: { quality: 85 }, strip: true },
-  }.freeze
-
-  HEADER_IMAGE_VARIANTS = {
-    small: { resize_to_fill: [800, 267], gravity: 'center', saver: { quality: 85 }, strip: true },
-    medium: { resize_to_fill: [1500, 500], gravity: 'center', saver: { quality: 85 }, strip: true },
-    large: { resize_to_fill: [3000, 1000], gravity: 'center', saver: { quality: 85 }, strip: true },
-  }.freeze
-
   self.ignored_columns = ["ga_view_id", "ga_property_id"].freeze
 
   # Include default devise modules. Others available are:
@@ -59,8 +47,17 @@ class User < ActiveRecord::Base
 
   nilify_blanks :only => [:domain]
 
-  has_one_attached :avatar_image
-  has_one_attached :header_image
+  has_one_attached :avatar_image do |attachable|
+    ImageVariants.variants_for_style(:square).each do |name, opts|
+      attachable.variant name, opts
+    end
+  end
+
+  has_one_attached :header_image do |attachable|
+    ImageVariants.variants_for_style(:header).each do |name, opts|
+      attachable.variant name, opts
+    end
+  end
 
   scope :enabled, -> { where(disabled_at: nil) }
 
@@ -74,21 +71,20 @@ class User < ActiveRecord::Base
     "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
   end
 
-  def avatar_url(size = :medium)
-    url = if avatar_image.attached?
-      Rails.application.routes.url_helpers.cdn_blob_url(
-        avatar_image.variant(**AVATAR_IMAGE_VARIANTS[size])
-      )
+  def avatar_url(size: :medium, quality: nil)
+    if avatar_image.attached? && avatar_image.image?
+      variant = ImageVariants.variant_for_image(avatar_image, size: size, quality: quality)
+      Rails.application.routes.url_helpers.cdn_blob_url(variant)
+    else
+      dimensions = ImageVariants.dimensions_for_style(:square, size)
+      gravatar_url(dimensions&.first)
     end
-
-    url || gravatar_url(AVATAR_IMAGE_VARIANTS.dig(size, :resize_to_fill)&.first)
   end
 
-  def header_image_url(size = :medium)
-    if header_image.attached?
-      Rails.application.routes.url_helpers.cdn_blob_url(
-        header_image.variant(**HEADER_IMAGE_VARIANTS[size])
-      )
+  def header_image_url(size: :medium, quality: nil)
+    if header_image.attached? && header_image.image?
+      variant = ImageVariants.variant_for_image(header_image, size: size, quality: quality)
+      Rails.application.routes.url_helpers.cdn_blob_url(variant)
     end
   end
 
