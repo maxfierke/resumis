@@ -38,6 +38,7 @@ module Resumis
         resource '/api/*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
+    config.middleware.use Rack::Deflater if ENV["RESUMIS_ENABLE_HTTP_COMPRESSION"]
 
     # activejob queue adapter
     if Rails.env.test?
