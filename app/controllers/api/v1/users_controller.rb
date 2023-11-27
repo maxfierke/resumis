@@ -35,7 +35,10 @@ module Api
             scope = scope.includes(:skills)
           end
 
-          scope.find(params[:id])
+          scope.
+            with_attached_avatar_image.
+            with_attached_header_image.
+            find(params[:id])
         end
       end
     end
