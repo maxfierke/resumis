@@ -303,7 +303,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    selenium-webdriver (4.14.0)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -381,7 +381,7 @@ DEPENDENCIES
   redcarpet (>= 3.2.3)
   redis
   rspec-rails (~> 6.0)
-  selenium-webdriver (~> 4.14)
+  selenium-webdriver (~> 4.15)
   sentry-rails
   sentry-ruby
   sidekiq (< 8)
