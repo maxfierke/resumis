@@ -13,7 +13,7 @@ gem 'pg'
 gem 'active_model_serializers', '~> 0.10.14'
 
 # ActiveRecord extensions
-gem 'friendly_id', '~> 5.5.0'
+gem 'friendly_id', '~> 5.5.1'
 gem 'nilify_blanks'
 
 # Authentication & Authorization
