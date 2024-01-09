@@ -64,7 +64,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 6.0'
+  gem 'rspec-rails', '~> 6.1'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'debug'
