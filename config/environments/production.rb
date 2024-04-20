@@ -63,10 +63,10 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
-  redis_url = ENV["CACHE_REDIS_URL"].presence || ENV["REDIS_URL"]
-  if redis_url.present?
+  cache_redis_url = ENV["CACHE_REDIS_URL"]
+  if cache_redis_url.present?
     config.cache_store = :redis_cache_store, {
-      url: redis_url,
+      url: cache_redis_url,
       connect_timeout:    1,
       read_timeout:       0.2,
       write_timeout:      0.2,
