@@ -418,4 +418,4 @@ DEPENDENCIES
   wicked_pdf (~> 2.8)
 
 BUNDLED WITH
-   2.5.4
+   2.5.10
