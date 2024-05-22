@@ -8,7 +8,7 @@ module Api
       end
 
       def index
-        render jsonapi: projects, include: include_params
+        paginate projects, include: include_params
       end
 
       def show
