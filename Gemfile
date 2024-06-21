@@ -18,7 +18,7 @@ gem 'nilify_blanks'
 
 # Authentication & Authorization
 gem 'devise', '~> 4.9.4'
-gem 'doorkeeper', '~> 5.6'
+gem 'doorkeeper', '~> 5.7'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
 
