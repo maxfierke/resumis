@@ -24,8 +24,8 @@ module Manage
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to manage_posts_url, notice: "'#{@post.title}' was successfully created." }
-          format.json { render :show, status: :created, location: manage_posts_url }
+          format.html { redirect_to manage_posts_path, notice: "'#{@post.title}' was successfully created." }
+          format.json { render :show, status: :created, location: manage_posts_path }
         else
           format.html { render :new }
           format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -36,8 +36,8 @@ module Manage
     def update
       respond_to do |format|
         if @post.update(post_params)
-          format.html { redirect_to manage_posts_url, notice: "'#{@post.title}' was successfully updated." }
-          format.json { render :show, status: :ok, location: manage_posts_url }
+          format.html { redirect_to manage_posts_path, notice: "'#{@post.title}' was successfully updated." }
+          format.json { render :show, status: :ok, location: manage_posts_path }
         else
           format.html { render :edit }
           format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ module Manage
     def destroy
       @post.destroy
       respond_to do |format|
-        format.html { redirect_to manage_posts_url, notice: "'#{@post.title}' was successfully destroyed." }
+        format.html { redirect_to manage_posts_path, notice: "'#{@post.title}' was successfully destroyed." }
         format.json { head :no_content }
       end
     end
