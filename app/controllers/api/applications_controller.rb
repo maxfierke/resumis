@@ -12,7 +12,7 @@ module Api
       @application.owner = current_user if Doorkeeper.configuration.confirm_application_owner?
       if @application.save
         flash[:notice] = I18n.t(:notice, :scope => [:doorkeeper, :flash, :applications, :create])
-        redirect_to oauth_application_url(@application)
+        redirect_to oauth_application_path(@application)
       else
         render :new
       end
