@@ -433,4 +433,4 @@ DEPENDENCIES
   wicked_pdf (~> 2.8)
 
 BUNDLED WITH
-   2.5.10
+   2.6.2
