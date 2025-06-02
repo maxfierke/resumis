@@ -36,8 +36,6 @@ class SocialLink < ActiveRecord::Base
     case network
     when "github"
       "GitHub"
-    when "linkedin"
-      "LinkedIn"
     when "tiktok"
       "TikTok"
     else
