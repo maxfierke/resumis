@@ -36,54 +36,23 @@ module Api
       end
 
       link(:self) { api_user_path(object.id) }
-      link(:github) {
-        {
-          meta: {
-            rel: 'github',
-            title: "@#{object.github_handle}"
-          },
-          href: "https://github.com/#{object.github_handle}"
+
+      SocialLink::KNOWN_NETWORKS.each do |network_name|
+        link(network_name.to_sym) {
+          if social_link = object.social_links.find { |link| link.network == network_name }
+            {
+              meta: {
+                rel: social_link.network,
+                title: social_link.display_name
+              },
+              href: social_link.derived_url
+            }
+          end
         }
-      }
-      link(:linkedin) {
-        {
-          meta: {
-            rel: 'linkedin',
-            title: object.linkedin_handle
-          },
-          href: "https://linkedin.com/in/#{object.linkedin_handle}"
-        }
-      }
-      link(:mastodon) {
-        {
-          meta: {
-            rel: 'mastodon',
-            title: object.mastodon_handle
-          },
-          href: object.mastodon_url
-        }
-      }
-      link(:medium) {
-        {
-          meta: {
-            rel: 'medium',
-            title: "@#{object.medium_handle}"
-          },
-          href: "https://medium.com/@#{object.medium_handle}"
-        }
-      }
-      link(:twitter) {
-        {
-          meta: {
-            rel: 'twitter',
-            title: "@#{object.twitter_handle}",
-          },
-          href: "https://twitter.com/#{object.twitter_handle}"
-        }
-      }
+      end
 
       has_many :projects
       has_many :skills
-     end
+    end
   end
 end

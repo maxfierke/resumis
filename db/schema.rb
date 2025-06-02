@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_02_040859) do
+ActiveRecord::Schema[8.0].define(version: 2024_04_05_152748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -257,6 +257,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_040859) do
     t.index ["name"], name: "index_skills_on_name", unique: true
     t.index ["skill_category_id"], name: "index_skills_on_skill_category_id"
     t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "social_links", force: :cascade do |t|
+    t.string "network", null: false
+    t.string "username"
+    t.string "url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["network", "username", "user_id"], name: "index_social_links_on_network_and_username_and_user_id", unique: true
+    t.index ["user_id"], name: "index_social_links_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

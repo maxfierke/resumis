@@ -1,0 +1,24 @@
+<div class="form-group items-center space-between js-add-edit-social-link">
+  <%= form.label :username, class: 'control-label' do %>
+    <% if form.object.network %>
+      <%= social_link_icon(form.object) %>
+    <% else %>
+      <%= form.select :network, SocialLink::KNOWN_NETWORKS.map { |network_name| [network_name.titleize, network_name] }, name: 'social_link_network' %>
+    <% end %>
+  <% end %>
+  <div class="ml-4">
+    <% if form.object.uses_at_prefix? %>
+      <div class="input-group">
+        <span class="input-group-addon">@</span>
+        <%= form.text_field :username, class: 'text_field form-control', placeholder: 'username/handle' %>
+      </div>
+    <% else %>
+      <%= form.text_field :username, class: 'text_field form-control', placeholder: 'username/handle' %>
+    <% end %>
+  </div>
+  <%= link_to_remove_nested(
+    form,
+    link_text: '&times;',
+    link_classes: 'btn btn-sm btn-danger cursor-pointer'
+  ) %>
+</div>

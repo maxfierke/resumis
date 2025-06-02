@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/js/brands';
 import Rails from '@rails/ujs';
 import UserMenu from './components/user-menu';
 import Editor from './components/editor';
+import 'vanilla-nested';
 
 Rails.start();
 UserMenu.start('.user-menu');

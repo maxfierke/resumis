@@ -382,6 +382,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (1.0.3)
     useragent (0.16.11)
+    vanilla_nested (1.7.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     webrick (1.9.1)
@@ -445,7 +446,8 @@ DEPENDENCIES
   sidekiq-failures
   sprockets-rails
   thor
+  vanilla_nested
   wicked_pdf (~> 2.8)
 
 BUNDLED WITH
-   2.6.2
+   2.6.9
