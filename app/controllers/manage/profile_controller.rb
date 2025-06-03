@@ -41,8 +41,13 @@ module Manage
           :first_name, :last_name, :tagline, :about_me,
           :header_image, :avatar_image, :avatar_label,
           :homepage_url, :blog_url,
-          :github_handle, :mastodon_handle, :medium_handle,
-          :linkedin_handle, :tumblr_url, :twitter_handle,
+          social_links_attributes: [
+            :id,
+            :network,
+            :username,
+            :url,
+            :_destroy
+          ]
         )
       end
   end

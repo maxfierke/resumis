@@ -12,6 +12,9 @@ gem 'pg'
 # JSON-API
 gem 'active_model_serializers', '~> 0.10.15'
 
+# Forms
+gem 'vanilla_nested'
+
 # ActiveRecord extensions
 gem 'friendly_id', '~> 5.5.1'
 gem 'nilify_blanks'

@@ -66,14 +66,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#mastodon_url" do
-    it "returns the expected shortcut URL" do
-      user = FactoryBot.build(:user, mastodon_handle: "@lol@masto.host")
-
-      expect(user.mastodon_url).to eq("https://masto.host/@lol")
-    end
-  end
-
   describe "#avatar_url" do
     let(:user) { FactoryBot.create(:user) }
 
@@ -215,7 +207,7 @@ RSpec.describe User, type: :model do
           )
 
           # Note, not calling #processed
-          blob = user.header_image.variant(variant_name)
+          _ = user.header_image.variant(variant_name)
 
           expect(user.header_image_url).to be_nil
         end

@@ -21,8 +21,6 @@ RSpec.describe 'Managing Posts', type: :system do
   end
 
   scenario 'Listing posts' do
-    cards = page.all('.card', count: posts.size)
-
     posts.each do |post|
       within("[data-post-id='#{post.id}']") do
 

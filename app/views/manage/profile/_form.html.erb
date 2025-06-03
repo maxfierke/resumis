@@ -126,72 +126,14 @@
   </div>
 
   <div class="form-horizontal lg:flex-1">
-    <div class="form-group">
-      <%= f.label :github_handle, class: 'control-label' do %>
-        <%= icon('fab', 'github-square fa-fw h-5 w-5 inline-block mr-4', 'GitHub') %>
+    <div id="social-links">
+      <%= f.fields_for :social_links do |social_link| %>
+        <%= render 'social_link_fields', form: social_link %>
       <% end %>
-      <div class="ml-4">
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <%= f.text_field :github_handle, class: 'text_field form-control' %>
-        </div>
-      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :linkedin_handle, class: 'control-label' do %>
-        <%= icon('fab', 'linkedin fa-fw h-5 w-5 inline-block mr-4', 'LinkedIn') %>
-      <% end %>
-      <div class="ml-4">
-        <%= f.text_field :linkedin_handle, class: 'text_field form-control' %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :mastodon_handle, class: 'control-label' do %>
-        <%= icon('fab', 'mastodon fa-fw h-5 w-5 inline-block mr-4', 'Mastodon') %>
-      <% end %>
-      <div class="ml-4">
-        <div class="input-group">
-          <%= f.text_field :mastodon_handle,
-            class: 'text_field form-control',
-            placeholder: 'e.g. @you@mastodon.host'
-          %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :medium_handle, class: 'control-label' do %>
-        <%= icon('fab', 'medium fa-fw h-5 w-5 inline-block mr-4', 'Medium') %>
-      <% end %>
-      <div class="ml-4">
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <%= f.text_field :medium_handle, class: 'text_field form-control' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :tumblr_url, class: 'control-label' do %>
-        <%= icon('fab', 'tumblr-square fa-fw h-5 w-5 inline-block mr-4', 'Tumblr') %>
-      <% end %>
-      <div class="ml-4">
-        <%= f.text_field :tumblr_url, class: 'text_field form-control' %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :twitter_handle, class: 'control-label' do %>
-        <%= icon('fab', 'twitter-square fa-fw h-5 w-5 inline-block mr-4', 'Twitter') %>
-      <% end %>
-      <div class="ml-4">
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <%= f.text_field :twitter_handle, class: 'text_field form-control' %>
-        </div>
-      </div>
+    <div class="flex pb-4">
+      <%= link_to_add_nested(f, :social_links, '#social-links', link_text: 'Add social network', link_classes: 'btn btn-link cursor-pointer') %>
     </div>
   </div>
 </div>
