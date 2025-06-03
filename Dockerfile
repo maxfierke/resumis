@@ -3,7 +3,6 @@ LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
 ENV APP_HOME=/resumis \
-    NODE_ENV=production \
     RAILS_ENV=production \
     RESUMIS_USER=resumis
 
