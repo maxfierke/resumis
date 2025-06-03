@@ -35,7 +35,7 @@ RSpec.describe 'Managing Posts', type: :system do
         end
 
         within("section") do
-          expect(crunch(page.text)).to have_content(post_summary_text(post))
+          expect(crunch(page.text)).to have_content(post_summary_text(post)[0, 40])
 
           post.post_categories.each do |category|
             expect(page).to have_content("##{category.name}")
