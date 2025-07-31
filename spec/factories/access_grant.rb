@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :access_grant, class: Doorkeeper::AccessGrant do
-    sequence(:resource_owner_id) { |n| n }
+    resource_owner_id { create(:user).id }
     application
     redirect_uri { "https://app.com/callback" }
     revoked_at { nil }

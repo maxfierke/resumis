@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :access_token, class: Doorkeeper::AccessToken do
-    sequence(:resource_owner_id) { |n| n }
+    resource_owner_id { create(:user).id }
     application
     revoked_at { nil }
     expires_in { 900 }
