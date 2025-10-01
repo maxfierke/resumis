@@ -254,16 +254,17 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    prometheus-client (4.2.2)
+    prometheus-client (4.2.5)
+      base64
     psych (5.2.6)
       date
       stringio
     public_suffix (5.0.4)
     puma (6.6.1)
       nio4r (~> 2.0)
-    puma-metrics (1.4.0)
+    puma-metrics (1.4.2)
       prometheus-client (>= 0.10)
-      puma (>= 6.0)
+      puma (>= 6, != 7.0.0)
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     pundit-matchers (4.0.0)
