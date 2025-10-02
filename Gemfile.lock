@@ -331,7 +331,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.2)
+    rexml (3.4.4)
     rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -353,13 +353,13 @@ GEM
     ruby-vips (2.2.3)
       ffi (~> 1.12)
       logger
-    rubyzip (2.4.1)
+    rubyzip (3.1.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.34.0)
+    selenium-webdriver (4.35.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
+      rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
     sentry-rails (5.28.0)
       railties (>= 5.0)
@@ -447,7 +447,7 @@ DEPENDENCIES
   redcarpet (>= 3.2.3)
   redis
   rspec-rails (~> 8.0)
-  selenium-webdriver (~> 4.34)
+  selenium-webdriver (~> 4.35)
   sentry-rails
   sentry-ruby
   sidekiq (< 8)
