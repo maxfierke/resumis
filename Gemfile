@@ -16,7 +16,7 @@ gem 'active_model_serializers', '~> 0.10.15'
 gem 'vanilla_nested'
 
 # ActiveRecord extensions
-gem 'friendly_id', '~> 5.5.1'
+gem 'friendly_id', '~> 5.6.0'
 gem 'nilify_blanks'
 
 # Authentication & Authorization
