@@ -264,7 +264,7 @@ GEM
       date
       stringio
     public_suffix (5.0.4)
-    puma (6.6.1)
+    puma (7.2.0)
       nio4r (~> 2.0)
     puma-metrics (1.5.0)
       prometheus-client (>= 0.10)
