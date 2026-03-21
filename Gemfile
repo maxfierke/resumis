@@ -20,7 +20,7 @@ gem 'friendly_id', '~> 5.6.0'
 gem 'nilify_blanks'
 
 # Authentication & Authorization
-gem 'devise', '~> 4.9.4'
+gem 'devise', '~> 5.0.3'
 gem 'doorkeeper', '~> 5.8'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pundit'
