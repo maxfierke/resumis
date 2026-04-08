@@ -10,7 +10,7 @@ gem 'sprockets-rails'
 gem 'pg'
 
 # JSON-API
-gem 'active_model_serializers', '~> 0.10.15'
+gem 'active_model_serializers', '~> 0.10.16'
 
 # Forms
 gem 'vanilla_nested'
