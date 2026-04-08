@@ -56,20 +56,6 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Replace the default in-process memory cache store with a durable alternative.
-  cache_redis_url = ENV["CACHE_REDIS_URL"]
-  if cache_redis_url.present?
-    config.cache_store = :redis_cache_store, {
-      url: cache_redis_url,
-      connect_timeout:    1,
-      read_timeout:       0.2,
-      write_timeout:      0.2,
-      reconnect_attempts: 1,
-    }
-    ActiveModelSerializers.config.perform_caching = true
-    ActiveModelSerializers.config.cache_store = config.cache_store
-  end
-
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
 

@@ -47,7 +47,7 @@ Some specifics to highlight:
   * Avoid putting non-trivial logic in controllers
     * Service objects are your friend!!!
   * If there's branching, there's probably an opportunity for method extraction.
-  * Put anything long-running in a Sidekiq job
+  * Put anything long-running in ActiveJob
   * ALWAYS put spaces after list items and method parameters (`[1, 2, 3]`, not `[1,2,3]`), around operators (`x += 1`, not `x+=1`), and around hash arrows.
   * Symbols for Hash keys unless unavoidable
   * If an error class is surfaceable to the user, it should have an error object with user-friendly details. See [app/models/errors](app/models/errors) for examples.

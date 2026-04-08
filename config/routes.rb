@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Rails.application.routes.draw do
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
@@ -12,7 +10,7 @@ Rails.application.routes.draw do
 
   constraints(BareHostConstraint.new) do
     authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/sidekiq'
+      mount GoodJob::Engine => 'good_job'
     end
 
     if ResumisConfig.multi_tenant?

@@ -1,9 +1,0 @@
----
-:queues:
-  - default
-  - mailers
-  - action_mailbox_routing
-  - active_storage_analysis
-  - active_storage_mirror
-  - active_storage_purge
-:logfile: ./log/sidekiq.log
