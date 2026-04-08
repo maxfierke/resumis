@@ -49,7 +49,7 @@ gem 'sidekiq-failures'
 gem 'puma'
 
 group :development do
-  gem 'listen', '~> 3.9.0'
+  gem 'listen', '~> 3.10.0'
 end
 
 group :production do
