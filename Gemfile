@@ -56,9 +56,6 @@ group :production do
 
   gem 'fly-ruby', require: false
 
-  gem 'redis'
-  gem 'hiredis-client'
-
   gem 'puma-metrics'
 
   gem 'sentry-ruby'
