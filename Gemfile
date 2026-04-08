@@ -41,9 +41,8 @@ gem 'wicked_pdf', '~> 2.8'
 gem 'kaminari'
 gem 'pager_api', '~> 0.3.2'
 
-# Sidekiq
-gem 'sidekiq', '< 8'
-gem 'sidekiq-failures'
+# Good Job
+gem "good_job", "~> 4.14"
 
 # Web server
 gem 'puma'

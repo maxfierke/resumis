@@ -9,7 +9,6 @@ personal web presence, a CV generator, and JSON Resume provider.
 * Node.js 16+
 * `wkhtmltopdf`. 0.12.5 recommended. Anything lower has known issues. Will use a binary specified by `WKHTMLTOPDF_PATH` or defaults to `/usr/local/bin/wkhtmltopdf`.
 * `vips`/`libvips`
-* Redis 6.2+ for Sidekiq
 * SMTP server (Production is configured to use SendGrid with credentials set by environmental variables `SENDGRID_USERNAME`, `SENDGRID_PASSWORD`, and `SENDGRID_DOMAIN`). It's only used by Devise for things like password resets, or confirmation emails. This is not a hard dependency and certainly not needed for development.
 
 and others. See [Gemfile](Gemfile).

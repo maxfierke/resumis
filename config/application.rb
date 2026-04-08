@@ -45,11 +45,10 @@ module Resumis
     end
     config.middleware.use Rack::Deflater if ENV["RESUMIS_ENABLE_HTTP_COMPRESSION"]
 
-    # activejob queue adapter
     if Rails.env.test?
       config.active_job.queue_adapter = :test
     else
-      config.active_job.queue_adapter = :sidekiq
+      config.active_job.queue_adapter = :good_job
     end
 
     config.action_mailer.default_url_options = {
