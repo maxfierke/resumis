@@ -60,6 +60,7 @@ Rails.application.routes.draw do
           patch 'enable'
         end
       end
+      resources :webhooks, concerns: :paginatable
 
       get 'skills' => 'skills#index', as: :skills
       post 'skills' => 'skills#create'

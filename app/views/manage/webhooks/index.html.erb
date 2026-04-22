@@ -1,0 +1,58 @@
+<% page_title "Webhooks" %>
+
+<% @webhooks.each do |webhook| %>
+  <article class="card">
+    <header class="card-header">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex flex-col gap-4">
+          <h1 class="text-xl">
+            <%= link_to edit_manage_webhook_path(webhook), class: 'underline' do %>
+              <%= webhook.name -%>
+            <% end %>
+          </h1>
+          <p class="font-mono truncate"><%= webhook.url -%></p>
+        </div>
+
+        <% if webhook.enabled? %>
+          <span class="label label-success">Enabled</span>
+        <% else %>
+          <span class="label label-default">Disabled</span>
+        <% end %>
+      </div>
+    </header>
+
+    <section class="card-body">
+      <div class="flex flex-wrap gap-2">
+        <% webhook.resource_types.each do |type| %>
+          <span class="label label-default font-mono"><%= type %></span>
+        <% end %>
+      </div>
+    </section>
+
+    <footer class="card-actions">
+      <div class="left">
+        <span class="px-6 py-2 text-gray-700">
+          Updated <%= time_ago_in_words(webhook.updated_at) %> ago
+        </span>
+      </div>
+      <div class="right">
+        <%= link_to edit_manage_webhook_path(webhook), class: 'action-link' do %>
+          <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>
+        <% end %>
+        <%= link_to manage_webhook_path(webhook), class: 'danger-link', method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= icon 'fas', 'times inline-block mr-1', 'Delete' %>
+        <% end %>
+      </div>
+    </footer>
+  </article>
+<% end %>
+
+<% content_for :actionbar_left do %>
+  <%= paginate @webhooks %>
+<% end %>
+
+<% content_for :actionbar_right do %>
+  <%= link_to new_manage_webhook_path, class: 'btn btn-primary' do %>
+    <%= icon 'fas', 'plus h-5 w-5 inline-block mr-4', 'New Webhook' %>
+  <% end %>
+<% end %>

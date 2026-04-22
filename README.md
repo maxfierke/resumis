@@ -31,7 +31,7 @@ and others. See [Gemfile](Gemfile).
 * Create the database, run the migrations
 
   ```
-  $ rake db:create db:migrate
+  $ bin/rails db:create db:migrate
   ```
 
 * Run the app using [foreman](https://github.com/ddollar/foreman) or [forego](https://github.com/ddollar/forego)
@@ -52,8 +52,11 @@ and others. See [Gemfile](Gemfile).
 
 Resumis-specific configuration can be done either through the `config/initializers/resumis.rb` initializer file, or through a some environmental variables.
 
-* `SECRET_KEY_BASE` - Generate a value via `rake secret`.
-* `RESUMIS_DEVISE_SECRET` - Generate a value via `rake secret`.
+* `ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY` - Generate via `bin/rails db:encryption:init`
+* `ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY` - Generate via `bin/rails db:encryption:init`
+* `ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT` - Generate via `bin/rails db:encryption:init`
+* `SECRET_KEY_BASE` - Generate a value via `bin/rails secret`.
+* `RESUMIS_DEVISE_SECRET` - Generate a value via `bin/rails secret`.
 * `RESUMIS_MAIL_SENDER` - `From:` address for emails sent by Resumis (password resets, confirmations, etc.)
 * `RESUMIS_CANONICAL_HOST` - Canonical hostname.
 

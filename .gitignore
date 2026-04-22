@@ -24,6 +24,8 @@
 .capistrano/metrics
 .idea
 .env
+.env.*
+!.env.test
 
 /public/packs
 /public/packs-test

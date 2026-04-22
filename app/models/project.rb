@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include Webhookable
+
   # nice slugs from project name
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]

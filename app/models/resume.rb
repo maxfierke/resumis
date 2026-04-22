@@ -1,4 +1,6 @@
 class Resume < ActiveRecord::Base
+  include Webhookable
+
   # nice slugs from resume name
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
@@ -17,6 +19,14 @@ class Resume < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :user }
   validates :slug, presence: true, uniqueness: { scope: :user }
+
+  def trigger_webhook?
+    published?
+  end
+
+  def webhook_triggered?
+    attribute_before_last_save(:published) == true
+  end
 
   def self.latest
     Resume.where(published: true).order(updated_at: :desc).first

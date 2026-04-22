@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Webhookable
+
   # nice slugs from post title
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
@@ -14,4 +16,12 @@ class Post < ActiveRecord::Base
     presence: true,
     length: { minimum: 3, maximum: 60 },
     uniqueness: { scope: :user }
+
+  def trigger_webhook?
+    published?
+  end
+
+  def webhook_triggered?
+    attribute_before_last_save(:published) == true
+  end
 end

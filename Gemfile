@@ -42,7 +42,10 @@ gem 'kaminari'
 gem 'pager_api', '~> 0.3.2'
 
 # Good Job
-gem "good_job", "~> 4.14"
+gem 'good_job', '~> 4.14'
+
+# HTTP client
+gem 'faraday'
 
 # Web server
 gem 'puma'
@@ -67,6 +70,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'debug'
+  gem 'dotenv'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'

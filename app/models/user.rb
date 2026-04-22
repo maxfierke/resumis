@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :skills, dependent: :destroy
   has_many :skill_categories, dependent: :destroy
   has_many :social_links, dependent: :destroy
+  has_many :webhooks, dependent: :destroy
   accepts_nested_attributes_for :social_links, reject_if: :all_blank, allow_destroy: true
 
   has_many :oauth_access_grants,

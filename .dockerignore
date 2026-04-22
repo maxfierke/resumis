@@ -20,6 +20,7 @@
 /public/system
 .env
 .env.*
+!.env.test
 .rbenv-vars
 .capistrano/metrics
 /yarn-error.log
