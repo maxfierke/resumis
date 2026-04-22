@@ -140,6 +140,7 @@ GEM
     diff-lcs (1.6.2)
     doorkeeper (5.8.2)
       railties (>= 5)
+    dotenv (3.2.0)
     drb (2.2.3)
     erb (6.0.3)
     erubi (1.13.1)
@@ -423,6 +424,7 @@ DEPENDENCIES
   debug
   devise (~> 5.0.3)
   doorkeeper (~> 5.8)
+  dotenv
   factory_bot_rails
   faker
   fly-ruby

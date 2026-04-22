@@ -67,6 +67,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'debug'
+  gem 'dotenv'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
