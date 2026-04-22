@@ -1,4 +1,6 @@
 class Skill < ActiveRecord::Base
+  include Webhookable
+
   belongs_to :skill_category
   belongs_to :user
   has_many :resume_skills
