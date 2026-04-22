@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_21_045755) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_21_046288) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "pg_catalog.plpgsql"
@@ -410,6 +410,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_21_045755) do
     t.index ["subdomain"], name: "index_users_on_subdomain", unique: true
   end
 
+  create_table "webhooks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "url", null: false
+    t.string "resource_types", default: [], null: false, array: true
+    t.boolean "enabled", default: true, null: false
+    t.string "secret", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "url"], name: "index_webhooks_on_user_id_and_url", unique: true
+    t.index ["user_id"], name: "index_webhooks_on_user_id"
+  end
+
   create_table "work_experiences", id: :serial, force: :cascade do |t|
     t.string "organization"
     t.text "description"
@@ -435,4 +448,5 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_21_045755) do
   add_foreign_key "project_categories", "users"
   add_foreign_key "project_statuses", "users"
   add_foreign_key "skill_categories", "users"
+  add_foreign_key "webhooks", "users"
 end

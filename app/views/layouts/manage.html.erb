@@ -43,6 +43,9 @@
             <%= active_link_to oauth_applications_url(host: resumis_canonical_host), class: 'nav-link', active: /^\/api\/oauth2/ do %>
               <%= icon 'fas', 'exchange-alt fa-fw h-5 w-5 inline-block mr-4', 'API Apps' %>
             <% end %>
+            <%= active_link_to manage_webhooks_path, class: 'nav-link', active: :inclusive do %>
+              <%= icon 'fas', 'circle-nodes fa-fw h-5 w-5 inline-block mr-4', 'Webhooks' %>
+            <% end %>
             <%= link_to good_job_url(host: resumis_canonical_host), class: 'nav-link', target: '_blank' do %>
               <%= icon 'fas', 'external-link-alt fa-fw h-5 w-5 inline-block mr-4', 'Good Job UI' %>
             <% end %>
