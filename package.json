@@ -8,7 +8,7 @@
     "bootswatch": "^3.4.0",
     "easymde": "^2.20.0",
     "open-color": "^1.9.1",
-    "postcss": "^8.4.31",
+    "postcss": "^8.5.10",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.1.0",
     "postcss-preset-env": "^7.6.0",
