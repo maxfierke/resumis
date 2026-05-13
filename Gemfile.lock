@@ -138,7 +138,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
-    doorkeeper (5.8.2)
+    doorkeeper (5.9.0)
       railties (>= 5)
     dotenv (3.2.0)
     drb (2.2.3)
@@ -433,7 +433,7 @@ DEPENDENCIES
   database_cleaner
   debug
   devise (~> 5.0.3)
-  doorkeeper (~> 5.8)
+  doorkeeper (~> 5.9)
   dotenv
   factory_bot_rails
   faker
