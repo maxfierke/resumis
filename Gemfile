@@ -30,6 +30,7 @@ gem 'thor'
 
 # Image uploads
 gem 'image_processing'
+gem 'ruby-vips'
 
 # Markdown rendering
 gem 'redcarpet', '>= 3.2.3'
