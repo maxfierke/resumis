@@ -1,4 +1,4 @@
-FROM ruby:3.4-alpine3.22 AS builder
+FROM ruby:3.4-alpine3.24 AS builder
 LABEL maintainer="Max Fierke <max@maxfierke.com>" \
       description="Build image for resumis"
 
@@ -19,6 +19,7 @@ RUN apk add --update --no-cache \
   libgcc libstdc++ \
   yaml-dev \
   git \
+  vips-dev \
   postgresql-dev
 
 RUN mkdir -p $APP_HOME
