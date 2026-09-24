@@ -28,8 +28,7 @@
 <%- end -%>
 
 
-<% if params[:format] != 'pdf' %>
-<div class="form-group">
+<div class="form-group hidden-print">
 <% if user_signed_in? and @resume.user.id == current_user.id %>
   <%= link_to t('.back', default: t("helpers.links.back")),
               manage_resumes_path, class: 'btn btn-default' %>
@@ -49,12 +48,8 @@
   <%= link_to "Back to #{request.host}", root_path, class: 'btn btn-default' %>
 <% end %>
   <div class="pull-right">
-    <%= link_to resume_path(@resume, format: :pdf), class: 'btn btn-lg' do %>
-      <%= icon 'far', "file-pdf", "PDF" %>
-    <% end %>
     <%= link_to resume_path(@resume, format: :md), class: 'btn btn-lg' do %>
       <%= icon 'far', "file-alt", "Markdown" %>
     <% end %>
   </div>
 </div>
-<% end %>

@@ -35,9 +35,6 @@ gem 'ruby-vips'
 # Markdown rendering
 gem 'redcarpet', '>= 3.2.3'
 
-# Exporting resumes to PDF
-gem 'wicked_pdf', '~> 2.8'
-
 # Pagination
 gem 'kaminari'
 gem 'pager_api', '~> 0.3.2'
