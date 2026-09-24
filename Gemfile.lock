@@ -258,7 +258,6 @@ GEM
     nokogiri (1.19.4-x86_64-linux-musl)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    ostruct (0.6.0)
     pager_api (0.3.2)
     pg (1.6.3-aarch64-linux)
     pg (1.6.3-aarch64-linux-musl)
@@ -407,9 +406,6 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wicked_pdf (2.8.2)
-      activesupport
-      ostruct
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.8.2)
@@ -462,7 +458,6 @@ DEPENDENCIES
   sprockets-rails
   thor
   vanilla_nested
-  wicked_pdf (~> 2.8)
 
 BUNDLED WITH
    2.6.9

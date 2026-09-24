@@ -58,8 +58,7 @@ ENV APP_HOME=/resumis \
     RESUMIS_TENANCY_MODE=single \
     RESUMIS_USER=resumis \
     RUBY_YJIT_ENABLE=1 \
-    PORT=5000 \
-    WKHTMLTOPDF_PATH=/usr/bin/wkhtmltopdf
+    PORT=5000
 
 RUN mkdir -p $APP_HOME/shared/pids
 RUN addgroup -g 1000 -S $RESUMIS_USER && \
@@ -72,12 +71,7 @@ RUN apk add --update --no-cache \
   jemalloc \
   imagemagick vips \
   tzdata \
-  gcompat \
-  # PDF stuff
-  libintl \
-  libcrypto3 libssl3 \
-  ttf-dejavu ttf-droid ttf-freefont ttf-liberation \
-  weasyprint
+  gcompat
 
 ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2 \
     MALLOC_CONF=dirty_decay_ms:1000,narenas:2,background_thread:true
