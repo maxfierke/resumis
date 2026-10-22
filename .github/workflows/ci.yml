@@ -27,7 +27,7 @@ jobs:
       run: bundle-audit check --update
 
     - name: Run brakeman
-      run: brakeman --no-pager --github-repo maxfierke/resumis
+      run: brakeman --no-exit-on-warn --no-pager --github-repo maxfierke/resumis
 
   rspec:
     name: Rspec

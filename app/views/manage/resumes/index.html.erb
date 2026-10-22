@@ -28,8 +28,8 @@
           </span>
         </div>
         <div class="right">
-          <%= link_to resume_path(resume, :format => :pdf), class: 'action-link' do %>
-            <%= icon 'far', 'file-alt inline-block mr-1', 'PDF' %>
+          <%= link_to resume_path(resume, :format => :html), class: 'action-link' do %>
+            <%= icon 'far', 'file-alt inline-block mr-1', 'View' %>
           <%- end -%>
           <%= link_to edit_manage_resume_path(resume), class: 'action-link' do %>
             <%= icon 'fas', 'pencil-alt inline-block mr-1', 'Edit' %>

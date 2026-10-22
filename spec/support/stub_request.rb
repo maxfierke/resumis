@@ -1,3 +1,5 @@
+require "ostruct"
+
 class StubRequest
   def initialize(**kwargs)
     @struct = OpenStruct.new({
