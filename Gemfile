@@ -40,7 +40,7 @@ gem 'kaminari'
 gem 'pager_api', '~> 0.3.2'
 
 # Good Job
-gem 'good_job', '~> 4.19'
+gem 'good_job', '~> 4.23'
 
 # HTTP client
 gem 'faraday'
