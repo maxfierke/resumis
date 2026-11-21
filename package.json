@@ -16,7 +16,7 @@
     "vanilla-nested": "^1.7.1"
   },
   "devDependencies": {
-    "esbuild": "^0.25.5"
+    "esbuild": "^0.28.1"
   },
   "engines": {
     "node": ">= 16.*"
