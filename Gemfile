@@ -49,7 +49,7 @@ gem 'faraday'
 gem 'puma'
 
 group :development do
-  gem 'listen', '~> 3.10.0'
+  gem 'listen', '~> 3.10.1'
 end
 
 group :production do
